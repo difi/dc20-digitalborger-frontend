@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {Alert, Button, Image, Linking, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {Component, useEffect, useState} from "react";
+
+
+
 const serviceImage = [
     {name:"Digital_Post", uri: "https://seeklogo.com/images/M/mail-icon-logo-28FE0635D0-seeklogo.com.png"  }
 ];
@@ -15,13 +18,12 @@ export default function Profile() {
     const[address, setAddress] = useState('Adresse');
     const[sted, setSted] = useState('Sted');
     const[email, setEmail] = useState('E-post')
+
+
     function changeInput(enteredText){
         setEdit(enteredText);
     }
-    const adressPressButton = event => {
-        console.log(address)
-        const a = event.target.value({address});
-    }
+
     const editText = (enteredText) =>{
         setNumber(enteredText);
     }
@@ -33,6 +35,7 @@ export default function Profile() {
             <View style = {{padding: 10, alignItems: 'center', flexDirection: "row", justifyContent: "space-between"}}>
                 <Text style = {{textTransform: "uppercase", fontSize: 13, fontWeight: "bold"}}>Person-og kontaktinformasjon</Text>
                 <TouchableOpacity style={styles.buttonContainer} onPress={() => Linking.openURL("https://www.digipost.no/")}>
+                    <Image source={{uri: serviceImage[0].uri }} style={styles.images} />
                     <Text> DigiPost</Text>
                 </TouchableOpacity>
             </View>
@@ -68,11 +71,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonContainer: {
-        margin: 50,
-        height: 50,
-        width: 110,
+        margin: 100,
+        height: 100,
+        width: 100,
         borderRadius: 10,
-        padding: 10,
+        padding: 20,
         backgroundColor: "white"
     },
     userInfoContainer:{
@@ -82,4 +85,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         justifyContent: "space-between",
     },
+    images: {
+        width: "100%",
+        height: "100%",
+        borderRadius: 5,
+    }
 });
