@@ -34,6 +34,7 @@ export default function Profile() {
         <View style={{ flex: 1, backgroundColor: "#87CEEB" }}>
             <View style = {{padding: 10, alignItems: 'center', flexDirection: "row", justifyContent: "space-between"}}>
                 <Text style = {{textTransform: "uppercase", fontSize: 13, fontWeight: "bold"}}>Person-og kontaktinformasjon</Text>
+                <Image source={{uri: userImages[0].uri}} style={styles.profileIcon}/>
                 <TouchableOpacity style={styles.buttonContainer} onPress={() => Linking.openURL("https://www.digipost.no/")}>
                     <Image source={{uri: serviceImage[0].uri }} style={styles.images} />
                     <Text> DigiPost</Text>
@@ -88,6 +89,11 @@ const styles = StyleSheet.create({
     images: {
         width: "100%",
         height: "100%",
+        borderRadius: 5,
+    },
+    profileIcon: {
+        width: 110,
+        height: 110,
         borderRadius: 5,
     }
 });
