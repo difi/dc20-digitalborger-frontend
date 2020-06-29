@@ -32,15 +32,18 @@ export default function Profile() {
     }
     return (
         <View style={{ flex: 1, backgroundColor: "#87CEEB" }}>
-            <View style = {{padding: 10, alignItems: 'center', flexDirection: "row", justifyContent: "space-between"}}>
+            <View style = {{padding: 5, alignItems: 'center', flexDirection: "row"}}>
                 <Text style = {{textTransform: "uppercase", fontSize: 13, fontWeight: "bold"}}>Person-og kontaktinformasjon</Text>
-                <Image source={{uri: userImages[0].uri}} style={styles.profileIcon}/>
+
                 <TouchableOpacity style={styles.buttonContainer} onPress={() => Linking.openURL("https://www.digipost.no/")}>
                     <Image source={{uri: serviceImage[0].uri }} style={styles.images} />
-                    <Text> DigiPost</Text>
+                    <Text style={{fontSize: 9,
+                        fontWeight: "bold",
+                        color: "gray" }}> DigiPost</Text>
                 </TouchableOpacity>
             </View>
-            <View style = {{padding: 50, alignItems: 'center'}}>
+            <View style = {{padding: 5, alignItems: 'center'}}>
+                <Image source={{uri: userImages[0].uri}} style={styles.profileIcon}/>
                 <View style={styles.userInfoContainer}  >
                     <Text style= {styles.textStyle}> Navn Etternavn </Text>
                     <Text style={styles.textStyle}> 03.05.1992 </Text>
@@ -68,10 +71,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonContainer: {
-        margin: 100,
-        height: 100,
-        width: 100,
-        borderRadius: 10,
+        margin: 80,
+        height: 80,
+        width: 80,
+        borderRadius: 5,
         padding: 20,
         backgroundColor: "white"
     },
@@ -91,6 +94,8 @@ const styles = StyleSheet.create({
         width: 110,
         height: 110,
         borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     textStyle: {
         fontSize: 15,
