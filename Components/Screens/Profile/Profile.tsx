@@ -14,7 +14,7 @@ const userImages = [
                     ""}/>*/
 export default function Profile() {
     const [edit, setEdit] = useState({isEditable: false});
-    const[number, setNumber] = useState(' ');
+    const[number, setNumber] = useState('mobilnummer');
     const[address, setAddress] = useState('Adresse');
     const[sted, setSted] = useState('Sted');
     const[email, setEmail] = useState('E-post')
@@ -27,7 +27,7 @@ export default function Profile() {
     const editText = (enteredText) =>{
         setNumber(enteredText);
     }
-    const numberPressButton = () => {
+    const numberPressButton =() => {
         Alert.alert("Nummeret er endra");
     }
     return (
@@ -42,25 +42,21 @@ export default function Profile() {
             </View>
             <View style = {{padding: 50, alignItems: 'center'}}>
                 <View style={styles.userInfoContainer}  >
-                    <Text style= {{fontSize: 15, fontWeight: "bold", color: "gray"}}> Navn Etternavn </Text>
-                    <Text style={{fontSize: 12, color: "gray"}}> 03.05.1992 </Text>
+                    <Text style= {styles.textStyle}> Navn Etternavn </Text>
+                    <Text style={styles.textStyle}> 03.05.1992 </Text>
                 </View>
                 <View style={styles.userInfoContainer}>
-                    <TextInput placeholder="Adresse" onChangeText={() => changeInput} style = {{fontSize: 15, fontWeight: "bold", borderColor: "black"}}></TextInput>
-                    <TextInput placeholder="Sted" onChangeText={() => editText} style={{fontSize: 12, color: "gray"}}/>
+                    <Text style={styles.textStyle}>{address}</Text>
+                    <Text style={styles.textStyle}>{sted}</Text>
                 </View>
                 <View style={styles.userInfoContainer}>
-                    <TextInput placeholder="E-post" onChangeText={() => editText}  style = {{fontSize: 15, fontWeight: "bold"}} />
-                    <TextInput
-                        placeholder= "mobilnummer"
-                        style = {{fontSize: 15, fontWeight: "bold"}}
-                        onChangeText={editText}
-                    >
-                    </TextInput>
+                    <Text style = {styles.textStyle}> {email}</Text>
+                    <Text style = {styles.textStyle}>{number} </Text>
                 </View>
                 <View style = {{padding: 10, alignItems: 'center', justifyContent: "space-between"}}>
-                    <Button title="Endre E-post eller mobil" color="#66CDAA" onPress={() => numberPressButton }>
+                    <Button title="Endre adresse" color="#66CDAA" onPress={() => Linking.openURL("https://www.skatteetaten.no/person/folkeregister/flytte/?utm_source=bing&utm_medium=cpc&utm_campaign=Folkeregister%20-%20Flytting%20og%20adresse%20-%20NY20&utm_term=adresseendring&utm_content=Adresseendring")}>
                     </Button>
+                    <Button title="Endre E-pot og mobilnummer" color="#66CDAA" onPress={() => numberPressButton()} />
                 </View>
             </View>
         </View>
@@ -95,5 +91,10 @@ const styles = StyleSheet.create({
         width: 110,
         height: 110,
         borderRadius: 5,
+    },
+    textStyle: {
+        fontSize: 15,
+        fontWeight: "bold",
+        color: "gray",
     }
 });
