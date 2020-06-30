@@ -36,8 +36,6 @@ const digiPostBrev = {
 
 export default function Profile() {
 
-
-
     return (
         <View style={styles.container }>
             <Header backgroundColor="white" centerComponent={{text: "Profil"}}/>
@@ -55,15 +53,15 @@ export default function Profile() {
                 <Image source={{uri: userImages[0].uri}} style={styles.profileIcon}/>
                 <View style={styles.userInfoContainer}  >
                     <Text style= {styles.textStyle}> {persons.name} </Text>
-                    <Text style={styles.textStyle}> {persons.birth} </Text>
+                    <Text style={styles.textStyleSmall}> {persons.birth} </Text>
                 </View>
                 <View style={styles.userInfoContainer}>
                     <Text style={styles.textStyle}>{persons.address}</Text>
-                    <Text style={styles.textStyle}>{persons.streetAddress}</Text>
+                    <Text style={styles.textStyleSmall}>{persons.streetAddress}</Text>
                 </View>
                 <View style={styles.userInfoContainer}>
                     <Text style = {styles.textStyle}> {persons.email}</Text>
-                    <Text style = {styles.textStyle}>{persons.number} </Text>
+                    <Text style = {styles.textStyleSmall}>{persons.number} </Text>
                 </View>
                 <View style = {styles.centerButtonsContainer}>
 
@@ -128,6 +126,11 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         fontSize: 15,
+        fontWeight: "bold",
+        color: "gray",
+    },
+    textStyleSmall: {
+        fontSize: 12,
         fontWeight: "bold",
         color: "gray",
     }
