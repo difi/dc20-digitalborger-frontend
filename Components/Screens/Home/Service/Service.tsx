@@ -2,19 +2,14 @@ import * as React from 'react';
 import {
     View,
     Text,
-    Button,
     Image,
     TouchableOpacity,
     ScrollView,
     Dimensions,
-    TouchableNativeFeedback,
     SafeAreaView,
-    TouchableWithoutFeedback,
-    TouchableHighlight,
     StyleSheet,
-    LayoutAnimation, UIManager, Platform
 } from 'react-native';
-import {Component, useCallback, useEffect, useState} from "react";
+import {Component, useEffect, useState} from "react";
 // @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // @ts-ignore
@@ -29,80 +24,11 @@ import Octicons from 'react-native-vector-icons/Octicons';
 
 import Accordion from "react-native-collapsible/Accordion";
 import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
-import {Easing, interpolate} from "react-native-reanimated";
-import Animated from "react-native-reanimated";
-
+import Animated, {interpolate} from "react-native-reanimated";
+import {ListItem} from "./Collapsible/ListItem";
+import {Collapsible} from "./Collapsible/Collapsible";
 
 const SPACE = 20;
-
-
-const styles2 = StyleSheet.create({
-    container: {
-        marginTop: 16,
-        backgroundColor: "white",
-        padding: 16,
-        borderTopLeftRadius: 8,
-        borderTopRightRadius: 8,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between"
-    },
-    title: {
-        fontSize: 16,
-        fontWeight: "bold"
-    },
-    items: {
-        overflow: "hidden"
-    }
-});
-
-export function ListItem() {
-    let [toggled, setToggled] = useState(false);
-
-
-    const { interpolate } = Animated;
-    const transition = useTransition(toggled);
-
-    const bottomRadius = interpolate(transition, {
-        inputRange: [0, 16 / 400],
-        outputRange: [0, 0.5]
-    });
-
-    const height = interpolate(transition, {
-        inputRange: [0, 1],
-        outputRange: [0, 100]
-    });
-
-    return(
-
-        <View>
-            <TouchableOpacity style={{flex: 1, backgroundColor: "red", height: 50}} onPress={() =>  setToggled(val => !val)}>
-                <Text>
-                    Header
-                </Text>
-            </TouchableOpacity>
-            <Animated.View style={[{
-                borderBottomLeftRadius: bottomRadius,
-                borderBottomRightRadius: bottomRadius,
-                height: height, backgroundColor: "red"},
-            ]}>
-                <Text>
-                    Content
-                </Text>
-            </Animated.View>
-        </View>
-
-    );
-}
-const style = StyleSheet.create({
-    box: {
-        backgroundColor: "pink",
-        height: 0,
-    },
-    expanded: {
-        height: 200,
-    }
-});
 
 
 interface ServiceProps {
@@ -122,7 +48,7 @@ export default function Service({route}: ServiceProps) {
         <SafeAreaView style={{flex: 1}}>
             <ScrollView style={{flex: 1, backgroundColor: "#982C79"}} showsVerticalScrollIndicator={false}>
                 <Header logo={"https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg"} nameOfService={name}/>
-                <ListItem/>
+                <Collapsible/>
                 <Footer description={"Her kommer innhold"}/>
             </ScrollView>
         </SafeAreaView>
