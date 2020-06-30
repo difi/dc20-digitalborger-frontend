@@ -27,6 +27,12 @@ const persons =
 
     }
 
+const digiPostBrev = {
+
+    letter: "Digipost",
+    amount: "2"
+}
+
 
 export default function Profile() {
 
@@ -43,9 +49,9 @@ export default function Profile() {
                 <Text style = {{textTransform: "uppercase", fontSize: 12, fontWeight: "bold"}}>Person-og kontaktinformasjon</Text>
                 <TouchableOpacity style={styles.upperButtonContainer} onPress={() => Linking.openURL("https://www.digipost.no/")}>
                     <Image source={{uri: serviceImage[0].uri }} style={styles.images} />
-                    <Text style={{fontSize: 10,
+                    <Text style={{fontSize: 9,
                         fontWeight: "bold",
-                        color: "gray" }}> DigiPost</Text>
+                        color: "red" , alignItems: "center"}}> {digiPostBrev.letter}{"("}{(digiPostBrev.amount)}{")"}</Text>
                 </TouchableOpacity>
             </View>
             <View style = {{padding: 5, alignItems: 'center', justifyContent: "space-between"}}>
