@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {Alert, Button, Image, Linking, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {Component, useEffect, useState} from "react";
-import {Header} from "react-native-elements";
-
+import {CheckBox, Header} from "react-native-elements";
 
 
 const serviceImage = [
@@ -30,6 +29,10 @@ const persons =
 
 
 export default function Profile() {
+
+    const [checked, setChecked] = React.useState(false);
+
+    const clicked = () => setChecked(!checked)
 
 
     return (
@@ -60,8 +63,18 @@ export default function Profile() {
                     <Text style = {styles.textStyle}>{persons.number} </Text>
                 </View>
                 <View style = {styles.centerButtonsContainer}>
-                    <Button title="Endre adresse" color="#008b8b" onPress={() => Linking.openURL("https://www.skatteetaten.no/person/folkeregister/flytte/?utm_source=bing&utm_medium=cpc&utm_campaign=Folkeregister%20-%20Flytting%20og%20adresse%20-%20NY20&utm_term=adresseendring&utm_content=Adresseendring")}>
-                    </Button>
+
+                    <CheckBox title='Endre adresse'
+                    containerStyle={{backgroundColor: "#87CEEB"}}
+                    center={true}
+                    checkedIcon='dot-circle-o'
+                    uncheckedIcon='circle-o'
+                    uncheckedColor="#008b8b"
+                    checkedColor= "#008b8b"
+                    checked={checked}
+                    onPress={() => Linking.openURL("https://www.skatteetaten.no/person/folkeregister/flytte/?utm_source=bing&utm_medium=cpc&utm_campaign=Folkeregister%20-%20Flytting%20og%20adresse%20-%20NY20&utm_term=adresseendring&utm_content=Adresseendring")
+                    }
+                    />
                 </View>
             </View>
         </View>
@@ -90,7 +103,7 @@ const styles = StyleSheet.create({
     },
     centerButtonsContainer: {
         width: '50%',
-        padding: 10,
+        padding: '5%',
         flexDirection: 'column',
         alignItems: "stretch",
         justifyContent: "space-around",
