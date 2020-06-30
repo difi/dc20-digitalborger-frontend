@@ -35,57 +35,24 @@ import Animated from "react-native-reanimated";
 
 const SPACE = 20;
 
-
-const styles2 = StyleSheet.create({
-    container: {
-        marginTop: 16,
-        backgroundColor: "white",
-        padding: 16,
-        borderTopLeftRadius: 8,
-        borderTopRightRadius: 8,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between"
-    },
-    title: {
-        fontSize: 16,
-        fontWeight: "bold"
-    },
-    items: {
-        overflow: "hidden"
-    }
-});
-
 export function ListItem() {
     let [toggled, setToggled] = useState(false);
 
 
-    const { interpolate } = Animated;
-    const transition = useTransition(toggled);
-
-    const bottomRadius = interpolate(transition, {
-        inputRange: [0, 16 / 400],
-        outputRange: [0, 0.5]
-    });
-
-    const height = interpolate(transition, {
-        inputRange: [0, 1],
-        outputRange: [0, 100]
-    });
+    const handlePress = useCallback(() => {
+        setToggled(val => !val);
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    }, []);
 
     return(
 
         <View>
-            <TouchableOpacity style={{flex: 1, backgroundColor: "red", height: 50}} onPress={() =>  setToggled(val => !val)}>
+            <TouchableOpacity style={{flex: 1, backgroundColor: "red", height: 50}} onPress={handlePress}>
                 <Text>
                     Header
                 </Text>
             </TouchableOpacity>
-            <Animated.View style={[{
-                borderBottomLeftRadius: bottomRadius,
-                borderBottomRightRadius: bottomRadius,
-                height: height, backgroundColor: "red"},
-            ]}>
+            <Animated.View style={[style.box, toggled ? style.expanded : undefined]}>
                 <Text>
                     Content
                 </Text>
@@ -94,6 +61,8 @@ export function ListItem() {
 
     );
 }
+
+
 const style = StyleSheet.create({
     box: {
         backgroundColor: "pink",
