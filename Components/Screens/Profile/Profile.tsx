@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: "stretch",
         justifyContent: "space-around",
+        padding: "5%"
 
 
     },
