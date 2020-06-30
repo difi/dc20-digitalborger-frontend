@@ -7,15 +7,9 @@ import {
     TouchableOpacity,
     ScrollView,
     Dimensions,
-    TouchableNativeFeedback,
-    SafeAreaView,
-    TouchableWithoutFeedback,
-    TouchableHighlight,
-    Animated,
-    StyleSheet,
-    LayoutAnimation
+    TouchableNativeFeedback, SafeAreaView
 } from 'react-native';
-import {Component, useCallback, useEffect, useState} from "react";
+import {Component, useEffect, useState} from "react";
 // @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // @ts-ignore
@@ -29,75 +23,41 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import Octicons from 'react-native-vector-icons/Octicons';
 
 import Accordion from "react-native-collapsible/Accordion";
-import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
-import {Easing, interpolate} from "react-native-reanimated";
 
 
+
+
+/*
+ <Image source={{uri: logo}}
+                   resizeMethod={"resize"}
+                   style={{width: "100%", height: "100%", alignSelf: "center"}}
+            />
+ */
 
 const SPACE = 20;
-
-
-const styles2 = StyleSheet.create({
-    container: {
-        marginTop: 16,
-        backgroundColor: "white",
-        padding: 16,
-        borderTopLeftRadius: 8,
-        borderTopRightRadius: 8,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between"
-    },
-    title: {
-        fontSize: 16,
-        fontWeight: "bold"
-    },
-    items: {
-        overflow: "hidden"
-    }
-});
-
-export function ListItem() {
-    let [toggled, setToggled] = useState(false);
-
-
-    const handlePress = useCallback(() => {
-        setToggled(val => !val);
-        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    }, []);
-
-    return(
-
-          <View>
-              <TouchableOpacity style={{flex: 1, backgroundColor: "red", height: 50}} onPress={handlePress}>
-                  <Text>
-                      Header
-                  </Text>
-              </TouchableOpacity>
-              <Animated.View style={[style.box, toggled ? style.expanded : undefined]}>
-                    <Text>
-                        Content
-                    </Text>
-              </Animated.View>
-          </View>
-
-    );
-}
-
-const style = StyleSheet.create({
-    box: {
-        backgroundColor: "pink",
-        height: 50,
-    },
-    expanded: {
-        height: 200,
-    }
-});
-
 
 interface ServiceProps {
     route: any,
 }
+
+/*
+     <ScrollView style={{ flex: 1, backgroundColor: "#982C79"}}>
+          <Header logo={"https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg"} nameOfService={name}/>
+          <Content></Content>
+          <Footer description={"Her kommer innhold"}/>
+      </ScrollView>
+
+
+            <View style={{flex: 1, backgroundColor: "white"}}>
+          <ScrollView>
+
+              <Header logo={"https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg"} nameOfService={name}/>
+              <Content></Content>
+              <Footer description={"Her kommer innhold"}/>
+
+          </ScrollView>
+      </View>
+ */
 
 export default function Service({route}: ServiceProps) {
     const { itemId } = route.params;
@@ -112,7 +72,7 @@ export default function Service({route}: ServiceProps) {
         <SafeAreaView style={{flex: 1}}>
             <ScrollView style={{flex: 1, backgroundColor: "#982C79"}} showsVerticalScrollIndicator={false}>
                 <Header logo={"https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg"} nameOfService={name}/>
-                <ListItem/>
+                <Content/>
                 <Footer description={"Her kommer innhold"}/>
             </ScrollView>
         </SafeAreaView>
