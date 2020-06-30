@@ -65,13 +65,13 @@ export default function Profile() {
                 <View style = {styles.centerButtonsContainer}>
 
                     <CheckBox title='Endre adresse'
-                    containerStyle={{backgroundColor: "#87CEEB"}}
-                    center={true}
+                    containerStyle={{backgroundColor: "#87CEEB", padding: '5%', margin: '5%', alignItems: 'center' }}
                     checkedIcon='dot-circle-o'
                     uncheckedIcon='circle-o'
                     uncheckedColor="#008b8b"
                     checkedColor= "#008b8b"
                     checked={checked}
+                    onIconPress={() => clicked}
                     onPress={() => Linking.openURL("https://www.skatteetaten.no/person/folkeregister/flytte/?utm_source=bing&utm_medium=cpc&utm_campaign=Folkeregister%20-%20Flytting%20og%20adresse%20-%20NY20&utm_term=adresseendring&utm_content=Adresseendring")
                     }
                     />
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     },
     centerButtonsContainer: {
         width: '50%',
-        padding: '5%',
+        borderRadius: 5,
         flexDirection: 'column',
         alignItems: "stretch",
         justifyContent: "space-around",
