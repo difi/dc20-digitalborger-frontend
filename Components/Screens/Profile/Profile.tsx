@@ -36,13 +36,10 @@ const digiPostBrev = {
 
 export default function Profile() {
 
-    const [checked, setChecked] = React.useState(false);
-
-    const clicked = () => setChecked(!checked)
 
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container }>
             <Header backgroundColor="white" centerComponent={{text: "Profil"}}/>
 
             <View style = {styles.upperScreen}>
@@ -73,17 +70,6 @@ export default function Profile() {
                     <Button title="Endre adresse" color="#008b8b" onPress={() => Linking.openURL("https://www.skatteetaten.no/person/folkeregister/flytte/?utm_source=bing&utm_medium=cpc&utm_campaign=Folkeregister%20-%20Flytting%20og%20adresse%20-%20NY20&utm_term=adresseendring&utm_content=Adresseendring")}>
                     </Button>
 
-                    <CheckBox title='Endre adresse'
-                    containerStyle={{backgroundColor: "#87CEEB", padding: '5%', margin: '5%', alignItems: 'center' }}
-                    checkedIcon='dot-circle-o'
-                    uncheckedIcon='circle-o'
-                    uncheckedColor="#008b8b"
-                    checkedColor= "#008b8b"
-                    checked={checked}
-                    onIconPress={() => clicked}
-                    onPress={() => Linking.openURL("https://www.skatteetaten.no/person/folkeregister/flytte/?utm_source=bing&utm_medium=cpc&utm_campaign=Folkeregister%20-%20Flytting%20og%20adresse%20-%20NY20&utm_term=adresseendring&utm_content=Adresseendring")
-                    }
-                    />
                 </View>
             </View>
         </View>
