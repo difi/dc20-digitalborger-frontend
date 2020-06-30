@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Alert, Button, Image, Linking, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {Component, useEffect, useState} from "react";
-import {CheckBox, Header} from "react-native-elements";
+import {ButtonGroup, CheckBox, Header} from "react-native-elements";
 
 
 const serviceImage = [
@@ -69,6 +69,9 @@ export default function Profile() {
                     <Text style = {styles.textStyle}>{persons.number} </Text>
                 </View>
                 <View style = {styles.centerButtonsContainer}>
+
+                    <Button title="Endre adresse" color="#008b8b" onPress={() => Linking.openURL("https://www.skatteetaten.no/person/folkeregister/flytte/?utm_source=bing&utm_medium=cpc&utm_campaign=Folkeregister%20-%20Flytting%20og%20adresse%20-%20NY20&utm_term=adresseendring&utm_content=Adresseendring")}>
+                    </Button>
 
                     <CheckBox title='Endre adresse'
                     containerStyle={{backgroundColor: "#87CEEB", padding: '5%', margin: '5%', alignItems: 'center' }}
