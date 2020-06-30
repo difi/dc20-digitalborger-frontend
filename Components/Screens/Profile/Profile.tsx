@@ -13,22 +13,15 @@ const userImages = [
 /*<Image source={{uri: serviceImage[0].uri}} style={{width: "100%", height: "100%"}} resizeMode={"cover" +
                     ""}/>*/
 export default function Profile() {
-    const [edit, setEdit] = useState({isEditable: false});
+
     const[number, setNumber] = useState('mobilnummer');
     const[address, setAddress] = useState('Adresse');
     const[sted, setSted] = useState('Sted');
     const[email, setEmail] = useState('E-post')
 
 
-    function changeInput(enteredText){
-        setEdit(enteredText);
-    }
-
-    const editText = (enteredText) =>{
-        setNumber(enteredText);
-    }
     const numberPressButton =() => {
-        Alert.alert("Nummeret er endra");
+        Alert.alert(" endra");
     }
     return (
         <View style={{ flex: 1, backgroundColor: "#87CEEB" }}>
