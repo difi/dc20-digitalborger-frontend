@@ -49,11 +49,7 @@ const vehicles = [
   },
 ];
 
-<<<<<<< HEAD
 export default function VeienTilForerkortet() {
-=======
-export default function VeienTilForerkort() {
->>>>>>> e58e79fae8943cfa6222e67f9927e328af84312a
   function getBarLength(code: String) {
     if (code.length > 1) {
       return 50;
