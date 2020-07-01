@@ -7,7 +7,7 @@ import {
     ScrollView,
     Dimensions,
     SafeAreaView,
-    StyleSheet,
+    StyleSheet, TouchableWithoutFeedback,
 } from 'react-native';
 import {Component, useEffect, useState} from "react";
 // @ts-ignore
@@ -28,7 +28,15 @@ import Animated, {interpolate} from "react-native-reanimated";
 
 const SPACE = 20;
 
-export function ListItem({parentCallback, pressed}) {
+interface ListItemProps {
+    parentCallback: any,
+    pressed: boolean,
+    children: React.ReactNode,
+    title: string,
+    containerHeight: number
+}
+
+export function ListItem({parentCallback, pressed, children, title, containerHeight}: ListItemProps) {
     let [toggled, setToggled] = useState(false);
 
     useEffect(() => {
@@ -45,40 +53,31 @@ export function ListItem({parentCallback, pressed}) {
 
     const height = interpolate(transition, {
         inputRange: [0, 1],
-        outputRange: [0, 105]
+        outputRange: [0, containerHeight]
     });
+
+
 
     return(
 
-        <View>
-            <TouchableOpacity style={{flex: 1, backgroundColor: "red", height: 50}} onPress={() =>  {setToggled(val => !val); parentCallback(toggled)}}>
-                <Text>
-                    Header
-                </Text>
-            </TouchableOpacity>
+        <View style={{flex: 1}}>
+            <TouchableWithoutFeedback onPress={() =>  {setToggled(val => !val); parentCallback(toggled)}}>
+                <View style={{flex: 1, backgroundColor: "white", height: 50, paddingLeft: 20, paddingRight: 20, justifyContent: "center", borderWidth: 0.5, borderColor: "#999999"}}>
+                        <Text style={{fontWeight: "bold"}}>
+                            {title}
+                        </Text>
+                </View>
+            </TouchableWithoutFeedback>
+
             <Animated.View
                 style={[{
                     flex: 1, borderBottomLeftRadius: bottomRadius,
                     borderBottomRightRadius: bottomRadius,
-                    height: height, backgroundColor: "pink", overflow: "hidden"},
+                    height: height, backgroundColor: "#F3F3F3", overflow: "hidden"},
                 ]}
-
             >
-                <View style={{padding: 10}}>
-                    <View style={{flex: 1, flexDirection: 'row'}}>
-                        <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
-                        <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
-                        <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
-                    </View>
 
-                    <View style={{flex: 1, flexDirection: 'row'}}>
-                        <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
-                        <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
-                        <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
-                    </View>
-                </View>
-
-
+                    {children}
             </Animated.View>
         </View>
 
