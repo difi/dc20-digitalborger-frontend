@@ -2,12 +2,12 @@ import * as React from 'react';
 import {
     View,
     Text,
+    Button,
     Image,
     TouchableOpacity,
     ScrollView,
     Dimensions,
-    SafeAreaView,
-    StyleSheet,
+    TouchableNativeFeedback, SafeAreaView
 } from 'react-native';
 import {Component, useEffect, useState} from "react";
 // @ts-ignore
@@ -23,17 +23,41 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import Octicons from 'react-native-vector-icons/Octicons';
 
 import Accordion from "react-native-collapsible/Accordion";
-import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
-import Animated, {interpolate} from "react-native-reanimated";
-import {ListItem} from "./Collapsible/ListItem";
-import {Collapsible} from "./Collapsible/Collapsible";
+
+
+
+
+/*
+ <Image source={{uri: logo}}
+                   resizeMethod={"resize"}
+                   style={{width: "100%", height: "100%", alignSelf: "center"}}
+            />
+ */
 
 const SPACE = 20;
-
 
 interface ServiceProps {
     route: any,
 }
+
+/*
+     <ScrollView style={{ flex: 1, backgroundColor: "#982C79"}}>
+          <Header logo={"https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg"} nameOfService={name}/>
+          <Content></Content>
+          <Footer description={"Her kommer innhold"}/>
+      </ScrollView>
+
+
+            <View style={{flex: 1, backgroundColor: "white"}}>
+          <ScrollView>
+
+              <Header logo={"https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg"} nameOfService={name}/>
+              <Content></Content>
+              <Footer description={"Her kommer innhold"}/>
+
+          </ScrollView>
+      </View>
+ */
 
 export default function Service({route}: ServiceProps) {
     const { itemId } = route.params;
@@ -48,7 +72,7 @@ export default function Service({route}: ServiceProps) {
         <SafeAreaView style={{flex: 1}}>
             <ScrollView style={{flex: 1, backgroundColor: "#982C79"}} showsVerticalScrollIndicator={false}>
                 <Header logo={"https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg"} nameOfService={name}/>
-                <Collapsible/>
+                <Content/>
                 <Footer description={"Her kommer innhold"}/>
             </ScrollView>
         </SafeAreaView>
