@@ -74,7 +74,7 @@ export function Collapsible() {
         <View>
 
             {VIGO.map((item, index) =>
-                <TouchableWithoutFeedback onPress={() => setSelectedIndex(index)}>
+                <TouchableWithoutFeedback key = {index} onPress={() => setSelectedIndex(index)}>
                     <ListItem key={index} containerHeight={800} title={item.title} parentCallback={(item) => {setSelectedIndex(index); console.log(item)}} pressed={(selectedIndex === index) ? true : false}>
 
                         <View style={{padding: 10, flex: 1}}>

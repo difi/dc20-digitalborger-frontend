@@ -25,6 +25,7 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import Accordion from "react-native-collapsible/Accordion";
 import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
 import Animated, {interpolate} from "react-native-reanimated";
+import Chevron from "./Chevron";
 
 const SPACE = 20;
 
@@ -35,6 +36,7 @@ interface ListItemProps {
     title: string,
     containerHeight: number
 }
+
 
 export function ListItem({parentCallback, pressed, children, title, containerHeight}: ListItemProps) {
     let [toggled, setToggled] = useState(false);
@@ -62,10 +64,15 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
 
         <View style={{flex: 1}}>
             <TouchableWithoutFeedback onPress={() =>  {setToggled(val => !val); parentCallback(toggled)}}>
-                <View style={{flex: 1, backgroundColor: "white", height: 50, paddingLeft: 20, paddingRight: 20, justifyContent: "center", borderWidth: 0.5, borderColor: "#999999"}}>
-                        <Text style={{fontWeight: "bold"}}>
-                            {title}
-                        </Text>
+                <View style={{flex: 1, backgroundColor: "white", height: 50,paddingLeft: 20, paddingRight: 20, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
+                       <View style={{flex: 1}}>
+                            <Text>
+                                {title}
+                            </Text>
+                       </View>
+                    <View style={{flex: 1, justifyContent: "flex-end", flexDirection: "row"}}>
+                        <Chevron open={toggled}/>
+                    </View>
                 </View>
             </TouchableWithoutFeedback>
 
