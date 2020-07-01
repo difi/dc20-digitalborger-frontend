@@ -31,7 +31,7 @@ import VeienTilForerkort from "../../../Vegvesenet/VeienTilForerkort";
 
 const VIGO  = [
     {
-        title: 'karakterer',
+        title: 'Karakterer',
         icon: {
             type: "Fontisto",
             name: "bar-chart"
@@ -63,19 +63,21 @@ const VIGO  = [
 ];
 
 export function Collapsible() {
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [selectedIndex, setSelectedIndex] = useState(null);
 
 
     useEffect(() => {
         console.log("TRYKKET PÅ", selectedIndex);
     }, [selectedIndex])
 
+
+
     return(
         <View>
 
             {VIGO.map((item, index) =>
                 <TouchableWithoutFeedback key = {index} onPress={() => setSelectedIndex(index)}>
-                    <ListItem key={index} containerHeight={800} title={item.title} parentCallback={(item) => {setSelectedIndex(index); console.log(item)}} pressed={(selectedIndex === index) ? true : false}>
+                    <ListItem iconName = {item.icon.name} iconType={item.icon.type} key={index} containerHeight={800} title={item.title} parentCallback={(item) => {setSelectedIndex(index); console.log(item)}} pressed={(selectedIndex === index) ? true : false}>
 
                         <View style={{padding: 10, flex: 1}}>
                             <VeienTilForerkort/>
