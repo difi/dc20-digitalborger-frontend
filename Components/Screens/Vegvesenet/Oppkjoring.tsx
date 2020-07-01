@@ -8,8 +8,7 @@ export default function Oppkjoring() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
-        Bestilling av time til å ta teoriprøven gjøres på vegvesenet sine
-        nettsider.
+            Du kan ikke bestille time til oppkjøring selv. Det må gjøres av trafikkskolen, men du må gi trafikkskolen fullmakt til å bestille oppkjøring på dine vegne.
       </Text>
 
       <TouchableOpacity
