@@ -1,19 +1,10 @@
 import * as React from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import Icon2 from "react-native-vector-icons/Fontisto";
-import { Button } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
 
 const vehicles = [
-  {
-    name: "Traktor",
-    icon: "tractor",
-    code: "T",
-    link:
-      "https://www.vegvesen.no/forerkort/ta-forerkort/veien-til-f%C3%B8rerkortet/traktor-t/trafikalt-grunnkurs",
-  },
   {
     name: "Personbil",
     icon: "car",
@@ -27,6 +18,27 @@ const vehicles = [
     code: "AM146",
     link:
       "https://www.vegvesen.no/forerkort/ta-forerkort/veien-til-førerkortet/tohjulsmoped-am146/trafikalt-grunnkurs",
+  },
+  {
+    name: "3- og 4-hjulsmoped",
+    icon: "star",
+    code: "AM147",
+    link:
+      "https://www.vegvesen.no/forerkort/ta-forerkort/veien-til-førerkortet/3-og-4-hjulsmoped-am147/trafikalt-grunnkurs",
+  },
+  {
+    name: "Lett motorsykkel",
+    icon: "motorbike",
+    code: "A1",
+    link:
+      "https://www.vegvesen.no/forerkort/ta-forerkort/veien-til-førerkortet/lett-motorsykkel-a1/trafikalt-grunnkurs",
+  },
+  {
+    name: "Traktor",
+    icon: "tractor",
+    code: "T",
+    link:
+      "https://www.vegvesen.no/forerkort/ta-forerkort/veien-til-f%C3%B8rerkortet/traktor-t/trafikalt-grunnkurs",
   },
   {
     name: "Snøscooter",
@@ -51,39 +63,15 @@ export default function Notification() {
   }
 
   return (
-    <View
-      style={{
-        width: "100%",
-        height: "50%",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "center",
-      }}
-    >
+    <View style={styles.container}>
       {vehicles.map((vehicle, index) => (
         <TouchableOpacity
           key={index}
           onPress={() => OpenWebPage(vehicle.link)}
-          containerStyle={{
-            width: "45%",
-            height: "45%",
-            borderColor: "#e6e6e6",
-            borderWidth: "5%",
-            margin: "2,5%",
-          }}
+          containerStyle={styles.square}
         >
-          <Text
-            style={{
-              margin: "5%",
-              fontWeight: "bold",
-              fontSize: "20%",
-              color: "#444f55",
-              alignSelf: "center",
-            }}
-          >
-            {vehicle.name}
-          </Text>
-          <View style={{ alignSelf: "center" }}>
+          <Text style={styles.title}>{vehicle.name}</Text>
+          <View style={styles.iconContainer}>
             <Icon name={vehicle.icon} size={90} color="#444f55" />
           </View>
           <View
@@ -95,15 +83,7 @@ export default function Notification() {
               alignSelf: "center",
             }}
           ></View>
-          <Text
-            style={{
-              color: "#444f55",
-              alignSelf: "center",
-              fontWeight: "bold",
-            }}
-          >
-            {vehicle.code}
-          </Text>
+          <Text style={styles.code}>{vehicle.code}</Text>
           <View
             style={{
               width: getBarLength(vehicle.code),
@@ -119,6 +99,32 @@ export default function Notification() {
   );
 }
 
-
-/* Snowmobile: https://imageog.flaticon.com/icons/png/512/624/624888.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF
-    Car: https://cdn1.iconfinder.com/data/icons/ios-11-glyphs/30/car-512.png*/
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "50%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
+  square: {
+    width: "45%",
+    height: "45%",
+    borderColor: "#e6e6e6",
+    borderWidth: 5,
+    margin: "2,5%",
+  },
+  title: {
+    margin: "5%",
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "#444f55",
+    alignSelf: "center",
+  },
+  iconContainer: { alignSelf: "center" },
+  code: {
+    color: "#444f55",
+    alignSelf: "center",
+    fontWeight: "bold",
+  },
+});
