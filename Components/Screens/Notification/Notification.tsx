@@ -2,7 +2,6 @@ import * as React from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
-import VeienTilForerkort from "../Vegvesenet/VeienTilForerkort"
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -57,7 +56,6 @@ export default function Notification() {
             description={event.description}
           />
         ))}
-        <VeienTilForerkort/>
       </ScrollView>
     </View>
   );
