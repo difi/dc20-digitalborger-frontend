@@ -141,35 +141,6 @@ function Content() {
     );
 }
 
-/**
- * En funksjon for å markere fravær over 10 prosent
- */
-
-function displayAbsence() {
-    const [warning, setWarning] = useState(false);
-
-}
-
-/**
- * Data om fravær fra eleven og fag
- */
-const Absence = [
-    {
-        leftTitle: 'Fag',
-        rightTitle: 'Fravær',
-
-        sub1: 'RLE',
-        sub2: 'Naturfag',
-        sub3: 'Matematikk',
-
-        absence1:'10%',
-        absence2: '4%',
-        absence3: '2%'
-    }
-]
-
-
-
 const VIGO  = [
     {
         title: 'karakterer',

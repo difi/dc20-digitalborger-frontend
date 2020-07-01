@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
 import VeienTilForerkort from "../Vegvesenet/VeienTilForerkort"
+import Absence from "../Vigo/Absence";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -34,6 +35,7 @@ const events = [
       "Helsenorge ber alle holde seg hjemme da smitten har bredt seg til din by. For mer informasjon sjekk ut våre sider.",
     date: deadline3,
   },
+
 ];
 // Slutt data
 
@@ -57,7 +59,7 @@ export default function Notification() {
             description={event.description}
           />
         ))}
-        <VeienTilForerkort/>
+          <Absence/>
       </ScrollView>
     </View>
   );
