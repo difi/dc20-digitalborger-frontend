@@ -30,7 +30,7 @@ const absenceInSubjects = [
   export default function Absence() {
 
       /**
-       * En funksjon for å markere fravær over 10 prosent
+       * En funksjon for å sjekke om fravær når 10 prosent
        */
 
       function limitReached(absence: number ) {
@@ -44,7 +44,6 @@ const absenceInSubjects = [
 
       }
 
-
       return(
           <View style={styles.container}>
 
@@ -56,9 +55,10 @@ const absenceInSubjects = [
                   <View style={{
                       flexDirection: "row",
                       margin: '5%',
-                      justifyContent: "space-around",
                       borderBottomColor: 'gray',
                       borderBottomWidth: 1,
+                      justifyContent: "space-around",
+
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "#dcdcdc"}}>
                       <Text style={styles.textCenter}>{item.sub}</Text>
                       <Text style={styles.textCenter}>{item.absence * 100 + "%"}</Text>
@@ -88,14 +88,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         backgroundColor: "#dcdcdc",
 
-    },
-    absenceLimit: {
-          flexDirection: "row",
-          margin: '5%',
-          justifyContent: "space-around",
-          borderBottomColor: 'gray',
-          borderBottomWidth: 1,
-          backgroundColor: 'rgba(240,128,128,0.76)'
 
     },
     textHeader: {
@@ -106,11 +98,18 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         borderBottomColor: 'gray',
 
+
     },
     textCenter: {
         fontSize: 15,
         padding: 5,
         margin: 5,
+
+
+
+
+
+
 
     },
 
