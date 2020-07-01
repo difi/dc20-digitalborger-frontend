@@ -23,8 +23,6 @@ const persons =
         streetAddress: "Leikanger 6863",
         email: "Linda.Hansen@gmail.com",
         number: "12345678"
-
-
     }
 
 const digiPostBrev = {
@@ -32,7 +30,6 @@ const digiPostBrev = {
     letter: "Digipost",
     amount: "2"
 }
-
 
 export default function Profile() {
 
