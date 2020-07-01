@@ -15,7 +15,7 @@ export default function Oppkjoring() {
         containerStyle={styles.linkContainer}
         onPress={() =>
           WebBrowser.openBrowserAsync(
-            "https://ventus.enalog.se/Booking/Booking/Index/VegvesenRislokka"
+            "https://www.vegvesen.no/dinside/dittforerkort/timebestilling/timer"
           )
         }
       >
