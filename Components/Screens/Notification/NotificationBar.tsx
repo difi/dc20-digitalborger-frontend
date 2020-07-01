@@ -2,8 +2,8 @@ import * as React from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
 
 export default function Notification(props: {
-  description: React.ReactNode;
-  logo: String;
+  description: string;
+  logo: string;
 }) {
   return (
     <View style={styles.container}>
