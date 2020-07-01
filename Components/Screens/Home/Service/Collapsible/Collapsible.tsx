@@ -26,6 +26,7 @@ import Accordion from "react-native-collapsible/Accordion";
 import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
 import Animated, {interpolate} from "react-native-reanimated";
 import {ListItem} from "./ListItem";
+import VeienTilForerkort from "../../../Vegvesenet/VeienTilForerkort";
 
 
 const VIGO  = [
@@ -74,21 +75,10 @@ export function Collapsible() {
 
             {VIGO.map((item, index) =>
                 <TouchableWithoutFeedback onPress={() => setSelectedIndex(index)}>
-                    <ListItem key={index} containerHeight={500} title={item.title} parentCallback={(item) => {setSelectedIndex(index); console.log(item)}} pressed={(selectedIndex === index) ? true : false}>
+                    <ListItem key={index} containerHeight={800} title={item.title} parentCallback={(item) => {setSelectedIndex(index); console.log(item)}} pressed={(selectedIndex === index) ? true : false}>
 
                         <View style={{padding: 10, flex: 1}}>
-                            <View style={{flex: 1, flexDirection: 'row'}}>
-                                <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
-                                <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
-                                <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
-                            </View>
-
-                            <View style={{flex: 1, flexDirection: 'row'}}>
-                                <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
-                                <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
-                                <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
-                            </View>
-
+                            <VeienTilForerkort/>
                         </View>
                     </ListItem>
                 </TouchableWithoutFeedback>
