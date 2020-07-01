@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
-import { Card, Image, Header } from "react-native-elements";
+import { Image, Header } from "react-native-elements";
 import CountDown from "react-native-countdown-component";
 import { ScrollView } from "react-native-gesture-handler";
 
@@ -47,7 +47,7 @@ export default function Hourglass() {
         if (getTimeLeft(deadline) <= 86400) {
             return "red";
         }
-        return "black";
+        return "#93E6F3";
     }
 
     function getFormat(deadline: Date) {
@@ -60,42 +60,53 @@ export default function Hourglass() {
     return (
         <View>
             <Header
-                backgroundColor="white"
+                backgroundColor="#93E6F3"
                 centerComponent={{
-                    text: "Varslinger",
-                    style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
+                    text: "Dine frister",
+                    style: { fontWeight: "bold", backgroundColor: "#93E6F3", fontSize: 16 },
                 }}
             />
             <View>
-                <Image
-                    source={{
-                        uri:
-                            "https://cdn.shopify.com/s/files/1/0157/9972/files/EmilyLey_SoftBlueGradient_1280x2272.png?v=1572546664",
-                    }}
-                    style={styles.backgroundImage}
-                >
+
+
+
                     <ScrollView>
+
+
+
                         {events.map((event, index) => (
-                            <Card
-                                title={event.name}
-                                containerStyle={styles.card}
-                                titleStyle={styles.cardTitle}
-                                key={index}
-                            >
+                            <View style={styles.title}>
+
+
+
+                                 <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{event.name}</Text>
+
+
                                 <View style={styles.cardContent}>
+
+
                                     <View style={styles.logoContainer}>
+
+
                                         <Image
                                             source={{ uri: event.logo }}
                                             style={styles.logo}
+
                                         ></Image>
+
                                     </View>
+
+
                                     <View style={styles.countDownContainer}>
+
                                         <CountDown
-                                            digitStyle={{ backgroundColor: "white" }}
-                                            digitTxtStyle={{ color: getColor(event.date) }}
+
                                             until={getTimeLeft(event.date)}
-                                            size={26}
+                                            size={25}
                                             timeToShow={getFormat(event.date)}
+                                            timeLabelStyle={{color: 'black', fontWeight: 'bold', fontSize: 10}}
+                                            digitStyle={{backgroundColor: '#FFF', borderWidth: 2, borderColor: '#E1E1E1'}}
+                                            digitTxtStyle={{color: '#93E6F3'}}
                                             timeLabels={{
                                                 d: "Dager",
                                                 h: "Timer",
@@ -105,10 +116,10 @@ export default function Hourglass() {
                                         />
                                     </View>
                                 </View>
-                            </Card>
+                            </View>
                         ))}
+
                     </ScrollView>
-                </Image>
             </View>
         </View>
     );
@@ -117,30 +128,43 @@ export default function Hourglass() {
 const styles = StyleSheet.create({
     cardContent: {
         flexDirection: "row",
+        backgroundColor: "#F3F3F3",
+        borderBottomColor: "#E1E1E1",
+        borderBottomWidth: 1,
+        borderRadius: 20,
+
+
     },
     logoContainer: {
         width: 50,
         height: 50,
-        marginLeft: 10,
-        marginTop: 10,
+        marginVertical: 17,
+        left: 15,
+
+
     },
     logo: {
         width: "100%",
         height: "100%",
-        borderRadius: 5,
+        borderRadius: 100,
+
+
     },
     countDownContainer: {
         flex: 2,
         marginRight: 65,
+        marginTop: 10,
+        marginVertical: 20,
+
+
     },
-    card: {
-        borderRadius: 10,
+    title: {
+        fontWeight: "bold",
+        alignItems:"center",
+        marginTop: 20,
+
+
+
     },
-    cardTitle: {
-        fontSize: 20,
-    },
-    backgroundImage: {
-        height: "100%",
-        width: "100%",
-    },
+
 });
