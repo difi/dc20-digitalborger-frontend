@@ -62,7 +62,16 @@ const VIGO  = [
     },
 ];
 
-export function Collapsible() {
+interface CollapsibleProps {
+    children: React.ReactNode,
+    iconName: string,
+    iconType: string
+    containerHeight: number,
+    title: string,
+    index: number
+}
+
+export function Collapsible({children, iconName, iconType, containerHeight, title, index}: CollapsibleProps) {
     const [selectedIndex, setSelectedIndex] = useState(null);
 
 
@@ -75,16 +84,45 @@ export function Collapsible() {
     return(
         <View>
 
-            {VIGO.map((item, index) =>
+            <ListItem key={0} iconName = {VIGO[0].icon.name} iconType={VIGO[0].icon.type} containerHeight={50} title={VIGO[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
+                <View style={{padding: 10, flex: 1}}>
+                    <Text>
+                        test
+                    </Text>
+                </View>
+            </ListItem>
+
+            <ListItem key={1} iconName = {VIGO[1].icon.name} iconType={VIGO[1].icon.type} containerHeight={800} title={VIGO[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
+                <View style={{padding: 10, flex: 1}}>
+                    <VeienTilForerkort/>
+                </View>
+            </ListItem>
+
+
+        </View>
+    );
+}
+/*
+    {VIGO.map((item, index) =>
                 <TouchableWithoutFeedback key = {index} onPress={() => setSelectedIndex(index)}>
                     <ListItem iconName = {item.icon.name} iconType={item.icon.type} key={index} containerHeight={800} title={item.title} parentCallback={(item) => {setSelectedIndex(index); console.log(item)}} pressed={(selectedIndex === index) ? true : false}>
-
                         <View style={{padding: 10, flex: 1}}>
-                            <VeienTilForerkort/>
+                            {children}
                         </View>
                     </ListItem>
                 </TouchableWithoutFeedback>
             )}
-        </View>
-    );
-}
+ */
+
+
+/*
+  {VIGO.map((item, index) =>
+                <TouchableWithoutFeedback key = {index} onPress={() => setSelectedIndex(index)}>
+                    <ListItem iconName = {item.icon.name} iconType={item.icon.type} key={index} containerHeight={800} title={item.title} parentCallback={(item) => {setSelectedIndex(index); console.log(item)}} pressed={(selectedIndex === index) ? true : false}>
+                        <View style={{padding: 10, flex: 1}}>
+                            {component}
+                        </View>
+                    </ListItem>
+                </TouchableWithoutFeedback>
+            )}
+ */
