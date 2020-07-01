@@ -27,8 +27,6 @@ const absenceInSubjects = [
 ];
 
 
-
-
   export default function Absence() {
 
       /**
@@ -37,15 +35,12 @@ const absenceInSubjects = [
 
       function limitReached(absence: number ) {
           if(absence.valueOf() >= 0.1 ){
-              {styles.absenceContainer = {
-                  flexDirection: "row",
-                  margin: '5%',
-                  justifyContent: "space-around",
-                  borderBottomColor: 'gray',
-                  borderBottomWidth: 1,
-                  backgroundColor: 'rgba(240,128,128,0.76)'}}
+            return true
           }
+          else{
+              return false
 
+          }
 
       }
 
@@ -58,7 +53,13 @@ const absenceInSubjects = [
                   <Text style={styles.textHeader}> {absenceTitle.rightTitle}</Text>
               </View>
               {absenceInSubjects.map((item, index) => (
-                  <View style={styles.absenceContainer}>
+                  <View style={{
+                      flexDirection: "row",
+                      margin: '5%',
+                      justifyContent: "space-around",
+                      borderBottomColor: 'gray',
+                      borderBottomWidth: 1,
+                      backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "#dcdcdc"}}>
                       <Text style={styles.textCenter}>{item.sub}</Text>
                       <Text style={styles.textCenter}>{item.absence * 100 + "%"}</Text>
 
@@ -85,11 +86,18 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         borderBottomColor: 'gray',
         borderBottomWidth: 1,
-        backgroundColor: "#dcdcdc"
-
+        backgroundColor: "#dcdcdc",
 
     },
+    absenceLimit: {
+          flexDirection: "row",
+          margin: '5%',
+          justifyContent: "space-around",
+          borderBottomColor: 'gray',
+          borderBottomWidth: 1,
+          backgroundColor: 'rgba(240,128,128,0.76)'
 
+    },
     textHeader: {
         fontSize: 15,
         fontWeight: "bold",
@@ -108,5 +116,3 @@ const styles = StyleSheet.create({
 
 
 });
-
-  // { absence * 100 + "%"}
