@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
+import VeienTilForerkort from "../Vegvesenet/VeienTilForerkort"
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -46,15 +47,18 @@ export default function Notification() {
           style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
         }}
       />
-      {events.map((event, index) => (
-        <NotificationBar
-          key={index}
-          logo={{
-            uri: event.logo,
-          }}
-          description={event.description}
-        />
-      ))}
+      <ScrollView>
+        {events.map((event, index) => (
+          <NotificationBar
+            key={index}
+            logo={{
+              uri: event.logo,
+            }}
+            description={event.description}
+          />
+        ))}
+        <VeienTilForerkort/>
+      </ScrollView>
     </View>
   );
 }
