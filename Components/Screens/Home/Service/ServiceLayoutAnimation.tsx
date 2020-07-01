@@ -2,14 +2,19 @@ import * as React from 'react';
 import {
     View,
     Text,
+    Button,
     Image,
     TouchableOpacity,
     ScrollView,
     Dimensions,
+    TouchableNativeFeedback,
     SafeAreaView,
+    TouchableWithoutFeedback,
+    TouchableHighlight,
     StyleSheet,
+    LayoutAnimation, UIManager, Platform
 } from 'react-native';
-import {Component, useEffect, useState} from "react";
+import {Component, useCallback, useEffect, useState} from "react";
 // @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // @ts-ignore
@@ -24,11 +29,49 @@ import Octicons from 'react-native-vector-icons/Octicons';
 
 import Accordion from "react-native-collapsible/Accordion";
 import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
-import Animated, {interpolate} from "react-native-reanimated";
-import {ListItem} from "./Collapsible/ListItem";
-import {Collapsible} from "./Collapsible/Collapsible";
+import {Easing, interpolate} from "react-native-reanimated";
+import Animated from "react-native-reanimated";
+
 
 const SPACE = 20;
+
+export function ListItem() {
+    let [toggled, setToggled] = useState(false);
+
+
+    const handlePress = useCallback(() => {
+        setToggled(val => !val);
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    }, []);
+
+    return(
+
+        <View>
+            <TouchableOpacity style={{flex: 1, backgroundColor: "red", height: 50}} onPress={handlePress}>
+                <Text>
+                    Header
+                </Text>
+            </TouchableOpacity>
+            <Animated.View style={[style.box, toggled ? style.expanded : undefined]}>
+                <Text>
+                    Content
+                </Text>
+            </Animated.View>
+        </View>
+
+    );
+}
+
+
+const style = StyleSheet.create({
+    box: {
+        backgroundColor: "pink",
+        height: 0,
+    },
+    expanded: {
+        height: 200,
+    }
+});
 
 
 interface ServiceProps {
@@ -48,7 +91,7 @@ export default function Service({route}: ServiceProps) {
         <SafeAreaView style={{flex: 1}}>
             <ScrollView style={{flex: 1, backgroundColor: "#982C79"}} showsVerticalScrollIndicator={false}>
                 <Header logo={"https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg"} nameOfService={name}/>
-                <Collapsible/>
+                <ListItem/>
                 <Footer description={"Her kommer innhold"}/>
             </ScrollView>
         </SafeAreaView>
