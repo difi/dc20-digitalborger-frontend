@@ -46,7 +46,6 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
         setToggled(pressed)
     }, [pressed])
 
-    //const { interpolate } = Animated;
     const transition = useTransition(toggled, {duration: 200});
 
     const bottomRadius = interpolate(transition, {
@@ -59,7 +58,6 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
         outputRange: [0, containerHeight]
     });
 
-    let rotateZ = toggled ? "180deg" : "0deg";
 
     const rotatee = interpolate(transition, {
         inputRange: [0, 1],
@@ -122,9 +120,3 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
 
     );
 }
-
-/*
- onLayout={(event) => {
-                    console.log("HØYDE", event.nativeEvent.layout.height)
-                }}
- */
