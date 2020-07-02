@@ -8,9 +8,8 @@ import {
     Dimensions,
     SafeAreaView,
     StyleSheet, TouchableWithoutFeedback,
-    Animated
 } from 'react-native';
-import {Component, useEffect, useRef, useState} from "react";
+import {Component, useEffect, useState} from "react";
 // @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // @ts-ignore
@@ -25,6 +24,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 import Accordion from "react-native-collapsible/Accordion";
 import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
+import Animated, {interpolate} from "react-native-reanimated";
 
 const SPACE = 20;
 
@@ -41,26 +41,11 @@ interface ListItemProps {
 
 export function ListItem({parentCallback, pressed, children, title, containerHeight, iconName, iconType}: ListItemProps) {
     let [toggled, setToggled] = useState(false);
-    const height = useRef(new Animated.Value(1)).current;
-    const rotate = useRef(new Animated.Value(1)).current;
 
     useEffect(() => {
         setToggled(pressed)
     }, [pressed])
 
-    useEffect(() => {
-        Animated.timing(height, {
-            toValue: toggled ? 1 : 0,
-            duration: 200,
-        }).start();
-    }, [toggled]);
-
-    const saveButtonHeight = height.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, containerHeight],
-    });
-
-/*
     const transition = useTransition(toggled, {duration: 200});
 
     const bottomRadius = interpolate(transition, {
@@ -73,17 +58,11 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
         outputRange: [0, containerHeight]
     });
 
-        const rotatee = interpolate(transition, {
+
+    const rotatee = interpolate(transition, {
         inputRange: [0, 1],
         outputRange: [0, Math.PI]
     });
- */
-
-    const rotatee = rotate.interpolate({
-        inputRange: [0, 1],
-        outputRange: [0, Math.PI]})
-
-
 
     function fontType (type: string, name: string, color: string, size: number){
         switch (type) {
@@ -109,43 +88,6 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
     return(
 
         <View style={{flex: 1}}>
-            <View>
-                <TouchableOpacity
-                    style={{flex: 1, backgroundColor: 'red', height: 50}}
-                    onPress={() => {setToggled(val => !val); parentCallback(toggled)}}>
-
-                    <View style={{flex: 1, backgroundColor: "white", height: 50,paddingLeft: 20, paddingRight: 20, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
-                        <View style={{flex: 1, flexDirection: "row"}}>
-                            {fontType(iconType, iconName, "black", 26)}
-                        </View>
-                        <View style={{flex: 6}}>
-                            <Text style={{fontWeight: "bold", letterSpacing: 0.5}}>
-                                {title}
-                            </Text>
-                        </View>
-                        <View style={{flex: 1, justifyContent: "flex-end", flexDirection: "row"}}>
-                            <Animated.View style={{transform: [{rotate: rotatee}]}}>
-                                <Entypo name={"chevron-down"} color={"black"} size={26} />
-                            </Animated.View>
-                        </View>
-                    </View>
-
-                </TouchableOpacity>
-                <Animated.View
-                    style={[{
-                        flex: 1,
-                        height: saveButtonHeight, backgroundColor: "#F3F3F3", overflow: "hidden"},
-                    ]}
-                >
-                    {children}
-                </Animated.View>
-            </View>
-        </View>
-
-    );
-}
-
-/*
             <TouchableWithoutFeedback onPress={() =>  {setToggled(val => !val); parentCallback(toggled)}}>
                 <View style={{flex: 1, backgroundColor: "white", height: 50,paddingLeft: 20, paddingRight: 20, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
                     <View style={{flex: 1, flexDirection: "row"}}>
@@ -171,6 +113,10 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
                     height: height, backgroundColor: "#F3F3F3", overflow: "hidden"},
                 ]}
             >
+
                     {children}
             </Animated.View>
- */
+        </View>
+
+    );
+}
