@@ -52,8 +52,18 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
         Animated.timing(height, {
             toValue: toggled ? 1 : 0,
             duration: 200,
+            useNativeDriver: false
+        }).start();
+
+        Animated.timing(rotate, {
+            toValue: toggled ? 1 : 0,
+            duration: 200,
+            useNativeDriver: true
         }).start();
     }, [toggled]);
+
+
+
 
     const saveButtonHeight = height.interpolate({
         inputRange: [0, 1],
@@ -79,9 +89,11 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
     });
  */
 
+
     const rotatee = rotate.interpolate({
         inputRange: [0, 1],
         outputRange: [0, Math.PI]})
+
 
 
 
@@ -108,38 +120,30 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
 
     return(
 
-        <View style={{flex: 1}}>
-            <View>
-                <TouchableOpacity
-                    style={{flex: 1, backgroundColor: 'red', height: 50}}
-                    onPress={() => {setToggled(val => !val); parentCallback(toggled)}}>
-
-                    <View style={{flex: 1, backgroundColor: "white", height: 50,paddingLeft: 20, paddingRight: 20, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
-                        <View style={{flex: 1, flexDirection: "row"}}>
-                            {fontType(iconType, iconName, "black", 26)}
-                        </View>
-                        <View style={{flex: 6}}>
-                            <Text style={{fontWeight: "bold", letterSpacing: 0.5}}>
-                                {title}
-                            </Text>
-                        </View>
-                        <View style={{flex: 1, justifyContent: "flex-end", flexDirection: "row"}}>
-                            <Animated.View style={{transform: [{rotate: rotatee}]}}>
-                                <Entypo name={"chevron-down"} color={"black"} size={26} />
-                            </Animated.View>
-                        </View>
+        <View>
+            <TouchableOpacity
+                style={{flex: 1, backgroundColor: 'red', height: 50}}
+                onPress={() => {setToggled((prev) => !prev); parentCallback(toggled)}}>
+                <View style={{flex: 1, backgroundColor: "white", height: 50,paddingLeft: 20, paddingRight: 20, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
+                    <View style={{flex: 1, flexDirection: "row"}}>
+                        {fontType(iconType, iconName, "black", 26)}
                     </View>
-
-                </TouchableOpacity>
-                <Animated.View
-                    style={[{
-                        flex: 1,
-                        height: saveButtonHeight, backgroundColor: "#F3F3F3", overflow: "hidden"},
-                    ]}
-                >
-                    {children}
-                </Animated.View>
-            </View>
+                    <View style={{flex: 6}}>
+                        <Text style={{fontWeight: "bold", letterSpacing: 0.5}}>
+                            {title}
+                        </Text>
+                    </View>
+                    <View style={{flex: 1, justifyContent: "flex-end", flexDirection: "row"}}>
+                        <Animated.View  style={{transform: [{rotate: rotatee}]}}>
+                            <Entypo name={"chevron-down"} color={"black"} size={26} />
+                        </Animated.View>
+                    </View>
+                </View>
+            </TouchableOpacity>
+            <Animated.View
+                style={{flex: 1,backgroundColor: '#F3F3F3', height: saveButtonHeight}}>
+                <Text>Content</Text>
+            </Animated.View>
         </View>
 
     );
