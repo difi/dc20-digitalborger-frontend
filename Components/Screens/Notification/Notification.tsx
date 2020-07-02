@@ -2,6 +2,8 @@ import * as React from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
+import TeoriProve from "../Vegvesenet/TeoriProve"
+import Oppkjoring from "../Vegvesenet/Oppkjoring";
 import VeienTilForerkort from "../Vegvesenet/VeienTilForerkort"
 import Absence from "../Vigo/Absence";
 
@@ -35,7 +37,6 @@ const events = [
       "Helsenorge ber alle holde seg hjemme da smitten har bredt seg til din by. For mer informasjon sjekk ut våre sider.",
     date: deadline3,
   },
-
 ];
 // Slutt data
 
