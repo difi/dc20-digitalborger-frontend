@@ -55,7 +55,7 @@ const absenceInSubjects = [
                       padding: '3%',
                       borderBottomColor: 'gray',
                       borderBottomWidth: 1,
-                      justifyContent: "space-around",
+                      justifyContent: "space-between",
 
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "#dcdcdc"}}>
 
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     },
     absenceContainer: {
       flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         padding: '3%',
         borderBottomColor: 'gray',
         borderBottomWidth: 1,
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     textCenter: {
         fontSize: 15,
         margin: 5,
+
 
     }
 
