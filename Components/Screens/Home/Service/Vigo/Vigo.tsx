@@ -84,7 +84,15 @@ export function Vigo() {
 
                     <ListItem key={1} iconName = {VIGO[1].icon.name} iconType={VIGO[1].icon.type} containerHeight={800} title={VIGO[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <VeienTilForerkort/>
+                            <View style={{flex: 1}}>
+                                <View style={{backgroundColor: "red", height: 50, width: 50}}>
+
+                                </View>
+
+                                <View style={{backgroundColor: "blue",  height: 50, width: 50}}>
+
+                                </View>
+                            </View>
                         </View>
                     </ListItem>
                     <ListItem key={2} iconName = {VIGO[2].icon.name} iconType={VIGO[2].icon.type} containerHeight={50} title={VIGO[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
