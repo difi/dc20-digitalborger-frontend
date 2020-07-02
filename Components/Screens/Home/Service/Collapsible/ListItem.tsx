@@ -2,12 +2,7 @@ import * as React from 'react';
 import {
     View,
     Text,
-    Image,
     TouchableOpacity,
-    ScrollView,
-    Dimensions,
-    SafeAreaView,
-    StyleSheet, TouchableWithoutFeedback,
     Animated
 } from 'react-native';
 import {Component, useEffect, useRef, useState} from "react";
@@ -23,8 +18,6 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 // @ts-ignore
 import Entypo from 'react-native-vector-icons/Entypo';
 
-import Accordion from "react-native-collapsible/Accordion";
-import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
 
 const SPACE = 20;
 
@@ -70,25 +63,6 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
         outputRange: [0, containerHeight],
     });
 
-/*
-    const transition = useTransition(toggled, {duration: 200});
-
-    const bottomRadius = interpolate(transition, {
-        inputRange: [0, 16 / 400],
-        outputRange: [0, 0.5]
-    });
-
-    const height = interpolate(transition, {
-        inputRange: [0, 1],
-        outputRange: [0, containerHeight]
-    });
-
-        const rotatee = interpolate(transition, {
-        inputRange: [0, 1],
-        outputRange: [0, Math.PI]
-    });
- */
-
 
     const rotatee = rotate.interpolate({
         inputRange: [0, 1],
@@ -124,7 +98,7 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
             <TouchableOpacity
                 style={{flex: 1, backgroundColor: 'red', height: 50}}
                 onPress={() => {setToggled((prev) => !prev); parentCallback(toggled)}}>
-                <View style={{flex: 1, backgroundColor: "white", height: 50,paddingLeft: 20, paddingRight: 20, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
+                <View style={{flex: 1, backgroundColor: "white", height: 50, paddingLeft: SPACE, paddingRight: SPACE, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
                     <View style={{flex: 1, flexDirection: "row"}}>
                         {fontType(iconType, iconName, "black", 26)}
                     </View>
@@ -148,33 +122,3 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
 
     );
 }
-
-/*
-            <TouchableWithoutFeedback onPress={() =>  {setToggled(val => !val); parentCallback(toggled)}}>
-                <View style={{flex: 1, backgroundColor: "white", height: 50,paddingLeft: 20, paddingRight: 20, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
-                    <View style={{flex: 1, flexDirection: "row"}}>
-                        {fontType(iconType, iconName, "black", 26)}
-                    </View>
-                    <View style={{flex: 6}}>
-                        <Text style={{fontWeight: "bold", letterSpacing: 0.5}}>
-                            {title}
-                        </Text>
-                    </View>
-                    <View style={{flex: 1, justifyContent: "flex-end", flexDirection: "row"}}>
-                        <Animated.View style={{transform: [{rotate: rotatee}]}}>
-                            <Entypo name={"chevron-down"} color={"black"} size={26} />
-                        </Animated.View>
-                    </View>
-                </View>
-            </TouchableWithoutFeedback>
-
-            <Animated.View
-                style={[{
-                    flex: 1, borderBottomLeftRadius: bottomRadius,
-                    borderBottomRightRadius: bottomRadius,
-                    height: height, backgroundColor: "#F3F3F3", overflow: "hidden"},
-                ]}
-            >
-                    {children}
-            </Animated.View>
- */
