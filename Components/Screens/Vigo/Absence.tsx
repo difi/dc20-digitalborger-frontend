@@ -66,8 +66,6 @@ const absenceInSubjects = [
                   <View style={{
                       flexDirection: "row",
                       padding: '3%',
-                      borderBottomColor: 'gray',
-                      borderBottomWidth: 1,
                       justifyContent: "space-between",
 
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "transparent"}}>
