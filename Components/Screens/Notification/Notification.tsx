@@ -4,6 +4,10 @@ import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
 import TeoriProve from "../Vegvesenet/TeoriProve"
 import Oppkjoring from "../Vegvesenet/Oppkjoring";
+import GeoLocation from "../Vigo/GeoLocation";
+import VeienTilForerkortet from "../Vegvesenet/VeienTilForerkort"
+import School from "../Vigo/School";
+
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -58,6 +62,8 @@ export default function Notification() {
             description={event.description}
           />
         ))}
+        <GeoLocation/>
+        <School/>
       </ScrollView>
     </View>
   );
