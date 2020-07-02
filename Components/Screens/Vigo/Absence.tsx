@@ -22,6 +22,19 @@ const absenceInSubjects = [
       sub: 'Matematikk',
       absence: 0.02,
     },
+    {
+      sub: 'Norsk',
+      absence: 0.12,
+    },
+    {
+      sub: 'Engelsk',
+      absence: 0.06,
+
+    },
+    {
+      sub: 'Gym',
+      absence: 0.03,
+    }
 
 ];
 
@@ -76,6 +89,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#dcdcdc",
+        width: "100%",
+        height: "100%"
 
 
     },

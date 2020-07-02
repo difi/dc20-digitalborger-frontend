@@ -29,6 +29,7 @@ import VeienTilForerkort from "../../../Vegvesenet/VeienTilForerkort";
 import {ListItem} from "../Collapsible/ListItem";
 import Header from "../Header";
 import Footer from "../Footer";
+import Absence from "../../../Vigo/Absence";
 
 
 const VIGO  = [
@@ -82,16 +83,10 @@ export function Vigo() {
                         </View>
                     </ListItem>
 
-                    <ListItem key={1} iconName = {VIGO[1].icon.name} iconType={VIGO[1].icon.type} containerHeight={800} title={VIGO[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
+                    <ListItem key={1} iconName = {VIGO[1].icon.name} iconType={VIGO[1].icon.type} containerHeight={400} title={VIGO[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <View style={{flex: 1}}>
-                                <View style={{backgroundColor: "red", height: 50, width: 50}}>
-
-                                </View>
-
-                                <View style={{backgroundColor: "blue",  height: 50, width: 50}}>
-
-                                </View>
+                                <Absence ></Absence>
                             </View>
                         </View>
                     </ListItem>
