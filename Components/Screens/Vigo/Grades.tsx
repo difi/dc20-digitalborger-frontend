@@ -73,6 +73,10 @@ import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
     ];
 
+    function clickedYear(event){
+
+    }
+
 
     export default function Grades() {
 
@@ -80,16 +84,29 @@ import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
             <View style={styles.container}>
 
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity>
-                        <Text> 1.året</Text>
-                    </TouchableOpacity>
+                    {gradeYear.map((item, index) => (
 
-
+                            <TouchableOpacity style={styles.button}>
+                                <Text style = {{margin: 10}}>{item.year}</Text>
+                            </TouchableOpacity>
+                    ))}
                 </View>
 
+                <View style={styles.titleTextArea}>
+                    <Text style={{fontWeight: "bold", fontSize: 15}}>{gradeTitle.leftTitle}</Text>
+                    <Text style={{fontWeight: "bold", fontSize: 15}}>{gradeTitle.rightTitle}</Text>
+                </View>
+
+                {gradeInSubjects1.map((item1, index1) => (
+                    <View style = {{flexDirection: "row", justifyContent: "space-between", padding: '3%'}}>
+                        <Text style={{fontSize: 15 }}>{item1.sub}</Text>
+                        <Text style={{fontSize: 15 }}>{item1.grade}</Text>
+                    </View>
+                ))}
 
 
-                <Text> Hello sunshine</Text>
+
+
             </View>
         )
 
@@ -101,17 +118,27 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flexDirection: "row",
-        height: 50,
-        width: '100%',
-
+        backgroundColor: "yellow",
+        alignItems: "center",
 
     },
     button: {
-        margin: 10,
-        height: 20,
-        width: 30,
-        borderRadius: 5,
+        height: 40,
+        width: 100,
+        margin: '5%',
+        borderRadius: 4,
+        alignItems: 'center',
+        backgroundColor: '#97c556',
 
+
+    },
+    titleTextArea: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: '3%',
+        borderBottomColor: 'gray',
+        borderBottomWidth: 1,
+        backgroundColor: "transparent"
     },
 
 
