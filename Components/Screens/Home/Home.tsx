@@ -12,7 +12,6 @@ import {
 import Login from "../../Login/Login";
 import ScreenTabs from "../ScreenTabs";
 import { createStackNavigator } from '@react-navigation/stack';
-import Service from "./Service/Service";
 import {Vigo} from "./Service/Vigo/Vigo";
 
 
@@ -139,7 +138,6 @@ export default function Home() {
         <Stack.Navigator
         >
             <Stack.Screen name={"Offentlige tjenester"} component={AllServices}/>
-            <Stack.Screen name={"Service"} component={Service}/>
             <Stack.Screen name={"Vigo"} component={Vigo}/>
         </Stack.Navigator>
     );
