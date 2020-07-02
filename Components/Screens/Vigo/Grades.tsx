@@ -1,5 +1,5 @@
-import React from "react";
-import {Button, FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import React, {useState} from "react";
+import {Alert, Button, FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {handlePress} from "react-native-paper/lib/typescript/src/components/RadioButton/utils";
 
 
@@ -74,13 +74,6 @@ import {handlePress} from "react-native-paper/lib/typescript/src/components/Radi
 
     ];
 
-    const displayList = (list) =>{
-
-
-
-    }
-
-
     export default function Grades() {
 
         /**
@@ -101,6 +94,12 @@ import {handlePress} from "react-native-paper/lib/typescript/src/components/Radi
             }
 
         }
+        const handlePress =  (aar: string) =>{
+            Alert.alert('Viser karakterer for ' + aar)
+            yearClicked(aar)
+        }
+
+
 
         return(
             <View style={styles.container}>
@@ -108,9 +107,11 @@ import {handlePress} from "react-native-paper/lib/typescript/src/components/Radi
                 <View style={styles.buttonContainer}>
                     {gradeYear.map((item, index) => (
 
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity style={styles.button} onPress={() => handlePress(item.year)}>
                                 <Text style = {{margin: 10}}>{item.year}</Text>
                             </TouchableOpacity>
+
+
                     ))}
                 </View>
 
