@@ -1,6 +1,7 @@
 import React from "react";
 import {StyleSheet, Text, View} from "react-native";
-
+import {normalize} from "react-native-elements";
+import fonts from "react-native-paper/lib/typescript/src/styles/fonts";
 
 
 const absenceTitle = {
@@ -34,7 +35,12 @@ const absenceInSubjects = [
     {
       sub: 'Gym',
       absence: 0.03,
-    }
+    },
+
+    {
+        sub: 'Kjemi',
+        absence: 0.03,
+    },
 
 ];
 
@@ -67,12 +73,15 @@ const absenceInSubjects = [
                       flexDirection: "row",
                       padding: '3%',
                       justifyContent: "space-between",
+                      flexShrink: 1,
+                      flexWrap: "wrap",
+                      alignItems: "center",
 
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "transparent"}}>
 
 
-                      <Text style={styles.textCenter}>{item.sub}</Text>
-                      <Text style={styles.textCenter}>{item.absence * 100 + "%"}</Text>
+                      <Text style={styles.textCenter} allowFontScaling={true}>{item.sub}</Text>
+                      <Text style={styles.textCenter} allowFontScaling={true}>{item.absence * 100 + "%"}</Text>
 
                   </View>
               ))}
@@ -88,7 +97,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "transparent",
         width: "100%",
-        height: "100%"
+        height: "100%",
+
 
 
     },
@@ -110,10 +120,12 @@ const styles = StyleSheet.create({
         borderBottomColor: 'gray',
 
 
+
     },
     textCenter: {
-        fontSize: 15,
+        fontSize: normalize(15),
         margin: 5,
+
 
 
     }

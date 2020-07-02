@@ -2,7 +2,20 @@ import React from "react";
 import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
 
+    const gradeYear = [
+        {
+            year: "1.året"
+        },
 
+        {
+            year: "2.året"
+
+        },
+        {
+            year: "3.året"
+        }
+
+    ]
 
     const gradeTitle = {
         leftTitle: 'Fag',
@@ -67,6 +80,9 @@ import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
             <View style={styles.container}>
 
                 <View style={styles.buttonContainer}>
+                    <TouchableOpacity>
+                        <Text> 1.året</Text>
+                    </TouchableOpacity>
 
 
                 </View>
@@ -85,7 +101,6 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flexDirection: "row",
-        padding: '5%',
         height: 50,
         width: '100%',
 
