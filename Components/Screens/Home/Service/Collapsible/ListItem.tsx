@@ -141,8 +141,8 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
                 </View>
             </TouchableOpacity>
             <Animated.View
-                style={{flex: 1,backgroundColor: '#F3F3F3', height: saveButtonHeight}}>
-                <Text>Content</Text>
+                style={{flex: 1,backgroundColor: '#F3F3F3', height: saveButtonHeight, overflow: "hidden"}}>
+                {children}
             </Animated.View>
         </View>
 
