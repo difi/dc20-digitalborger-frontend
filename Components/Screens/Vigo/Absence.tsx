@@ -1,5 +1,4 @@
-import * as React from "react";
-import {useState} from "react";
+import React from "react";
 import {StyleSheet, Text, View} from "react-native";
 
 
@@ -43,7 +42,6 @@ const absenceInSubjects = [
           }
 
       }
-
       return(
           <View style={styles.container}>
 
@@ -54,16 +52,16 @@ const absenceInSubjects = [
               {absenceInSubjects.map((item, index) => (
                   <View style={{
                       flexDirection: "row",
-                      margin: '5%',
+                      padding: '3%',
                       borderBottomColor: 'gray',
                       borderBottomWidth: 1,
                       justifyContent: "space-around",
 
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "#dcdcdc"}}>
+
+
                       <Text style={styles.textCenter}>{item.sub}</Text>
                       <Text style={styles.textCenter}>{item.absence * 100 + "%"}</Text>
-
-
 
                   </View>
               ))}
@@ -79,11 +77,12 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#dcdcdc",
 
+
     },
     absenceContainer: {
       flexDirection: "row",
-        margin: '5%',
         justifyContent: "space-around",
+        padding: '3%',
         borderBottomColor: 'gray',
         borderBottomWidth: 1,
         backgroundColor: "#dcdcdc",
@@ -93,7 +92,6 @@ const styles = StyleSheet.create({
     textHeader: {
         fontSize: 15,
         fontWeight: "bold",
-        padding: 5,
         margin: 5,
         justifyContent: "space-around",
         borderBottomColor: 'gray',
@@ -102,16 +100,9 @@ const styles = StyleSheet.create({
     },
     textCenter: {
         fontSize: 15,
-        padding: 5,
         margin: 5,
 
-
-
-
-
-
-
-    },
+    }
 
 
 });
