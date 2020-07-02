@@ -6,6 +6,7 @@ import TeoriProve from "../Vegvesenet/TeoriProve"
 import Oppkjoring from "../Vegvesenet/Oppkjoring";
 import VeienTilForerkort from "../Vegvesenet/VeienTilForerkort"
 import Absence from "../Vigo/Absence";
+import Grades from "../Vigo/Grades";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -60,7 +61,7 @@ export default function Notification() {
             description={event.description}
           />
         ))}
-          <Absence/>
+          <Grades/>
       </ScrollView>
     </View>
   );
