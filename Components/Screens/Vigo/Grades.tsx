@@ -1,5 +1,6 @@
 import React from "react";
-import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Button, FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {handlePress} from "react-native-paper/lib/typescript/src/components/RadioButton/utils";
 
 
     const gradeYear = [
@@ -41,7 +42,7 @@ import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
         },
 
     ];
-    const gradeInSubject3 = [
+    const gradeInSubject2 = [
         {
             sub: 'Spansk',
             grade: 4,
@@ -57,7 +58,7 @@ import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
         ];
 
-    const gradeInSubject2 = [
+    const gradeInSubject3 = [
         {
             sub: 'R2',
             grade: 4,
@@ -73,12 +74,33 @@ import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
     ];
 
-    function clickedYear(event){
+    const displayList = (list) =>{
+
+
 
     }
 
 
     export default function Grades() {
+
+        /**
+         * En funksjon som gir riktig liste for året som ble klikket på
+         */
+
+        function yearClicked(year: string ) {
+            if(year == "3.året" ){
+                return gradeInSubject3
+            }
+            if(year == "2.året"){
+                return gradeInSubject2
+            }
+            else{
+                return gradeInSubjects1
+
+
+            }
+
+        }
 
         return(
             <View style={styles.container}>
@@ -98,7 +120,8 @@ import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
                 </View>
 
                 {gradeInSubjects1.map((item1, index1) => (
-                    <View style = {{flexDirection: "row", justifyContent: "space-between", padding: '3%'}}>
+
+                    <View style = {styles.TextCenter}>
                         <Text style={{fontSize: 15 }}>{item1.sub}</Text>
                         <Text style={{fontSize: 15 }}>{item1.grade}</Text>
                     </View>
@@ -114,7 +137,9 @@ import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#dcdcdc",
+        backgroundColor: "transparent",
+        width: "100%",
+        height: "100%",
     },
     buttonContainer: {
         flexDirection: "row",
@@ -140,6 +165,13 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         backgroundColor: "transparent"
     },
+    TextCenter:{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: '3%',
+        flexShrink: 1,
+
+    }
 
 
 });
