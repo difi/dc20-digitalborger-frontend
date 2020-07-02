@@ -70,7 +70,7 @@ const absenceInSubjects = [
                       borderBottomWidth: 1,
                       justifyContent: "space-between",
 
-                      backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "#dcdcdc"}}>
+                      backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "transparent"}}>
 
 
                       <Text style={styles.textCenter}>{item.sub}</Text>
@@ -88,7 +88,7 @@ const absenceInSubjects = [
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#dcdcdc",
+        backgroundColor: "transparent",
         width: "100%",
         height: "100%"
 
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         padding: '3%',
         borderBottomColor: 'gray',
         borderBottomWidth: 1,
-        backgroundColor: "#dcdcdc",
+        backgroundColor: "transparent",
 
 
     },

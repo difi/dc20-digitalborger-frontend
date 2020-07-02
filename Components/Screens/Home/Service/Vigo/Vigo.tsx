@@ -86,7 +86,7 @@ export function Vigo() {
                     <ListItem key={1} iconName = {VIGO[1].icon.name} iconType={VIGO[1].icon.type} containerHeight={400} title={VIGO[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <View style={{flex: 1}}>
-                                <Absence ></Absence>
+                                <Absence/>
                             </View>
                         </View>
                     </ListItem>
