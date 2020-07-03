@@ -119,14 +119,6 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
         const [index, setIndex] = React.useState(0);
 
 
-        const tabBarOptions =  {
-
-            style: {
-                backgroundColor : '#97c556',
-            }
-
-        }
-
         const [routes] = React.useState([
             { key: 'first', title: '1.året'},
             { key: 'second', title: '2.året'},

@@ -1,15 +1,11 @@
 import React from "react";
 import {StyleSheet, Text, View} from "react-native";
-import {normalize} from "react-native-elements";
-import fonts from "react-native-paper/lib/typescript/src/styles/fonts";
-
 
 const absenceTitle = {
     leftTitle: 'Fag',
     rightTitle: 'Fravær',
 
 }
-
 const absenceInSubjects = [
     {
         sub: 'RLE',
@@ -38,7 +34,6 @@ const absenceInSubjects = [
     },
 
 ];
-
 
   export default function Absence() {
 
@@ -70,6 +65,7 @@ const absenceInSubjects = [
                       justifyContent: "space-between",
                       flexShrink: 1,
                       flexWrap: "wrap",
+                      height: 10 * absenceInSubjects.length,
 
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "transparent"}}>
 

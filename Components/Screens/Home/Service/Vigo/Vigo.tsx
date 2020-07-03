@@ -76,7 +76,7 @@ export function Vigo() {
             <ScrollView style={{flex: 1, backgroundColor: "#982C79"}} showsVerticalScrollIndicator={false}>
                 <Header logo={"https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg"} nameOfService={"Vigo"}/>
                 <View>
-                    <ListItem key={0} iconName = {VIGO[0].icon.name} iconType={VIGO[0].icon.type} containerHeight={400} title={VIGO[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
+                    <ListItem key={0} iconName = {VIGO[0].icon.name} iconType={VIGO[0].icon.type} containerHeight={200} title={VIGO[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <Grades/>
                         </View>
