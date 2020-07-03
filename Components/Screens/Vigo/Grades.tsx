@@ -128,9 +128,9 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
         }
 
         const [routes] = React.useState([
-            { key: 'first', title: '1.året', tabBarStyle: {backgroundColor: '#97c556'} },
-            { key: 'second', title: '2.året', tabBarStyle: {backgroundColor: '#97c556'} },
-            { key: 'third', title: '3.året', tabBarStyle: {backgroundColor: '#97c556'} },
+            { key: 'first', title: '1.året'},
+            { key: 'second', title: '2.året'},
+            { key: 'third', title: '3.året'},
         ]);
 
         const renderScene = SceneMap({
@@ -144,6 +144,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
                 {...props}
                 indicatorStyle={{ backgroundColor: 'white' }}
                 style={{ backgroundColor: '#97c556' }}
+                labelStyle={{color: 'black'}}
             />
         );
 
