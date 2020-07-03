@@ -1,4 +1,7 @@
 import * as React from "react";
+import Icon from "react-native-vector-icons/AntDesign";
+
+
 import {
   Button,
   Image,
@@ -13,17 +16,17 @@ const uri = [
     {
       epostIcon:
         "https://seeklogo.com/images/M/mail-icon-logo-28FE0635D0-seeklogo.com.png",
-      userIcon: "https://www.freeiconspng.com/uploads/profile-icon-28.png",
+      userIcon: "https://clipartart.com/images/grey-facebook-clipart-13.jpg",
     },
   ];
   
   const persons = {
     name: "Linda Hansen",
-    birth: "01.01.2002",
+    birth: " 01.01.2002",
     address: "Dalen 24",
-    streetAddress: "Leikanger 6863",
+    streetAddress: " 6863, Leikanger",
     email: "Linda.Hansen@gmail.com",
-    number: "12345678",
+    number: " 12345678",
   };
 
 
@@ -32,82 +35,120 @@ const uri = [
 export default function UserInfo() {
     return (
         <View style={styles.centerContainer}>
-        <Image source={{ uri: uri[0].userIcon }} style={styles.profileIcon} />
-        <View style={styles.userInfoContainer}>
-          <Text style={styles.textStyle}> {persons.name} </Text>
-          <Text style={styles.textStyleSmall}> {persons.birth} </Text>
+        <Image source={{ uri: uri[0].userIcon }} style={styles.profileIcon}/>
+
+
+            <View style={styles.userInfoContainer}>
+                <View style={styles.iconContainer}>
+                <View style={{flexDirection:'row', alignItems:'center'}}>
+                    <Icon name="user" size={40} />
+                    <View style={styles.textContainer}>
+                        <Text style={{ fontWeight: 'bold', fontSize: 18 }}> {persons.name}</Text>
+                        <Text>{persons.birth} </Text>
+                    </View>
+                </View>
+                </View>
+            </View>
+            <View style={styles.userInfoContainer}>
+                <View style={styles.iconContainer}>
+                <View style={{flexDirection:'row', alignItems:'center'}}>
+                    <Icon name="home" size={40} />
+                    <View style={styles.textContainer}>
+                        <Text style={{ fontWeight: 'bold', fontSize: 18 }}> {persons.address}</Text>
+                        <Text>{persons.streetAddress} </Text>
+                    </View>
+                </View>
+                </View>
+            </View>
+            <View style={styles.userInfoContainer}>
+                <View style={styles.iconContainer}>
+                <View style={{flexDirection:'row', alignItems:'center'}}>
+                    <Icon name="phone" size={40} />
+                    <View style={styles.textContainer}>
+                        <Text style={{ fontWeight: 'bold', fontSize: 18 }}> {persons.email}</Text>
+                        <Text>{persons.number} </Text>
+                    </View>
+                </View>
+                </View>
+            </View>
+
+
+
+            <View style={styles.centerButtonsContainer}>
+                    <View style={styles.linksContainer}>
+                    <View style={{flexDirection:'row', alignItems:'center'}}>
+                            <Icon name="export" size={20} />
+                            <Button
+                                title="ENDRE E-POST ELLER MOBIL"
+                                color="black"
+                                onPress={() =>
+                                    Linking.openURL(
+                                        "https://www.skatteetaten.no/person/folkeregister"
+                                    )
+                                }
+                            ></Button>
+                    </View>
+                <View style={styles.centerButtonsContainer}>
+                    <View style={{flexDirection:'row', alignItems:'center'}}>
+                        <Icon name="export" size={20} />
+                            <Button
+                                title="ENDRE NAVN ELLER ADRESSE"
+                                color="black"
+                                onPress={() =>
+                                    Linking.openURL(
+                                        "https://brukerprofil.difi.no/minprofil/?goto=https://sok.samordnaopptak.no/"
+                                    )
+                                }
+                            ></Button>
+                        </View>
+                    </View>
+                </View>
+            </View>
         </View>
-        <View style={styles.userInfoContainer}>
-          <Text style={styles.textStyle}>{persons.address}</Text>
-          <Text style={styles.textStyleSmall}>{persons.streetAddress}</Text>
-        </View>
-        <View style={styles.userInfoContainer}>
-          <Text style={styles.textStyle}> {persons.email}</Text>
-          <Text style={styles.textStyleSmall}>{persons.number} </Text>
-        </View>
-        <View style={styles.centerButtonsContainer}>
-          <Button
-            title="Endre adresse"
-            color="#008b8b"
-            onPress={() =>
-              Linking.openURL(
-                "https://www.skatteetaten.no/person/folkeregister/flytte/?utm_source=bing&utm_medium=cpc&utm_campaign=Folkeregister%20-%20Flytting%20og%20adresse%20-%20NY20&utm_term=adresseendring&utm_content=Adresseendring"
-              )
-            }
-          ></Button>
-        </View>
-      </View>
+
+
 
     )
 }
 
 const styles = StyleSheet.create({
     centerButtonsContainer: {
-      width: "50%",
-      borderRadius: 5,
-      flexDirection: "column",
-      alignItems: "stretch",
-      justifyContent: "space-around",
-      padding: "5%",
-      backgroundColor: "gray",
+        width: "100%",
+        height: "50%",
+
     },
+
+    linksContainer:{
+        left: 20,
+        marginTop: 20,
+
+    },
+
     userInfoContainer: {
-      height: 50,
-      width: 200,
+      width: "100%",
       borderBottomColor: "gray",
       borderBottomWidth: 1,
-      alignItems: "center",
-      backgroundColor: "yellow",
+
     },
+
     profileIcon: {
-      width: 110,
-      height: 110,
-      borderRadius: 5,
-      alignItems: "center",
-      justifyContent: "space-around",
+      width: 200,
+      height: 200,
+
     },
-    textStyle: {
-      fontSize: 15,
-      fontWeight: "bold",
-      color: "gray",
-      backgroundColor: "blue",
+
+    iconContainer:{
+        left: 10,
+        marginTop: 15,
+        marginBottom: 15,
     },
-    textStyleSmall: {
-      fontSize: 12,
-      fontWeight: "bold",
-      color: "gray",
-      backgroundColor: "red",
+
+    textContainer:{
+        left: 15,
     },
-    title: {
-      textTransform: "uppercase",
-      fontSize: 12,
-      fontWeight: "bold",
-      backgroundColor: "orange",
-    },
+
     centerContainer: {
-      padding: 5,
       alignItems: "center",
-      justifyContent: "space-between",
       backgroundColor: "lavender",
     },
   });
