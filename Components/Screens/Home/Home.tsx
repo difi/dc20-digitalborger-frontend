@@ -12,7 +12,7 @@ import {
 import Login from "../../Login/Login";
 import ScreenTabs from "../ScreenTabs";
 import { createStackNavigator } from '@react-navigation/stack';
-import Service from "./Service/Service";
+import {Vigo} from "./Service/Vigo/Vigo";
 
 
 
@@ -114,7 +114,7 @@ function AllServices({navigation}) {
 
                 <View style={stylesBottom.container}>
                     {VIGO2.map((image, index) =>
-                        <TouchableOpacity onPress={() => navigation.navigate("Service", {itemId: index, name: image.name, functions: image.function})} key = {index} style={stylesBottom.item}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Vigo")} key = {index} style={stylesBottom.item}>
                             <Image source={{uri: image.uri}}
                                    resizeMethod={"resize"}
                                    style={stylesBottom.image}
@@ -138,7 +138,7 @@ export default function Home() {
         <Stack.Navigator
         >
             <Stack.Screen name={"Offentlige tjenester"} component={AllServices}/>
-            <Stack.Screen name={"Service"} component={Service}/>
+            <Stack.Screen name={"Vigo"} component={Vigo}/>
         </Stack.Navigator>
     );
 }
