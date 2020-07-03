@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
-import TeoriProve from "../Vegvesenet/TeoriProve"
-import Oppkjoring from "../Vegvesenet/Oppkjoring";
+
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
