@@ -59,8 +59,6 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
 
     ];
 
-
-
     const firstYear = () => (
 
         <View style = {[styles.container, {backgroundColor: "transparent"}]}>
@@ -71,7 +69,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             </View>
             {gradeInSubjects1.map((item1, index1) => (
 
-                <View style = {styles.TextCenter}>
+                <View style = {styles.GradesDisplay}>
                     <Text style={{fontSize: 15 }}>{item1.sub}</Text>
                     <Text style={{fontSize: 15 }}>{item1.grade}</Text>
                 </View>
@@ -89,7 +87,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             </View>
             {gradeInSubject2.map((item2, index2) => (
 
-                <View style = {styles.TextCenter}>
+                <View style = {styles.GradesDisplay}>
                     <Text style={{fontSize: 15 }}>{item2.sub}</Text>
                     <Text style={{fontSize: 15 }}>{item2.grade}</Text>
                 </View>
@@ -105,7 +103,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
 
             </View>
             {gradeInSubject3.map((item3, index3) => (
-                <View style = {styles.TextCenter}>
+                <View style = {styles.GradesDisplay}>
                     <Text style={{fontSize: 15 }}>{item3.sub}</Text>
                     <Text style={{fontSize: 15 }}>{item3.grade}</Text>
                 </View>
@@ -113,17 +111,26 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
         </View>
     );
 
-    const initialLayout = { width: Dimensions.get('window').width };
+    const initialLayout = { width: Dimensions.get('window').width, backgroundColor: "pink"};
 
 
 
     export default function Grades() {
-
         const [index, setIndex] = React.useState(0);
+
+
+        const tabBarOptions =  {
+
+            style: {
+                backgroundColor : '#97c556',
+            }
+
+        }
+
         const [routes] = React.useState([
-            { key: 'first', title: '1.året' },
-            { key: 'second', title: '2.året' },
-            { key: 'third', title: '3.året'},
+            { key: 'first', title: '1.året', tabBarStyle: {backgroundColor: '#97c556'} },
+            { key: 'second', title: '2.året', tabBarStyle: {backgroundColor: '#97c556'} },
+            { key: 'third', title: '3.året', tabBarStyle: {backgroundColor: '#97c556'} },
         ]);
 
         const renderScene = SceneMap({
@@ -137,7 +144,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
         return(
             <View style={styles.container}>
 
-                <TabView navigationState={{index, routes}} renderScene={renderScene} onIndexChange={setIndex} initialLayout={initialLayout} />
+                <TabView style={{backgroundColor: "green"}} navigationState={{index, routes}} renderScene={renderScene} onIndexChange={setIndex} initialLayout={initialLayout} sceneContainerStyle={{backgroundColor: "red"}}/>
 
             </View>
         )
@@ -156,16 +163,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
 
     },
-    button: {
-        height: 40,
-        width: 100,
-        margin: '5%',
-        borderRadius: 4,
-        alignItems: 'center',
-        backgroundColor: '#97c556',
-
-
-    },
     TitleArea: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -174,11 +171,13 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         backgroundColor: "transparent"
     },
-    TextCenter:{
+    GradesDisplay:{
         flexDirection: "row",
         justifyContent: "space-between",
         padding: '3%',
         flexShrink: 1,
+        flexWrap: "wrap",
+        alignItems: "center",
 
     }
 
