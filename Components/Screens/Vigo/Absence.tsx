@@ -37,11 +37,6 @@ const absenceInSubjects = [
       absence: 0.03,
     },
 
-    {
-        sub: 'Kjemi',
-        absence: 0.03,
-    },
-
 ];
 
 
@@ -75,7 +70,6 @@ const absenceInSubjects = [
                       justifyContent: "space-between",
                       flexShrink: 1,
                       flexWrap: "wrap",
-                      alignItems: "center",
 
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "transparent"}}>
 
@@ -115,7 +109,7 @@ const styles = StyleSheet.create({
     textHeader: {
         fontSize: 15,
         fontWeight: "bold",
-        margin: 5,
+        margin: '1%',
         justifyContent: "space-around",
         borderBottomColor: 'gray',
 
@@ -123,7 +117,7 @@ const styles = StyleSheet.create({
 
     },
     textCenter: {
-        fontSize: normalize(15),
+        fontSize: 15,
         margin: 5,
 
 

@@ -111,7 +111,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
         </View>
     );
 
-    const initialLayout = { width: Dimensions.get('window').width, backgroundColor: "pink"};
+    const initialLayout = { width: Dimensions.get('window').width};
 
 
 
@@ -143,7 +143,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             <TabBar
                 {...props}
                 indicatorStyle={{ backgroundColor: 'white' }}
-                style={{ backgroundColor: 'pink' }}
+                style={{ backgroundColor: '#97c556' }}
             />
         );
 
