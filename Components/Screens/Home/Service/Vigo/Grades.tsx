@@ -69,7 +69,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             </View>
             {gradeInSubjects1.map((item1, index1) => (
 
-                <View style = {styles.GradesDisplay}>
+                <View style = {[styles.GradesDisplay, {height: 10 * gradeInSubjects1.length}]}>
                     <Text style={{fontSize: 15 }}>{item1.sub}</Text>
                     <Text style={{fontSize: 15 }}>{item1.grade}</Text>
                 </View>
@@ -87,7 +87,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             </View>
             {gradeInSubject2.map((item2, index2) => (
 
-                <View style = {styles.GradesDisplay}>
+                <View style = {[styles.GradesDisplay, {height: 10 * gradeInSubject2.length}]}>
                     <Text style={{fontSize: 15 }}>{item2.sub}</Text>
                     <Text style={{fontSize: 15 }}>{item2.grade}</Text>
                 </View>
@@ -103,7 +103,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
 
             </View>
             {gradeInSubject3.map((item3, index3) => (
-                <View style = {styles.GradesDisplay}>
+                <View style = {[styles.GradesDisplay,  {height: 10 * gradeInSubject3.length}]}>
                     <Text style={{fontSize: 15 }}>{item3.sub}</Text>
                     <Text style={{fontSize: 15 }}>{item3.grade}</Text>
                 </View>
