@@ -139,12 +139,20 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             third: thirdYear,
         });
 
+        const renderTabBar = props => (
+            <TabBar
+                {...props}
+                indicatorStyle={{ backgroundColor: 'white' }}
+                style={{ backgroundColor: 'pink' }}
+            />
+        );
+
 
 
         return(
             <View style={styles.container}>
 
-                <TabView style={{backgroundColor: "green"}} navigationState={{index, routes}} renderScene={renderScene} onIndexChange={setIndex} initialLayout={initialLayout} sceneContainerStyle={{backgroundColor: "red"}}/>
+                <TabView navigationState={{index, routes}} renderScene={renderScene} onIndexChange={setIndex} initialLayout={initialLayout} renderTabBar={renderTabBar}/>
 
             </View>
         )
