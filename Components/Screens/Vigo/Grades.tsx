@@ -1,22 +1,7 @@
 import React, {useState} from "react";
-import {Alert, Button, FlatList, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {handlePress} from "react-native-paper/lib/typescript/src/components/RadioButton/utils";
+import {Dimensions, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
 
-
-    const gradeYear = [
-        {
-            year: "1.året"
-        },
-
-        {
-            year: "2.året"
-
-        },
-        {
-            year: "3.året"
-        }
-
-    ]
 
     const gradeTitle = {
         leftTitle: 'Fag',
@@ -74,62 +59,85 @@ import {handlePress} from "react-native-paper/lib/typescript/src/components/Radi
 
     ];
 
+
+
+    const firstYear = () => (
+
+        <View style = {[styles.container, {backgroundColor: "transparent"}]}>
+            <View style={styles.TitleArea}>
+                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
+                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
+
+            </View>
+            {gradeInSubjects1.map((item1, index1) => (
+
+                <View style = {styles.TextCenter}>
+                    <Text style={{fontSize: 15 }}>{item1.sub}</Text>
+                    <Text style={{fontSize: 15 }}>{item1.grade}</Text>
+                </View>
+            ))}
+
+        </View>
+    );
+
+    const secondYear = () => (
+        <View style = {[styles.container, {backgroundColor: "transparent"}]}>
+            <View style={styles.TitleArea}>
+                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
+                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
+
+            </View>
+            {gradeInSubject2.map((item2, index2) => (
+
+                <View style = {styles.TextCenter}>
+                    <Text style={{fontSize: 15 }}>{item2.sub}</Text>
+                    <Text style={{fontSize: 15 }}>{item2.grade}</Text>
+                </View>
+            ))}
+        </View>
+    );
+
+    const thirdYear = () => (
+        <View style = {[styles.container, {backgroundColor: "transparent"}]}>
+            <View style={styles.TitleArea}>
+                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
+                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
+
+            </View>
+            {gradeInSubject3.map((item3, index3) => (
+                <View style = {styles.TextCenter}>
+                    <Text style={{fontSize: 15 }}>{item3.sub}</Text>
+                    <Text style={{fontSize: 15 }}>{item3.grade}</Text>
+                </View>
+            ))}
+        </View>
+    );
+
+    const initialLayout = { width: Dimensions.get('window').width };
+
+
+
     export default function Grades() {
 
-        /**
-         * En funksjon som gir riktig liste for året som ble klikket på
-         */
+        const [index, setIndex] = React.useState(0);
+        const [routes] = React.useState([
+            { key: 'first', title: '1.året' },
+            { key: 'second', title: '2.året' },
+            { key: 'third', title: '3.året'},
+        ]);
 
-        function yearClicked(year: string ) {
-            if(year == "3.året" ){
-                return gradeInSubject3
-            }
-            if(year == "2.året"){
-                return gradeInSubject2
-            }
-            else{
-                return gradeInSubjects1
-
-
-            }
-
-        }
-        const handlePress =  (aar: string) =>{
-            Alert.alert('Viser karakterer for ' + aar)
-            yearClicked(aar)
-        }
+        const renderScene = SceneMap({
+            first: firstYear,
+            second: secondYear,
+            third: thirdYear,
+        });
 
 
 
         return(
             <View style={styles.container}>
 
-                <View style={styles.buttonContainer}>
-                    {gradeYear.map((item, index) => (
-
-                            <TouchableOpacity style={styles.button} onPress={() => handlePress(item.year)}>
-                                <Text style = {{margin: 10}}>{item.year}</Text>
-                            </TouchableOpacity>
-
-
-                    ))}
-                </View>
-
-                <View style={styles.titleTextArea}>
-                    <Text style={{fontWeight: "bold", fontSize: 15}}>{gradeTitle.leftTitle}</Text>
-                    <Text style={{fontWeight: "bold", fontSize: 15}}>{gradeTitle.rightTitle}</Text>
-                </View>
-
-                {gradeInSubjects1.map((item1, index1) => (
-
-                    <View style = {styles.TextCenter}>
-                        <Text style={{fontSize: 15 }}>{item1.sub}</Text>
-                        <Text style={{fontSize: 15 }}>{item1.grade}</Text>
-                    </View>
-                ))}
-
-
-
+                <TabView navigationState={{index, routes}} renderScene={renderScene} onIndexChange={setIndex} initialLayout={initialLayout} />
 
             </View>
         )
@@ -158,7 +166,7 @@ const styles = StyleSheet.create({
 
 
     },
-    titleTextArea: {
+    TitleArea: {
         flexDirection: "row",
         justifyContent: "space-between",
         padding: '3%',
