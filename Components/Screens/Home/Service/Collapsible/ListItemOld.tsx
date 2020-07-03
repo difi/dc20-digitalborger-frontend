@@ -2,10 +2,14 @@ import * as React from 'react';
 import {
     View,
     Text,
+    Image,
     TouchableOpacity,
-    Animated
+    ScrollView,
+    Dimensions,
+    SafeAreaView,
+    StyleSheet, TouchableWithoutFeedback,
 } from 'react-native';
-import {Component, useEffect, useRef, useState} from "react";
+import {Component, useEffect, useState} from "react";
 // @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // @ts-ignore
@@ -18,6 +22,9 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 // @ts-ignore
 import Entypo from 'react-native-vector-icons/Entypo';
 
+import Accordion from "react-native-collapsible/Accordion";
+import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
+import Animated, {interpolate} from "react-native-reanimated";
 
 const SPACE = 20;
 
@@ -34,42 +41,28 @@ interface ListItemProps {
 
 export function ListItem({parentCallback, pressed, children, title, containerHeight, iconName, iconType}: ListItemProps) {
     let [toggled, setToggled] = useState(false);
-    const height = useRef(new Animated.Value(1)).current;
-    const rotate = useRef(new Animated.Value(1)).current;
 
     useEffect(() => {
         setToggled(pressed)
     }, [pressed])
 
-    useEffect(() => {
-        Animated.timing(height, {
-            toValue: toggled ? 1 : 0,
-            duration: 200,
-            useNativeDriver: false
-        }).start();
+    const transition = useTransition(toggled, {duration: 200});
 
-        Animated.timing(rotate, {
-            toValue: toggled ? 1 : 0,
-            duration: 200,
-            useNativeDriver: true
-        }).start();
-    }, [toggled]);
+    const bottomRadius = interpolate(transition, {
+        inputRange: [0, 16 / 400],
+        outputRange: [0, 0.5]
+    });
 
-
-
-
-    const saveButtonHeight = height.interpolate({
+    const height = interpolate(transition, {
         inputRange: [0, 1],
-        outputRange: [0, containerHeight],
+        outputRange: [0, containerHeight]
     });
 
 
-    const rotatee = rotate.interpolate({
+    const rotatee = interpolate(transition, {
         inputRange: [0, 1],
-        outputRange: [0, Math.PI]})
-
-
-
+        outputRange: [0, Math.PI]
+    });
 
     function fontType (type: string, name: string, color: string, size: number){
         switch (type) {
@@ -94,11 +87,9 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
 
     return(
 
-        <View>
-            <TouchableOpacity
-                style={{flex: 1, backgroundColor: 'red', height: 50}}
-                onPress={() => {setToggled((prev) => !prev); parentCallback(toggled)}}>
-                <View style={{flex: 1, backgroundColor: "white", height: 50, paddingLeft: SPACE, paddingRight: SPACE, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
+        <View style={{flex: 1}}>
+            <TouchableWithoutFeedback onPress={() =>  {setToggled(val => !val); parentCallback(toggled)}}>
+                <View style={{flex: 1, backgroundColor: "white", height: 50,paddingLeft: 20, paddingRight: 20, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
                     <View style={{flex: 1, flexDirection: "row"}}>
                         {fontType(iconType, iconName, "black", 26)}
                     </View>
@@ -108,15 +99,22 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
                         </Text>
                     </View>
                     <View style={{flex: 1, justifyContent: "flex-end", flexDirection: "row"}}>
-                        <Animated.View  style={{transform: [{rotate: rotatee}]}}>
+                        <Animated.View style={{transform: [{rotate: rotatee}]}}>
                             <Entypo name={"chevron-down"} color={"black"} size={26} />
                         </Animated.View>
                     </View>
                 </View>
-            </TouchableOpacity>
+            </TouchableWithoutFeedback>
+
             <Animated.View
-                style={{flex: 1,backgroundColor: '#F3F3F3', height: saveButtonHeight, overflow: "hidden"}}>
-                {children}
+                style={[{
+                    flex: 1, borderBottomLeftRadius: bottomRadius,
+                    borderBottomRightRadius: bottomRadius,
+                    height: height, backgroundColor: "#F3F3F3", overflow: "hidden"},
+                ]}
+            >
+
+                    {children}
             </Animated.View>
         </View>
 
