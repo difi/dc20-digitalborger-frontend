@@ -1,93 +1,65 @@
 import * as React from "react";
-
-import {
-  Button,
-  Image,
-  Linking,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { Header } from "react-native-elements";
+import { Linking, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Header, Button } from "react-native-elements";
 import UserInfo from "./UserInfo";
-
-const persons = {
-  name: "Linda Hansen",
-  birth: "01.01.2002",
-  address: "Dalen 24",
-  streetAddress: "Leikanger 6863",
-  email: "Linda.Hansen@gmail.com",
-  number: "12345678",
-};
-
-const digiPostBrev = {
-  letter: "Digipost",
-  amount: "2",
-};
-
-const uri = [
-  {
-    epostIcon:
-      "https://seeklogo.com/images/M/mail-icon-logo-28FE0635D0-seeklogo.com.png",
-    userIcon: "https://www.freeiconspng.com/uploads/profile-icon-28.png",
-  },
-];
-// Slutt data
+import Icon from "react-native-vector-icons/Entypo";
 
 export default function Profile() {
   return (
-      <View style={styles.container}>
-        <Header backgroundColor="#93E6F3" centerComponent={{ text: "Min profil" }} />
-        <View style={styles.upperScreen}>
-          <TouchableOpacity
-            style={styles.upperButtonContainer}
-            onPress={() => Linking.openURL("https://www.digipost.no/")}
-          >
-            <Image source={{ uri: uri[0].epostIcon }} style={styles.images} />
-            <Text style={styles.digipost}>
-              {" " + digiPostBrev.letter + "(" + digiPostBrev.amount + ")"}
-            </Text>
-          </TouchableOpacity>
+    <View>
+      <Header centerComponent={{ text: "Min profil" }} />
+      <TouchableOpacity
+        style={styles.icon}
+        onPress={() => Linking.openURL("https://www.digipost.no/")}
+      >
+      <Icon name="mail-with-circle" color="green" size="50"></Icon>
+      </TouchableOpacity>
+      <UserInfo />
+
+      <View style={styles.linksContainer}>
+        <View style={styles.linkText}>
+          <Icon name="export" size={20} />
+          <Button
+            title="ENDRE E-POST ELLER MOBIL"
+            titleStyle={{ color: "black" }}
+            buttonStyle={{ backgroundColor: "pink" }}
+            onPress={() =>
+              Linking.openURL(
+                "https://www.skatteetaten.no/person/folkeregister"
+              )
+            }
+          ></Button>
         </View>
-        <UserInfo />
+      </View>
+
+      <View style={styles.linksContainer}>
+        <View style={styles.linkText}>
+          <Icon name="export" size={20} />
+          <Button
+            title="ENDRE NAVN ELLER ADRESSE"
+            titleStyle={{ color: "black" }}
+            buttonStyle={{ backgroundColor: "pink" }}
+            onPress={() =>
+              Linking.openURL(
+                "https://brukerprofil.difi.no/minprofil/?goto=https://sok.samordnaopptak.no/"
+              )
+            }
+          ></Button>
+        </View>
+      </View>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
-  container: {
-    height:"100%",
-    width:"100%",
-    backgroundColor: "red",
-
-  },
-  upperScreen: {
-    height: "12%",
-    borderBottomColor: "gray",
-    borderBottomWidth: 1,
-  },
-
-  upperButtonContainer: {
-    margin: 10,
-    height: 40,
-    width: 40,
-    borderRadius: 5,
-    backgroundColor: "blue",
+  icon: {
+    height: 55,
+    width: 55,
     alignSelf: "flex-end",
   },
-
-  images: {
-    width: "100%",
-    height: "100%",
-    borderRadius: 100,
+  linksContainer: {
+    left: 20,
+    marginTop: 20,
   },
-
-
-  title: {
-    textTransform: "uppercase",
-    fontSize: 12,
-    fontWeight: "bold",
-
-
-  },
+  linkText: { flexDirection: "row", alignItems: "center" },
 });
