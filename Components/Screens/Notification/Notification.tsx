@@ -5,8 +5,8 @@ import { Header } from "react-native-elements";
 import TeoriProve from "../Vegvesenet/TeoriProve"
 import Oppkjoring from "../Vegvesenet/Oppkjoring";
 import VeienTilForerkort from "../Vegvesenet/VeienTilForerkort"
-import Absence from "../Vigo/Absence";
-import Grades from "../Vigo/Grades";
+import Absence from "../Home/Service/Vigo/Absence";
+import Grades from "../Home/Service/Vigo/Grades";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();

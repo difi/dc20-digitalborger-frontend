@@ -29,8 +29,8 @@ import VeienTilForerkort from "../../../Vegvesenet/VeienTilForerkort";
 import {ListItem} from "../Collapsible/ListItem";
 import Header from "../Header";
 import Footer from "../Footer";
-import Absence from "../../../Vigo/Absence";
-import Grades from "../../../Vigo/Grades";
+import Absence from "./Absence";
+import Grades from "./Grades";
 
 
 const VIGO  = [

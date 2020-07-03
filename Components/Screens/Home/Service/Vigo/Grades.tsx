@@ -33,7 +33,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             grade: 4,
         },
         {
-            sub: 'Kjemi1',
+            sub: 'Kjemi 1',
             grade: 6,
         },
         {
@@ -49,7 +49,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             grade: 4,
         },
         {
-            sub: 'Kjemi2',
+            sub: 'Kjemi 2',
             grade: 5,
         },
         {
