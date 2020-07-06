@@ -51,6 +51,15 @@ export default function Hourglass() {
         return "black";
     }
 
+    function sendPush24hrsLeft(title:String, date:Date) {
+        if (getTimeLeft(date) <= 24*60*60) {
+            return <PushNotification
+            title={title}
+            date={date}/>
+        }
+        console.log("kjører")
+    }
+
     function getFormat(deadline: Date) {
         if (getTimeLeft(deadline) <= 86400) {
             return ["H", "M", "S"];
@@ -108,10 +117,7 @@ export default function Hourglass() {
                                         </View>
                                     </View>
                                 </Card>
-                                <PushNotification
-                                title={event.name}
-                                date={event.date}
-                                />
+                                {sendPush24hrsLeft(event.name, event.date)}
                             </View>
                         ))}
                     </ScrollView>

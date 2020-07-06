@@ -2,7 +2,7 @@ import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
 import React, { useState, useEffect } from 'react';
-import { Text, View, Button, Platform } from 'react-native';
+import { Text, View, Button, Platform, ToolbarAndroidComponent } from 'react-native';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -20,55 +20,28 @@ export default function App(props: {
 
   const [expoPushToken, setExpoPushToken] = useState('');
   const [notification, setNotification] = useState(false);
-  var today = new Date();
 
   useEffect(() => {
     registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
-    Notifications.addNotificationReceivedListener(notification => {
+    /*Notifications.addNotificationReceivedListener(notification => {
       setNotification(notification);
     });
     Notifications.addNotificationResponseReceivedListener(response => {
       console.log(response);
-    });
+    
+    });*/
+    sendPushNotification(expoPushToken, props.title)
+    console.log("kjører2")
 
-    return () => {
-      ///Notifications.removeAllNotificationListeners();
-    };
+    /*return () => {
+      Notifications.removeAllNotificationListeners();
+    };*/
   });
 
-  useEffect(() => {
-    if (today.getTime() - props.date.getTime() == 24) {
-        console.log('hey')
-        console.log(today.getTime() - props.date.getTime())
-        sendPushNotification(expoPushToken, props.title)
-    }
-  })
-
   return (
-    /*<View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-around',
-      }}>
-      <Text>Your expo push token: {expoPushToken}</Text>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Title: {notification && notification.request.content.title} </Text>
-        <Text>Body: {notification && notification.request.content.body}</Text>
-        <Text>Data: {notification && JSON.stringify(notification.request.content.data.body)}</Text>
-      </View>
-      <Button
-        title="Press to Send Notification"
-        onPress={async () => {
-          await sendPushNotification(expoPushToken, props.title);
-        }}
-      />
-      
-    </View>
-  );*/
-  <View>
-  </View>
-  )}
+    null
+  );
+}
 
 // Can use this function below, OR use Expo's Push Notification Tool-> https://expo.io/dashboard/notifications
 async function sendPushNotification(expoPushToken, title) {
