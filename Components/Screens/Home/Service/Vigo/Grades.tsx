@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Dimensions, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import React from "react";
+import {Dimensions, StyleSheet, Text, View} from "react-native";
 import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
 
 
@@ -70,8 +70,8 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             {gradeInSubjects1.map((item1, index1) => (
 
                 <View style = {[styles.GradesDisplay, {height: 10 * gradeInSubjects1.length}]}>
-                    <Text style={{fontSize: 15 }}>{item1.sub}</Text>
-                    <Text style={{fontSize: 15 }}>{item1.grade}</Text>
+                    <Text style={styles.textStyle}>{item1.sub}</Text>
+                    <Text style={styles.textStyle}>{item1.grade}</Text>
                 </View>
             ))}
 
@@ -88,8 +88,8 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             {gradeInSubject2.map((item2, index2) => (
 
                 <View style = {[styles.GradesDisplay, {height: 10 * gradeInSubject2.length}]}>
-                    <Text style={{fontSize: 15 }}>{item2.sub}</Text>
-                    <Text style={{fontSize: 15 }}>{item2.grade}</Text>
+                    <Text style={styles.textStyle}>{item2.sub}</Text>
+                    <Text style={styles.textStyle}>{item2.grade}</Text>
                 </View>
             ))}
         </View>
@@ -104,8 +104,8 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             </View>
             {gradeInSubject3.map((item3, index3) => (
                 <View style = {[styles.GradesDisplay,  {height: 10 * gradeInSubject3.length}]}>
-                    <Text style={{fontSize: 15 }}>{item3.sub}</Text>
-                    <Text style={{fontSize: 15 }}>{item3.grade}</Text>
+                    <Text style={styles.textStyle}>{item3.sub}</Text>
+                    <Text style={styles.textStyle}>{item3.grade}</Text>
                 </View>
             ))}
         </View>
@@ -158,12 +158,6 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
     },
-    buttonContainer: {
-        flexDirection: "row",
-        backgroundColor: "yellow",
-        alignItems: "center",
-
-    },
     TitleArea: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -175,12 +169,14 @@ const styles = StyleSheet.create({
     GradesDisplay:{
         flexDirection: "row",
         justifyContent: "space-between",
-        padding: '3%',
         flexShrink: 1,
         flexWrap: "wrap",
         alignItems: "center",
 
-    }
-
+    },
+    textStyle: {
+        fontSize: 15,
+        padding: '3%',
+},
 
 });

@@ -61,7 +61,6 @@ const absenceInSubjects = [
               {absenceInSubjects.map((item, index) => (
                   <View style={{
                       flexDirection: "row",
-                      padding: '3%',
                       justifyContent: "space-between",
                       flexShrink: 1,
                       flexWrap: "wrap",
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
     textHeader: {
         fontSize: 15,
         fontWeight: "bold",
-        margin: '1%',
+        margin: 5,
         justifyContent: "space-around",
         borderBottomColor: 'gray',
 
@@ -115,6 +114,7 @@ const styles = StyleSheet.create({
     textCenter: {
         fontSize: 15,
         margin: 5,
+        padding: '3%'
 
 
 
