@@ -55,8 +55,8 @@ const absenceInSubjects = [
           <View style={styles.container}>
 
               <View style={styles.absenceContainer}>
-                  <Text style={styles.textHeader}> {absenceTitle.leftTitle} </Text>
-                  <Text style={styles.textHeader}> {absenceTitle.rightTitle}</Text>
+                  <Text style={styles.textTitle}> {absenceTitle.leftTitle} </Text>
+                  <Text style={styles.textTitle}> {absenceTitle.rightTitle}</Text>
               </View>
               {absenceInSubjects.map((item, index) => (
                   <View style={{
@@ -69,8 +69,8 @@ const absenceInSubjects = [
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "transparent"}}>
 
 
-                      <Text style={styles.textCenter} allowFontScaling={true}>{item.sub}</Text>
-                      <Text style={styles.textCenter} allowFontScaling={true}>{item.absence * 100 + "%"}</Text>
+                      <Text style={styles.textAbsence} allowFontScaling={true}>{item.sub}</Text>
+                      <Text style={styles.textAbsence} allowFontScaling={true}>{item.absence * 100 + "%"}</Text>
 
                   </View>
               ))}
@@ -87,9 +87,6 @@ const styles = StyleSheet.create({
         backgroundColor: "transparent",
         width: "100%",
         height: "100%",
-
-
-
     },
     absenceContainer: {
       flexDirection: "row",
@@ -98,25 +95,19 @@ const styles = StyleSheet.create({
         borderBottomColor: 'gray',
         borderBottomWidth: 1,
         backgroundColor: "transparent",
-
-
     },
-    textHeader: {
+    textTitle: {
         fontSize: 15,
         fontWeight: "bold",
         margin: 5,
         justifyContent: "space-around",
         borderBottomColor: 'gray',
 
-
-
     },
-    textCenter: {
+    textAbsence: {
         fontSize: 15,
         margin: 5,
         padding: '3%'
-
-
 
     }
 

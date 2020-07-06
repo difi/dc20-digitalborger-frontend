@@ -49,15 +49,15 @@ export default function Profile() {
             <View style = {{padding: 5, alignItems: 'center', justifyContent: "space-between"}}>
                 <Image source={{uri: userImages[0].uri}} style={styles.profileIcon}/>
                 <View style={styles.userInfoContainer}  >
-                    <Text style= {styles.textHeader}> {persons.name} </Text>
+                    <Text style= {styles.textTitle}> {persons.name} </Text>
                     <Text style={styles.textStyleSmall}> {persons.birth} </Text>
                 </View>
                 <View style={styles.userInfoContainer}>
-                    <Text style={styles.textHeader}>{persons.address}</Text>
+                    <Text style={styles.textTitle}>{persons.address}</Text>
                     <Text style={styles.textStyleSmall}>{persons.streetAddress}</Text>
                 </View>
                 <View style={styles.userInfoContainer}>
-                    <Text style = {styles.textHeader}> {persons.email}</Text>
+                    <Text style = {styles.textTitle}> {persons.email}</Text>
                     <Text style = {styles.textStyleSmall}>{persons.number} </Text>
                 </View>
                 <View style = {styles.centerButtonsContainer}>
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: "space-around",
     },
-    textHeader: {
+    textTitle: {
         fontSize: 15,
         fontWeight: "bold",
         color: "gray",

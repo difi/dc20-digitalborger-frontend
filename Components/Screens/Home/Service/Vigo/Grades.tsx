@@ -140,8 +140,6 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
             />
         );
 
-
-
         return(
             <View style={styles.container}>
 
