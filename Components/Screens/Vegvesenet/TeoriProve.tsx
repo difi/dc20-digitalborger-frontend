@@ -7,7 +7,7 @@ import * as WebBrowser from "expo-web-browser";
 export default function TeoriProve() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
+      <Text style={styles.touchableText}>
             Bestilling av time til teoriprøven gjøres på vegvesenet sine nettsider. 
       </Text>
 
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: "100%",
   },
-  text: {
+  touchableText: {
     fontSize: 20,
     margin: 10,
   },

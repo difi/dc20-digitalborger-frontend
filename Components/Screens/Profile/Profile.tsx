@@ -35,7 +35,7 @@ export default function Profile() {
 
     return (
         <View style={styles.container }>
-            <Header backgroundColor="white" centerComponent={{text: "Profil"}}/>
+            <Header backgroundColor="white" centerComponent={{touchableText: "Profil"}}/>
 
             <View style = {styles.upperScreen}>
                 <Text style = {{textTransform: "uppercase", fontSize: 12, fontWeight: "bold"}}>Person-og kontaktinformasjon</Text>

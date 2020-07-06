@@ -45,7 +45,7 @@ export default function Notification() {
       <Header
         backgroundColor="white"
         centerComponent={{
-          text: "Varslinger",
+          touchableText: "Varslinger",
           style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
         }}
       />

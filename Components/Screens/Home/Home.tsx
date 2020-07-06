@@ -103,7 +103,7 @@ function AllServices({navigation}) {
                             />
                         </View>
                         <View style={stylesTop.textContainer}>
-                            <Text style={stylesTop.text}>
+                            <Text style={stylesTop.touchableText}>
                                 {item.name}
                             </Text>
                         </View>
@@ -120,7 +120,7 @@ function AllServices({navigation}) {
                                    style={stylesBottom.image}
                             />
                             <View style={stylesBottom.textContainer}>
-                                <Text style={stylesBottom.text}>
+                                <Text style={stylesBottom.touchableText}>
                                     {image.name}
                                 </Text>
                             </View>
@@ -153,7 +153,7 @@ const stylesTop = StyleSheet.create({
     imageContainer: {height: 50, width: 50},
     image: {width: "100%", height: "100%", borderRadius: 100},
     textContainer: {alignSelf: "center", marginTop: 10},
-    text: {fontSize: 13, fontWeight: "bold"},
+    touchableText: {fontSize: 13, fontWeight: "bold"},
 
 });
 
@@ -162,5 +162,5 @@ const stylesBottom = StyleSheet.create({
     item: { margin: 20, marginBottom: 50, height: calculateHeightOfCircle(40), width: Dimensions.get("window").width / 2 - 40},
     image: {width: "100%", height: "100%", alignSelf: "center",},
     textContainer: {alignSelf: "center", marginTop: 10},
-    text: {textTransform: "uppercase", fontSize: 13, fontWeight: "bold"},
+    touchableText: {textTransform: "uppercase", fontSize: 13, fontWeight: "bold"},
 });

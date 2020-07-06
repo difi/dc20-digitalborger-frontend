@@ -7,7 +7,7 @@ import * as WebBrowser from "expo-web-browser";
 export default function Oppkjoring() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
+      <Text style={styles.touchableText}>
             Bestilling av oppkjøring må gjøres av din trafikkskole. Til dette trenger trafikkskolen en fullmakt fra deg. 
       </Text>
 
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     height: 170,
     width: "100%",
   },
-  text: {
+  touchableText: {
     fontSize: 20,
     margin: 10,
   },
