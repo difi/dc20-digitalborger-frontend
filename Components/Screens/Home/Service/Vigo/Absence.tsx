@@ -59,7 +59,9 @@ const absenceInSubjects = [
                   <Text style={styles.textTitle}> {absenceTitle.rightTitle}</Text>
               </View>
               {absenceInSubjects.map((item, index) => (
-                  <View style={{
+                  <View
+                      key = {index}
+                      style={{
                       flexDirection: "row",
                       justifyContent: "space-between",
                       flexShrink: 1,
@@ -113,3 +115,4 @@ const styles = StyleSheet.create({
 
 
 });
+
