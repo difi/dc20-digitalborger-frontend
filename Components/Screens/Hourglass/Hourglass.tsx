@@ -25,7 +25,6 @@ const events = [
         logo:
             "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk_400x400.jpg",
         date: deadline2,
-        description: "20 dager",
     },
     {
         name: "Corona vaksine",

@@ -1,7 +1,12 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
+import TeoriProve from "../Vegvesenet/TeoriProve"
+import Oppkjoring from "../Vegvesenet/Oppkjoring";
+import VeienTilForerkort from "../Vegvesenet/VeienTilForerkort"
+import Absence from "../Home/Service/Vigo/Absence";
+import Grades from "../Home/Service/Vigo/Grades";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -15,7 +20,7 @@ const events = [
   {
     name: "Søk høyere utdanning",
     logo: "https://www.vigo.no/vigo/html/img/vigo-logo.png",
-    description: "Fristen for å søke vidergåående skole er 25.05.2020",
+    description: "Fristen for å søke videregående skole er 25.05.2020",
     date: deadline,
   },
   {
@@ -46,15 +51,18 @@ export default function Notification() {
           style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
         }}
       />
-      {events.map((event, index) => (
-        <NotificationBar
-          key={index}
-          logo={{
-            uri: event.logo,
-          }}
-          description={event.description}
-        />
-      ))}
+      <ScrollView>
+        {events.map((event, index) => (
+          <NotificationBar
+            key={index}
+            logo={{
+              uri: event.logo,
+            }}
+            description={event.description}
+          />
+        ))}
+          <Grades/>
+      </ScrollView>
     </View>
   );
 }
