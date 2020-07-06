@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { Card, Image, Header } from "react-native-elements";
 import CountDown from "react-native-countdown-component";
 import { ScrollView } from "react-native-gesture-handler";
+import PushNotification from "./PushNotification";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -76,40 +77,46 @@ export default function Hourglass() {
                 >
                     <ScrollView>
                         {events.map((event, index) => (
-                            <Card
+                            <View>
+                                <Card
+                                    title={event.name}
+                                    containerStyle={styles.card}
+                                    titleStyle={styles.cardTitle}
+                                    key={index}
+                                >
+                                    <View style={styles.cardContent}>
+                                        <View style={styles.logoContainer}>
+                                            <Image
+                                                source={{ uri: event.logo }}
+                                                style={styles.logo}
+                                            ></Image>
+                                        </View>
+                                        <View style={styles.countDownContainer}>
+                                            <CountDown
+                                                digitStyle={{ backgroundColor: "white" }}
+                                                digitTxtStyle={{ color: getColor(event.date) }}
+                                                until={getTimeLeft(event.date)}
+                                                size={26}
+                                                timeToShow={getFormat(event.date)}
+                                                timeLabels={{
+                                                    d: "Dager",
+                                                    h: "Timer",
+                                                    m: "Min",
+                                                    s: "Sek",
+                                                }}
+                                            />
+                                        </View>
+                                    </View>
+                                </Card>
+                                <PushNotification
                                 title={event.name}
-                                containerStyle={styles.card}
-                                titleStyle={styles.cardTitle}
-                                key={index}
-                            >
-                                <View style={styles.cardContent}>
-                                    <View style={styles.logoContainer}>
-                                        <Image
-                                            source={{ uri: event.logo }}
-                                            style={styles.logo}
-                                        ></Image>
-                                    </View>
-                                    <View style={styles.countDownContainer}>
-                                        <CountDown
-                                            digitStyle={{ backgroundColor: "white" }}
-                                            digitTxtStyle={{ color: getColor(event.date) }}
-                                            until={getTimeLeft(event.date)}
-                                            size={26}
-                                            timeToShow={getFormat(event.date)}
-                                            timeLabels={{
-                                                d: "Dager",
-                                                h: "Timer",
-                                                m: "Min",
-                                                s: "Sek",
-                                            }}
-                                        />
-                                    </View>
-                                </View>
-                            </Card>
+                                date={event.date}
+                                />
+                            </View>
                         ))}
                     </ScrollView>
                 </Image>
-            </View>
+            </View>   
         </View>
     );
 }
