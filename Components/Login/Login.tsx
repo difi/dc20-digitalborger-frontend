@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import * as AuthSession from "expo-auth-session";
 import {makeRedirectUri, useAuthRequest} from "expo-auth-session";
 import * as Linking from 'expo-linking'
+import Axios from "axios";
+
 
 /*
 1. If the app is already open, the app is foregrounded and a Linking event is fired
@@ -40,19 +42,80 @@ export default function Login({navigation}) {
         revocationEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/revoke","jwks_uri":"https://oidc-ver1.difi.no/idporten-oidc-provider/jwk',
     };
 
+     const getToken = async (code) => {
+      /*
+        await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
+        }).then(item => console.log("item", item))
+            .catch(err => console.log(err));
+
+       */
+         let headers = new Headers();
+         headers.append( 'Content-Type', 'application/x-www-form-urlencoded');
+         headers.append("Authorization", "Basic " + Base64.btoa("digdircamp_oidc:c72e9529-dde3-4e3b-be38-cd0a164250a0"));
+
+         await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
+             method: "POST",
+             headers: headers,
+                 body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
+         },
+             )
+             .then(response => {
+                 if (!response.ok) throw new Error(response.status);
+                 console.log("response", response.json())
+                 return response.json();
+             })
+             .catch(err => console.log(err));
+
+
+
+
+      /*
+         await Axios.post('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
+             body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
+         }, {
+             headers: {
+                 'Content-Type': 'application/x-www-form-urlencoded'
+             },
+             auth: {
+                 username: 'digdircamp_oidc',
+                 password: 'c72e9529-dde3-4e3b-be38-cd0a164250a0'
+             }
+         }).then(response => console.log(Base64.btoa(JSON.stringify(response))))
+             .catch(err => console.log(err))
+       */
+
+    }
+
     // Create and load an auth request
     const [request, result, promptAsync] = AuthSession.useAuthRequest(
         {
             clientId: 'digdircamp_oidc',
             scopes: ["openid profile"],
             responseType: "code",
-            usePKCE: true,
+            usePKCE: false,
             state: "abcd", //randome
-            codeChallenge: "1234", //randome
+           // codeChallenge: "1234", //randomes
             redirectUri,
         },
         discovery
     );
+
+
+     React.useEffect(() => {
+        if (result?.type === 'success') {
+            const code = result.params.code;
+            const state = result.params.state;
+            getToken(code).catch(err => console.log(err))
+
+        } else {
+            alert("error!");
+        }
+    }, [result]);
 
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -62,7 +125,44 @@ export default function Login({navigation}) {
     );
 }
 
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+const Base64 = {
+    btoa: (input:string = '')  => {
+        let str = input;
+        let output = '';
 
-const styles = StyleSheet.create({
+        for (let block = 0, charCode, i = 0, map = chars;
+             str.charAt(i | 0) || (map = '=', i % 1);
+             output += map.charAt(63 & block >> 8 - i % 1 * 8)) {
 
-});
+            charCode = str.charCodeAt(i += 3/4);
+
+            if (charCode > 0xFF) {
+                throw new Error("'btoa' failed: The string to be encoded contains characters outside of the Latin1 range.");
+            }
+
+            block = block << 8 | charCode;
+        }
+
+        return output;
+    },
+
+    atob: (input:string = '') => {
+        let str = input.replace(/=+$/, '');
+        let output = '';
+
+        if (str.length % 4 == 1) {
+            throw new Error("'atob' failed: The string to be decoded is not correctly encoded.");
+        }
+        for (let bc = 0, bs = 0, buffer, i = 0;
+             buffer = str.charAt(i++);
+
+             ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer,
+             bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0
+        ) {
+            buffer = chars.indexOf(buffer);
+        }
+
+        return output;
+    }
+};
