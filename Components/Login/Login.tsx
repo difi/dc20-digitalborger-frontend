@@ -1,31 +1,23 @@
 import * as React from 'react';
-import {View, Text, Button, StyleSheet, Platform} from 'react-native';
+import {View, Text, Button, StyleSheet, Platform, TouchableOpacity, Dimensions} from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as AuthSession from "expo-auth-session";
-import {makeRedirectUri, useAuthRequest} from "expo-auth-session";
+import {makeRedirectUri, ResponseType, useAuthRequest} from "expo-auth-session";
 import * as Linking from 'expo-linking'
 import Axios from "axios";
-
-
-/*
-1. If the app is already open, the app is foregrounded and a Linking event is fired
-You can handle these events with ------> Linking.addEventListener('url', callback).
-
-2. If the app is not already open, it is opened and the url is passed in as the initialURL
-You can handle these events with  -------> Linking.getInitialURL -- it returns a Promise that resolves to the url, if there is one.
- */
-
 
 
 WebBrowser.maybeCompleteAuthSession();
 
 // Endpoint
+/*
 const discovery = {
     authorizationEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/authorize',
     tokenEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/token',
     revocationEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/revoke","jwks_uri":"https://oidc-ver1.difi.no/idporten-oidc-provider/jwk',
 };
+ */
 
 const useProxy = true;
 
@@ -38,8 +30,6 @@ export default function Login({navigation}) {
 
     const discovery = {
         authorizationEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/authorize',
-        tokenEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/token',
-        revocationEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/revoke","jwks_uri":"https://oidc-ver1.difi.no/idporten-oidc-provider/jwk',
     };
 
      const getToken = async (code) => {
@@ -62,46 +52,48 @@ export default function Login({navigation}) {
          headers.append( 'Content-Type', 'application/x-www-form-urlencoded');
          headers.append("Authorization", "Basic " + Base64.btoa("digdircamp_oidc:c72e9529-dde3-4e3b-be38-cd0a164250a0"));
 
+         console.log("BASE64", Base64.btoa("digdircamp_oidc:c72e9529-dde3-4e3b-be38-cd0a164250a0"));
+
+
+         await (async () => {
+             const rawResponse = await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
+                 method: 'POST',
+                 headers: headers,
+                 body: 'grant_type=authorization_code&code=' + code,
+             });
+             const content = await rawResponse.json();
+
+             console.log("full content", content);
+             console.log("Token", content.access_token);
+         })();
+
+        /*
          await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
              method: "POST",
              headers: headers,
-                 body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
-             // body: 'grant_type=authorization_code&redirect_uri=digitalborger://redirect&code=' + code,
+                 //body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
+              body: 'grant_type=authorization_code&code=' + code,
+             //body: 'grant_type=authorization_code&redirect_uri=digitalborger://redirect&code=' + code,
          },
              )
-             .then(response => {
+             .then(response =>
                  //if (!response.ok) throw new Error(response.status);
-                 console.log("response", response.json())
+                 console.log("response", JSON.stringify(response.body))
                  //return response.json();
-             })
+             )
              .catch(err => console.log(err));
-
-
-
-
-      /*
-         await Axios.post('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
-             body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
-         }, {
-             headers: {
-                 'Content-Type': 'application/x-www-form-urlencoded'
-             },
-             auth: {
-                 username: 'digdircamp_oidc',
-                 password: 'c72e9529-dde3-4e3b-be38-cd0a164250a0'
-             }
-         }).then(response => console.log(Base64.btoa(JSON.stringify(response))))
-             .catch(err => console.log(err))
-       */
+         */
 
     }
 
     // Create and load an auth request
-    const [request, result, promptAsync] = AuthSession.useAuthRequest(
+    const [request, result, promptAsync] = useAuthRequest(
         {
+            responseType: ResponseType.Code,
             clientId: 'digdircamp_oidc',
-            scopes: ["openid profile"],
-            responseType: "code",
+            //scopes: ["openid profile"],
+            scopes: ["openid", "profile"],
+            //responseType: "code",
             usePKCE: false,
             state: "abcd", //randome
            // codeChallenge: "1234", //randomes
@@ -113,6 +105,7 @@ export default function Login({navigation}) {
 
      React.useEffect(() => {
         if (result?.type === 'success') {
+            console.log("test", result);
             const code = result.params.code;
             const state = result.params.state;
             getToken(code).catch(err => console.log(err))
@@ -123,12 +116,36 @@ export default function Login({navigation}) {
     }, [result]);
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Button title="Login!" disabled={!request} onPress={() => promptAsync({ useProxy })} />
-            {result && <Text>{JSON.stringify(result, null, 2)}</Text>}
-        </View>
+       <View style={{flex: 1, paddingRight: 20, paddingLeft: 20}}>
+           <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                <Text style={{fontWeight: "bold", fontSize: 20, textTransform: "uppercase"}}>
+                    Digital borger
+                </Text>
+           </View>
+           <View style={{ flex: 1, alignItems: 'center' }}>
+               <TouchableOpacity disabled={!request} onPress={() => promptAsync({ useProxy })} style={{backgroundColor: "#6064E5", height: 50, width: "70%", borderRadius: 10, justifyContent: "center", alignItems: "center"}}>
+                   <Text style={{fontWeight: "bold", fontSize: 20, textTransform: "uppercase", color: "white"}}>
+                       login
+                   </Text>
+               </TouchableOpacity>
+
+               {result && <Text>{JSON.stringify(result, null, 2)}</Text>}
+           </View>
+       </View>
     );
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 const Base64 = {
