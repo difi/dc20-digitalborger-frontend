@@ -54,6 +54,10 @@ export default function Login({navigation}) {
             .catch(err => console.log(err));
 
        */
+         console.log("Requesting token from code", code);
+         console.log("redirect_uri", redirectUri);
+         console.log("Code", code);
+
          let headers = new Headers();
          headers.append( 'Content-Type', 'application/x-www-form-urlencoded');
          headers.append("Authorization", "Basic " + Base64.btoa("digdircamp_oidc:c72e9529-dde3-4e3b-be38-cd0a164250a0"));
@@ -62,12 +66,13 @@ export default function Login({navigation}) {
              method: "POST",
              headers: headers,
                  body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
+             // body: 'grant_type=authorization_code&redirect_uri=digitalborger://redirect&code=' + code,
          },
              )
              .then(response => {
-                 if (!response.ok) throw new Error(response.status);
+                 //if (!response.ok) throw new Error(response.status);
                  console.log("response", response.json())
-                 return response.json();
+                 //return response.json();
              })
              .catch(err => console.log(err));
 
