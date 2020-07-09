@@ -14,7 +14,7 @@ export default function UserInfo() {
     <View>
       <View style={styles.row}>
         <View style={styles.iconContainer}>
-          <Icon name="user" size="40"></Icon>
+          <Icon name="user" size={40}></Icon>
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.upperText}>{persons.name}</Text>
@@ -23,7 +23,7 @@ export default function UserInfo() {
       </View>
       <View style={styles.row}>
         <View style={styles.iconContainer}>
-          <Icon name="home" size="40"></Icon>
+          <Icon name="home" size={40}></Icon>
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.upperText}>{persons.address}</Text>
@@ -32,7 +32,7 @@ export default function UserInfo() {
       </View>
       <View style={styles.row}>
       <View style={styles.iconContainer}>
-        <Icon name="phone" size="40"></Icon>
+        <Icon name="phone" size={40}></Icon>
       </View>
         <View style={styles.textContainer}>
           <Text style={styles.upperText}>{persons.email}</Text>

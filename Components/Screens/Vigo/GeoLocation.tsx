@@ -33,21 +33,7 @@ export default function GeoLocation() {
     latitude = location.coords.latitude;
   }
 
-  return (
-    <View style={styles.container}>
-      <Text>{text}</Text>
-      <Text style={{ color: 'purple', fontSize: 20}}>
-        {"Latitude: " + latitude}
-      </Text>
-  <Text style={{ color: 'purple', fontSize: 20}}>{"Longitude: " + longitude}</Text>
-    </View>
-  );
+  return "hri"
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "lavender",
-    height: 130,
-    width: '100%',
-  },
-});
+

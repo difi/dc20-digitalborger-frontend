@@ -4,7 +4,6 @@ import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
 import TeoriProve from "../Vegvesenet/TeoriProve"
 import Oppkjoring from "../Vegvesenet/Oppkjoring";
-import GeoLocation from "../Vigo/GeoLocation";
 import VeienTilForerkortet from "../Vegvesenet/VeienTilForerkort"
 import School from "../Vigo/School";
 
@@ -62,7 +61,6 @@ export default function Notification() {
             description={event.description}
           />
         ))}
-        <GeoLocation/>
         <School/>
       </ScrollView>
     </View>

@@ -1,34 +1,78 @@
-import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button, TouchableOpacity } from "react-native";
+import React, { useState, useLayoutEffect } from "react";
+import { Text, View, StyleSheet, TouchableOpacity, Linking } from "react-native";
 import * as Location from "expo-location";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { FlatList } from "react-native-gesture-handler";
+import axios from "axios";
 
-const schools = [
-  { name: "Sogndal Vgs", gpa: 4.5, url: "https://www.sogndal.vgs.no" },
-  {
-    name: "Voss Vgs",
-    gpa: "5.5",
-    url: "https://www.hordaland.no/vossvgs",
-  },
-];
+// PROBLEM: Rendrer ikke skolene før man lager koden :-(
 
 export default function School() {
-  const [data, setData] = useState({ schools: [] });
+  const [data, setData] = useState(Array);
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
+  let longitude = "";
+  let latitude = "";
 
-  useEffect( () => {
-    fetch("http://feat01-drupal8.dmz.local/dib/school/0/0/5", {
-      method: "GET"
-    })
-      .then(item => console.log(item))
-  })
+  useLayoutEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        "http://feat01-drupal8.dmz.local/dib/school/" +
+          longitude +
+          "/" +
+          latitude +
+          "/5"
+      );
+      setData(result.data);
+    };
+    fetchData();
+    console.log(data);
+  }, []);
 
-  return(
+  useLayoutEffect(() => {
+    (async () => {
+      let { status } = await Location.requestPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  let text = "Waiting..";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+    longitude = location.coords.longitude;
+    latitude = location.coords.latitude;
+  }
+
+  return (
     <View>
-      <Text>hei</Text>
+      {data.map((school, index) => (
+        <View key={index} style={styles.container}>
+          <Icon name="office-building" size="40"></Icon>
+          <Text style={styles.name}>{school.Skolenavn}</Text>
+          <Text style={styles.distance}>{school.Distanse + "km"}</Text>
+          <TouchableOpacity
+            style={styles.link}
+            onPress={() =>
+              Linking.openURL(
+                "http://" + school.Webside
+              )
+            }
+          >
+            <Text>Gå til</Text>
+            <View style={styles.icon}>
+              <Icon name="arrow-right-circle-outline" size="20"></Icon>
+            </View>
+          </TouchableOpacity>
+        </View>
+      ))}
     </View>
-  )
-  
+  );
 }
 
 const styles = StyleSheet.create({
@@ -40,33 +84,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   name: {
-    width: 125,
+    width: 140,
     marginRight: 40,
   },
-  gpa: {
-    width: 30,
+  distance: {
+    width: 40,
   },
   link: {
     flexDirection: "row",
-    marginLeft: 90,
+    marginLeft: 80,
   },
   icon: {
     marginLeft: 10,
   },
 });
-
-
-/*
-return (
-    <View style={styles.container}>
-      <Icon name="office-building" size="40"></Icon>
-      <Text style={styles.name}>{"Voss Gymnas"}</Text>
-      <Text style={styles.gpa}>{"5.5"}</Text>
-      <TouchableOpacity style={styles.link}>
-        <Text>Gå til</Text>
-        <View style={styles.icon}>
-          <Icon name="arrow-right-circle-outline" size="20"></Icon>
-        </View>
-      </TouchableOpacity>
-    </View>
-  ); */
