@@ -9,6 +9,7 @@ import Grades from "../Vigo/Grades";
 import {useState} from "react";
 import Footer from "../Footer";
 import Frikort from "./Frikort";
+import SkatteMelding from "./SkatteMelding";
 
 
 const SKATT  = [
@@ -77,7 +78,7 @@ export function Skatteetaten(){
 
                 <ListItem key={2} iconName = {SKATT[2].icon.name} iconType={SKATT[2].icon.type} containerHeight={300} title={SKATT[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
                     <View style={{padding: 10, flex: 1}}>
-                        <Text>Her kommer ting</Text>
+                        <SkatteMelding/>
                     </View>
                 </ListItem>
 
