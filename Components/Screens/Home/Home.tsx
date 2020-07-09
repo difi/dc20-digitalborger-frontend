@@ -13,9 +13,7 @@ import Login from "../../Login/Login";
 import ScreenTabs from "../ScreenTabs";
 import { createStackNavigator } from '@react-navigation/stack';
 import {Vigo} from "./Service/Vigo/Vigo";
-
-
-
+import {Skatteetaten} from "./Service/Skatteetaten/Skatteetaten";
 
 
 const Images = [
@@ -77,6 +75,14 @@ const VIGO2  = [
     }
 ];
 
+const Skatt2 = [
+    {
+        name: "Skatteetaten"
+    }
+]
+
+
+
 //TODO: remove, temporary for design
 function calculateHeightOfCircle(offset: number) {
     return Dimensions.get("window").width / 2 - offset;
@@ -128,6 +134,26 @@ function AllServices({navigation}) {
                         </TouchableOpacity>
                     )}
                 </View>
+
+
+
+                <View style={stylesBottom.gridContainer}>
+                    {Skatt2.map((image, index) =>
+                        <TouchableOpacity onPress={() => navigation.navigate("Skatteetaten")} key = {index} style={stylesBottom.item}>
+                            <Image source={{uri: image.uri}}
+                                   resizeMethod={"resize"}
+                                   style={stylesBottom.image}
+                            />
+                            <View style={stylesBottom.textContainer}>
+                                <Text style={stylesBottom.buttonText}>
+                                    {image.name}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                    )}
+                </View>
+
+
             </ScrollView>
 
         </SafeAreaView>
@@ -140,6 +166,8 @@ export default function Home() {
         >
             <Stack.Screen name={"Offentlige tjenester"} component={AllServices}/>
             <Stack.Screen name={"Vigo"} component={Vigo}/>
+            <Stack.Screen name={"Skatteetaten"} component={Skatteetaten}/>
+
         </Stack.Navigator>
     );
 }

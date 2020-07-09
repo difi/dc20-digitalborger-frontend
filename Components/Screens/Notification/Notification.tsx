@@ -5,6 +5,7 @@ import { Header } from "react-native-elements";
 import TeoriProve from "../Vegvesenet/TeoriProve"
 import Frikort from "../Home/Service/Skatteetaten/Frikort";
 import SkatteMelding from "../Home/Service/Skatteetaten/SkatteMelding";
+import {Skatteetaten} from "../Home/Service/Skatteetaten/Skatteetaten";
 
 
 // data -> Skal byttes ut med data fra database
