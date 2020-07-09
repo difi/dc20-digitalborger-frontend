@@ -2,6 +2,7 @@ import * as React from "react";
 import { View, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
+import Skattekort from "../Skattekort";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -56,6 +57,7 @@ export default function Notification() {
             description={event.description}
           />
         ))}
+        <Skattekort/>
       </ScrollView>
     </View>
   );
