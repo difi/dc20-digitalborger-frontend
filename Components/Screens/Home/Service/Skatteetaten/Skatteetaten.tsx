@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 import {SafeAreaView, ScrollView, Text, View} from "react-native";
 import Header from "../Header";
 import HeaderSkatt from "./HeaderSkatt";
