@@ -6,8 +6,8 @@ import * as WebBrowser from "expo-web-browser";
 
 export default function Oppkjoring() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.touchableText}>
+    <View style={styles.gridContainer}>
+      <Text style={styles.buttonText}>
             Bestilling av oppkjøring må gjøres av din trafikkskole. Til dette trenger trafikkskolen en fullmakt fra deg. 
       </Text>
 
@@ -29,13 +29,13 @@ export default function Oppkjoring() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  gridContainer: {
     borderWidth: 5,
     borderColor: "#e6e6e6",
     height: 170,
     width: "100%",
   },
-  touchableText: {
+  buttonText: {
     fontSize: 20,
     margin: 10,
   },

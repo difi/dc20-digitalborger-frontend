@@ -34,8 +34,8 @@ const digiPostBrev = {
 export default function Profile() {
 
     return (
-        <View style={styles.container }>
-            <Header backgroundColor="white" centerComponent={{touchableText: "Profil"}}/>
+        <View style={styles.gridContainer }>
+            <Header backgroundColor="white" centerComponent={{buttonText: "Profil"}}/>
 
             <View style = {styles.upperScreen}>
                 <Text style = {{textTransform: "uppercase", fontSize: 12, fontWeight: "bold"}}>Person-og kontaktinformasjon</Text>
@@ -71,7 +71,7 @@ export default function Profile() {
     );
 }
 const styles = StyleSheet.create({
-    container: {
+    gridContainer: {
         flex: 1,
         backgroundColor: "#87CEEB"
     },

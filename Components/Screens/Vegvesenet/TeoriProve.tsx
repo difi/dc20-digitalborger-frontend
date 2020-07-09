@@ -6,8 +6,8 @@ import * as WebBrowser from "expo-web-browser";
 
 export default function TeoriProve() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.touchableText}>
+    <View style={styles.gridContainer}>
+      <Text style={styles.buttonText}>
             Bestilling av time til teoriprøven gjøres på vegvesenet sine nettsider. 
       </Text>
 
@@ -29,13 +29,13 @@ export default function TeoriProve() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  gridContainer: {
     borderWidth: 5,
     borderColor: "#e6e6e6",
     height: 150,
     width: "100%",
   },
-  touchableText: {
+  buttonText: {
     fontSize: 20,
     margin: 10,
   },

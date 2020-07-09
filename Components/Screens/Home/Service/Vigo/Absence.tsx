@@ -52,7 +52,7 @@ const absenceInSubjects = [
 
       }
       return(
-          <View style={styles.container}>
+          <View style={styles.gridContainer}>
 
               <View style={styles.absenceContainer}>
                   <Text style={styles.textTitle}> {absenceTitle.leftTitle} </Text>
@@ -84,7 +84,7 @@ const absenceInSubjects = [
   }
 
 const styles = StyleSheet.create({
-    container: {
+    gridContainer: {
         flex: 1,
         backgroundColor: "transparent",
         width: "100%",

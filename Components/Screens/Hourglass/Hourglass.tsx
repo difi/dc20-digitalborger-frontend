@@ -61,7 +61,7 @@ export default function Hourglass() {
             <Header
                 backgroundColor="white"
                 centerComponent={{
-                    touchableText: "Varslinger",
+                    buttonText: "Varslinger",
                     style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
                 }}
             />

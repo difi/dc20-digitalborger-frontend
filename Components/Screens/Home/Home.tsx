@@ -17,6 +17,7 @@ import {Vigo} from "./Service/Vigo/Vigo";
 
 
 
+
 const Images = [
     { name: "NAV", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
     { name: "Vigo", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
@@ -85,15 +86,15 @@ const Stack = createStackNavigator();
 
 function AllServices({navigation}) {
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView  style={styles.container}
+        <SafeAreaView style={styles.gridContainer}>
+            <ScrollView  style={styles.gridContainer}
                          showsVerticalScrollIndicator={false}>
 
                 <FlatList
                     horizontal
                     scrollEventThrottle={1}
                     showsHorizontalScrollIndicator={false}
-                    style={stylesTop.container}
+                    style={stylesTop.gridContainer}
                     data={PopularServices} renderItem={({item, index}) => (
                     <TouchableOpacity key = {index} onPress={() => console.log("index clicked", index)} style={stylesTop.item}>
                         <View style={stylesTop.imageContainer}>
@@ -103,7 +104,7 @@ function AllServices({navigation}) {
                             />
                         </View>
                         <View style={stylesTop.textContainer}>
-                            <Text style={stylesTop.touchableText}>
+                            <Text style={stylesTop.buttonText}>
                                 {item.name}
                             </Text>
                         </View>
@@ -112,7 +113,7 @@ function AllServices({navigation}) {
 
                 />
 
-                <View style={stylesBottom.container}>
+                <View style={stylesBottom.gridContainer}>
                     {VIGO2.map((image, index) =>
                         <TouchableOpacity onPress={() => navigation.navigate("Vigo")} key = {index} style={stylesBottom.item}>
                             <Image source={{uri: image.uri}}
@@ -120,7 +121,7 @@ function AllServices({navigation}) {
                                    style={stylesBottom.image}
                             />
                             <View style={stylesBottom.textContainer}>
-                                <Text style={stylesBottom.touchableText}>
+                                <Text style={stylesBottom.buttonText}>
                                     {image.name}
                                 </Text>
                             </View>
@@ -144,23 +145,23 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-    container: {flex: 1},
+    gridContainer: {flex: 1},
 });
 
 const stylesTop = StyleSheet.create({
-    container: {paddingBottom: 10, paddingTop: 10, flex: 1, borderBottomWidth: 2, borderColor: "#C0C0C0",},
+    gridContainer: {paddingBottom: 10, paddingTop: 10, flex: 1, borderBottomWidth: 2, borderColor: "#C0C0C0",},
     item: {justifyContent: "center", marginRight: 30, marginLeft: 20, alignItems: "center"},
     imageContainer: {height: 50, width: 50},
     image: {width: "100%", height: "100%", borderRadius: 100},
     textContainer: {alignSelf: "center", marginTop: 10},
-    touchableText: {fontSize: 13, fontWeight: "bold"},
+    buttonText: {fontSize: 13, fontWeight: "bold"},
 
 });
 
 const stylesBottom = StyleSheet.create({
-    container: {flex: 6, display: "flex", flexDirection: "row", flexWrap: "wrap"},
+    gridContainer: {flex: 6, display: "flex", flexDirection: "row", flexWrap: "wrap"},
     item: { margin: 20, marginBottom: 50, height: calculateHeightOfCircle(40), width: Dimensions.get("window").width / 2 - 40},
     image: {width: "100%", height: "100%", alignSelf: "center",},
     textContainer: {alignSelf: "center", marginTop: 10},
-    touchableText: {textTransform: "uppercase", fontSize: 13, fontWeight: "bold"},
+    buttonText: {textTransform: "uppercase", fontSize: 13, fontWeight: "bold"},
 });

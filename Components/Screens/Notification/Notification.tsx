@@ -4,6 +4,7 @@ import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
 import TeoriProve from "../Vegvesenet/TeoriProve"
 import Frikort from "../Home/Service/Skatteetaten/Frikort";
+import SkatteMelding from "../Home/Service/Skatteetaten/SkatteMelding";
 
 
 // data -> Skal byttes ut med data fra database
@@ -45,7 +46,7 @@ export default function Notification() {
       <Header
         backgroundColor="white"
         centerComponent={{
-          touchableText: "Varslinger",
+          buttonText: "Varslinger",
           style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
         }}
       />
@@ -59,7 +60,7 @@ export default function Notification() {
             description={event.description}
           />
         ))}
-          <Frikort/>
+          <SkatteMelding/>
       </ScrollView>
     </View>
   );
