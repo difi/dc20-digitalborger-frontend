@@ -10,31 +10,16 @@ const Skatt =
         trekk: 0.11,
     }
 
-const FlatListComp = [
-    {
-
-    }
-]
-
-const cols= 2;
-const rows = 2;
-
 export default function SkatteMelding(){
     return(
       <View style={styles.gridContainer}>
           <View style={styles.grid}>
               <Text style={styles.skattTitle}>Totalt beregnet skatt 2020:</Text>
-              <Text style={styles.skattInput}>{Skatt.beregnet}</Text>
-
+              <Text style={styles.skattInput}>{Skatt.beregnet + "kr"}</Text>
 
           </View>
 
-          <View style={styles.meldingDivider}>
-              <TouchableOpacity style = {styles.buttonArea} onPress={() => Linking.openURL('https://www.skatteetaten.no/person/skatt/skattekort/frikort/bestille-frikort/')}>
-                  <FontAwesome key ={0} name ={'arrow-circle-right'} size={20} />
-                  <Text style = {styles.buttonText}>Se skatteberegningen</Text>
-              </TouchableOpacity>
-          </View>
+          <View style={styles.meldingDivider}></View>
 
           <View style={styles.grid}>
               <Text style={styles.skattTitle}>Skattetrekk på hovedinntekt:</Text>
@@ -44,9 +29,9 @@ export default function SkatteMelding(){
           </View>
 
           <View>
-              <TouchableOpacity style = {styles.buttonArea} onPress={() => Linking.openURL('https://www.skatteetaten.no/person/skatt/skattekort/frikort/bestille-frikort/')}>
+              <TouchableOpacity style = {styles.buttonArea} onPress={() => Linking.openURL('https://www.skatteetaten.no/person/skatt/skatteoppgjor/')}>
                   <FontAwesome key ={0} name ={'arrow-circle-right'} size={20} />
-                  <Text style = {styles.buttonText}>Se alle skattetrekk</Text>
+                  <Text style = {styles.buttonText}>Se hele skattemeldingen din</Text>
               </TouchableOpacity>
           </View>
 
@@ -64,29 +49,29 @@ const styles = StyleSheet.create({
     meldingDivider: {
         borderBottomColor: 'black',
         borderBottomWidth: 1,
+
     },
     grid: {
         flex: 1,
         flexDirection: "row",
         flexWrap: "wrap",
-        justifyContent: "space-around",
         alignItems: "center",
+        justifyContent: "space-between",
+        padding: '3%'
+    },
+    skattTitle: {
+        fontSize: 15,
+        borderBottomColor: 'gray',
+        borderBottomWidth: 1
     },
     skattInput: {
       fontSize: 15,
       fontWeight: "bold"
     },
-
-    skattTitle: {
-            fontSize: 13,
-            borderBottomColor: 'gray',
-            borderBottomWidth: 1
-    },
     buttonArea: {
-        margin: '5%',
+        margin: '2%',
         flexDirection: 'row',
     },
-
     buttonText: {
         fontSize: 13,
         fontWeight: "bold",
