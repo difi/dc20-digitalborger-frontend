@@ -6,7 +6,7 @@ export default function Notification(props: {
   logo: string;
 }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.gridContainer}>
       <Image source={props.logo} style={styles.logo}></Image>
       <View style={styles.bar}></View>
       <Text style={styles.description}>{props.description}</Text>
@@ -15,7 +15,7 @@ export default function Notification(props: {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  gridContainer: {
     width: "100%",
     height: 80,
     flexDirection: "row",

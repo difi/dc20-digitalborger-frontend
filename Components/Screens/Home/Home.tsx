@@ -13,8 +13,7 @@ import Login from "../../Login/Login";
 import ScreenTabs from "../ScreenTabs";
 import { createStackNavigator } from '@react-navigation/stack';
 import {Vigo} from "./Service/Vigo/Vigo";
-
-
+import {Skatteetaten} from "./Service/Skatteetaten/Skatteetaten";
 
 
 const Images = [
@@ -76,6 +75,14 @@ const VIGO2  = [
     }
 ];
 
+const Skatt2 = [
+    {
+        name: "Skatteetaten"
+    }
+]
+
+
+
 //TODO: remove, temporary for design
 function calculateHeightOfCircle(offset: number) {
     return Dimensions.get("window").width / 2 - offset;
@@ -85,15 +92,15 @@ const Stack = createStackNavigator();
 
 function AllServices({navigation}) {
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView  style={styles.container}
+        <SafeAreaView style={styles.gridContainer}>
+            <ScrollView  style={styles.gridContainer}
                          showsVerticalScrollIndicator={false}>
 
                 <FlatList
                     horizontal
                     scrollEventThrottle={1}
                     showsHorizontalScrollIndicator={false}
-                    style={stylesTop.container}
+                    style={stylesTop.gridContainer}
                     data={PopularServices} renderItem={({item, index}) => (
                     <TouchableOpacity key = {index} onPress={() => console.log("index clicked", index)} style={stylesTop.item}>
                         <View style={stylesTop.imageContainer}>
@@ -103,7 +110,7 @@ function AllServices({navigation}) {
                             />
                         </View>
                         <View style={stylesTop.textContainer}>
-                            <Text style={stylesTop.text}>
+                            <Text style={stylesTop.buttonText}>
                                 {item.name}
                             </Text>
                         </View>
@@ -112,7 +119,7 @@ function AllServices({navigation}) {
 
                 />
 
-                <View style={stylesBottom.container}>
+                <View style={stylesBottom.gridContainer}>
                     {VIGO2.map((image, index) =>
                         <TouchableOpacity onPress={() => navigation.navigate("Vigo")} key = {index} style={stylesBottom.item}>
                             <Image source={{uri: image.uri}}
@@ -120,13 +127,33 @@ function AllServices({navigation}) {
                                    style={stylesBottom.image}
                             />
                             <View style={stylesBottom.textContainer}>
-                                <Text style={stylesBottom.text}>
+                                <Text style={stylesBottom.buttonText}>
                                     {image.name}
                                 </Text>
                             </View>
                         </TouchableOpacity>
                     )}
                 </View>
+
+
+
+                <View style={stylesBottom.gridContainer}>
+                    {Skatt2.map((image, index) =>
+                        <TouchableOpacity onPress={() => navigation.navigate("Skatteetaten")} key = {index} style={stylesBottom.item}>
+                            <Image source={{uri: image.uri}}
+                                   resizeMethod={"resize"}
+                                   style={stylesBottom.image}
+                            />
+                            <View style={stylesBottom.textContainer}>
+                                <Text style={stylesBottom.buttonText}>
+                                    {image.name}
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
+                    )}
+                </View>
+
+
             </ScrollView>
 
         </SafeAreaView>
@@ -139,28 +166,30 @@ export default function Home() {
         >
             <Stack.Screen name={"Offentlige tjenester"} component={AllServices}/>
             <Stack.Screen name={"Vigo"} component={Vigo}/>
+            <Stack.Screen name={"Skatteetaten"} component={Skatteetaten}/>
+
         </Stack.Navigator>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {flex: 1},
+    gridContainer: {flex: 1},
 });
 
 const stylesTop = StyleSheet.create({
-    container: {paddingBottom: 10, paddingTop: 10, flex: 1, borderBottomWidth: 2, borderColor: "#C0C0C0",},
+    gridContainer: {paddingBottom: 10, paddingTop: 10, flex: 1, borderBottomWidth: 2, borderColor: "#C0C0C0",},
     item: {justifyContent: "center", marginRight: 30, marginLeft: 20, alignItems: "center"},
     imageContainer: {height: 50, width: 50},
     image: {width: "100%", height: "100%", borderRadius: 100},
     textContainer: {alignSelf: "center", marginTop: 10},
-    text: {fontSize: 13, fontWeight: "bold"},
+    buttonText: {fontSize: 13, fontWeight: "bold"},
 
 });
 
 const stylesBottom = StyleSheet.create({
-    container: {flex: 6, display: "flex", flexDirection: "row", flexWrap: "wrap"},
+    gridContainer: {flex: 6, display: "flex", flexDirection: "row", flexWrap: "wrap"},
     item: { margin: 20, marginBottom: 50, height: calculateHeightOfCircle(40), width: Dimensions.get("window").width / 2 - 40},
     image: {width: "100%", height: "100%", alignSelf: "center",},
     textContainer: {alignSelf: "center", marginTop: 10},
-    text: {textTransform: "uppercase", fontSize: 13, fontWeight: "bold"},
+    buttonText: {textTransform: "uppercase", fontSize: 13, fontWeight: "bold"},
 });
