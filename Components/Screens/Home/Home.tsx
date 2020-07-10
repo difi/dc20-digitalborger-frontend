@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {
-    Button,
     Dimensions, FlatList, Image,
-    ImageBackground,
     SafeAreaView, ScrollView,
     StyleSheet,
     Text,
@@ -15,66 +13,31 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {Vigo} from "./Service/Vigo/Vigo";
 
 
-
-
-const Images = [
-    { name: "NAV", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-    { name: "Vigo", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-    { name: "Vegvesnet", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-    { name: "Lånekassen", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-    { name: "Vegvesnet", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-    { name: "Lånekassen", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-    { name: "Vegvesnet", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-    { name: "Lånekassen", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-];
-
 const PopularServices = [
-    { name: "Søknadsfrister", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-    { name: "Hvordan sjekke skatt", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-    { name: "Bytte bolig", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
-    { name: "Lånekassen", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
+    { name: "Karakterer", uri: "https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg" },
+    { name: "Søk frikort", uri: "https://pbs.twimg.com/profile_images/685006400632827904/l8cgvWEZ_400x400.jpg" },
+    { name: "Forny resept", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
+    { name: "Oppkjøring", uri: "https://www.sisteskrik.no/sites/miljoloftet_moss/wp-content/uploads/2019/05/Vegvesen_logo_200x141.png" },
     { name: "Vegvesnet", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
     { name: "Lånekassen", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
     { name: "Vegvesnet", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
     { name: "Lånekassen", uri: "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg" },
 ];
 
-const VIGO2  = [
+const services = [
     {
-        name: "vigo",
-        info: "Vigo er en internettportal for søking til videregående opplæring i skole og bedrift, fagskoleutdanning og videregående opplæring for voksne og realkompetansevurdering. Vigo er eid av Vigo IKS som er et interkommunalt selskap, og er et samarbeid mellom alle fylkene i Norge i tillegg til Oslo kommune.",
-        function: [{
-            title: 'karakterer',
-            icon: {
-                type: "Fontisto",
-                name: "bar-chart"
-            },
-            content: {
-                description: "description"
-            }
-        },
-            {
-                title: 'Fravær',
-                icon: {
-                    type: "FontAwesome",
-                    name: "calendar"
-                },
-                content: {
-                    description: "test"
-                }
-            },
-            {
-                title: 'Søk skole',
-                icon: {
-                    type: "MaterialIcons",
-                    name: "school"
-                },
-                content: {
-                    description: "description"
-                }
-            }],
+        name: "Vigo",
+        uri: "https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg", 
+    },
+    {
+        name: "Statens vegvesen",
+        uri: "https://www.sisteskrik.no/sites/miljoloftet_moss/wp-content/uploads/2019/05/Vegvesen_logo_200x141.png"
+    },
+    {
+        name: "Skatteetaten",
+        uri: "https://pbs.twimg.com/profile_images/685006400632827904/l8cgvWEZ_400x400.jpg"
     }
-];
+]
 
 //TODO: remove, temporary for design
 function calculateHeightOfCircle(offset: number) {
@@ -113,15 +76,15 @@ function AllServices({navigation}) {
                 />
 
                 <View style={stylesBottom.container}>
-                    {VIGO2.map((image, index) =>
+                    {services.map((service, index) =>
                         <TouchableOpacity onPress={() => navigation.navigate("Vigo")} key = {index} style={stylesBottom.item}>
-                            <Image source={{uri: image.uri}}
+                            <Image source={{uri: service.uri}}
                                    resizeMethod={"resize"}
                                    style={stylesBottom.image}
                             />
                             <View style={stylesBottom.textContainer}>
                                 <Text style={stylesBottom.text}>
-                                    {image.name}
+                                    {service.name}
                                 </Text>
                             </View>
                         </TouchableOpacity>
