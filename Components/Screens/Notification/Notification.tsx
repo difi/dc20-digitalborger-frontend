@@ -1,12 +1,7 @@
 import * as React from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
-import TeoriProve from "../Vegvesenet/TeoriProve"
-import Frikort from "../Home/Service/Skatteetaten/Frikort";
-import SkatteMelding from "../Home/Service/Skatteetaten/SkatteMelding";
-import {Skatteetaten} from "../Home/Service/Skatteetaten/Skatteetaten";
-
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -20,7 +15,7 @@ const events = [
   {
     name: "Søk høyere utdanning",
     logo: "https://www.vigo.no/vigo/html/img/vigo-logo.png",
-    description: "Fristen for å søke vidergåående skole er 25.05.2020",
+    description: "Fristen for å søke videregående skole er 25.05.2020",
     date: deadline,
   },
   {
@@ -47,7 +42,7 @@ export default function Notification() {
       <Header
         backgroundColor="white"
         centerComponent={{
-          buttonText: "Varslinger",
+          text: "Varslinger",
           style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
         }}
       />
@@ -61,7 +56,6 @@ export default function Notification() {
             description={event.description}
           />
         ))}
-          <SkatteMelding/>
       </ScrollView>
     </View>
   );
