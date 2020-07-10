@@ -25,6 +25,8 @@ const redirectUri = AuthSession.makeRedirectUri({
     native: 'digitalborger://redirect',
     useProxy,
 });
+
+console.log(redirectUri)
 export default function Login({navigation}) {
     //const discovery = AuthSession.useAutoDiscovery('https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration');
 

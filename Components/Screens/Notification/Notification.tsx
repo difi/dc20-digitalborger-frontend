@@ -5,7 +5,7 @@ import { Header } from "react-native-elements";
 import TeoriProve from "../Vegvesenet/TeoriProve"
 import Oppkjoring from "../Vegvesenet/Oppkjoring";
 import VeienTilForerkortet from "../Vegvesenet/VeienTilForerkort"
-import School from "../Vigo/School";
+import School from "../Home/Service/Vigo/School";
 
 
 // data -> Skal byttes ut med data fra database
@@ -61,7 +61,6 @@ export default function Notification() {
             description={event.description}
           />
         ))}
-        <School/>
       </ScrollView>
     </View>
   );
