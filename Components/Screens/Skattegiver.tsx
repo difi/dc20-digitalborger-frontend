@@ -1,10 +1,11 @@
 import * as React from "react";
-import {View, ScrollView, Text, StyleSheet} from "react-native";
+import {View, ScrollView, Text, StyleSheet, Linking} from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
 const text = {
@@ -44,20 +45,18 @@ export default function Skattegiver() {
                 </View>
             </View>
 
-
-            <TouchableOpacity
-                containerStyle={styles.linkContainer}
-                onPress={() =>
+            <View>
+                <TouchableOpacity style = {styles.LinkContainer} onPress={() =>
                     WebBrowser.openBrowserAsync(
                         "https://skatt.skatteetaten.no/web/minskatteside/?innvalg=minearbeidsgivere#/minearbeidsgivere"
                     )
-                }
-            >
-                <View style={styles.linkContainer}>
-                    <Icon name="arrow-circle-right" size={20}></Icon>
-                    <Text style={styles.linkText}> Detaljer om hvem som har {"\n"} hentet skattekorte ditt </Text>
-                </View>
-            </TouchableOpacity>
+                }>
+                    <FontAwesome key ={0} name ={'arrow-circle-right'} size={20} />
+                    <Text style = {styles.linkText}>Detaljer om hvem som har {"\n"} hentet skattekorte ditt</Text>
+                </TouchableOpacity>
+            </View>
+
+
         </View>
 
     );
@@ -74,15 +73,6 @@ const styles = StyleSheet.create({
         borderBottomColor: "#E1E1E1",
         borderBottomWidth: 1,
         borderRadius: 30,
-
-    },
-
-    linkContainer:{
-        flex: 1,
-        flexDirection: "row",
-        alignItems: "center",
-        left: "4%",
-        top: 10,
 
     },
 
@@ -104,7 +94,14 @@ const styles = StyleSheet.create({
     },
 
     linkText:{
+        marginLeft: 3,
         fontSize: 16,
         fontWeight: "bold",
     },
+    LinkContainer: {
+        margin: '5%',
+        flexDirection: 'row',
+        alignItems: "center",
+},
+
 });

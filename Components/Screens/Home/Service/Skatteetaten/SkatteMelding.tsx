@@ -29,7 +29,7 @@ export default function SkatteMelding(){
           </View>
 
           <View>
-              <TouchableOpacity style = {styles.buttonArea} onPress={() => Linking.openURL('https://www.skatteetaten.no/person/skatt/skatteoppgjor/')}>
+              <TouchableOpacity style = {styles.LinkContainer} onPress={() => Linking.openURL('https://www.skatteetaten.no/person/skatt/skatteoppgjor/')}>
                   <FontAwesome key ={0} name ={'arrow-circle-right'} size={20} />
                   <Text style = {styles.buttonText}>Se hele skattemeldingen din</Text>
               </TouchableOpacity>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
       fontSize: 15,
       fontWeight: "bold"
     },
-    buttonArea: {
+    LinkContainer: {
         margin: '2%',
         flexDirection: 'row',
     },
