@@ -2,9 +2,9 @@ import * as React from "react";
 import { View, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
-import TeoriProve from "../Vegvesenet/TeoriProve"
-import Oppkjoring from "../Vegvesenet/Oppkjoring";
-import VeienTilForerkortet from "../Vegvesenet/VeienTilForerkort"
+import TeoriProve from "../Home/Service/Vegvesenet/TeoriProve"
+import Oppkjoring from "../Home/Service/Vegvesenet/Oppkjoring";
+import VeienTilForerkortet from "../Home/Service/Vegvesenet/VeienTilForerkort"
 import School from "../Home/Service/Vigo/School";
 
 

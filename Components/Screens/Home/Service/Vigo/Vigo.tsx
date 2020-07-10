@@ -25,7 +25,7 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import Accordion from "react-native-collapsible/Accordion";
 import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
 import Animated, {interpolate} from "react-native-reanimated";
-import VeienTilForerkort from "../../../Vegvesenet/VeienTilForerkort";
+import VeienTilForerkort from "../Vegvesenet/VeienTilForerkort";
 import {ListItem} from "../Collapsible/ListItem";
 import Header from "../Header";
 import Footer from "../Footer";

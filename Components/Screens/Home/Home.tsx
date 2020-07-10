@@ -15,6 +15,7 @@ import ScreenTabs from "../ScreenTabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
+import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
 
 const PopularServices = [
   {
@@ -64,7 +65,7 @@ const services = [
     uri: "https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg",
   },
   {
-    name: "Statens vegvesen",
+    name: "Vegvesenet",
     uri:
       "https://www.sisteskrik.no/sites/miljoloftet_moss/wp-content/uploads/2019/05/Vegvesen_logo_200x141.png",
   },
@@ -144,6 +145,7 @@ export default function Home() {
       <Stack.Screen name={"Offentlige tjenester"} component={AllServices} />
       <Stack.Screen name={"Vigo"} component={Vigo} />
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
+      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
     </Stack.Navigator>
   );
 }

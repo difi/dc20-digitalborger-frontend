@@ -67,7 +67,6 @@ export function Skatteetaten(){
             <View>
                 <ListItem key={0} iconName = {SKATT[0].icon.name} iconType={SKATT[0].icon.type} containerHeight={200} title={SKATT[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                     <View style={{padding: 10, flex: 1}}>
-                        <Text>Hei</Text>
                     </View>
                 </ListItem>
 
