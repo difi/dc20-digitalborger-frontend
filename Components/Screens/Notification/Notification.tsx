@@ -7,6 +7,7 @@ import Oppkjoring from "../Home/Service/Vegvesenet/Oppkjoring";
 import VeienTilForerkortet from "../Home/Service/Vegvesenet/VeienTilForerkort"
 import School from "../Home/Service/Vigo/School";
 
+import Skattemelding from "../Skattegiver";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
