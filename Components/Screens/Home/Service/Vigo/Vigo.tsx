@@ -31,6 +31,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import Absence from "./Absence";
 import Grades from "./Grades";
+import School from "./School";
 
 
 const VIGO  = [
@@ -89,11 +90,12 @@ export function Vigo() {
                             </View>
                         </View>
                     </ListItem>
-                    <ListItem key={2} iconName = {VIGO[2].icon.name} iconType={VIGO[2].icon.type} containerHeight={50} title={VIGO[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
+                    <ListItem key={2} iconName = {VIGO[2].icon.name} iconType={VIGO[2].icon.type} containerHeight={420} title={VIGO[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <Text>
-                                test
-                            </Text>
+                            <View>
+                                <Text style={{fontWeight: 'bold'}}>   Skolenavn                                      Distanse             Nettside</Text>
+                                <School/>
+                            </View>
                         </View>
                     </ListItem>
                 </View>

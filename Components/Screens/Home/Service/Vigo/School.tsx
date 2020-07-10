@@ -77,7 +77,6 @@ export default function School() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "azure",
     height: 80,
     width: "100%",
     flexDirection: "row",
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
   },
   link: {
     flexDirection: "row",
-    marginLeft: 80,
+    marginLeft: 60,
   },
   icon: {
     marginLeft: 10,
