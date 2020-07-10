@@ -90,7 +90,7 @@ export function Skatteetaten(){
                 </ListItem>
 
             </View>
-            <Footer description={"Her kommer innhold"}/>
+            <Footer description={"Skatteetaten er en norsk statlig etat underlagt finansdepartementet. Skatteetaten har ansvar for folkeregistrering og fastsettelse og innkreving av skatt og merverdiavgift.\n"}/>
         </ScrollView>
         </SafeAreaView>
     )
