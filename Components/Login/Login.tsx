@@ -109,6 +109,7 @@ export default function Login({navigation}) {
             const code = result.params.code;
             const state = result.params.state;
             getToken(code).catch(err => console.log(err))
+                .then(() => navigation.navigate("ScreenTabs"))
 
         } else {
             alert("error!");
