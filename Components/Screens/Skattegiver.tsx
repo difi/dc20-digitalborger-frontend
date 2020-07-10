@@ -16,7 +16,7 @@ const text = {
 
 };
 
-export default function Skattemelding() {
+export default function Skattegiver() {
     return (
 
         <View>
@@ -59,6 +59,7 @@ export default function Skattemelding() {
                 </View>
             </TouchableOpacity>
         </View>
+
     );
 }
 

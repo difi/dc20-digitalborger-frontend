@@ -10,7 +10,7 @@ export default function Skattekort() {
     return (
         <View style={styles.container}>
             <Text style ={styles.text}>
-                Et frikort er et skattekort som viser at arbeidsgiver ikke skal trekke skatt dersom du tjener 55 000 kroner eller mindre i løpet av året.
+                Tjener du mer en 55 000 kroner må du ha et skattekort.
             </Text>
 
 
@@ -36,8 +36,6 @@ export default function Skattekort() {
 const styles = StyleSheet.create({
 
     container: {
-        borderWidth: 5,
-        borderColor: "#e6e6e6",
         height: 180,
         width: "100%",
     },

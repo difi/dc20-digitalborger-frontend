@@ -11,6 +11,8 @@ import {useState} from "react";
 import Footer from "../Footer";
 import Frikort from "./Frikort";
 import SkatteMelding from "./SkatteMelding";
+import Skattekort from "../../../Skattekort";
+import Skattegiver from "../../../Skattegiver";
 
 
 const SKATT  = [
@@ -67,11 +69,11 @@ export function Skatteetaten(){
             <View>
                 <ListItem key={0} iconName = {SKATT[0].icon.name} iconType={SKATT[0].icon.type} containerHeight={200} title={SKATT[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                     <View style={{padding: 10, flex: 1}}>
-                        <Text>Hei</Text>
+                        <Skattekort/>
                     </View>
                 </ListItem>
 
-                <ListItem key={1} iconName = {SKATT[1].icon.name} iconType={SKATT[1].icon.type} containerHeight={300} title={SKATT[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
+                <ListItem key={1} iconName = {SKATT[1].icon.name} iconType={SKATT[1].icon.type} containerHeight={200} title={SKATT[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                     <View style={{padding: 10, flex: 1}}>
                         <Frikort/>
                     </View>
@@ -85,7 +87,7 @@ export function Skatteetaten(){
 
                 <ListItem key={3} iconName = {SKATT[3].icon.name} iconType={SKATT[3].icon.type} containerHeight={300} title={SKATT[3].title} parentCallback={(item) => {setSelectedIndex(3); console.log("toggled", item)}} pressed={(selectedIndex === 3) ? true : false}>
                     <View style={{padding: 10, flex: 1}}>
-                        <Text>Her kommer ting</Text>
+                        <Skattegiver/>
                     </View>
                 </ListItem>
 

@@ -2,7 +2,7 @@ import * as React from "react";
 import { View, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
-import Skattemelding from "../Skattemelding";
+import Skattemelding from "../Skattegiver";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();

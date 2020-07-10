@@ -28,16 +28,15 @@ export default function Frikort(){
 const styles = StyleSheet.create({
     gridContainer: {
         flex: 1,
+        height: 180,
         width: "100%",
-        height: "100%",
-        backgroundColor: "lightgrey",
-        justifyContent : 'space-between'
+
 
     },
 
     infoText: {
         margin: '5%',
-        fontSize: 13,
+        fontSize: 15,
     },
 
     buttonArea: {
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
-        fontSize: 13,
+        fontSize: 16,
         fontWeight: "bold",
         marginLeft: 10
     }
