@@ -61,7 +61,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
 
     const firstYear = () => (
 
-        <View style = {[styles.container, {backgroundColor: "transparent"}]}>
+        <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
             <View style={styles.TitleArea}>
                 <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
                 <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
@@ -79,7 +79,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
     );
 
     const secondYear = () => (
-        <View style = {[styles.container, {backgroundColor: "transparent"}]}>
+        <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
             <View style={styles.TitleArea}>
                 <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
                 <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
@@ -96,7 +96,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
     );
 
     const thirdYear = () => (
-        <View style = {[styles.container, {backgroundColor: "transparent"}]}>
+        <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
             <View style={styles.TitleArea}>
                 <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
                 <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
@@ -141,7 +141,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
         );
 
         return(
-            <View style={styles.container}>
+            <View style={styles.gridContainer}>
 
                 <TabView navigationState={{index, routes}} renderScene={renderScene} onIndexChange={setIndex} initialLayout={initialLayout} renderTabBar={renderTabBar}/>
 
@@ -150,7 +150,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
 
     }
 const styles = StyleSheet.create({
-    container: {
+    gridContainer: {
         flex: 1,
         backgroundColor: "transparent",
         width: "100%",

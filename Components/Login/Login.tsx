@@ -1,24 +1,193 @@
 import * as React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, Button, StyleSheet, Platform, TouchableOpacity, Dimensions} from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import * as AuthSession from "expo-auth-session";
+import {makeRedirectUri, ResponseType, useAuthRequest} from "expo-auth-session";
+import * as Linking from 'expo-linking'
+import Axios from "axios";
 
 
+WebBrowser.maybeCompleteAuthSession();
+
+// Endpoint
+/*
+const discovery = {
+    authorizationEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/authorize',
+    tokenEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/token',
+    revocationEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/revoke","jwks_uri":"https://oidc-ver1.difi.no/idporten-oidc-provider/jwk',
+};
+ */
+
+const useProxy = true;
+
+const redirectUri = AuthSession.makeRedirectUri({
+    native: 'digitalborger://redirect',
+    useProxy,
+});
+
+console.log(redirectUri)
 export default function Login({navigation}) {
-    async function OpenWebPage() {
-        let result = await WebBrowser.openBrowserAsync("https://www.digdir.no/");
+    //const discovery = AuthSession.useAutoDiscovery('https://oidc-ver1.difi.no/idporten-oidc-provider/.well-known/openid-configuration');
+
+    const discovery = {
+        authorizationEndpoint: 'https://oidc-ver1.difi.no/idporten-oidc-provider/authorize',
+    };
+
+     const getToken = async (code) => {
+      /*
+        await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
+        }).then(item => console.log("item", item))
+            .catch(err => console.log(err));
+
+       */
+         console.log("Requesting token from code", code);
+         console.log("redirect_uri", redirectUri);
+         console.log("Code", code);
+
+         let headers = new Headers();
+         headers.append( 'Content-Type', 'application/x-www-form-urlencoded');
+         headers.append("Authorization", "Basic " + Base64.btoa("digdircamp_oidc:c72e9529-dde3-4e3b-be38-cd0a164250a0"));
+
+         console.log("BASE64", Base64.btoa("digdircamp_oidc:c72e9529-dde3-4e3b-be38-cd0a164250a0"));
+
+
+         await (async () => {
+             const rawResponse = await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
+                 method: 'POST',
+                 headers: headers,
+                 body: 'grant_type=authorization_code&code=' + code,
+             });
+             const content = await rawResponse.json();
+
+             console.log("full content", content);
+             console.log("Token", content.access_token);
+         })();
+
+        /*
+         await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
+             method: "POST",
+             headers: headers,
+                 //body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
+              body: 'grant_type=authorization_code&code=' + code,
+             //body: 'grant_type=authorization_code&redirect_uri=digitalborger://redirect&code=' + code,
+         },
+             )
+             .then(response =>
+                 //if (!response.ok) throw new Error(response.status);
+                 console.log("response", JSON.stringify(response.body))
+                 //return response.json();
+             )
+             .catch(err => console.log(err));
+         */
+
     }
 
+    // Create and load an auth request
+    const [request, result, promptAsync] = useAuthRequest(
+        {
+            responseType: ResponseType.Code,
+            clientId: 'digdircamp_oidc',
+            //scopes: ["openid profile"],
+            scopes: ["openid", "profile"],
+            //responseType: "code",
+            usePKCE: false,
+            state: "abcd", //randome
+           // codeChallenge: "1234", //randomes
+            redirectUri,
+        },
+        discovery
+    );
+
+
+     React.useEffect(() => {
+        if (result?.type === 'success') {
+            console.log("test", result);
+            const code = result.params.code;
+            const state = result.params.state;
+            getToken(code).catch(err => console.log(err))
+                .then(() => navigation.navigate("ScreenTabs"))
+
+        } else {
+            alert("error!");
+        }
+    }, [result]);
+
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Login Screen</Text>
-            <Button title={"Home"} onPress={() => navigation.navigate("ScreenTabs")}/>
-            <Button title={"Open webbrowser"} onPress={OpenWebPage}/>
-        </View>
+       <View style={{flex: 1, paddingRight: 20, paddingLeft: 20}}>
+           <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                <Text style={{fontWeight: "bold", fontSize: 20, textTransform: "uppercase"}}>
+                    Digital borger
+                </Text>
+           </View>
+           <View style={{ flex: 1, alignItems: 'center' }}>
+               <TouchableOpacity disabled={!request} onPress={() => promptAsync({ useProxy })} style={{backgroundColor: "#6064E5", height: 50, width: "70%", borderRadius: 10, justifyContent: "center", alignItems: "center"}}>
+                   <Text style={{fontWeight: "bold", fontSize: 20, textTransform: "uppercase", color: "white"}}>
+                       login
+                   </Text>
+               </TouchableOpacity>
+
+               {result && <Text>{JSON.stringify(result, null, 2)}</Text>}
+           </View>
+       </View>
     );
 }
 
 
-const styles = StyleSheet.create({
 
-});
+
+
+
+
+
+
+
+
+
+
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+const Base64 = {
+    btoa: (input:string = '')  => {
+        let str = input;
+        let output = '';
+
+        for (let block = 0, charCode, i = 0, map = chars;
+             str.charAt(i | 0) || (map = '=', i % 1);
+             output += map.charAt(63 & block >> 8 - i % 1 * 8)) {
+
+            charCode = str.charCodeAt(i += 3/4);
+
+            if (charCode > 0xFF) {
+                throw new Error("'btoa' failed: The string to be encoded contains characters outside of the Latin1 range.");
+            }
+
+            block = block << 8 | charCode;
+        }
+
+        return output;
+    },
+
+    atob: (input:string = '') => {
+        let str = input.replace(/=+$/, '');
+        let output = '';
+
+        if (str.length % 4 == 1) {
+            throw new Error("'atob' failed: The string to be decoded is not correctly encoded.");
+        }
+        for (let bc = 0, bs = 0, buffer, i = 0;
+             buffer = str.charAt(i++);
+
+             ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer,
+             bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0
+        ) {
+            buffer = chars.indexOf(buffer);
+        }
+
+        return output;
+    }
+};
