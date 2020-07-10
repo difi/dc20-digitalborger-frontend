@@ -134,7 +134,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
         const renderTabBar = props => (
             <TabBar
                 {...props}
-                indicatorStyle={{ backgroundColor: 'white' }}
+                indicatorStyle={{ backgroundColor: '#97c556' }}
                 style={{ backgroundColor: '#97c556' }}
                 labelStyle={{color: 'black'}}
             />

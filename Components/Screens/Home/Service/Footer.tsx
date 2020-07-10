@@ -10,7 +10,7 @@ interface FooterProps {
 
 export default function Footer({description}: FooterProps) {
     return (
-        <View style={{padding: SPACE, backgroundColor: "#982C79"}}>
+        <View style={{padding: SPACE}}>
             <Text style={{textTransform: "uppercase", fontWeight: "bold", color: "white"}}>
                 Kort fortalt
             </Text>
