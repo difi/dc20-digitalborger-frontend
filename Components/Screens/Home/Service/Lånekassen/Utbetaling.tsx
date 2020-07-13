@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Linking, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+// @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 
@@ -26,8 +27,6 @@ const Betalinger = [
 
     }];
 
-
-
 export default function Utbetaling() {
 
     return(
@@ -35,18 +34,18 @@ export default function Utbetaling() {
 
             <View style = {styles.titleHeader}>
 
-                <View style={styles.titleBox}><Text style={styles.titleText}>Dato</Text></View>
-                <View style={styles.titleBox}><Text style={styles.titleText}>Hendelse</Text></View>
-                <View style={styles.titleBox}><Text style={styles.titleText}>Beløp</Text></View>
+                <Text style={styles.titleText}>Dato</Text>
+                <Text style={styles.titleText}>Hendelse</Text>
+                <Text style={styles.titleText}>Beløp</Text>
 
 
             </View>
 
                 {Betalinger.map((item, index) => (
-                    <View style={styles.listItems}>
-                        <Text style={styles.listItemText}>{item.date}</Text>
-                        <Text style={styles.listItemText}>{item.occurrence}</Text>
-                        <Text style={styles.listItemText}>{item.sum}</Text>
+                    <View  key = {index} style={styles.listItems}>
+                        <Text style={styles.ItemText}>{item.date}</Text>
+                        <Text style={styles.ItemText}>{item.occurrence}</Text>
+                        <Text style={styles.ItemText}>{item.sum + " kr"}</Text>
                     </View>
 
                 ))}
@@ -74,13 +73,8 @@ const styles = StyleSheet.create({
     titleHeader: {
         flexDirection: "row",
         justifyContent: "space-around",
-        alignItems: "center"
-    },
-    titleBox: {
-        backgroundColor: '#4d264f',
         alignItems: "center",
-        justifyContent: "center",
-        width: 110,
+        backgroundColor: '#4d264f',
         height: 40,
     },
     titleText: {
@@ -91,19 +85,18 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         flexShrink: 1,
         borderBottomWidth: 1,
-        borderBottomColor: "black",
         justifyContent: "space-around",
         alignItems: "center"
     },
-    listItemText: {
+    ItemText: {
         fontSize: 15,
-        margin: 8,
+        padding: '2%'
 
     },
     LinkContainer: {
         position: "absolute",
         right: 0,
-        marginTop: "2%"
+        marginTop: "5%"
     },
 
 })
