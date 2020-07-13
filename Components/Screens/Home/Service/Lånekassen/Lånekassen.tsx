@@ -1,22 +1,22 @@
 import * as React from 'react';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesomeTest from 'react-native-vector-icons/FontAwesome5';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import {SafeAreaView, ScrollView, Text, View} from "react-native";
-import VeienTilForerkortet from "../Vegvesenet/VeienTilForerkort";
 import Footer from "../Footer";
-import TeoriProve from "../Vegvesenet/TeoriProve";
 import {useState} from "react";
-import Oppkjoring from "../Vegvesenet/Oppkjoring";
-import {ListItem} from "react-native-elements";
+import {ListItem} from "../Collapsible/ListItem"
+
+import Header from "../Header";
+import Utbetaling from "./Utbetaling";
 
 
 const LAANEKASSE  = [
     {
         title: 'Søknad om lån og stipend',
         icon: {
-            type: "FontAwesome",
-            name: "motorcycle"
+            type: "FontAwesomeTest",
+            name: 'hand-holding-usd',
         },
         content: {
             description: "test1"
@@ -25,8 +25,8 @@ const LAANEKASSE  = [
     {
         title: 'Din gjeld',
         icon: {
-            type: "Ionicons",
-            name: "school"
+            type: "FontAwesomeTest",
+            name: "hand-holding-usd"
         },
         content: {
             description: "test2"
@@ -35,8 +35,8 @@ const LAANEKASSE  = [
     {
         title: 'Dine utbetalinger',
         icon: {
-            type: "FontAwesome",
-            name: "car",
+            type: "FontAwesomeTest",
+            name: "coin",
         },
         content: {
             description: "test3"
@@ -51,24 +51,26 @@ export function Lanekassen(){
 
     return(
         <SafeAreaView style={{flex: 1}}>
-            <Header logo={"Components/Screens/Home/Service/Vegvesenet/Vegvesenet.tsx"} nameOfService={"Statens vegvesen"}/>
-            <ScrollView style={{flex: 1, backgroundColor: "red"}} showsVerticalScrollIndicator={false}>
+            <Header logo={"Components/Screens/Home/Service/Lånekassen/Lånekassen.tsx"} nameOfService={"Lånekassen"}/>
+            <ScrollView style={{flex: 1, backgroundColor: '#4d264f'}} showsVerticalScrollIndicator={false}>
                 <View>
-                    <ListItem key={0} iconName = {LAANEKASSE[0].icon.name} iconType={LAANEKASSE[0].icon.type} containerHeight={600} title={LAANEKASSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
+                    <ListItem key={0} iconName={LAANEKASSE[0].icon.name} iconType={LAANEKASSE[0].icon.type} containerHeight={200} title={LAANEKASSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <VeienTilForerkortet/>
+                            <FontAwesomeTest name='hand-holding-usd' size={26}></FontAwesomeTest>
+                            <FontAwesomeTest name='coins' size={26}></FontAwesomeTest>
+                            <FontAwesomeTest name='file-signature' size={26}></FontAwesomeTest>
                         </View>
                     </ListItem>
 
                     <ListItem key={1} iconName = {LAANEKASSE[1].icon.name} iconType={LAANEKASSE[1].icon.type} containerHeight={175} title={LAANEKASSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <TeoriProve/>
+                            <Text>A</Text>
                         </View>
                     </ListItem>
 
-                    <ListItem key={2} iconName = {LAANEKASSE[2].icon.name} iconType={LAANEKASSE[2].icon.type} containerHeight={200} title={LAANEKASSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
+                    <ListItem key={2} iconName = {LAANEKASSE[2].icon.name} iconType={LAANEKASSE[2].icon.type} containerHeight={300} title={LAANEKASSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <Oppkjoring/>
+                            <Utbetaling/>
                         </View>
                     </ListItem>
                 </View>

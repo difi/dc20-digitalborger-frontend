@@ -16,6 +16,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
+import {Lanekassen} from "./Service/Lånekassen/Lånekassen";
 
 const PopularServices = [
   {
@@ -150,6 +151,7 @@ export default function Home() {
       <Stack.Screen name={"Vigo"} component={Vigo} />
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
       <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
+      <Stack.Screen name={"Lånekassen"} component={Lanekassen}/>
     </Stack.Navigator>
   );
 }
