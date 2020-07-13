@@ -8,6 +8,9 @@ import VeienTilForerkortet from "../Home/Service/Vegvesenet/VeienTilForerkort"
 import School from "../Home/Service/Vigo/School";
 
 import Skattemelding from "../Skattegiver";
+import Utbetaling from "../Home/Service/Lånekassen/Utbetaling";
+import SkatteMelding from "../Home/Service/Skatteetaten/SkatteMelding";
+import Frikort from "../Home/Service/Skatteetaten/Frikort";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -63,6 +66,7 @@ export default function Notification() {
           />
         ))}
       </ScrollView>
+        <Utbetaling/>
     </View>
   );
 }
