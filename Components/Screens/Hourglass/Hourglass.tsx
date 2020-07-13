@@ -3,6 +3,9 @@ import { Text, View, StyleSheet } from "react-native";
 import { Image, Header } from "react-native-elements";
 import CountDown from "react-native-countdown-component";
 import { ScrollView } from "react-native-gesture-handler";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -36,6 +39,22 @@ const events = [
 // Slutt data
 
 export default function Hourglass() {
+  const [data, setData] = useState(Array);
+  
+    useEffect(() => {
+    (async () => {
+        let result = await axios(
+          "http://feat01-drupal8.dmz.local/dib/jsonapi/node/frist?include=field_tjeneste&sort=field_dato");
+        setData(result.data.data);
+        //console.log("Se her4:", getTimeLeft(data[0].attributes.field_dato))
+        let deadline = new Date(data[0].attributes.field_dato)
+        let title = data[0].attributes.title
+        let uri = result.data
+        console.log(uri)
+      })();
+    }, []);
+
+
   var date = new Date();
 
   function getTimeLeft(deadline: Date) {

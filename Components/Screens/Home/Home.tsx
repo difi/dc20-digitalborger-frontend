@@ -145,7 +145,7 @@ export default function Home() {
       <Stack.Screen name={"Offentlige tjenester"} component={AllServices} />
       <Stack.Screen name={"Vigo"} component={Vigo} />
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
-      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
+      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} />
     </Stack.Navigator>
   );
 }

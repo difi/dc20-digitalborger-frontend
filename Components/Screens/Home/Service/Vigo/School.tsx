@@ -25,7 +25,7 @@ export default function School() {
         setErrorMsg("Permission to access location was denied");
       }
       let location= await Location.getCurrentPositionAsync({});
-      setLocation(location); //trenger egentlig ikke lagre location
+      setLocation(location); // Trenger egentlig ikke lagre location
 
       let result = await axios(
         "http://feat01-drupal8.dmz.local/dib/school/" +
