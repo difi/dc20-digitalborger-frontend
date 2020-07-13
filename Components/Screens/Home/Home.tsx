@@ -74,6 +74,10 @@ const services = [
     uri:
       "https://pbs.twimg.com/profile_images/685006400632827904/l8cgvWEZ_400x400.jpg",
   },
+  {
+    name: "Lånekassen",
+    uri:"https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+  }
 ];
 
 //TODO: remove, temporary for design
