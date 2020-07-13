@@ -1,14 +1,15 @@
 import * as React from 'react';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+
 
 import {SafeAreaView, ScrollView, Text, View} from "react-native";
 import Footer from "../Footer";
 import {useState} from "react";
 import {ListItem} from "../Collapsible/ListItem"
 
-import Header from "../Header";
+
 import Utbetaling from "./Utbetaling";
+import Header from "./HeaderLan";
 
 
 const LAANEKASSE  = [
