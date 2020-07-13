@@ -1,5 +1,5 @@
 import * as React from 'react';
-import FontAwesomeTest from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import {SafeAreaView, ScrollView, Text, View} from "react-native";
@@ -15,8 +15,8 @@ const LAANEKASSE  = [
     {
         title: 'Søknad om lån og stipend',
         icon: {
-            type: "FontAwesomeTest",
-            name: 'hand-holding-usd',
+            type: "FontAwesome5",
+            name: "file-signature",
         },
         content: {
             description: "test1"
@@ -25,8 +25,8 @@ const LAANEKASSE  = [
     {
         title: 'Din gjeld',
         icon: {
-            type: "FontAwesomeTest",
-            name: "hand-holding-usd"
+            type: "FontAwesome5",
+            name: "coins"
         },
         content: {
             description: "test2"
@@ -35,8 +35,8 @@ const LAANEKASSE  = [
     {
         title: 'Dine utbetalinger',
         icon: {
-            type: "FontAwesomeTest",
-            name: "coin",
+            type: "FontAwesome5",
+            name: "hand-holding-usd",
         },
         content: {
             description: "test3"
@@ -52,13 +52,13 @@ export function Lanekassen(){
     return(
         <SafeAreaView style={{flex: 1}}>
             <Header logo={"Components/Screens/Home/Service/Lånekassen/Lånekassen.tsx"} nameOfService={"Lånekassen"}/>
-            <ScrollView style={{flex: 1, backgroundColor: '#4d264f'}} showsVerticalScrollIndicator={false}>
+            <ScrollView style={{flex: 1, backgroundColor: '#97469d'}} showsVerticalScrollIndicator={false}>
                 <View>
                     <ListItem key={0} iconName={LAANEKASSE[0].icon.name} iconType={LAANEKASSE[0].icon.type} containerHeight={200} title={LAANEKASSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <FontAwesomeTest name='hand-holding-usd' size={26}></FontAwesomeTest>
-                            <FontAwesomeTest name='coins' size={26}></FontAwesomeTest>
-                            <FontAwesomeTest name='file-signature' size={26}></FontAwesomeTest>
+                            <FontAwesome5 name='hand-holding-usd' size={26}></FontAwesome5>
+                            <FontAwesome5 name='coins' size={26}></FontAwesome5>
+                            <FontAwesome5 name='file-signature' size={26}></FontAwesome5>
                         </View>
                     </ListItem>
 

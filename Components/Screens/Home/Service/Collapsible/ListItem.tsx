@@ -91,7 +91,7 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
                 );
             case "FontAwesome5":
                 return(
-                    <FontAwesome5 name={name} color={color} size={size}/>
+                    <FontAwesome5 name={name} color={'#d4add2'} size={size}/>
                 );
             default:
                 return (
