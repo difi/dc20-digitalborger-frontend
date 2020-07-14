@@ -88,7 +88,7 @@ export default function Login({navigation}) {
             usePKCE: false,
             state: "abcd", //randome
            // codeChallenge: "1234", //randomes
-            redirectUri: "https://auth.expo.io/@jorho/dc20-digitalborger-frontend",
+            redirectUri,
         },
         discovery
     );
