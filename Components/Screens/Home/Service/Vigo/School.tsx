@@ -9,6 +9,7 @@ import {
 import * as Location from "expo-location";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import axios from "axios";
+import {getSchools} from "../../../../ServerCommunications/Services/VigoService";
 
 export default function School() {
   const [schools, setSchools] = useState(Array);
@@ -27,6 +28,7 @@ export default function School() {
       let location= await Location.getCurrentPositionAsync({});
       setLocation(location); //trenger egentlig ikke lagre location
 
+/*
       let result = await axios(
         "http://feat01-drupal8.dmz.local/dib/school/" +
           location.coords.longitude +
@@ -34,7 +36,10 @@ export default function School() {
           location.coords.latitude +
           "/5"
       );
-      setSchools(result.data);
+ */
+
+      let result = await getSchools(location.coords.longitude, location.coords.longitude, 5);
+      setSchools(result);
     })();
   }, []);
 
