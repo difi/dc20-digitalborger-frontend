@@ -35,17 +35,6 @@ export default function Login({navigation}) {
     };
 
      const getToken = async (code) => {
-      /*
-        await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
-        }).then(item => console.log("item", item))
-            .catch(err => console.log(err));
-
-       */
          console.log("Requesting token from code", code);
          console.log("redirect_uri", redirectUri);
          console.log("Code", code);
@@ -99,7 +88,7 @@ export default function Login({navigation}) {
             usePKCE: false,
             state: "abcd", //randome
            // codeChallenge: "1234", //randomes
-            redirectUri,
+            redirectUri: "https://auth.expo.io/@jorho/dc20-digitalborger-frontend",
         },
         discovery
     );
