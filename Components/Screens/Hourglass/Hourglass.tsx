@@ -46,7 +46,7 @@ export default function Hourglass() {
       let result = await axios.get(
         "http://feat01-drupal8.dmz.local/dib/jsonapi/node/frist?include=field_tjeneste&sort=field_dato"
       );
-      setData(result.data);
+      setData(result.data.data);
       //setUri(result.data.included);
       console.log("hallo", result.data.included[0].attributes.field_logo.uri); //uri
       //console.log(result.data.data[0].attributes.field_dato);
@@ -108,7 +108,7 @@ export default function Hourglass() {
       />
       <View>
         <ScrollView>
-          {data.data.map((event, index) => (
+          {data.map((event, index) => (
             <View style={styles.title} key={index}>
               <Text style={{ fontWeight: "bold", fontSize: 18 }}>
                 {event.attributes.title}
