@@ -44,8 +44,6 @@ export default function Login({navigation}) {
          headers.append( 'Content-Type', 'application/x-www-form-urlencoded');
          headers.append("Authorization", "Basic " + Base64.btoa("digdircamp_oidc:c72e9529-dde3-4e3b-be38-cd0a164250a0"));
 
-         console.log("BASE64", Base64.btoa("digdircamp_oidc:c72e9529-dde3-4e3b-be38-cd0a164250a0"));
-
 
          await (async () => {
              const rawResponse = await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
@@ -57,6 +55,7 @@ export default function Login({navigation}) {
 
              console.log("full content", content);
              console.log("Token", content.access_token);
+             //Stores access token in localstorage
              await storeData("access_token", content.access_token);
 
              //Transforms the jwt token to json
@@ -87,11 +86,10 @@ export default function Login({navigation}) {
 
      React.useEffect(() => {
         if (result?.type === 'success') {
-            console.log("test", result);
             const code = result.params.code;
-            const state = result.params.state;
-            getToken(code).catch(err => console.log(err))
+            getToken(code)
                 .then(() => navigation.navigate("ScreenTabs"))
+                .catch(err => console.log(err))
 
         } else {
             alert("error!");
