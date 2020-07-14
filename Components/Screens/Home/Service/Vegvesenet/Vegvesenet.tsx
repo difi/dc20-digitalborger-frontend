@@ -12,8 +12,7 @@ import Footer from "../Footer";
 import VeienTilForerkortet from './VeienTilForerkort';
 import TeoriProve from './TeoriProve';
 import Oppkjoring from './Oppkjoring';
-//import Frikort from "./Frikort";
-//import SkatteMelding from "./SkatteMelding";
+
 
 
 const SKATT  = [

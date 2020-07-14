@@ -18,6 +18,7 @@ import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
 import {useEffect} from "react";
 
+import {Lanekassen} from "./Service/Lånekassen/Lånekassen";
 
 const PopularServices = [
   {
@@ -76,6 +77,10 @@ const services = [
     uri:
       "https://pbs.twimg.com/profile_images/685006400632827904/l8cgvWEZ_400x400.jpg",
   },
+  {
+    name: "Lånekassen",
+    uri:"https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+  }
 ];
 
 //TODO: remove, temporary for design
@@ -142,21 +147,13 @@ function AllServices({ navigation }) {
 }
 
 export default function Home() {
-
-  const storeUserIdentifier = async () => {
-
-  }
-
-  useEffect(() => {
-
-  });
-
   return (
     <Stack.Navigator>
       <Stack.Screen name={"Offentlige tjenester"} component={AllServices} />
       <Stack.Screen name={"Vigo"} component={Vigo} />
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
       <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
+      <Stack.Screen name={"Lånekassen"} component={Lanekassen}/>
     </Stack.Navigator>
   );
 }
