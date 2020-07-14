@@ -10,6 +10,7 @@ import {ListItem} from "../Collapsible/ListItem"
 
 import Utbetaling from "./Utbetaling";
 import Header from "./HeaderLan";
+import Support from "./Support";
 
 
 const LAANEKASSE  = [
@@ -24,7 +25,7 @@ const LAANEKASSE  = [
         }
     },
     {
-        title: 'Din gjeld',
+        title: 'Støttebeløp til elever',
         icon: {
             type: "FontAwesome5",
             name: "coins"
@@ -43,6 +44,7 @@ const LAANEKASSE  = [
             description: "test3"
         }
     },
+
 
 ];
 
@@ -63,9 +65,9 @@ export function Lanekassen(){
                         </View>
                     </ListItem>
 
-                    <ListItem key={1} iconName = {LAANEKASSE[1].icon.name} iconType={LAANEKASSE[1].icon.type} containerHeight={175} title={LAANEKASSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
+                    <ListItem key={1} iconName = {LAANEKASSE[1].icon.name} iconType={LAANEKASSE[1].icon.type} containerHeight={300} title={LAANEKASSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <Text>A</Text>
+                            <Support/>
                         </View>
                     </ListItem>
 
