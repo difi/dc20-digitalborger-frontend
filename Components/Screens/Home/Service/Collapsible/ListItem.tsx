@@ -16,7 +16,11 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
 // @ts-ignore
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+// @ts-ignore
 import Entypo from 'react-native-vector-icons/Entypo';
+
+
 
 
 const SPACE = 20;
@@ -84,6 +88,10 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
             case "MaterialIcons":
                 return(
                     <MaterialIcons name={name} color={color} size={size} />
+                );
+            case "FontAwesome5":
+                return(
+                    <FontAwesome5 name={name} color={'#d4add2'} size={size}/>
                 );
             default:
                 return (
