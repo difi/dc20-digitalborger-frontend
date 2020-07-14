@@ -6,7 +6,6 @@ import { ScrollView } from "react-native-gesture-handler";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
 var deadline2 = new Date();
@@ -40,20 +39,25 @@ const events = [
 
 export default function Hourglass() {
   const [data, setData] = useState(Array);
-  
-    useEffect(() => {
-    (async () => {
-        let result = await axios(
-          "http://feat01-drupal8.dmz.local/dib/jsonapi/node/frist?include=field_tjeneste&sort=field_dato");
-        setData(result.data.data);
-        //console.log("Se her4:", getTimeLeft(data[0].attributes.field_dato))
-        let deadline = new Date(data[0].attributes.field_dato)
-        let title = data[0].attributes.title
-        let uri = result.data
-        console.log(uri)
-      })();
-    }, []);
+  const [uri, setUri] = useState(Array);
 
+  useEffect(() => {
+    (async () => {
+      let result = await axios.get(
+        "http://feat01-drupal8.dmz.local/dib/jsonapi/node/frist?include=field_tjeneste&sort=field_dato"
+      );
+      setData(result.data);
+      //setUri(result.data.included);
+      console.log("hallo", result.data.included[0].attributes.field_logo.uri); //uri
+      //console.log(result.data.data[0].attributes.field_dato);
+      //console.log(result.data.data[0].attributes.title) //tittel og dato
+    })();
+  }, []);
+
+  /* function getApi()  {
+      fetch("http://feat01-drupal8.dmz.local/dib/jsonapi/node/frist?include=field_tjeneste&sort=field_dato")
+      .then((result) => console.log(result))
+    }*/
 
   var date = new Date();
 
@@ -74,6 +78,20 @@ export default function Hourglass() {
     }
     return ["D", "H"];
   }
+  /*return(
+    <View>
+      {data.map((event, index) => (
+        <View>
+          <Text>{event.attributes.field_dato}</Text>
+          <Text>{event.attributes.title}</Text>
+          {uri.map((u, ind) => (
+            <Text>{u.attributes.field_logo.uri}</Text>
+          ))}
+        </View>
+      ))}
+    </View>
+  )
+}*/
 
   return (
     <View>
@@ -90,25 +108,26 @@ export default function Hourglass() {
       />
       <View>
         <ScrollView>
-          {events.map((event, index) => (
+          {data.data.map((event, index) => (
             <View style={styles.title} key={index}>
               <Text style={{ fontWeight: "bold", fontSize: 18 }}>
-                {event.name}
+                {event.attributes.title}
               </Text>
 
               <View style={styles.cardContent}>
-                <View style={styles.logoContainer}>
+                  <View key={index} style={styles.logoContainer}>
                   <Image
-                    source={{ uri: event.logo }}
+                    //source={{ uri: uri.attributes.field_logo.uri }}
                     style={styles.logo}
                   ></Image>
-                </View>
+                  </View>
+                
 
                 <View style={styles.countDownContainer}>
                   <CountDown
-                    until={getTimeLeft(event.date)}
+                    until={getTimeLeft(new Date(event.attributes.field_dato))}
                     size={25}
-                    timeToShow={getFormat(event.date)}
+                    timeToShow={getFormat(new Date(event.attributes.field_dato))}
                     timeLabelStyle={{
                       color: "black",
                       fontWeight: "bold",
@@ -119,7 +138,7 @@ export default function Hourglass() {
                       borderWidth: 2,
                       borderColor: "#E1E1E1",
                     }}
-                    digitTxtStyle={{ color: getColor(event.date) }}
+                    digitTxtStyle={{ color: getColor(new Date(event.attributes.field_dato)) }}
                     timeLabels={{
                       d: "Dager",
                       h: "Timer",
