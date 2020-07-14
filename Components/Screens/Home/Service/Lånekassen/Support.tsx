@@ -16,6 +16,10 @@ const SupportForStudent = [
         sum: "13 626.00",
     },
     {
+        title: "Lån",
+        sum: 0,
+    },
+    {
         title: "Neste Utbetaling",
         sum: "346 862.21",
     }
@@ -62,7 +66,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderBottomWidth: 1,
         justifyContent: "space-between",
-        padding: "5%"
+        padding: "5%",
+        flexShrink: 1,
     },
     listText: {
         fontSize: 16,
