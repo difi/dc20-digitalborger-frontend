@@ -16,6 +16,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
+import {useEffect} from "react";
+
 
 const PopularServices = [
   {
@@ -140,6 +142,15 @@ function AllServices({ navigation }) {
 }
 
 export default function Home() {
+
+  const storeUserIdentifier = async () => {
+
+  }
+
+  useEffect(() => {
+
+  });
+
   return (
     <Stack.Navigator>
       <Stack.Screen name={"Offentlige tjenester"} component={AllServices} />

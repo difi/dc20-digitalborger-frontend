@@ -6,7 +6,8 @@ import * as AuthSession from "expo-auth-session";
 import {makeRedirectUri, ResponseType, useAuthRequest} from "expo-auth-session";
 import * as Linking from 'expo-linking'
 import Axios from "axios";
-
+import {storeData} from "../Storage";
+let jwtDecode = require('jwt-decode');
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -56,25 +57,15 @@ export default function Login({navigation}) {
 
              console.log("full content", content);
              console.log("Token", content.access_token);
+             await storeData("access_token", content.access_token);
+
+             //Transforms the jwt token to json
+             let id_token = content.id_token;
+             let pid = jwtDecode(id_token);
+
+             //Stores the personal identifier number (Personnummer)
+             await storeData("pid", pid.pid);
          })();
-
-        /*
-         await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
-             method: "POST",
-             headers: headers,
-                 //body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
-              body: 'grant_type=authorization_code&code=' + code,
-             //body: 'grant_type=authorization_code&redirect_uri=digitalborger://redirect&code=' + code,
-         },
-             )
-             .then(response =>
-                 //if (!response.ok) throw new Error(response.status);
-                 console.log("response", JSON.stringify(response.body))
-                 //return response.json();
-             )
-             .catch(err => console.log(err));
-         */
-
     }
 
     // Create and load an auth request
