@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "digitalborger",
     "name": "dc20-digitalborger-frontend",
     "slug": "dc20-digitalborger-frontend",
     "version": "1.0.0",
@@ -17,7 +18,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.jorho.dc20-digitalborger-frontend"
     },
     "web": {
       "favicon": "./assets/favicon.png"

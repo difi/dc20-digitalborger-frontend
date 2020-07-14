@@ -25,12 +25,13 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import Accordion from "react-native-collapsible/Accordion";
 import {bInterpolatePath, mix, useTimingTransition, useTransition} from "react-native-redash";
 import Animated, {interpolate} from "react-native-reanimated";
-import VeienTilForerkort from "../../../Vegvesenet/VeienTilForerkort";
+import VeienTilForerkort from "../Vegvesenet/VeienTilForerkort";
 import {ListItem} from "../Collapsible/ListItem";
 import Header from "../Header";
 import Footer from "../Footer";
 import Absence from "./Absence";
 import Grades from "./Grades";
+import School from "./School";
 
 
 const VIGO  = [
@@ -73,8 +74,8 @@ export function Vigo() {
     const [selectedIndex, setSelectedIndex] = useState(null);
     return(
         <SafeAreaView style={{flex: 1}}>
-            <ScrollView style={{flex: 1, backgroundColor: "#982C79"}} showsVerticalScrollIndicator={false}>
-                <Header logo={"https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg"} nameOfService={"Vigo"}/>
+            <ScrollView style={{flex: 1, backgroundColor: "#5da423"}} showsVerticalScrollIndicator={false}>
+                <Header logo={"https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg"}/>
                 <View>
                     <ListItem key={0} iconName = {VIGO[0].icon.name} iconType={VIGO[0].icon.type} containerHeight={300} title={VIGO[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
@@ -89,15 +90,16 @@ export function Vigo() {
                             </View>
                         </View>
                     </ListItem>
-                    <ListItem key={2} iconName = {VIGO[2].icon.name} iconType={VIGO[2].icon.type} containerHeight={50} title={VIGO[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
+                    <ListItem key={2} iconName = {VIGO[2].icon.name} iconType={VIGO[2].icon.type} containerHeight={420} title={VIGO[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <Text>
-                                test
-                            </Text>
+                            <View>
+                                <Text style={{fontWeight: 'bold'}}>   Skolenavn                                      Distanse             Nettside</Text>
+                                <School/>
+                            </View>
                         </View>
                     </ListItem>
                 </View>
-                <Footer description={"Her kommer innhold"}/>
+                <Footer description={"Vigo er en internettportal for søking til videregående opplæring i skole og bedrift, fagskoleutdanning og videregående opplæring for voksne og realkompetansevurdering."}/>
             </ScrollView>
         </SafeAreaView>
     );

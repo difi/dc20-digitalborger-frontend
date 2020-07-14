@@ -12,7 +12,7 @@ export default function Header({nameOfService, logo}: HeaderProps) {
     return (
         <View style={{backgroundColor: "white", justifyContent: "flex-start", flexDirection: "row", alignItems: "center", padding: SPACE}}>
             <View style={{height: 100, width: 100}}>
-                <Image source={{uri: "https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg"}}
+                <Image source={{uri: "https://www.igel.com/wp-content/uploads/2019/12/Statens_Vegvesen.png"}}
                        resizeMethod={"resize"}
                        style={{width: "100%", height: "100%", borderRadius: 100}}
                 />

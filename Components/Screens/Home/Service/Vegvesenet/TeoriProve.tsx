@@ -4,23 +4,23 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
 
-export default function Oppkjoring() {
+export default function TeoriProve() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-            Bestilling av oppkjøring må gjøres av din trafikkskole. Til dette trenger trafikkskolen en fullmakt fra deg. 
+    <View style={styles.gridContainer}>
+      <Text style={styles.buttonText}>
+            Bestilling av time til teoriprøven gjøres på vegvesenet sine nettsider. 
       </Text>
 
       <TouchableOpacity
         containerStyle={styles.linkContainer}
         onPress={() =>
           WebBrowser.openBrowserAsync(
-            "https://www.vegvesen.no/dinside/dittforerkort/timebestilling/timer"
+            "https://ventus.enalog.se/Booking/Booking/Index/VegvesenRislokka"
           )
         }
       >
         <View style={styles.linkContainer}>
-          <Text style={styles.linkText}> Gi fullmakt </Text>
+          <Text style={styles.linkText}> Gå til timebestilling</Text>
           <Icon name="arrow-right-circle-outline" size={40}></Icon>
         </View>
       </TouchableOpacity>
@@ -29,13 +29,13 @@ export default function Oppkjoring() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  gridContainer: {
     borderWidth: 5,
     borderColor: "#e6e6e6",
-    height: 170,
+    height: 150,
     width: "100%",
   },
-  text: {
+  buttonText: {
     fontSize: 20,
     margin: 10,
   },

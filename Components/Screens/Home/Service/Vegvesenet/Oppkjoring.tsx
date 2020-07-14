@@ -4,23 +4,23 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
 
-export default function TeoriProve() {
+export default function Oppkjoring() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-            Bestilling av time til teoriprøven gjøres på vegvesenet sine nettsider. 
+    <View style={styles.gridContainer}>
+      <Text style={styles.buttonText}>
+            Bestilling av oppkjøring må gjøres av din trafikkskole. Til dette trenger trafikkskolen en fullmakt fra deg. 
       </Text>
 
       <TouchableOpacity
         containerStyle={styles.linkContainer}
         onPress={() =>
           WebBrowser.openBrowserAsync(
-            "https://ventus.enalog.se/Booking/Booking/Index/VegvesenRislokka"
+            "https://www.vegvesen.no/dinside/dittforerkort/timebestilling/timer"
           )
         }
       >
         <View style={styles.linkContainer}>
-          <Text style={styles.linkText}> Gå til timebestilling</Text>
+          <Text style={styles.linkText}> Gi fullmakt </Text>
           <Icon name="arrow-right-circle-outline" size={40}></Icon>
         </View>
       </TouchableOpacity>
@@ -29,13 +29,13 @@ export default function TeoriProve() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  gridContainer: {
     borderWidth: 5,
     borderColor: "#e6e6e6",
-    height: 150,
+    height: 170,
     width: "100%",
   },
-  text: {
+  buttonText: {
     fontSize: 20,
     margin: 10,
   },

@@ -63,7 +63,7 @@ export default function VeienTilForerkortet() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={styles.gridContainer}>
       {vehicles.map((vehicle, index) => (
         <TouchableOpacity
           key={index}
@@ -100,9 +100,9 @@ export default function VeienTilForerkortet() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  gridContainer: {
     width: "100%",
-    height: "50%",
+    height: 400,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   title: {
     margin: "5%",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 15,
     color: "#444f55",
     alignSelf: "center",
   },
