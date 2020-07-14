@@ -16,6 +16,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
+import {Lanekassen} from "./Service/Lånekassen/Lånekassen";
 
 const PopularServices = [
   {
@@ -74,6 +75,10 @@ const services = [
     uri:
       "https://pbs.twimg.com/profile_images/685006400632827904/l8cgvWEZ_400x400.jpg",
   },
+  {
+    name: "Lånekassen",
+    uri:"https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+  }
 ];
 
 //TODO: remove, temporary for design
@@ -145,7 +150,12 @@ export default function Home() {
       <Stack.Screen name={"Offentlige tjenester"} component={AllServices} />
       <Stack.Screen name={"Vigo"} component={Vigo} />
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
+<<<<<<< HEAD
       <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} />
+=======
+      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
+      <Stack.Screen name={"Lånekassen"} component={Lanekassen}/>
+>>>>>>> 820cdf114dab563ad8b2a418741b0650f0caf91f
     </Stack.Navigator>
   );
 }
