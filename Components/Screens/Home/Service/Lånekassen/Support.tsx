@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {StyleSheet, Text, View} from "react-native";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import * as Location from "expo-location";
+import {fetchUserInfoAsync} from "expo-auth-session";
 
 
 const SupportForStudent = [
@@ -28,12 +32,31 @@ const SupportForStudent = [
 
 
 export default function Support(){
+
+    const [status, setStatus] = useState("");
+    const [loan, setLoan] = useState(Array);
+
+        useEffect( () => {
+
+             axios({
+                method: "GET",
+                url: "http://feat01-drupal8.dmz.local/dib/laanekassen/23079418366",
+
+            }).then(res => {
+                setLoan(res.data)
+            } )
+
+        }, []);
+
+
+
     return(
         <View style={{flex:1}}>
             <Text style={styles.textInfo}>Gjennomsnittstøtte i vanlig videregående opplæring: </Text>
 
             {SupportForStudent.map((item, index) => (
-                <View key = {index} style={styles.listContainer}>
+                <View key = {index} style={(index == SupportForStudent.length-1) ? styles.LastElement:styles.listContainer}>
+
                     <Text style={styles.listText}>{item.title}</Text>
                     <Text style={
                         {fontWeight: item.title == "Neste Utbetaling" ? "bold": "normal",
@@ -42,7 +65,9 @@ export default function Support(){
                         } }>{item.sum + " kr"}</Text>
                 </View>
 
+
             ))}
+
 
 
         </View>
@@ -66,11 +91,18 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderBottomWidth: 1,
         justifyContent: "space-between",
-        padding: "5%",
         flexShrink: 1,
+    },
+    LastElement:{
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexShrink: 1,
+
     },
     listText: {
         fontSize: 16,
+        padding: "5%"
     }
 
 })
