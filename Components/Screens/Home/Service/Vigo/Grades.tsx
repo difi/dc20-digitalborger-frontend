@@ -8,56 +8,52 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
         rightTitle: 'Karakterer',
 
 }
-/**
- * Karakterer for første året
- */
+    const grades = {
+        first: [
+            {
+                subject: 'RLE',
+                grade: 5,
+            },
+            {
+                subject: 'Naturfag',
+                grade: 2,
+            },
+            {
+                subject: 'Matematikk',
+                grade: 3,
+            },
+        ],
+        second: [
+            {
+                subject: 'Spansk',
+                grade: 4,
+            },
+            {
+                subject: 'Kjemi 1',
+                grade: 6,
+            },
+            {
+                subject: 'Samfunnsfag',
+                grade: 4,
+            },
+        ],
+        third: [
+            {
+                subject: 'R2',
+                grade: 4,
+            },
+            {
+                subject: 'Kjemi 2',
+                grade: 5,
+            },
+            {
+                subject: 'Fysikk',
+                grade: 4,
+            },
+        ]
 
-    const gradeInSubjects1  = [
-        {
-            sub: 'RLE',
-            grade: 5,
-        },
-        {
-            sub: 'Naturfag',
-            grade: 2,
-        },
-        {
-            sub: 'Matematikk',
-            grade: 3,
-        },
+    }
 
-    ];
-    const gradeInSubject2 = [
-        {
-            sub: 'Spansk',
-            grade: 4,
-        },
-        {
-            sub: 'Kjemi 1',
-            grade: 6,
-        },
-        {
-            sub: 'Samfunnsfag',
-            grade: 4,
-        },
-
-        ];
-
-    const gradeInSubject3 = [
-        {
-            sub: 'R2',
-            grade: 4,
-        },
-        {
-            sub: 'Kjemi 2',
-            grade: 5,
-        },
-        {
-            sub: 'Fysikk',
-            grade: 4,
-        },
-
-    ];
 
     const firstYear = () => (
 
@@ -67,10 +63,10 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
                 <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
 
             </View>
-            {gradeInSubjects1.map((item1, index1) => (
+            {grades.first.map((item1, index1) => (
 
-                <View key = {index1} style = {[styles.GradesDisplay, {height: 10 * gradeInSubjects1.length}]}>
-                    <Text style={styles.textStyle}>{item1.sub}</Text>
+                <View key = {index1} style = {[styles.GradesDisplay, {height: 10 * grades.first.length}]}>
+                    <Text style={styles.textStyle}>{item1.subject}</Text>
                     <Text style={styles.textStyle}>{item1.grade}</Text>
                 </View>
             ))}
@@ -85,10 +81,10 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
                 <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
 
             </View>
-            {gradeInSubject2.map((item2, index2) => (
+            {grades.second.map((item2, index2) => (
 
-                <View key = {index2} style = {[styles.GradesDisplay, {height: 10 * gradeInSubject2.length}]}>
-                    <Text style={styles.textStyle}>{item2.sub}</Text>
+                <View key = {index2} style = {[styles.GradesDisplay, {height: 10 * grades.second.length}]}>
+                    <Text style={styles.textStyle}>{item2.subject}</Text>
                     <Text style={styles.textStyle}>{item2.grade}</Text>
                 </View>
             ))}
@@ -102,9 +98,9 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
                 <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
 
             </View>
-            {gradeInSubject3.map((item3, index3) => (
-                <View key = {index3} style = {[styles.GradesDisplay,  {height: 10 * gradeInSubject3.length}]}>
-                    <Text style={styles.textStyle}>{item3.sub}</Text>
+            {grades.third.map((item3, index3) => (
+                <View key = {index3} style = {[styles.GradesDisplay,  {height: 10 * grades.third.length}]}>
+                    <Text style={styles.textStyle}>{item3.subject}</Text>
                     <Text style={styles.textStyle}>{item3.grade}</Text>
                 </View>
             ))}
