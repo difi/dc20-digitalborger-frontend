@@ -29,24 +29,20 @@ const SupportForStudent = [
     }
 ]
 
+const test = async () => axios.get("http://feat01-drupal8.dmz.local/dib/laanekassen/23079418366")
 
 
-export default function Support(){
 
-    const [status, setStatus] = useState("");
-    const [loan, setLoan] = useState(Array);
+ export default function Support(){
+
+    const [loan, setLoan] = useState([]);
 
         useEffect( () => {
+            test().then(res => {
+                console.log(res)
+            })
 
-             axios({
-                method: "GET",
-                url: "http://feat01-drupal8.dmz.local/dib/laanekassen/23079418366",
-
-            }).then(res => {
-                setLoan(res.data)
-            } )
-
-        }, []);
+        });
 
 
 
