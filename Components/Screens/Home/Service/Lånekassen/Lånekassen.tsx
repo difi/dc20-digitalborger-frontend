@@ -1,4 +1,5 @@
 import * as React from 'react';
+// @ts-ignore
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
