@@ -4,6 +4,8 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import * as Location from "expo-location";
 import {fetchUserInfoAsync} from "expo-auth-session";
+import {getSupport} from "../../../../ServerCommunications/Services/LaanekassenService";
+import {retrieveData} from "../../../../Storage";
 
 
 const SupportForStudent = [
@@ -29,22 +31,48 @@ const SupportForStudent = [
     }
 ]
 
+const ss = [
+    {
+        scholarship: "Borteboerstipend",
+        sum: 23000
+    },
+    {
+        scholarship: "Lån",
+        sum: 0
+    },
+    {
+        scholarship: "Stipend",
+        sum: 500000
+    },
+    {
+        scholarship: "Utbetaling",
+        sum: 4333
+    },
+    {
+        scholarship: "Utstyrstipend",
+        sum: 43242
+    },
+]
 
+const getScholarship = async () => {
+    const pid:any = await retrieveData("pid").catch(err => console.log(err));
+
+    const data = await getSupport(pid);
+    console.log(data);
+    return data;
+}
 
 export default function Support(){
 
     const [status, setStatus] = useState("");
-    const [loan, setLoan] = useState(Array);
+    const [scholarship, setScholarship] = useState(Array);
 
+    //setScholarship(res.data)
         useEffect( () => {
 
-             axios({
-                method: "GET",
-                url: "http://feat01-drupal8.dmz.local/dib/laanekassen/23079418366",
-
-            }).then(res => {
-                setLoan(res.data)
-            } )
+            getScholarship()
+                .then(data => setScholarship(data))
+                .catch(err => console.log(err));
 
         }, []);
 
