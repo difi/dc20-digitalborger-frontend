@@ -67,10 +67,7 @@ const absence = [
                       flexShrink: 1,
                       flexWrap: "wrap",
                       height: 10 * absence.length,
-
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "transparent"}}>
-
-
                       <Text style={styles.textAbsence} allowFontScaling={true}>{item.subject}</Text>
                       <Text style={styles.textAbsence} allowFontScaling={true}>{item.absence * 100 + "%"}</Text>
 
