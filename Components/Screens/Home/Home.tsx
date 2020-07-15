@@ -150,12 +150,8 @@ export default function Home() {
       <Stack.Screen name={"Offentlige tjenester"} component={AllServices} />
       <Stack.Screen name={"Vigo"} component={Vigo} />
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
-<<<<<<< HEAD
-      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} />
-=======
       <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
       <Stack.Screen name={"Lånekassen"} component={Lanekassen}/>
->>>>>>> 820cdf114dab563ad8b2a418741b0650f0caf91f
     </Stack.Navigator>
   );
 }

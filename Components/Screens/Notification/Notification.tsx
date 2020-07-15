@@ -5,12 +5,9 @@ import { Header } from "react-native-elements";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-<<<<<<< HEAD
-=======
 import Utbetaling from "../Home/Service/Lånekassen/Utbetaling";
 
 // data -> Skal byttes ut med data fra database
->>>>>>> 820cdf114dab563ad8b2a418741b0650f0caf91f
 var deadline = new Date();
 var deadline2 = new Date();
 var deadline3 = new Date();

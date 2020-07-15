@@ -9,6 +9,7 @@ import {
 import * as Location from "expo-location";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import axios from "axios";
+import * as WebBrowser from 'expo-web-browser';
 
 export default function School() {
   const [schools, setSchools] = useState(Array);
@@ -48,7 +49,7 @@ export default function School() {
             <Text style={styles.distance}>{school.Distanse + "km"}</Text>
             <TouchableOpacity
               style={styles.link}
-              onPress={() => Linking.openURL("http://" + school.Webside)}
+              onPress={() => WebBrowser.openBrowserAsync("http://" + school.Webside)}
             >
               <Text>Gå til</Text>
               <View style={styles.icon}>
