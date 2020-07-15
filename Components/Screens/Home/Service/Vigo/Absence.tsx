@@ -6,31 +6,31 @@ const absenceTitle = {
     rightTitle: 'Fravær',
 
 }
-const absenceInSubjects = [
+const absence = [
     {
-        sub: 'RLE',
+        subject: 'RLE',
         absence: 0.1,
     },
     {
-        sub: 'Naturfag',
+        subject: 'Naturfag',
         absence: 0.04,
     },
     {
-      sub: 'Matematikk',
-      absence: 0.02,
+        subject: 'Matematikk',
+        absence: 0.02,
     },
     {
-      sub: 'Norsk',
-      absence: 0.12,
+        subject: 'Norsk',
+         absence: 0.12,
     },
     {
-      sub: 'Engelsk',
-      absence: 0.06,
+        subject: 'Engelsk',
+        absence: 0.06,
 
     },
     {
-      sub: 'Gym',
-      absence: 0.03,
+        subject: 'Gym',
+        absence: 0.03,
     },
 
 ];
@@ -58,7 +58,7 @@ const absenceInSubjects = [
                   <Text style={styles.textTitle}> {absenceTitle.leftTitle} </Text>
                   <Text style={styles.textTitle}> {absenceTitle.rightTitle}</Text>
               </View>
-              {absenceInSubjects.map((item, index) => (
+              {absence.map((item, index) => (
                   <View
                       key = {index}
                       style={{
@@ -66,12 +66,12 @@ const absenceInSubjects = [
                       justifyContent: "space-between",
                       flexShrink: 1,
                       flexWrap: "wrap",
-                      height: 10 * absenceInSubjects.length,
+                      height: 10 * absence.length,
 
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "transparent"}}>
 
 
-                      <Text style={styles.textAbsence} allowFontScaling={true}>{item.sub}</Text>
+                      <Text style={styles.textAbsence} allowFontScaling={true}>{item.subject}</Text>
                       <Text style={styles.textAbsence} allowFontScaling={true}>{item.absence * 100 + "%"}</Text>
 
                   </View>
