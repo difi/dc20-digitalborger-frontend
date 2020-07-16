@@ -17,7 +17,6 @@ import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
 import {Lanekassen} from "./Service/Lånekassen/Lånekassen";
-import {Grades} from "./Service/Vigo/Vigo"
 import {ListItem} from "./Service/Collapsible/ListItem";
 
 
@@ -157,7 +156,7 @@ export default function Home() {
 
       <Stack.Screen name={"Karakterer"} component={Vigo}/>
       <Stack.Screen name={"Søk frikort"} component={Skatteetaten}/>
-      <Stack.Screen name={"Forny resept"} component={Skatteetaten}/>
+      <Stack.Screen name={"Forny resept"} component={Vigo}/>
       <Stack.Screen name={"Oppkjøring"} component={Vegvesenet}/>
       <Stack.Screen name={"Søknad om lån og stipend"} component={Skatteetaten}/>
 
