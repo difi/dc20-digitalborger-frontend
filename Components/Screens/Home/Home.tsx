@@ -97,7 +97,7 @@ const Stack = createStackNavigator();
 const checkLocalStorage = async () => {
   const pid = await retrieveData("pid");
   if(pid === null){
-    await storeData("pid", 23079418366);
+    await storeData("pid", "23079418366");
   }
 }
 
