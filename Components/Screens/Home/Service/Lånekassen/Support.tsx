@@ -65,11 +65,9 @@ const getScholarship = async () => {
 export default function Support(){
 
     const [status, setStatus] = useState("");
-    const [scholarship, setScholarship] = useState(Array);
+    const [scholarship, setScholarship] = useState([{scholarship: "", sum: 0}]);
 
-    //setScholarship(res.data)
         useEffect( () => {
-
             getScholarship()
                 .then(data => setScholarship(data))
                 .catch(err => console.log(err));
@@ -82,14 +80,14 @@ export default function Support(){
         <View style={{flex:1}}>
             <Text style={styles.textInfo}>Gjennomsnittstøtte i vanlig videregående opplæring: </Text>
 
-            {SupportForStudent.map((item, index) => (
+            {scholarship.map((item, index) => (
                 <View key = {index} style={(index == SupportForStudent.length-1) ? styles.LastElement:styles.listContainer}>
-
-                    <Text style={styles.listText}>{item.title}</Text>
+                    {console.log(index)}
+                    <Text style={styles.listText}>{item.scholarship}</Text>
                     <Text style={
-                        {fontWeight: item.title == "Neste Utbetaling" ? "bold": "normal",
+                        {fontWeight: (index == scholarship.length - 1) ? "bold": "normal",
                             fontSize: 16,
-                            textDecorationLine: item.title == "Neste Utbetaling" ? "underline": "none",
+                            textDecorationLine: (index == scholarship.length - 1) ? "underline": "none",
                         } }>{item.sum + " kr"}</Text>
                 </View>
 
