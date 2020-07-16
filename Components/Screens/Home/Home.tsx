@@ -123,7 +123,7 @@ function AllServices({ navigation }) {
             <TouchableOpacity
               key={index}
 
-              onPress={() => navigation.navigate(item.name)}
+              onPress={() => navigation.navigate(item.name, {open: item.name})}
               style={stylesTop.item}
             >
               <View style={stylesTop.imageContainer}>
@@ -143,7 +143,7 @@ function AllServices({ navigation }) {
         <View style={stylesBottom.gridContainer}>
           {services.map((service, index) => (
             <TouchableOpacity
-              onPress={() => navigation.navigate(service.name)}
+              onPress={() => navigation.navigate(service.name, {open: null})}
               key={index}
               style={stylesBottom.item}
             >
