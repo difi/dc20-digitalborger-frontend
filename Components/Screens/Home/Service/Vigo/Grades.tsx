@@ -10,63 +10,6 @@ const gradeTitle = {
         rightTitle: 'Karakterer',
 
 }
-
-/*
-    const grades = {
-        First: [
-            {
-                Subject: "Matematikk",
-                Grade: 6,
-                Absence: 0.0123974
-            },
-            {
-                Subject: "Naturfag",
-                Grade: 6,
-                Absence: 0.0176809
-            },
-            {
-                Subject: "RLE",
-                Grade: 6,
-                Absence: 0.0591105
-            }
-        ],
-        Second: [
-            {
-                Subject: "Spansk",
-                Grade: 4,
-                Absence: "0.0193857"
-            },
-            {
-                Subject: "Kjemi 1",
-                Grade: 3,
-                Absence: 0.00392391
-            },
-            {
-                Subject: "Safunnsfag",
-                Grade: 2,
-                Absence: "0.0196607"
-            }
-        ],
-        Third: [
-            {
-                Subject: "R2",
-                Grade: 1,
-                Absence: 0.0527201
-            },
-            {
-                Subject: "Kjemi 2",
-                Grade: 4,
-                Absence: 0.0497734
-            },
-            {
-                Subject: "Fysikk",
-                Grade: 3,
-                Absence: 0.0348903
-            }
-        ]
-    }
- */
-
     const initialLayout = { width: Dimensions.get('window').width};
 
 

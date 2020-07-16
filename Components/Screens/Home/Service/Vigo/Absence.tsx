@@ -69,7 +69,7 @@ const absence = [
                       justifyContent: "space-between",
                       flexShrink: 1,
                       flexWrap: "wrap",
-                      height: 10 * absence.length,
+                      height: 10 * absence.length, //TODO change this to absenceData.length and remove hardcoded "absence" variable
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "transparent"}}>
                       <Text style={styles.textAbsence} allowFontScaling={true}>{item.subject}</Text>
                       <Text style={styles.textAbsence} allowFontScaling={true}>{Math.ceil(item.absence * 100) + "%"}</Text>

@@ -28,16 +28,6 @@ export default function School() {
       let location= await Location.getCurrentPositionAsync({});
       setLocation(location); //trenger egentlig ikke lagre location
 
-/*
-      let result = await axios(
-        "http://feat01-drupal8.dmz.local/dib/school/" +
-          location.coords.longitude +
-          "/" +
-          location.coords.latitude +
-          "/5"
-      );
- */
-
       let result = await getSchools(location.coords.longitude, location.coords.longitude, 5);
       setSchools(result);
     })();
