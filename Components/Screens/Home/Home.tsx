@@ -20,6 +20,7 @@ import {useEffect} from "react";
 
 import {Lanekassen} from "./Service/Lånekassen/Lånekassen";
 import {ListItem} from "./Service/Collapsible/ListItem";
+import {retrieveData, storeData} from "../../Storage";
 
 
 const PopularServices = [
@@ -92,9 +93,20 @@ function calculateHeightOfCircle(offset: number) {
 
 const Stack = createStackNavigator();
 
-// onPress={() => console.log("index clicked", index)}
+//TODO: REMOVE - exist because of andorid eumlator problems
+const checkLocalStorage = async () => {
+  const pid = await retrieveData("pid");
+  if(pid === null){
+    await storeData("pid", 23079418366);
+  }
+}
 
 function AllServices({ navigation }) {
+
+  useEffect(() => {
+    checkLocalStorage().catch(err => console.log(err))
+  });
+
   return (
     <SafeAreaView style={styles.gridContainer}>
       <ScrollView
