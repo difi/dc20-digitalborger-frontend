@@ -17,6 +17,8 @@ import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
 import {Lanekassen} from "./Service/Lånekassen/Lånekassen";
+import {ListItem} from "./Service/Collapsible/ListItem";
+
 
 const PopularServices = [
   {
@@ -44,7 +46,7 @@ const PopularServices = [
       "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
   },
   {
-    name: "Lånekassen",
+    name: "Søknad om lån og stipend",
     uri:
       "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
   },
@@ -88,6 +90,8 @@ function calculateHeightOfCircle(offset: number) {
 
 const Stack = createStackNavigator();
 
+// onPress={() => console.log("index clicked", index)}
+
 function AllServices({ navigation }) {
   return (
     <SafeAreaView style={styles.gridContainer}>
@@ -104,7 +108,8 @@ function AllServices({ navigation }) {
           renderItem={({ item, index }) => (
             <TouchableOpacity
               key={index}
-              onPress={() => console.log("index clicked", index)}
+
+              onPress={() => navigation.navigate(item.name)}
               style={stylesTop.item}
             >
               <View style={stylesTop.imageContainer}>
@@ -148,9 +153,17 @@ export default function Home() {
   return (
     <Stack.Navigator>
       <Stack.Screen name={"Offentlige tjenester"} component={AllServices} />
+
+      <Stack.Screen name={"Karakterer"} component={Vigo}/>
+      <Stack.Screen name={"Søk frikort"} component={Skatteetaten}/>
+      <Stack.Screen name={"Forny resept"} component={Vigo}/>
+      <Stack.Screen name={"Oppkjøring"} component={Vegvesenet}/>
+      <Stack.Screen name={"Søknad om lån og stipend"} component={Skatteetaten}/>
+
+
       <Stack.Screen name={"Vigo"} component={Vigo} />
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
-      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
+      <Stack.Screen name={"Vegvesnet"} component={Vegvesenet}/>
       <Stack.Screen name={"Lånekassen"} component={Lanekassen}/>
     </Stack.Navigator>
   );
