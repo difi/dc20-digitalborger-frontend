@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {StyleSheet, Text, View} from "react-native";
+import {retrieveData} from "../../../../Storage";
+import {getSubjectInfo} from "../../../../ServerCommunications/Services/VigoService";
 
 const absenceTitle = {
     leftTitle: 'Fag',
@@ -32,25 +34,26 @@ const absence = [
         subject: 'Gym',
         absence: 0.03,
     },
-
 ];
 
   export default function Absence() {
+      const [absenceData, setAbsence] = useState([{absence: 0, grade: 0, subject: ""}]);
 
-      /**
-       * En funksjon for å sjekke om fravær når 10 prosent
-       */
+      const data = async () => {
+          const pid: number = await retrieveData("pid");
+          return await getSubjectInfo(pid);
+      }
+
+      useEffect(() => {
+              data()
+                  .then(item => {setAbsence(item.third); console.log(item.third);})
+                  .catch(err => console.log(err));
+      },[]);
 
       function limitReached(absence: number ) {
-          if(absence.valueOf() >= 0.1 ){
-            return true
-          }
-          else{
-              return false
-
-          }
-
+          return absence.valueOf() >= 0.1;
       }
+
       return(
           <View style={styles.gridContainer}>
 
@@ -58,7 +61,7 @@ const absence = [
                   <Text style={styles.textTitle}> {absenceTitle.leftTitle} </Text>
                   <Text style={styles.textTitle}> {absenceTitle.rightTitle}</Text>
               </View>
-              {absence.map((item, index) => (
+              {absenceData.map((item, index) => (
                   <View
                       key = {index}
                       style={{
@@ -69,7 +72,7 @@ const absence = [
                       height: 10 * absence.length,
                       backgroundColor: limitReached(item.absence) ? 'rgba(240,128,128,0.76)': "transparent"}}>
                       <Text style={styles.textAbsence} allowFontScaling={true}>{item.subject}</Text>
-                      <Text style={styles.textAbsence} allowFontScaling={true}>{item.absence * 100 + "%"}</Text>
+                      <Text style={styles.textAbsence} allowFontScaling={true}>{Math.ceil(item.absence * 100) + "%"}</Text>
 
                   </View>
               ))}

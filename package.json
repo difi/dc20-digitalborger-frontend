@@ -19,6 +19,7 @@
     "expo-app-auth": "~9.1.1",
     "expo-auth-session": "~1.4.0",
     "expo-crypto": "~8.2.1",
+    "expo-secure-store": "~9.0.1",
     "expo-status-bar": "^1.0.0",
     "expo-web-browser": "~8.3.1",
     "font-awesome": "^4.7.0",
@@ -41,8 +42,7 @@
     "react-native-tab-view": "^2.14.4",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
-    "uri-scheme": "^1.0.22",
-    "expo-secure-store": "~9.0.1"
+    "uri-scheme": "^1.0.22"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

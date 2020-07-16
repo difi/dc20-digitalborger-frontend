@@ -1,119 +1,141 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Dimensions, StyleSheet, Text, View} from "react-native";
-import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
+import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
+import {retrieveData} from "../../../../Storage";
+import {getSubjectInfo} from "../../../../ServerCommunications/Services/VigoService";
 
 
-    const gradeTitle = {
+const gradeTitle = {
         leftTitle: 'Fag',
         rightTitle: 'Karakterer',
 
 }
+
+/*
     const grades = {
-        first: [
+        First: [
             {
-                subject: 'RLE',
-                grade: 5,
+                Subject: "Matematikk",
+                Grade: 6,
+                Absence: 0.0123974
             },
             {
-                subject: 'Naturfag',
-                grade: 2,
+                Subject: "Naturfag",
+                Grade: 6,
+                Absence: 0.0176809
             },
             {
-                subject: 'Matematikk',
-                grade: 3,
-            },
+                Subject: "RLE",
+                Grade: 6,
+                Absence: 0.0591105
+            }
         ],
-        second: [
+        Second: [
             {
-                subject: 'Spansk',
-                grade: 4,
+                Subject: "Spansk",
+                Grade: 4,
+                Absence: "0.0193857"
             },
             {
-                subject: 'Kjemi 1',
-                grade: 6,
+                Subject: "Kjemi 1",
+                Grade: 3,
+                Absence: 0.00392391
             },
             {
-                subject: 'Samfunnsfag',
-                grade: 4,
-            },
+                Subject: "Safunnsfag",
+                Grade: 2,
+                Absence: "0.0196607"
+            }
         ],
-        third: [
+        Third: [
             {
-                subject: 'R2',
-                grade: 4,
+                Subject: "R2",
+                Grade: 1,
+                Absence: 0.0527201
             },
             {
-                subject: 'Kjemi 2',
-                grade: 5,
+                Subject: "Kjemi 2",
+                Grade: 4,
+                Absence: 0.0497734
             },
             {
-                subject: 'Fysikk',
-                grade: 4,
-            },
+                Subject: "Fysikk",
+                Grade: 3,
+                Absence: 0.0348903
+            }
         ]
-
     }
-
-
-    const firstYear = () => (
-
-        <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
-            <View style={styles.TitleArea}>
-                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
-                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
-
-            </View>
-            {grades.first.map((item1, index1) => (
-
-                <View key = {index1} style = {[styles.GradesDisplay, {height: 10 * grades.first.length}]}>
-                    <Text style={styles.textStyle}>{item1.subject}</Text>
-                    <Text style={styles.textStyle}>{item1.grade}</Text>
-                </View>
-            ))}
-
-        </View>
-    );
-
-    const secondYear = () => (
-        <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
-            <View style={styles.TitleArea}>
-                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
-                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
-
-            </View>
-            {grades.second.map((item2, index2) => (
-
-                <View key = {index2} style = {[styles.GradesDisplay, {height: 10 * grades.second.length}]}>
-                    <Text style={styles.textStyle}>{item2.subject}</Text>
-                    <Text style={styles.textStyle}>{item2.grade}</Text>
-                </View>
-            ))}
-        </View>
-    );
-
-    const thirdYear = () => (
-        <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
-            <View style={styles.TitleArea}>
-                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
-                <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
-
-            </View>
-            {grades.third.map((item3, index3) => (
-                <View key = {index3} style = {[styles.GradesDisplay,  {height: 10 * grades.third.length}]}>
-                    <Text style={styles.textStyle}>{item3.subject}</Text>
-                    <Text style={styles.textStyle}>{item3.grade}</Text>
-                </View>
-            ))}
-        </View>
-    );
+ */
 
     const initialLayout = { width: Dimensions.get('window').width};
 
 
-
     export default function Grades() {
         const [index, setIndex] = React.useState(0);
+        const [grades, setGrades] = useState({first: [{absence: 0, grade: 0, subject: ""}], second: [{absence: 0, grade: 0, subject: ""}], third: [{absence: 0, grade: 0, subject: ""}]});
 
+        const data = async () => {
+            const pid = await retrieveData("pid");
+            return await getSubjectInfo(pid);
+        }
+
+        useEffect(() => {
+            data()
+                .then(item => {setGrades(item); console.log(item)})
+                .catch(err => console.log(err));
+        },[]);
+
+        const firstYear = () => (
+
+            <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
+                <View style={styles.TitleArea}>
+                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
+                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
+
+                </View>
+                {grades.first.map((item1, index1) => (
+
+                    <View key = {index1} style = {[styles.GradesDisplay, {height: 10 * grades.first.length}]}>
+                        <Text style={styles.textStyle}>{item1.subject}</Text>
+                        <Text style={styles.textStyle}>{item1.grade}</Text>
+                    </View>
+                ))}
+
+            </View>
+        );
+
+        const secondYear = () => (
+            <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
+                <View style={styles.TitleArea}>
+                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
+                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
+
+                </View>
+                {grades.second.map((item2, index2) => (
+
+                    <View key = {index2} style = {[styles.GradesDisplay, {height: 10 * grades.second.length}]}>
+                        <Text style={styles.textStyle}>{item2.subject}</Text>
+                        <Text style={styles.textStyle}>{item2.grade}</Text>
+                    </View>
+                ))}
+            </View>
+        );
+
+        const thirdYear = () => (
+            <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
+                <View style={styles.TitleArea}>
+                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
+                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
+
+                </View>
+                {grades.third.map((item3, index3) => (
+                    <View key = {index3} style = {[styles.GradesDisplay,  {height: 10 * grades.third.length}]}>
+                        <Text style={styles.textStyle}>{item3.subject}</Text>
+                        <Text style={styles.textStyle}>{item3.grade}</Text>
+                    </View>
+                ))}
+            </View>
+        );
 
         const [routes] = React.useState([
             { key: 'first', title: '1.året'},
@@ -138,9 +160,7 @@ import {TabBar, SceneMap, TabView} from 'react-native-tab-view';
 
         return(
             <View style={styles.gridContainer}>
-
-                <TabView navigationState={{index, routes}} renderScene={renderScene} onIndexChange={setIndex} initialLayout={initialLayout} renderTabBar={renderTabBar}/>
-
+                     <TabView navigationState={{index, routes}} renderScene={renderScene} onIndexChange={setIndex} initialLayout={initialLayout} renderTabBar={renderTabBar}/>
             </View>
         )
 
