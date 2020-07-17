@@ -11,6 +11,7 @@ import {ListItem} from "../Collapsible/ListItem"
 import Utbetaling from "./Utbetaling";
 import Header from "./HeaderLan";
 import Support from "./Support";
+import StipendLån from "../../../Vigo/StipendLån";
 
 
 const LAANEKASSE  = [
@@ -57,11 +58,9 @@ export function Lanekassen(){
             <Header logo={"Components/Screens/Home/Service/Lånekassen/Lånekassen.tsx"} nameOfService={"Lånekassen"}/>
             <ScrollView style={{flex: 1, backgroundColor: '#97469d'}} showsVerticalScrollIndicator={false}>
                 <View>
-                    <ListItem key={0} iconName={LAANEKASSE[0].icon.name} iconType={LAANEKASSE[0].icon.type} containerHeight={200} title={LAANEKASSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
+                    <ListItem key={0} iconName={LAANEKASSE[0].icon.name} iconType={LAANEKASSE[0].icon.type} containerHeight={260} title={LAANEKASSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <FontAwesome5 name='hand-holding-usd' size={26}></FontAwesome5>
-                            <FontAwesome5 name='coins' size={26}></FontAwesome5>
-                            <FontAwesome5 name='file-signature' size={26}></FontAwesome5>
+                           <StipendLån></StipendLån>
                         </View>
                     </ListItem>
 

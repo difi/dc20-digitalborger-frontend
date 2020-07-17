@@ -14,11 +14,14 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 // @ts-ignore
 import Fontisto from 'react-native-vector-icons/Fontisto';
-
 // @ts-ignore
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 // @ts-ignore
 import Entypo from 'react-native-vector-icons/Entypo';
+// @ts-ignore
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
+
 
 
 
@@ -91,12 +94,18 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
                 );
             case "FontAwesome5":
                 return(
-                    <FontAwesome5 name={name} color={'#d4add2'} size={size}/>
+                    <FontAwesome5 name={name} color={color} size={size}/>
                 );
             default:
                 return (
                     <Octicons name={"info"} color={"black"} size={26} />
                 );
+            case "AntDesign":
+                return(
+                    <AntDesign name={name} color={color} size={size} />
+                );
+
+
         }
     }
 

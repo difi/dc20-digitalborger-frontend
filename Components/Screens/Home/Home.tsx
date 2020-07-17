@@ -17,6 +17,8 @@ import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
 import {Lanekassen} from "./Service/Lånekassen/Lånekassen";
+import {Politi} from "./Service/Politi/Politi";
+import {Helsenorge} from "./Service/Helsenorge/Helsenorge";
 
 const PopularServices = [
   {
@@ -78,7 +80,15 @@ const services = [
   {
     name: "Lånekassen",
     uri:"https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
-  }
+  },
+  {
+    name: "Politiet",
+    uri: "https://kommunikasjon.ntb.no/data/images/00987/776f818b-f8b4-41ff-a496-e8250e26788c.png/social",
+  },
+  {
+    name: "Helsenorge",
+    uri: "https://kommunikasjon.ntb.no/data/images/00987/776f818b-f8b4-41ff-a496-e8250e26788c.png/social",
+  },
 ];
 
 //TODO: remove, temporary for design
@@ -152,6 +162,8 @@ export default function Home() {
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
       <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
       <Stack.Screen name={"Lånekassen"} component={Lanekassen}/>
+      <Stack.Screen name={"Politiet"} component={Politi} />
+      <Stack.Screen name={"Helsenorge"} component={Helsenorge} />
     </Stack.Navigator>
   );
 }

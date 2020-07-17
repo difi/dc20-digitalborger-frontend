@@ -34,7 +34,7 @@ export default function StipendLån() {
                 <TouchableOpacity
                     onPress={() =>
                         WebBrowser.openBrowserAsync(
-                            "https://dinesider.lanekassen.no/Nettsoknad/Default.aspx?soknadstype=ST01D2&UndervisningsAr=Innevarende"
+                            "https://lanekassen.no/nb-NO/Stipend-og-lan/soknader/soknad-om-stotte-til-utdanning-i-norge1/grunnskoleopplaring/"
                         )
                     }
                 >
@@ -42,23 +42,7 @@ export default function StipendLån() {
                         <Icon name="arrow-circle-right" size={15}></Icon>
                     </View>
                     <View style={styles.textContainer}>
-                        <Text style={{fontSize: 13}}>Grunnskoleopplæring </Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.linkContainer}>
-                <TouchableOpacity
-                    onPress={() =>
-                        WebBrowser.openBrowserAsync(
-                            "https://www.lanekassen.no/nn-NO/stipend-og-lan/soknader/soknad-om-stotte-til-utdanning-i-noreg1/grunnskoleopplaring/"
-                        )
-                    }
-                >
-                    <View style={styles.iconContainer}>
-                        <Icon name="arrow-circle-right" size={15}></Icon>
-                    </View>
-                    <View style={styles.textContainer}>
-                        <Text style={{fontSize: 13}}>Høyere utdanning </Text>
+                        <Text style={{fontSize: 13}}>Grunnskole-{"\n"}opplæring </Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -74,7 +58,7 @@ export default function StipendLån() {
                         <Icon name="arrow-circle-right" size={15}></Icon>
                     </View>
                     <View style={styles.textContainer}>
-                        <Text style={{fontSize: 13}}>Lærling </Text>
+                        <Text style={{fontSize: 13}}>Høyere utdanning </Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -83,6 +67,22 @@ export default function StipendLån() {
                     onPress={() =>
                         WebBrowser.openBrowserAsync(
                             "https://www.lanekassen.no/nn-NO/stipend-og-lan/soknader/soknad-om-stotte-til-utdanning-i-noreg1/larling-/"
+                        )
+                    }
+                >
+                    <View style={styles.iconContainer}>
+                        <Icon name="arrow-circle-right" size={15}></Icon>
+                    </View>
+                    <View style={styles.textContainer}>
+                        <Text style={{fontSize: 13}}>Lærling </Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.linkContainer}>
+                <TouchableOpacity
+                    onPress={() =>
+                        WebBrowser.openBrowserAsync(
+                            "https://dinesider.lanekassen.no/Nettsoknad/Default.aspx?soknadstype=ST01D3&UndervisningsAr=Forrige"
                         )
                     }
                 >
@@ -119,9 +119,7 @@ const styles = StyleSheet.create({
     linkContainer:{
         width: "49%",
         height: "25%",
-        marginTop: 25,
-        borderWidth: 1,
-        borderColor: "black",
+        marginTop: 20,
         backgroundColor: "white",
 
     },
