@@ -7,7 +7,7 @@ import {SafeAreaView, ScrollView, Text, View} from "react-native";
 import Header from "./HeaderVegvesenet";
 import {ListItem} from "../Collapsible/ListItem";
 //import Grades from "../Vigo/Grades";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Footer from "../Footer";
 import VeienTilForerkortet from './VeienTilForerkort';
 import TeoriProve from './TeoriProve';
@@ -59,9 +59,29 @@ const SKATT  = [
 
 ];
 
-export function Vegvesenet(){
+export function Vegvesenet({route}){
 
+    const { open } = route.params;
     const [selectedIndex, setSelectedIndex] = useState(null);
+
+    useEffect(() => {
+        if(open !== null){
+            switch (open) {
+                case 'Veien til førerkortet':
+                    setSelectedIndex(0);
+                    break;
+                case 'Bestill time til teoriprøve':
+                    setSelectedIndex(1);
+                    break;
+                case  'Oppkjøring':
+                    setSelectedIndex(2);
+                    break;
+                case 'Om ditt skattekort':
+                    setSelectedIndex(3);
+                    break;
+            }
+        }
+    });
     
     return(
         <SafeAreaView style={{flex: 1}}>

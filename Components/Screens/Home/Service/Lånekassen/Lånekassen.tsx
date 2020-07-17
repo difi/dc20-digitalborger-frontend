@@ -5,7 +5,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {SafeAreaView, ScrollView, Text, View} from "react-native";
 import Footer from "../Footer";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {ListItem} from "../Collapsible/ListItem"
 
 
@@ -49,9 +49,26 @@ const LAANEKASSE  = [
 
 ];
 
-export function Lanekassen(){
+export function Lanekassen({route}){
 
+    const { open } = route.params;
     const [selectedIndex, setSelectedIndex] = useState(null);
+
+    useEffect(() => {
+        if(open !== null){
+            switch (open) {
+                case 'Søknad om lån og stipend':
+                    setSelectedIndex(0);
+                    break;
+                case 'Støttebeløp til elever':
+                    setSelectedIndex(1);
+                    break;
+                case 'Dine utbetalinger':
+                    setSelectedIndex(2);
+                    break;
+            }
+        }
+    });
 
     return(
         <SafeAreaView style={{flex: 1}}>

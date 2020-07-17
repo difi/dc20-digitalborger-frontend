@@ -51,7 +51,7 @@ const PopularServices = [
   {
     name: "Søknad om lån og stipend",
     uri:
-      "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
+        "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
   },
   {
     name: "Vegvesnet",
@@ -61,7 +61,7 @@ const PopularServices = [
   {
     name: "Lånekassen",
     uri:
-      "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
+        "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
   },
 ];
 
@@ -172,7 +172,7 @@ export default function Home() {
       <Stack.Screen name={"Søk frikort"} component={Skatteetaten}/>
       <Stack.Screen name={"Forny resept"} component={Vigo}/>
       <Stack.Screen name={"Oppkjøring"} component={Vegvesenet}/>
-      <Stack.Screen name={"Søknad om lån og stipend"} component={Skatteetaten}/>
+      <Stack.Screen name={"Søknad om lån og stipend"} component={Lanekassen}/>
 
 
       <Stack.Screen name={"Vigo"} component={Vigo} />
