@@ -34,7 +34,7 @@ export default function SubSlide({title, description} : SlidePageProps ){
                         {description}
                     </Text>
                 </View>
-                <Button onPress={() => console.log("hello")}  variant={"default"} label={"Gå videre"}/>
+                <Button onPress={() => console.log("hello")}  variant={"primary"} label={"Gå videre"}/>
             </View>
         </View>
     );

@@ -27,8 +27,8 @@ const Info = [
 ]
 
 const assets = [
-    require("../../assets/fan.png"),
-    require("../../assets/unlock-400px.png")
+    require("../../assets/Illustrations/auth.png"),
+    require("../../assets/Illustrations/phone.png")
 ]
 
 export default function GetStarted({navigation}){
