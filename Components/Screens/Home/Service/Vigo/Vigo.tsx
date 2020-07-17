@@ -70,8 +70,25 @@ const VIGO  = [
 
 const SPACE = 20;
 
-export function Vigo() {
+export function Vigo({route}) {
+    const { open } = route.params;
     const [selectedIndex, setSelectedIndex] = useState(null);
+    useEffect(() => {
+        if(open !== null){
+           switch (open) {
+               case "Karakterer":
+                   setSelectedIndex(0);
+                   break;
+               case "Fravær":
+                   setSelectedIndex(1);
+                   break;
+               case "Søk Skole":
+                   setSelectedIndex(2);
+                   break;
+           }
+        }
+    });
+
     return(
         <SafeAreaView style={{flex: 1}}>
             <ScrollView style={{flex: 1, backgroundColor: "#5da423"}} showsVerticalScrollIndicator={false}>
