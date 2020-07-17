@@ -12,6 +12,7 @@ import Header from "./HeaderHelsenorge";
 import {ListItem} from "../Collapsible/ListItem";
 import {useState} from "react";
 import Footer from "../Footer";
+import Resepter from "./Resepter";
 
 
 
@@ -75,9 +76,9 @@ export function Helsenorge(){
                             <Text>hei</Text>
                         </View>
                     </ListItem>
-                    <ListItem key={3} iconName = {HELSE[3].icon.name} iconType={HELSE[3].icon.type} containerHeight={200} title={HELSE[3].title} parentCallback={(item) => {setSelectedIndex(3); console.log("toggled", item)}} pressed={(selectedIndex === 3) ? true : false}>
+                    <ListItem key={3} iconName = {HELSE[3].icon.name} iconType={HELSE[3].icon.type} containerHeight={600} title={HELSE[3].title} parentCallback={(item) => {setSelectedIndex(3); console.log("toggled", item)}} pressed={(selectedIndex === 3) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <Text>hei</Text>
+                           <Resepter/>
                         </View>
                     </ListItem>
                 </View>
