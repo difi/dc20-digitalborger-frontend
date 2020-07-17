@@ -46,16 +46,7 @@ const SKATT  = [
             description: "test3"
         }
     },
-    {
-        title: 'Om ditt skattekort',
-        icon: {
-            type: "FontAwesome",
-            name: "id-card"
-        },
-        content: {
-            description: "test4"
-        }
-    },
+
 
 ];
 
@@ -76,9 +67,7 @@ export function Vegvesenet({route}){
                 case  'Oppkjøring':
                     setSelectedIndex(2);
                     break;
-                case 'Om ditt skattekort':
-                    setSelectedIndex(3);
-                    break;
+
             }
         }
     });
