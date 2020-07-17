@@ -14,15 +14,8 @@ const { width } = Dimensions.get("window");
 
 export default function SlidePage(){
     return(
-            <View style={{ flex: 1, width: width, height: HEIGHT,}}>
-                <View style={{flex: 2}}>
+        <View style={{width: width,}}>
 
-                </View>
-                <View style={{flex: 1, backgroundColor: "white", borderTopLeftRadius: 75}}>
-                    <Text>
-                        tests
-                    </Text>
-                </View>
-            </View>
+        </View>
     );
 }

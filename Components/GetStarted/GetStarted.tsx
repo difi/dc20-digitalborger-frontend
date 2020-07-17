@@ -9,6 +9,7 @@ import Animated, {
 } from "react-native-reanimated";
 import {useEffect} from "react";
 import SlidePage from "./SlidePage";
+import SubSlide from "./SubSlide";
 const HEIGHT = Dimensions.get("window").height;
 
 const { width } = Dimensions.get("window");
@@ -16,10 +17,12 @@ const { width } = Dimensions.get("window");
 
 const test = [
     {
-        title: "hei"
+        title: "Ung Borger",
+        description: "En app som samler dine personlige opplysninger på ett sted!"
     },
     {
-        title: "gan"
+        title: "gan",
+        description: "blablabla"
     }
 ]
 
@@ -48,25 +51,16 @@ export default function GetStarted({navigation}){
                         bounces= {false}
                         {...{onScroll}}
                     >
-                        <View style={{width: width,}}>
-
-                        </View>
-
-                        <View style={{width: width,}}>
-
-                        </View>
+                        <SlidePage/>
+                        <SlidePage/>
                     </Animated.ScrollView>
                 </Animated.View>
 
                <Animated.View style={{flex: 1, backgroundColor}}>
                    <View style={{flex: 1, backgroundColor: "white",  borderTopLeftRadius: 75,}}>
                        <Animated.View style={{flex: 1, transform: [{translateX: multiply(x, -1)}], flexDirection: "row", width: width * test.length}}>
-                           {test.map( (item, index) => (
-                               <View style={{flex: 1, justifyContent: "center", alignItems: "center", }}>
-                                   <Text>
-                                       {item.title}
-                                   </Text>
-                               </View>
+                           {test.map( ({title, description}, index) => (
+                              <SubSlide title={title} description ={description}/>
                            ))}
                        </Animated.View>
                    </View>
