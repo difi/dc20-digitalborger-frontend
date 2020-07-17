@@ -4,8 +4,7 @@ import {Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "rea
 // @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // @ts-ignore
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const  Prescriptions = [
     {
@@ -47,12 +46,13 @@ export default function Resepter() {
 
 
             {Prescriptions.map((prescription, index) => (
-                <View key={index} style={styles.PrescriptionsContainer}>
+                <View key={index} style={{
+                    borderBottomColor:  (index == Prescriptions.length-1) ? "black":"lightgrey",
+                    borderBottomWidth: 1}}>
 
                     <Text style={styles.PrescriptionsName}>{prescription.name}</Text>
 
-
-                    <View  style={{flexDirection: "row", justifyContent: "space-between"}}>
+                    <View style={{flexDirection: "row", justifyContent: "space-between"}}>
                         <Text style={styles.PrescriptionsCat}>{prescription.category}</Text>
                         <Text style={styles.PrescriptionsCat}>{prescription.status}</Text>
                     </View>
@@ -78,9 +78,11 @@ export default function Resepter() {
                         <Text style={styles.PrescriptionsCat}>{prescription1.category}</Text>
 
 
-                        <TouchableOpacity style={{flexDirection: "row"}}>
+                        <TouchableOpacity
+                            style={{flexDirection: "row"}}
+                            onPress={() => Linking.openURL("https://helsenorge.no/om-min-helse/meldinger")}>
                             <Text style={styles.PrescriptionsCat}>{prescription1.status}</Text>
-                            <FontAwesome5 name={"recycle"} size={20}/>
+                            <Entypo name={"cycle"}size={20}/>
                         </TouchableOpacity>
 
                     </View>
