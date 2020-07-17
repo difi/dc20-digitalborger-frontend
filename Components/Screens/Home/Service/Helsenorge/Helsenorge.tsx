@@ -1,55 +1,50 @@
 import * as React from 'react';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
+
+
 
 import {SafeAreaView, ScrollView, Text, View} from "react-native";
-import Header from "../Header";
+//import Header from "../Header";
+import Header from "./HeaderHelsenorge";
 import {ListItem} from "../Collapsible/ListItem";
 import {useState} from "react";
 import Footer from "../Footer";
 
 
 
-const SKATT  = [
+
+const HELSE  = [
     {
-        title: 'Søk skattekort',
+        title: 'Din journal',
         icon: {
-            type: "FontAwesome",
-            name: "money"
+            type: "AntDesign",
+            name: "profile"
         },
-        content: {
-            description: "test1"
-        }
+
     },
     {
-        title: 'Søk frikort',
+        title: 'Timeavtaler',
         icon: {
-            type: "FontAwesome",
-            name: "suitcase"
+            type: "Entypo",
+            name: "calendar"
         },
-        content: {
-            description: "test2"
-        }
     },
     {
-        title: 'Din skattemelding',
+        title: 'Vaksine',
         icon: {
-            type: "FontAwesome",
-            name: "archive",
+            type: "FontAwesome5",
+            name: "syringe",
         },
-        content: {
-            description: "test3"
-        }
     },
     {
-        title: 'Om ditt skattekort',
+        title: 'Resepter',
         icon: {
-            type: "FontAwesome",
-            name: "id-card"
+            type: "FontAwesome5",
+            name: "prescription-bottle"
         },
-        content: {
-            description: "test4"
-        }
     },
 
 ];
@@ -57,37 +52,36 @@ const SKATT  = [
 export function Helsenorge(){
 
     const [selectedIndex, setSelectedIndex] = useState(null);
+
     return(
         <SafeAreaView style={{flex: 1}}>
-            <ScrollView style={{flex: 1, backgroundColor: "#6f2c3f"}} showsVerticalScrollIndicator={false}>
-                <Header logo={"https://is2-ssl.mzstatic.com/image/thumb/Purple30/v4/98/70/29/98702972-bc67-653e-6230-afa23cac6ae1/pr_source.png/246x0w.png"} nameOfService={"Skatteetaten"}/>
+            <Header logo={"Components/Screens/Home/Service/Helsenorge/Helsenorge.tsx"} nameOfService={"Helsenorge"}/>
+            <ScrollView style={{flex: 1, backgroundColor: "#9a1c6f"}} showsVerticalScrollIndicator={false}>
                 <View>
-                    <ListItem key={0} iconName = {SKATT[0].icon.name} iconType={SKATT[0].icon.type} containerHeight={200} title={SKATT[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
+                    <ListItem key={0} iconName = {HELSE[0].icon.name} iconType={HELSE[0].icon.type} containerHeight={200} title={HELSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <Text>hei</Text>
                         </View>
                     </ListItem>
 
-                    <ListItem key={1} iconName = {SKATT[1].icon.name} iconType={SKATT[1].icon.type} containerHeight={200} title={SKATT[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
+                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={200} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <Text>hei</Text>
                         </View>
                     </ListItem>
 
-                    <ListItem key={2} iconName = {SKATT[2].icon.name} iconType={SKATT[2].icon.type} containerHeight={300} title={SKATT[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
+                    <ListItem key={2} iconName = {HELSE[2].icon.name} iconType={HELSE[2].icon.type} containerHeight={200} title={HELSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <Text>hei</Text>
                         </View>
                     </ListItem>
-
-                    <ListItem key={3} iconName = {SKATT[3].icon.name} iconType={SKATT[3].icon.type} containerHeight={300} title={SKATT[3].title} parentCallback={(item) => {setSelectedIndex(3); console.log("toggled", item)}} pressed={(selectedIndex === 3) ? true : false}>
+                    <ListItem key={3} iconName = {HELSE[3].icon.name} iconType={HELSE[3].icon.type} containerHeight={200} title={HELSE[3].title} parentCallback={(item) => {setSelectedIndex(3); console.log("toggled", item)}} pressed={(selectedIndex === 3) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <Text>hei</Text>
                         </View>
                     </ListItem>
-
                 </View>
-                <Footer description={"Skatteetaten er en norsk statlig etat underlagt finansdepartementet. Skatteetaten har ansvar for folkeregistrering og fastsettelse og innkreving av skatt og merverdiavgift.\n"}/>
+                <Footer description={"Helsenorge har kvalitetssikret informasjon om helse, sykdom og rettigheter, og digitale tjenester som bytt fastlege, e-resepter og kjernejournal. Flere tjenester som hjelper deg å følge opp din egen helse finner du på helsenorge.no."}/>
             </ScrollView>
         </SafeAreaView>
     )

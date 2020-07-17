@@ -20,6 +20,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Entypo from 'react-native-vector-icons/Entypo';
 // @ts-ignore
 import AntDesign from 'react-native-vector-icons/AntDesign';
+// @ts-ignore
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 
@@ -104,6 +106,15 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
                 return(
                     <AntDesign name={name} color={color} size={size} />
                 );
+            case "Ionicons":
+                return(
+                    <Ionicons name={name} color={color} size={size} />
+                );
+            case "Entypo":
+                return(
+                    <Entypo name={name} color={color} size={size} />
+                );
+
 
 
         }
