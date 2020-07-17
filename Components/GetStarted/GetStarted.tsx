@@ -15,15 +15,20 @@ const HEIGHT = Dimensions.get("window").height;
 const { width } = Dimensions.get("window");
 
 
-const test = [
+const Info = [
     {
         title: "Ung Borger",
         description: "En app som samler dine personlige opplysninger på ett sted!"
     },
     {
-        title: "gan",
-        description: "blablabla"
+        title: "Sikkerhet med ID porten",
+        description: "For å kunne få oversikt over alle våre tjenester er du nødt til å logge inn med MinID eller BankID. Dette gjøres gjennom noe som heter ID porten"
     }
+]
+
+const assets = [
+    require("../../assets/fan.png"),
+    require("../../assets/unlock-400px.png")
 ]
 
 export default function GetStarted({navigation}){
@@ -51,15 +56,15 @@ export default function GetStarted({navigation}){
                         bounces= {false}
                         {...{onScroll}}
                     >
-                        <SlidePage/>
-                        <SlidePage/>
+                        <SlidePage image={assets[0]}/>
+                        <SlidePage image={assets[1]}/>
                     </Animated.ScrollView>
                 </Animated.View>
 
                <Animated.View style={{flex: 1, backgroundColor}}>
                    <View style={{flex: 1, backgroundColor: "white",  borderTopLeftRadius: 75,}}>
-                       <Animated.View style={{flex: 1, transform: [{translateX: multiply(x, -1)}], flexDirection: "row", width: width * test.length}}>
-                           {test.map( ({title, description}, index) => (
+                       <Animated.View style={{flex: 1, transform: [{translateX: multiply(x, -1)}], flexDirection: "row", width: width * Info.length}}>
+                           {Info.map( ({title, description}, index) => (
                               <SubSlide title={title} description ={description}/>
                            ))}
                        </Animated.View>

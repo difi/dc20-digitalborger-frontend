@@ -43,7 +43,8 @@
     "react-native-tab-view": "^2.14.4",
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
-    "uri-scheme": "^1.0.22"
+    "uri-scheme": "^1.0.22",
+    "react-native-svg": "12.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

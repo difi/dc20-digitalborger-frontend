@@ -13,6 +13,7 @@ const HEIGHT = Dimensions.get("window").height;
 const { width } = Dimensions.get("window");
 
 import  Button from "../Button"
+import SvgComponent from "../../assets/SVG/SvgComponent";
 
 interface SlidePageProps {
     title: string,
@@ -33,7 +34,6 @@ export default function SubSlide({title, description} : SlidePageProps ){
                         {description}
                     </Text>
                 </View>
-
                 <Button onPress={() => console.log("hello")}  variant={"default"} label={"Gå videre"}/>
             </View>
         </View>
