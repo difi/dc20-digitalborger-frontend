@@ -17,10 +17,11 @@ import SvgComponent from "../../assets/SVG/SvgComponent";
 
 interface SlidePageProps {
     title: string,
-    description: string
+    description: string,
+    onPress: () => void
 }
 
-export default function SubSlide({title, description} : SlidePageProps ){
+export default function SubSlide({title, description, ...onPress} : SlidePageProps ){
     return(
         <View style={{width: width, padding: 44}}>
             <View style={{flex: 1, justifyContent: "center", alignItems: "center",}}>
@@ -34,7 +35,7 @@ export default function SubSlide({title, description} : SlidePageProps ){
                         {description}
                     </Text>
                 </View>
-                <Button onPress={() => console.log("hello")}  variant={"primary"} label={"Gå videre"}/>
+                <Button {...onPress}  variant={"primary"} label={"Gå videre"}/>
             </View>
         </View>
     );

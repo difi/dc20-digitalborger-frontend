@@ -7,7 +7,7 @@ import Animated, {
     Extrapolate,
     interpolate,
 } from "react-native-reanimated";
-import {useEffect} from "react";
+import {useEffect, useRef} from "react";
 import SlidePage from "./SlidePage";
 import SubSlide from "./SubSlide";
 const HEIGHT = Dimensions.get("window").height;
@@ -32,7 +32,7 @@ const assets = [
 ]
 
 export default function GetStarted({navigation}){
-
+    const scroll = useRef<Animated.ScrollView>(null);
     const x = useValue(0);
     const onScroll = onScrollEvent({x});
     const backgroundColor = interpolateColor(x, {
@@ -48,6 +48,7 @@ export default function GetStarted({navigation}){
             <Animated.View style={{flex: 1, backgroundColor: "white"}}>
                 <Animated.View style={{flex: 2, backgroundColor, borderBottomRightRadius: 75}}>
                     <Animated.ScrollView
+                        ref = {scroll}
                         horizontal = {true}
                         showsHorizontalScrollIndicator={false}
                         decelerationRate={"fast"}
@@ -65,7 +66,16 @@ export default function GetStarted({navigation}){
                    <View style={{flex: 1, backgroundColor: "white",  borderTopLeftRadius: 75,}}>
                        <Animated.View style={{flex: 1, transform: [{translateX: multiply(x, -1)}], flexDirection: "row", width: width * Info.length}}>
                            {Info.map( ({title, description}, index) => (
-                              <SubSlide title={title} description ={description}/>
+                              <SubSlide
+                                  title={title}
+                                        description={description}
+                                        onPress={() => {
+                                            if(scroll.current){
+                                                scroll.current
+                                                    .getNode()
+                                                    .scrollTo({x: width * (index + 1), animated: true})
+                                            }}}
+                              />
                            ))}
                        </Animated.View>
                    </View>
