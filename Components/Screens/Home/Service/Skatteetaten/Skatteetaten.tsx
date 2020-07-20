@@ -7,7 +7,7 @@ import Header from "../Header";
 import HeaderSkatt from "./HeaderSkatt";
 import {ListItem} from "../Collapsible/ListItem";
 import Grades from "../Vigo/Grades";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Footer from "../Footer";
 import Frikort from "./Frikort";
 import SkatteMelding from "./SkatteMelding";
@@ -59,9 +59,29 @@ const SKATT  = [
 
 ];
 
-export function Skatteetaten(){
-
+export function Skatteetaten({route}){
+    const { open } = route.params;
     const [selectedIndex, setSelectedIndex] = useState(null);
+
+    useEffect(() => {
+        if(open !== null){
+            switch (open) {
+                case 'Søk skattekort':
+                    setSelectedIndex(0);
+                    break;
+                case 'Søk frikort':
+                    setSelectedIndex(1);
+                    break;
+                case  'Din skattemelding':
+                    setSelectedIndex(2);
+                    break;
+                case 'Om ditt skattekort':
+                    setSelectedIndex(3);
+                    break;
+            }
+        }
+    });
+
     return(
         <SafeAreaView style={{flex: 1}}>
             <ScrollView style={{flex: 1, backgroundColor: "#6f2c3f"}} showsVerticalScrollIndicator={false}>
