@@ -10,6 +10,7 @@ import Animated, {
 import {useEffect, useRef} from "react";
 import SlidePage from "./SlidePage";
 import SubSlide from "./SubSlide";
+import Dot from "./Dot";
 const HEIGHT = Dimensions.get("window").height;
 
 const { width } = Dimensions.get("window");
@@ -22,7 +23,7 @@ const Info = [
     },
     {
         title: "Sikkerhet med ID porten",
-        description: "For å kunne få oversikt over alle våre tjenester er du nødt til å logge inn med MinID eller BankID. Dette gjøres gjennom noe som heter ID porten"
+        description: "For å kunne få oversikt over alle våre tjenester er du nødt til å logge inn med MinID eller BankID. Dette gjøres gjennom noe som heter ID porten."
     }
 ]
 
@@ -64,17 +65,22 @@ export default function GetStarted({navigation}){
 
                <Animated.View style={{flex: 1, backgroundColor}}>
                    <View style={{flex: 1, backgroundColor: "white",  borderTopLeftRadius: 75,}}>
+                       <View style={{marginTop: 30, justifyContent: "center", alignItems: "center", flexDirection: "row"}}>
+                           {Info.map(({}, index) => (
+                               <Dot  key={index} currentIndex={divide(x, width)} {...{ index }}/>
+                           ))}
+                       </View>
                        <Animated.View style={{flex: 1, transform: [{translateX: multiply(x, -1)}], flexDirection: "row", width: width * Info.length}}>
                            {Info.map( ({title, description}, index) => (
                               <SubSlide
                                   title={title}
-                                        description={description}
-                                        onPress={() => {
-                                            if(scroll.current){
-                                                scroll.current
-                                                    .getNode()
-                                                    .scrollTo({x: width * (index + 1), animated: true})
-                                            }}}
+                                    description={description}
+                                    onPress={() => {
+                                        if(scroll.current){
+                                            scroll.current
+                                                .getNode()
+                                                .scrollTo({x: width * (index + 1), animated: true})
+                                        }}}
                               />
                            ))}
                        </Animated.View>
