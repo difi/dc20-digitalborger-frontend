@@ -50,21 +50,18 @@ export default function Hourglass() {
     return "#93E6F3";
   }
 
-    function sendPush24hrsLeft(title:String, date:Date) {
-        if (getTimeLeft(date) <= 24*60*60) {
-            return <PushNotification
-            title={title}
-            date={date}/>
-        }
-        console.log("kjører")
+  function sendPush24hrsLeft(title: String, date: Date) {
+    if (getTimeLeft(date) <= 24 * 60 * 60) {
+      return <PushNotification title={title} date={date} />;
     }
+  }
 
-    function getFormat(deadline: Date) {
-        if (getTimeLeft(deadline) <= 86400) {
-            return ["H", "M", "S"];
-        }
-        return ["D", "H"];
+  function getFormat(deadline: Date) {
+    if (getTimeLeft(deadline) <= 86400) {
+      return ["H", "M", "S"];
     }
+    return ["D", "H"];
+  }
 
   return (
     <View>

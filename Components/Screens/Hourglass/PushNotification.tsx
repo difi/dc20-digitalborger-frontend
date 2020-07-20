@@ -1,8 +1,8 @@
-import Constants from 'expo-constants';
-import * as Notifications from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
-import React, { useState, useEffect } from 'react';
-import { Text, View, Button, Platform, ToolbarAndroidComponent } from 'react-native';
+import Constants from "expo-constants";
+import * as Notifications from "expo-notifications";
+import * as Permissions from "expo-permissions";
+import React, { useState, useEffect } from "react";
+import { Platform } from "react-native";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -12,53 +12,35 @@ Notifications.setNotificationHandler({
   }),
 });
 
-export default function App(props: {
-    title: String;
-    date: Date;
-}) {
-
-
-  const [expoPushToken, setExpoPushToken] = useState('');
+export default function App(props: { title: String; date: Date }) {
+  const [expoPushToken, setExpoPushToken] = useState("");
   const [notification, setNotification] = useState(false);
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
-    /*Notifications.addNotificationReceivedListener(notification => {
-      setNotification(notification);
-    });
-    Notifications.addNotificationResponseReceivedListener(response => {
-      console.log(response);
-    
-    });*/
-    sendPushNotification(expoPushToken, props.title)
-    console.log("kjører2")
-
-    /*return () => {
-      Notifications.removeAllNotificationListeners();
-    };*/
+    registerForPushNotificationsAsync().then((token) =>
+      setExpoPushToken(token)
+    );
+    sendPushNotification(expoPushToken, props.title);
   });
 
-  return (
-    null
-  );
+  return null;
 }
 
-// Can use this function below, OR use Expo's Push Notification Tool-> https://expo.io/dashboard/notifications
 async function sendPushNotification(expoPushToken, title) {
   const message = {
     to: expoPushToken,
-    sound: 'default',
+    sound: "default",
     title: title,
-    body: 'Fristen for denne hendelsen går ut om 24 timer!',
-    data: { data: 'goes here' },
+    body: "Fristen for denne hendelsen går ut om 24 timer!",
+    data: { data: "goes here" },
   };
 
-  await fetch('https://exp.host/--/api/v2/push/send', {
-    method: 'POST',
+  await fetch("https://exp.host/--/api/v2/push/send", {
+    method: "POST",
     headers: {
-      Accept: 'application/json',
-      'Accept-encoding': 'gzip, deflate',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Accept-encoding": "gzip, deflate",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(message),
   });
@@ -67,28 +49,30 @@ async function sendPushNotification(expoPushToken, title) {
 async function registerForPushNotificationsAsync() {
   let token;
   if (Constants.isDevice) {
-    const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+    const { status: existingStatus } = await Permissions.getAsync(
+      Permissions.NOTIFICATIONS
+    );
     let finalStatus = existingStatus;
-    if (existingStatus !== 'granted') {
+    if (existingStatus !== "granted") {
       const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
       finalStatus = status;
     }
-    if (finalStatus !== 'granted') {
-      alert('Failed to get push token for push notification!');
+    if (finalStatus !== "granted") {
+      alert("Failed to get push token for push notification!");
       return;
     }
     token = (await Notifications.getExpoPushTokenAsync()).data;
     console.log(token);
   } else {
-    alert('Must use physical device for Push Notifications');
+    alert("Must use physical device for Push Notifications");
   }
 
-  if (Platform.OS === 'android') {
-    Notifications.setNotificationChannelAsync('default', {
-      name: 'default',
+  if (Platform.OS === "android") {
+    Notifications.setNotificationChannelAsync("default", {
+      name: "default",
       importance: Notifications.AndroidImportance.MAX,
       vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#FF231F7C',
+      lightColor: "#FF231F7C",
     });
   }
 
