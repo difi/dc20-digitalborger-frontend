@@ -13,6 +13,7 @@ import {ListItem} from "../Collapsible/ListItem";
 import {useState} from "react";
 import Footer from "../Footer";
 import Resepter from "./Resepter";
+import TimeAvtaler from "./TimeAvtaler";
 
 
 
@@ -65,9 +66,9 @@ export function Helsenorge(){
                         </View>
                     </ListItem>
 
-                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={200} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
+                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={400} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <Text>hei</Text>
+                            <TimeAvtaler/>
                         </View>
                     </ListItem>
 
@@ -76,7 +77,7 @@ export function Helsenorge(){
                             <Text>hei</Text>
                         </View>
                     </ListItem>
-                    <ListItem key={3} iconName = {HELSE[3].icon.name} iconType={HELSE[3].icon.type} containerHeight={600} title={HELSE[3].title} parentCallback={(item) => {setSelectedIndex(3); console.log("toggled", item)}} pressed={(selectedIndex === 3) ? true : false}>
+                    <ListItem key={3} iconName = {HELSE[3].icon.name} iconType={HELSE[3].icon.type} containerHeight={400} title={HELSE[3].title} parentCallback={(item) => {setSelectedIndex(3); console.log("toggled", item)}} pressed={(selectedIndex === 3) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                            <Resepter/>
                         </View>

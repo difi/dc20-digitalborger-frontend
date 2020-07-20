@@ -38,7 +38,7 @@ export default function Resepter() {
     return(
         <ScrollView style={styles.container}>
 
-            <View style={styles.Statuscontainer}>
+            <View style={styles.status}>
                 <FontAwesome name={"circle"}  color={"limegreen"}  size={20}/>
                 <Text style={styles.text}>Aktive resepter</Text>
 
@@ -47,14 +47,14 @@ export default function Resepter() {
 
             {Prescriptions.map((prescription, index) => (
                 <View key={index} style={{
-                    borderBottomColor:  (index == Prescriptions.length-1) ? "black":"lightgrey",
-                    borderBottomWidth: 1}}>
+                    borderBottomColor: "lightgrey",
+                    borderBottomWidth: (index == Prescriptions.length-1) ? 0: 1}}>
 
-                    <Text style={styles.PrescriptionsName}>{prescription.name}</Text>
+                    <Text style={styles.nameText}>{prescription.name}</Text>
 
-                    <View style={{flexDirection: "row", justifyContent: "space-between"}}>
-                        <Text style={styles.PrescriptionsCat}>{prescription.category}</Text>
-                        <Text style={styles.PrescriptionsCat}>{prescription.status}</Text>
+                    <View style={styles.grid}>
+                        <Text style={styles.categoryText}>{prescription.category}</Text>
+                        <Text style={styles.categoryText}>{prescription.status}</Text>
                     </View>
 
                 </View>
@@ -62,7 +62,7 @@ export default function Resepter() {
 
             ))}
 
-            <View style={styles.Statuscontainer}>
+            <View style={styles.status}>
                 <FontAwesome name={"circle"} color={"crimson"} size={20}/>
                 <Text style={styles.text}>Utekspiderte resepter</Text>
 
@@ -70,18 +70,17 @@ export default function Resepter() {
 
 
             {ExpiredPrescriptions.map((prescription1, index1) => (
-                <View key={index1} style={styles.PrescriptionsContainer}>
+                <View key={index1} style={styles.expiredContainer}>
 
-                    <Text style={styles.PrescriptionsName}>{prescription1.name}</Text>
+                    <Text style={styles.nameText}>{prescription1.name}</Text>
 
-                    <View style={{flexDirection: "row", justifyContent: "space-between"}}>
-                        <Text style={styles.PrescriptionsCat}>{prescription1.category}</Text>
-
+                    <View style={styles.grid}>
+                        <Text style={styles.categoryText}>{prescription1.category}</Text>
 
                         <TouchableOpacity
                             style={{flexDirection: "row"}}
                             onPress={() => Linking.openURL("https://helsenorge.no/om-min-helse/meldinger")}>
-                            <Text style={styles.PrescriptionsCat}>{prescription1.status}</Text>
+                            <Text style={styles.categoryText}>{prescription1.status}</Text>
                             <Entypo name={"cycle"}size={20}/>
                         </TouchableOpacity>
 
@@ -92,7 +91,7 @@ export default function Resepter() {
 
             <TouchableOpacity
                 style={styles.buttonContainer} onPress={() => Linking.openURL("https://helsenorge.no/e-resept-og-mine-resepter/dine-resepter-pa-helsenorge-no")}>
-                <Text style={styles.buttonText}>se alle resepter</Text>
+                <Text style={styles.buttonText}>Se alle resepter</Text>
                 <FontAwesome key ={0} name={"long-arrow-right"} size={20}/>
             </TouchableOpacity>
 
@@ -105,29 +104,31 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    Statuscontainer: {
+    status: {
         flexDirection: "row",
         borderBottomColor: "black",
         borderBottomWidth: 1,
     },
-
-    PrescriptionsContainer:{
+    expiredContainer:{
         borderBottomWidth: 1,
         borderBottomColor: "gray",
-
     },
-    PrescriptionsName: {
-        fontSize: 17,
+    grid: {
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+    nameText: {
+        fontSize: 16,
         padding: "2%"
 
     },
-    PrescriptionsCat: {
-        fontSize: 14,
+    categoryText: {
+        fontSize: 15,
         padding: "2%"
 
     },
     text: {
-        fontSize: 15,
+        fontSize: 16,
         fontWeight: "bold",
         width: "100%",
         marginLeft: 10,
@@ -136,11 +137,11 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        width: 140,
+        width: 150,
 
     },
     buttonText:{
-        fontSize: 15,
+        fontSize: 16,
 
     }
 });
