@@ -10,20 +10,18 @@ import { Header } from "react-native-elements";
 import UserInfo from "./UserInfo";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import { createStackNavigator } from "@react-navigation/stack";
+import { useEffect } from "react";
+import Digipost from "./Digipost";
 
-export default function Profile() {
+const Stack = createStackNavigator();
+
+function ProfileContent({ navigation }) {
   return (
     <View>
-      <Header
-        backgroundColor="#93E6F3"
-        centerComponent={{
-          text: "Min profil",
-          style: { fontWeight: "bold", fontSize: 16 },
-        }}
-      />
       <TouchableOpacity
         style={styles.icon}
-        onPress={() => Linking.openURL("https://www.digipost.no/")}
+        onPress={() => navigation.navigate("Digipost", { open: null })}
       >
         <EntypoIcon name="mail" size={40}></EntypoIcon>
       </TouchableOpacity>
@@ -58,6 +56,16 @@ export default function Profile() {
     </View>
   );
 }
+
+export default function Profile() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name={"Profil"} component={ProfileContent} />
+      <Stack.Screen name={"Digipost"} component={Digipost} />
+    </Stack.Navigator>
+  );
+}
+
 const styles = StyleSheet.create({
   icon: {
     height: 55,
