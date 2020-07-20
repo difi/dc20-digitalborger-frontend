@@ -19,17 +19,22 @@ const { width } = Dimensions.get("window");
 const Info = [
     {
         title: "Ung Borger",
-        description: "En app som samler dine personlige opplysninger på ett sted!"
+        description: "Er en app som samler dine personlige opplysninger på et sted!"
     },
     {
         title: "Sikkerhet med ID porten",
         description: "For å kunne få oversikt over alle våre tjenester er du nødt til å logge inn med MinID eller BankID. Dette gjøres gjennom noe som heter ID porten."
+    },
+    {
+        title: "Offentlige tjenester",
+        description: "Gjennom denne appen kan du finne informasjon som omhandler Vigo, Helsenorge, Skatteetaten, Vegvesnet, Politiet og Lånekassen."
     }
 ]
 
 const assets = [
     require("../../assets/Illustrations/auth.png"),
-    require("../../assets/Illustrations/phone.png")
+    require("../../assets/Illustrations/phone.png"),
+    require("../../assets/Illustrations/services.png")
 ]
 
 export default function GetStarted({navigation}){
@@ -37,8 +42,8 @@ export default function GetStarted({navigation}){
     const x = useValue(0);
     const onScroll = onScrollEvent({x});
     const backgroundColor = interpolateColor(x, {
-        inputRange: [0, width],
-        outputRange: ["#E7BF6A", "#9875AA"]
+        inputRange: [0, width, width * 2],
+        outputRange: ["#E7BF6A", "#9875AA", "#7899B7"]
     });
 
     useEffect(() => {
@@ -60,6 +65,7 @@ export default function GetStarted({navigation}){
                     >
                         <SlidePage image={assets[0]}/>
                         <SlidePage image={assets[1]}/>
+                        <SlidePage image={assets[2]}/>
                     </Animated.ScrollView>
                 </Animated.View>
 
@@ -71,18 +77,26 @@ export default function GetStarted({navigation}){
                            ))}
                        </View>
                        <Animated.View style={{flex: 1, transform: [{translateX: multiply(x, -1)}], flexDirection: "row", width: width * Info.length}}>
-                           {Info.map( ({title, description}, index) => (
-                              <SubSlide
-                                  title={title}
-                                    description={description}
-                                    onPress={() => {
-                                        if(scroll.current){
-                                            scroll.current
-                                                .getNode()
-                                                .scrollTo({x: width * (index + 1), animated: true})
-                                        }}}
-                              />
-                           ))}
+                           {Info.map( ({title, description}, index) => {
+                               const last = index === Info.length - 1;
+                               return(
+                                   (
+                                       <SubSlide
+                                           title={title}
+                                           description={description}
+                                           onPress={() => {
+                                               if (last) {
+                                                   navigation.navigate("Login");
+                                               } else {
+                                                   scroll.current
+                                                       ?.getNode()
+                                                       .scrollTo({ x: width * (index + 1), animated: true });
+                                               }}}
+                                           last={last}
+                                       />
+                                   )
+                               );
+                           })}
                        </Animated.View>
                    </View>
                </Animated.View>

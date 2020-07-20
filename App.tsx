@@ -14,7 +14,7 @@ export default function App() {
             <Stack.Navigator
                 initialRouteName={"GetStarted"}
             >
-                <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
+                <Stack.Screen name="Login" component={Login} options={{headerShown: true}}/>
                 <Stack.Screen name="ScreenTabs" component={ScreenTabs} options={{headerShown: false}}/>
                 <Stack.Screen name={"GetStarted"} component={GetStarted} options={{headerShown: false}}/>
             </Stack.Navigator>
