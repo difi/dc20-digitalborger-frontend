@@ -5,7 +5,8 @@ import { Header } from "react-native-elements";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import Utbetaling from "../Home/Service/Lånekassen/Utbetaling";
+import Skattemelding from "../Skattegiver";
+import KontaktPoliti from "../Home/Service/Politi/KontaktPoliti";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -66,6 +67,7 @@ export default function Notification() {
           />
         ))}
       </ScrollView>
+
     </View>
   );
 }

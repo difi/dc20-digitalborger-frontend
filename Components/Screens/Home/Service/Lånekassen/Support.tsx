@@ -1,5 +1,11 @@
 import * as React from 'react';
 import {StyleSheet, Text, View} from "react-native";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import * as Location from "expo-location";
+import {fetchUserInfoAsync} from "expo-auth-session";
+import {getSupport} from "../../../../ServerCommunications/Services/LaanekassenService";
+import {retrieveData} from "../../../../Storage";
 
 
 const SupportForStudent = [
@@ -25,24 +31,69 @@ const SupportForStudent = [
     }
 ]
 
+const ss = [
+    {
+        scholarship: "Borteboerstipend",
+        sum: 23000
+    },
+    {
+        scholarship: "Lån",
+        sum: 0
+    },
+    {
+        scholarship: "Stipend",
+        sum: 500000
+    },
+    {
+        scholarship: "Utbetaling",
+        sum: 4333
+    },
+    {
+        scholarship: "Utstyrstipend",
+        sum: 43242
+    },
+]
 
+const getScholarship = async () => {
+    const pid:any = await retrieveData("pid").catch(err => console.log(err));
+
+    const data = await getSupport(pid);
+    console.log(data);
+    return data;
+}
 
 export default function Support(){
+
+    const [status, setStatus] = useState("");
+    const [scholarship, setScholarship] = useState([{scholarship: "", sum: 0}]);
+
+        useEffect( () => {
+            getScholarship()
+                .then(data => setScholarship(data))
+                .catch(err => console.log(err));
+
+        }, []);
+
+
+
     return(
         <View style={{flex:1}}>
             <Text style={styles.textInfo}>Gjennomsnittstøtte i vanlig videregående opplæring: </Text>
 
-            {SupportForStudent.map((item, index) => (
-                <View key = {index} style={styles.listContainer}>
-                    <Text style={styles.listText}>{item.title}</Text>
+            {scholarship.map((item, index) => (
+                <View key = {index} style={(index == SupportForStudent.length-1) ? styles.LastElement:styles.listContainer}>
+                    {console.log(index)}
+                    <Text style={styles.listText}>{item.scholarship}</Text>
                     <Text style={
-                        {fontWeight: item.title == "Neste Utbetaling" ? "bold": "normal",
+                        {fontWeight: (index == scholarship.length - 1) ? "bold": "normal",
                             fontSize: 16,
-                            textDecorationLine: item.title == "Neste Utbetaling" ? "underline": "none",
+                            textDecorationLine: (index == scholarship.length - 1) ? "underline": "none",
                         } }>{item.sum + " kr"}</Text>
                 </View>
 
+
             ))}
+
 
 
         </View>
@@ -66,11 +117,18 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderBottomWidth: 1,
         justifyContent: "space-between",
-        padding: "5%",
         flexShrink: 1,
+    },
+    LastElement:{
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexShrink: 1,
+
     },
     listText: {
         fontSize: 16,
+        padding: "5%"
     }
 
 })
