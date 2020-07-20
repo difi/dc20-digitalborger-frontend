@@ -4,20 +4,17 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Linking,
 } from "react-native";
 import * as Location from "expo-location";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import axios from "axios";
-import * as WebBrowser from 'expo-web-browser';
-import {getSchools} from "../../../../ServerCommunications/Services/VigoService";
+import * as WebBrowser from "expo-web-browser";
+import { getSchools } from "../../../../ServerCommunications/Services/VigoService";
 
 export default function School() {
   const [schools, setSchools] = useState(Array);
   const [location, setLocation] = useState();
   const [errorMsg, setErrorMsg] = useState("");
   const [status, setStatus] = useState("");
-
 
   useEffect(() => {
     (async () => {
@@ -26,10 +23,14 @@ export default function School() {
       if (status !== "granted") {
         setErrorMsg("Permission to access location was denied");
       }
-      let location= await Location.getCurrentPositionAsync({});
+      let location = await Location.getCurrentPositionAsync({});
       setLocation(location); // Trenger egentlig ikke lagre location
 
-      let result = await getSchools(location.coords.longitude, location.coords.longitude, 5);
+      let result = await getSchools(
+        location.coords.longitude,
+        location.coords.longitude,
+        5
+      );
       setSchools(result);
     })();
   }, []);
@@ -44,7 +45,9 @@ export default function School() {
             <Text style={styles.distance}>{school.Distanse + "km"}</Text>
             <TouchableOpacity
               style={styles.link}
-              onPress={() => WebBrowser.openBrowserAsync("http://" + school.Webside)}
+              onPress={() =>
+                WebBrowser.openBrowserAsync("http://" + school.Webside)
+              }
             >
               <Text>Gå til</Text>
               <View style={styles.icon}>
@@ -59,7 +62,10 @@ export default function School() {
     return (
       <View>
         <Text>{errorMsg}</Text>
-        <Text>For å se skoler i ditt nærområde, skru på stedsposisjon i instillinger.</Text>
+        <Text>
+          For å se skoler i ditt nærområde, skru på stedsposisjon i
+          instillinger.
+        </Text>
       </View>
     );
   }
