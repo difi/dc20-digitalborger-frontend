@@ -14,9 +14,18 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 // @ts-ignore
 import Fontisto from 'react-native-vector-icons/Fontisto';
-
+// @ts-ignore
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 // @ts-ignore
 import Entypo from 'react-native-vector-icons/Entypo';
+// @ts-ignore
+import AntDesign from 'react-native-vector-icons/AntDesign';
+// @ts-ignore
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+
+
+
 
 
 const SPACE = 20;
@@ -85,10 +94,29 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
                 return(
                     <MaterialIcons name={name} color={color} size={size} />
                 );
+            case "FontAwesome5":
+                return(
+                    <FontAwesome5 name={name} color={color} size={size}/>
+                );
             default:
                 return (
                     <Octicons name={"info"} color={"black"} size={26} />
                 );
+            case "AntDesign":
+                return(
+                    <AntDesign name={name} color={color} size={size} />
+                );
+            case "Ionicons":
+                return(
+                    <Ionicons name={name} color={color} size={size} />
+                );
+            case "Entypo":
+                return(
+                    <Entypo name={name} color={color} size={size} />
+                );
+
+
+
         }
     }
 

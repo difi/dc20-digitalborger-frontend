@@ -6,7 +6,8 @@ import * as AuthSession from "expo-auth-session";
 import {makeRedirectUri, ResponseType, useAuthRequest} from "expo-auth-session";
 import * as Linking from 'expo-linking'
 import Axios from "axios";
-
+import {storeData} from "../Storage";
+let jwtDecode = require('jwt-decode');
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -35,17 +36,6 @@ export default function Login({navigation}) {
     };
 
      const getToken = async (code) => {
-      /*
-        await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
-        }).then(item => console.log("item", item))
-            .catch(err => console.log(err));
-
-       */
          console.log("Requesting token from code", code);
          console.log("redirect_uri", redirectUri);
          console.log("Code", code);
@@ -53,8 +43,6 @@ export default function Login({navigation}) {
          let headers = new Headers();
          headers.append( 'Content-Type', 'application/x-www-form-urlencoded');
          headers.append("Authorization", "Basic " + Base64.btoa("digdircamp_oidc:c72e9529-dde3-4e3b-be38-cd0a164250a0"));
-
-         console.log("BASE64", Base64.btoa("digdircamp_oidc:c72e9529-dde3-4e3b-be38-cd0a164250a0"));
 
 
          await (async () => {
@@ -67,25 +55,16 @@ export default function Login({navigation}) {
 
              console.log("full content", content);
              console.log("Token", content.access_token);
+             //Stores access token in localstorage
+             await storeData("access_token", content.access_token);
+
+             //Transforms the jwt token to json
+             let id_token = content.id_token;
+             let pid = jwtDecode(id_token);
+
+             //Stores the personal identifier number (Personnummer)
+             await storeData("pid", pid.pid);
          })();
-
-        /*
-         await fetch('https://oidc-ver1.difi.no/idporten-oidc-provider/token', {
-             method: "POST",
-             headers: headers,
-                 //body: 'grant_type=authorization_code&redirect_uri=' + redirectUri + '&code=' + code,
-              body: 'grant_type=authorization_code&code=' + code,
-             //body: 'grant_type=authorization_code&redirect_uri=digitalborger://redirect&code=' + code,
-         },
-             )
-             .then(response =>
-                 //if (!response.ok) throw new Error(response.status);
-                 console.log("response", JSON.stringify(response.body))
-                 //return response.json();
-             )
-             .catch(err => console.log(err));
-         */
-
     }
 
     // Create and load an auth request
@@ -107,11 +86,10 @@ export default function Login({navigation}) {
 
      React.useEffect(() => {
         if (result?.type === 'success') {
-            console.log("test", result);
             const code = result.params.code;
-            const state = result.params.state;
-            getToken(code).catch(err => console.log(err))
+            getToken(code)
                 .then(() => navigation.navigate("ScreenTabs"))
+                .catch(err => console.log(err))
 
         } else {
             alert("error!");
