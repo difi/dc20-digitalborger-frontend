@@ -123,7 +123,7 @@ export function Politi() {
           >
             <View style={{ padding: 10, flex: 1 }}>
               <View style={{ flex: 1 }}>
-                <Pass/>
+                <Pass />
               </View>
             </View>
           </ListItem>
