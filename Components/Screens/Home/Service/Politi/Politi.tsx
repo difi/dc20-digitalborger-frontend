@@ -33,6 +33,7 @@ import Footer from "../Footer";
 import PolitiAttest from "./PolitiAttest";
 import Anmelde from "./Anmelde";
 import KontaktPoliti from "./KontaktPoliti";
+import Pass from "./Pass";
 
 const POLITI = [
   {
@@ -112,7 +113,7 @@ export function Politi() {
             key={1}
             iconName={POLITI[1].icon.name}
             iconType={POLITI[1].icon.type}
-            containerHeight={400}
+            containerHeight={265}
             title={POLITI[1].title}
             parentCallback={(item) => {
               setSelectedIndex(1);
@@ -122,7 +123,7 @@ export function Politi() {
           >
             <View style={{ padding: 10, flex: 1 }}>
               <View style={{ flex: 1 }}>
-                <Text>pass</Text>
+                <Pass />
               </View>
             </View>
           </ListItem>
