@@ -16,14 +16,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
-import {useEffect} from "react";
+import { useEffect } from "react";
 
-import {Lanekassen} from "./Service/Lånekassen/Lånekassen";
-import {ListItem} from "./Service/Collapsible/ListItem";
-import {retrieveData, storeData} from "../../Storage";
-import {Politi} from "./Service/Politi/Politi";
-import {Helsenorge} from "./Service/Helsenorge/Helsenorge";
-
+import { Lanekassen } from "./Service/Lånekassen/Lånekassen";
+import { ListItem } from "./Service/Collapsible/ListItem";
+import { retrieveData, storeData } from "../../Storage";
+import { Politi } from "./Service/Politi/Politi";
+import { Helsenorge } from "./Service/Helsenorge/Helsenorge";
 
 const PopularServices = [
   {
@@ -53,7 +52,7 @@ const PopularServices = [
   {
     name: "Søknad om lån og stipend",
     uri:
-        "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+      "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
   },
   {
     name: "Vegvesnet",
@@ -63,7 +62,7 @@ const PopularServices = [
   {
     name: "Lånekassen",
     uri:
-        "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+      "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
   },
 ];
 
@@ -84,16 +83,19 @@ const services = [
   },
   {
     name: "Lånekassen",
-    uri:"https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+    uri:
+      "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
   },
   {
     name: "Politi",
-    uri:"https://kommunikasjon.ntb.no/data/images/00987/776f818b-f8b4-41ff-a496-e8250e26788c.png/social",
+    uri:
+      "https://kommunikasjon.ntb.no/data/images/00987/776f818b-f8b4-41ff-a496-e8250e26788c.png/social",
   },
   {
     name: "Helsenorge",
-    uri: "https://is2-ssl.mzstatic.com/image/thumb/Purple30/v4/98/70/29/98702972-bc67-653e-6230-afa23cac6ae1/pr_source.png/246x0w.png",
-  }
+    uri:
+      "https://is2-ssl.mzstatic.com/image/thumb/Purple30/v4/98/70/29/98702972-bc67-653e-6230-afa23cac6ae1/pr_source.png/246x0w.png",
+  },
 ];
 
 //TODO: remove, temporary for design
@@ -106,15 +108,14 @@ const Stack = createStackNavigator();
 //TODO: REMOVE - exist because of andorid eumlator problems
 const checkLocalStorage = async () => {
   const pid = await retrieveData("pid");
-  if(pid === null){
+  if (pid === null) {
     await storeData("pid", "23079418366");
   }
-}
+};
 
 function AllServices({ navigation }) {
-
   useEffect(() => {
-    checkLocalStorage().catch(err => console.log(err))
+    checkLocalStorage().catch((err) => console.log(err));
   });
 
   return (
@@ -132,8 +133,9 @@ function AllServices({ navigation }) {
           renderItem={({ item, index }) => (
             <TouchableOpacity
               key={index}
-
-              onPress={() => navigation.navigate(item.name, {open: item.name})}
+              onPress={() =>
+                navigation.navigate(item.name, { open: item.name })
+              }
               style={stylesTop.item}
             >
               <View style={stylesTop.imageContainer}>
@@ -153,7 +155,7 @@ function AllServices({ navigation }) {
         <View style={stylesBottom.gridContainer}>
           {services.map((service, index) => (
             <TouchableOpacity
-              onPress={() => navigation.navigate(service.name, {open: null})}
+              onPress={() => navigation.navigate(service.name, { open: null })}
               key={index}
               style={stylesBottom.item}
             >
@@ -178,20 +180,18 @@ export default function Home() {
     <Stack.Navigator>
       <Stack.Screen name={"Offentlige tjenester"} component={AllServices} />
 
-      <Stack.Screen name={"Karakterer"} component={Vigo}/>
-      <Stack.Screen name={"Søk frikort"} component={Skatteetaten}/>
-      <Stack.Screen name={"Forny resept"} component={Vigo}/>
-      <Stack.Screen name={"Oppkjøring"} component={Vegvesenet}/>
-      <Stack.Screen name={"Søknad om lån og stipend"} component={Lanekassen}/>
-
+      <Stack.Screen name={"Karakterer"} component={Vigo} />
+      <Stack.Screen name={"Søk frikort"} component={Skatteetaten} />
+      <Stack.Screen name={"Forny resept"} component={Vigo} />
+      <Stack.Screen name={"Oppkjøring"} component={Vegvesenet} />
+      <Stack.Screen name={"Søknad om lån og stipend"} component={Lanekassen} />
 
       <Stack.Screen name={"Vigo"} component={Vigo} />
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
-      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
-      <Stack.Screen name={"Lånekassen"} component={Lanekassen}/>
-      <Stack.Screen name={"Politi"} component={Politi}/>
-      <Stack.Screen name={"Helsenorge"} component={Helsenorge}/>
-
+      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} />
+      <Stack.Screen name={"Lånekassen"} component={Lanekassen} />
+      <Stack.Screen name={"Politi"} component={Politi} />
+      <Stack.Screen name={"Helsenorge"} component={Helsenorge} />
     </Stack.Navigator>
   );
 }
@@ -233,7 +233,12 @@ const stylesBottom = StyleSheet.create({
     height: calculateHeightOfCircle(40),
     width: Dimensions.get("window").width / 2 - 40,
   },
-  image: { width: "100%", height: "100%", alignSelf: "center" },
+  image: {
+    width: "100%",
+    height: "100%",
+    alignSelf: "center",
+    borderRadius: 25,
+  },
   textContainer: { alignSelf: "center", marginTop: 10 },
   buttonText: { textTransform: "uppercase", fontSize: 13, fontWeight: "bold" },
 });
