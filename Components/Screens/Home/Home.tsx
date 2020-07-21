@@ -16,13 +16,26 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 
 import { Lanekassen } from "./Service/Lånekassen/Lånekassen";
 import { ListItem } from "./Service/Collapsible/ListItem";
 import { retrieveData, storeData } from "../../Storage";
 import { Politi } from "./Service/Politi/Politi";
 import { Helsenorge } from "./Service/Helsenorge/Helsenorge";
+import {useClock, useSpringTransition, useValue} from "react-native-redash";
+import Animated, {
+  block,
+  Clock,
+  Easing,
+  interpolate,
+  multiply,
+  set,
+  startClock,
+  useCode,
+  timing,
+  Value, Extrapolate
+} from "react-native-reanimated";
 
 const PopularServices = [
   {
@@ -118,6 +131,30 @@ function AllServices({ navigation }) {
     checkLocalStorage().catch((err) => console.log(err));
   });
 
+  const runTiming = (clock: Clock) => {
+    const state = {finished: new Value(0), position: new Value(0), frameTime: new Value(0), time: new Value(0) };
+    const config = {toValue: new Value(1), duration: 1250, easing: Easing.inOut(Easing.ease) }
+    return block([timing(clock, state, config), state.position]);
+  }
+
+  const clock = useClock();
+  const progress = useValue(0);
+  useCode(() => [
+      startClock(clock),
+      set(progress, runTiming(clock))
+  ],[]);
+
+  const delta = 1 / services.length;
+
+  const executeTransition = (index: number, start: number, end: number) => {
+    return interpolate(progress, {
+      inputRange: [start, end],
+      outputRange: [0, 1],
+      extrapolate: Extrapolate.CLAMP,
+    });
+
+  }
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
       <ScrollView
@@ -153,28 +190,34 @@ function AllServices({ navigation }) {
         />
 
         <View style={stylesBottom.gridContainer}>
-          {services.map((service, index) => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate(service.name, { open: null })}
-              key={index}
-              style={[stylesBottom.item, {backgroundColor: "white", borderRadius: 25, justifyContent: "center",
-                shadowColor: "#000",
-                shadowOffset: {
-                  width: 0,
-                  height: 1,
-                },
-                shadowOpacity: 0.1,
-                shadowRadius: 1.8,
+          {services.map((service, index) => {
+                return(
+                    <Animated.View key={index} style={{transform: [{scale: executeTransition(index, index * delta, (index * delta) + delta)}]}}>
+                      <TouchableOpacity
+                          onPress={() => navigation.navigate(service.name, { open: null })}
+                          key={index}
+                          style={[stylesBottom.item, {backgroundColor: "white", borderRadius: 25, justifyContent: "center",
+                            shadowColor: "#000",
+                            shadowOffset: {
+                              width: 0,
+                              height: 1,
+                            },
+                            shadowOpacity: 0.1,
+                            shadowRadius: 1.8,
 
-                elevation: 4,}]}
-            >
+                            elevation: 4,}]}
+                      >
 
-              <Image source={service.uri} style={[{width: "55%", height: "55%", alignSelf: "center", borderRadius: 20}]} resizeMode={"contain"}/>
-              <View style={stylesBottom.textContainer}>
-                <Text style={stylesBottom.buttonText}>{service.name}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
+                        <Image source={service.uri} style={[{width: "55%", height: "55%", alignSelf: "center", borderRadius: 20}]} resizeMode={"contain"}/>
+                        <View style={stylesBottom.textContainer}>
+                          <Text style={stylesBottom.buttonText}>{service.name}</Text>
+                        </View>
+                      </TouchableOpacity>
+                    </Animated.View>
+                )
+          }
+
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -184,13 +227,13 @@ function AllServices({ navigation }) {
 export default function Home() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name={"Offentlige tjenester"} component={AllServices} options={{ headerShown: false }} />
-      <Stack.Screen name={"Vigo"} component={Vigo} options={{ headerShown: false }}/>
-      <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} options={{ headerShown: false }}/>
-      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} options={{ headerShown: false }}/>
-      <Stack.Screen name={"Lånekassen"} component={Lanekassen} options={{ headerShown: false }}/>
-      <Stack.Screen name={"Politi"} component={Politi} options={{ headerShown: false }} />
-      <Stack.Screen name={"Helsenorge"} component={Helsenorge} options={{ headerShown: false }}/>
+      <Stack.Screen name={"Offentlige tjenester"} component={AllServices} options={{ headerShown: false}} />
+      <Stack.Screen name={"Vigo"} component={Vigo} options={{ headerShown: true }}/>
+      <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} options={{ headerShown: true }}/>
+      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} options={{ headerShown: true }}/>
+      <Stack.Screen name={"Lånekassen"} component={Lanekassen} options={{ headerShown: true }}/>
+      <Stack.Screen name={"Politi"} component={Politi} options={{ headerShown: true }} />
+      <Stack.Screen name={"Helsenorge"} component={Helsenorge} options={{ headerShown: true }}/>
     </Stack.Navigator>
   );
 }

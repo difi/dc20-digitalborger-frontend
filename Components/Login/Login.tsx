@@ -117,12 +117,6 @@ export default function Login({navigation}) {
          outputRange: [0,1]
      });
 
-     const opacity = interpolate(value,
-         {
-             inputRange: [0,1],
-             outputRange: [0.5,1]
-         });
-
     const val = timing({
         duration: 4000,
         from: -300,
