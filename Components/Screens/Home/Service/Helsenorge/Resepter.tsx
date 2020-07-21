@@ -29,14 +29,15 @@ const ExpiredPrescriptions = [
         name: "Nobilgan",
         category: "Søvndyssende",
         status: "Forny",
-    }
+    },
+
 ];
 
 
 
 export default function Resepter() {
     return(
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
 
             <View style={styles.status}>
                 <FontAwesome name={"circle"}  color={"limegreen"}  size={20}/>
@@ -52,7 +53,7 @@ export default function Resepter() {
 
                     <Text style={styles.nameText}>{prescription.name}</Text>
 
-                    <View style={styles.grid}>
+                    <View style={styles.Infogrid}>
                         <Text style={styles.categoryText}>{prescription.category}</Text>
                         <Text style={styles.categoryText}>{prescription.status}</Text>
                     </View>
@@ -74,7 +75,7 @@ export default function Resepter() {
 
                     <Text style={styles.nameText}>{prescription1.name}</Text>
 
-                    <View style={styles.grid}>
+                    <View style={styles.Infogrid}>
                         <Text style={styles.categoryText}>{prescription1.category}</Text>
 
                         <TouchableOpacity
@@ -95,7 +96,7 @@ export default function Resepter() {
                 <FontAwesome key ={0} name={"long-arrow-right"} size={24}/>
             </TouchableOpacity>
 
-        </ScrollView>
+        </View>
     )
 
 }
@@ -103,7 +104,8 @@ export default function Resepter() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "white"
+        height: '100%',
+        width: '100%'
     },
     status: {
         flexDirection: "row",
@@ -114,7 +116,8 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: "gray",
     },
-    grid: {
+    Infogrid: {
+        flexWrap: "wrap",
         flexDirection: "row",
         justifyContent: "space-between"
     },
