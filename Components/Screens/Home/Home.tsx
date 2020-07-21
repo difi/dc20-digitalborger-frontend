@@ -133,7 +133,7 @@ function AllServices({ navigation }) {
 
   const runTiming = (clock: Clock) => {
     const state = {finished: new Value(0), position: new Value(0), frameTime: new Value(0), time: new Value(0) };
-    const config = {toValue: new Value(1), duration: 1250, easing: Easing.inOut(Easing.ease) }
+    const config = {toValue: new Value(1), duration: 1000, easing: Easing.inOut(Easing.ease) }
     return block([timing(clock, state, config), state.position]);
   }
 
