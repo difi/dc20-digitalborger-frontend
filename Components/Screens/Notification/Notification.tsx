@@ -2,12 +2,11 @@ import * as React from "react";
 import { View, ScrollView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
-import TeoriProve from "../Home/Service/Vegvesenet/TeoriProve"
-import Oppkjoring from "../Home/Service/Vegvesenet/Oppkjoring";
-import VeienTilForerkortet from "../Home/Service/Vegvesenet/VeienTilForerkort"
-import School from "../Home/Service/Vigo/School";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-import Utbetaling from "../Home/Service/Lånekassen/Utbetaling";
+import Skattemelding from "../Skattegiver";
+import KontaktPoliti from "../Home/Service/Politi/KontaktPoliti";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -42,7 +41,12 @@ const events = [
 ];
 // Slutt data
 
+
+
 export default function Notification() {
+
+      
+
   return (
     <View>
       <Header
@@ -63,6 +67,7 @@ export default function Notification() {
           />
         ))}
       </ScrollView>
+
     </View>
   );
 }

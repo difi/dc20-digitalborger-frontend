@@ -21,6 +21,8 @@ import {useEffect} from "react";
 import {Lanekassen} from "./Service/Lånekassen/Lånekassen";
 import {ListItem} from "./Service/Collapsible/ListItem";
 import {retrieveData, storeData} from "../../Storage";
+import {Politi} from "./Service/Politi/Politi";
+import {Helsenorge} from "./Service/Helsenorge/Helsenorge";
 
 
 const PopularServices = [
@@ -51,7 +53,7 @@ const PopularServices = [
   {
     name: "Søknad om lån og stipend",
     uri:
-      "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
+        "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
   },
   {
     name: "Vegvesnet",
@@ -61,7 +63,7 @@ const PopularServices = [
   {
     name: "Lånekassen",
     uri:
-      "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
+        "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
   },
 ];
 
@@ -83,6 +85,14 @@ const services = [
   {
     name: "Lånekassen",
     uri:"https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+  },
+  {
+    name: "Politi",
+    uri:"https://kommunikasjon.ntb.no/data/images/00987/776f818b-f8b4-41ff-a496-e8250e26788c.png/social",
+  },
+  {
+    name: "Helsenorge",
+    uri: "https://is2-ssl.mzstatic.com/image/thumb/Purple30/v4/98/70/29/98702972-bc67-653e-6230-afa23cac6ae1/pr_source.png/246x0w.png",
   }
 ];
 
@@ -172,13 +182,16 @@ export default function Home() {
       <Stack.Screen name={"Søk frikort"} component={Skatteetaten}/>
       <Stack.Screen name={"Forny resept"} component={Vigo}/>
       <Stack.Screen name={"Oppkjøring"} component={Vegvesenet}/>
-      <Stack.Screen name={"Søknad om lån og stipend"} component={Skatteetaten}/>
+      <Stack.Screen name={"Søknad om lån og stipend"} component={Lanekassen}/>
 
 
       <Stack.Screen name={"Vigo"} component={Vigo} />
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
-      <Stack.Screen name={"Vegvesnet"} component={Vegvesenet}/>
+      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
       <Stack.Screen name={"Lånekassen"} component={Lanekassen}/>
+      <Stack.Screen name={"Politi"} component={Politi}/>
+      <Stack.Screen name={"Helsenorge"} component={Helsenorge}/>
+
     </Stack.Navigator>
   );
 }
