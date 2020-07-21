@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   name: {
     width: 140,
-    marginRight: 40,
+    marginRight: 30,
   },
   distance: {
     width: 40,
@@ -83,8 +83,10 @@ const styles = StyleSheet.create({
   link: {
     flexDirection: "row",
     marginLeft: 60,
+    position: "absolute",
+    right: 0,
   },
   icon: {
-    marginLeft: 10,
+    paddingLeft: 7,
   },
 });
