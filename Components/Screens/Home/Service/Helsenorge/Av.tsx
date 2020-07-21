@@ -4,7 +4,8 @@ import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {useState} from "react";
 
 
-const Avtale = [
+const eventCalender = [
+
     {
         type: "Undersøkelse",
         place: "Haukeland Sykehus",
@@ -44,9 +45,9 @@ export default function Av() {
 
     const mark = {
 
-        [Avtale[0].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
-        [Avtale[1].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
-        [Avtale[2].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
+        [eventCalender[0].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+        [eventCalender[1].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+        [eventCalender[2].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
     };
 
 
@@ -62,8 +63,6 @@ export default function Av() {
         const day = new Date(date).getDate();
         return day
     }
-
-
 
 
     return(
@@ -87,8 +86,9 @@ export default function Av() {
                 </View>
 
 
-              {Avtale.map((item1, index1) => (
-                <View key={1} style={{flexDirection: "row"}}>
+
+              {eventCalender.map((item1, index1) => (
+                <View  style={{flexDirection: "row"}}>
 
                     <View style={{flexDirection: "column"}}>
                         <Text style={styles.dateText}>{getDay(item1.dato)}</Text>
@@ -97,7 +97,7 @@ export default function Av() {
 
 
                     <View style={styles.item}>
-                        <Text style={styles.text}>{item1.type + " " + item1.time}</Text>
+                        <Text style={styles.boldText}>{item1.type + " " + item1.time}</Text>
                         <Text style={styles.placeText}>{"Lege " + " " + item1.lege}</Text>
                         <Text style={styles.placeText}>{item1.place + ", " + item1.clinic}</Text>
 
@@ -127,7 +127,7 @@ const styles =  StyleSheet.create({
         marginTop: 17,
 
     },
-    text: {
+    boldText: {
         fontWeight: "bold",
         fontSize: 18
     },

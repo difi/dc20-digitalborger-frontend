@@ -17,7 +17,7 @@ export default function Profile() {
       <Header
         backgroundColor="#93E6F3"
         centerComponent={{
-          text: "Min profil",
+          boldText: "Min profil",
           style: { fontWeight: "bold", fontSize: 16 },
         }}
       />

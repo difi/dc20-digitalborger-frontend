@@ -40,7 +40,7 @@ export default function Resepter() {
 
             <View style={styles.status}>
                 <FontAwesome name={"circle"}  color={"limegreen"}  size={20}/>
-                <Text style={styles.text}>Aktive resepter</Text>
+                <Text style={styles.boldText}>Aktive resepter</Text>
 
             </View>
 
@@ -64,7 +64,7 @@ export default function Resepter() {
 
             <View style={styles.status}>
                 <FontAwesome name={"circle"} color={"crimson"} size={20}/>
-                <Text style={styles.text}>Utekspiderte resepter</Text>
+                <Text style={styles.boldText}>Utekspiderte resepter</Text>
 
             </View>
 
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         padding: "2%"
 
     },
-    text: {
+    boldText: {
         fontSize: 16,
         fontWeight: "bold",
         width: "100%",

@@ -61,7 +61,7 @@ export default function Hourglass() {
       <Header
         backgroundColor="#93E6F3"
         centerComponent={{
-          text: "Dine frister",
+          boldText: "Dine frister",
           style: {
             fontWeight: "bold",
             backgroundColor: "#93E6F3",
