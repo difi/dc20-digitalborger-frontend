@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {StyleSheet, Text, View} from "react-native";
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {useState} from "react";
 
 
 
@@ -25,7 +26,7 @@ const Avtaler = [
         type: 'CT undersøkelse',
         place: 'Rikshospitalet',
         clinic: 'Røntgenavdeling',
-        dato: "2020-08-01",
+        dato: "2020-08-03",
         time: "14:15"
     }
 ]
@@ -37,19 +38,36 @@ const Avtaler = [
     '2020-07-22':{selected: true, marked: true, selectedColor: '#00bfff'}
 }}/>**/
 export default function Av() {
+
+
+
+    const mark = {
+
+        [Avtaler[0].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+        [Avtaler[1].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+        [Avtaler[2].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
+    };
+
+
+    function getDayOfWeek(date) {
+        const dayOfWeek = new Date(date).getDay();
+        return isNaN(dayOfWeek) ? null :
+            ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'][dayOfWeek];
+    }
+
+    function getDay(date) {
+        const day = new Date(date).getDate();
+        return day
+    }
+
+
     return(
         <View style={styles.container}>
 
-            <View style={{flex: 1}}>
 
                 <View style={{height:400, width: 400 }}>
                     <CalendarList
-
-                        markedDates={{
-                            '2020-07-22': {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
-                            '2020-07-31': {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f"  },
-                            '2020-08-04': {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
-                        }}
+                        markedDates={mark}
 
                         horizontal={true}
                         // Enable paging on horizontal, default = false
@@ -57,8 +75,7 @@ export default function Av() {
                         // Set custom calendarWidth.
                         calendarWidth={400}
 
-                        onDayPress={(day)=>{console.log('day pressed')}}
-
+                        onDayPress={(day) => {console.log('selected day', day)}}
 
                     />
 
@@ -66,14 +83,12 @@ export default function Av() {
                 </View>
 
 
-            </View>
-            {Avtaler.map((item1, index1) => (
-
+              {Avtaler.map((item1, index1) => (
                 <View key={0} style={{flexDirection: "row"}}>
 
                     <View style={{flexDirection: "column"}}>
-                        <Text style={styles.dateText}>22</Text>
-                        <Text style={styles.dayText}>onsdag</Text>
+                        <Text style={styles.dateText}>{getDay(item1.dato)}</Text>
+                        <Text style={styles.dayText}>{getDayOfWeek(item1.dato)}</Text>
                     </View>
 
 
@@ -86,8 +101,6 @@ export default function Av() {
 
 
                 </View>
-
-
             ))}
 
 
@@ -101,13 +114,13 @@ const styles =  StyleSheet.create({
         flex: 1,
     },
     item: {
-        height: 120,
+        height: 100,
         width: 300,
         backgroundColor: 'white',
         borderRadius: 5,
         marginLeft: 17,
         marginTop: 17,
-        padding: '2%',
+
     },
     text: {
         fontWeight: "bold",

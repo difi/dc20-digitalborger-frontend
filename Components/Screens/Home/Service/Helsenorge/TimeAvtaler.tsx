@@ -7,9 +7,23 @@ const Avtaler = [
         type: "Undersøkelse",
         place: "Haukeland Sykehus",
         clinic: "Poliklinikken",
-        dato: "2020-08-01",
+        dato: "2020-07-22",
         time: "11:20"
 
+    },
+    {
+        type: 'Blodprøve',
+        place: 'Oasen Legesenter',
+        clinic: 'Inngang A ',
+        dato: "2020-07-24",
+        time: "09:00"
+    },
+    {
+        type: 'CT undersøkelse',
+        place: 'Rikshospitalet',
+        clinic: 'Røntgenavdeling',
+        dato: "2020-08-01",
+        time: "14:15"
     }
 ]
 
@@ -20,22 +34,30 @@ markedDates={{
     '2020-07-22':{selected: true, marked: true, selectedColor: '#00bfff'}
 }}/>**/
 export default function TimeAvtaler() {
-    return(
+
+
+
+     const mark = {
+         [Avtaler[0].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+         [Avtaler[1].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+         [Avtaler[2].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
+     };
+
+     const item = {
+         [Avtaler[0].dato]: [{type: Avtaler[0].type, place: Avtaler[0].place, clinic: Avtaler[0].clinic, time: Avtaler[0].time }],
+         [Avtaler[1].dato]:  [{type: Avtaler[1].type, place: Avtaler[1].place, clinic: Avtaler[1].clinic, time: Avtaler[1].time }],
+         [Avtaler[2].dato]: [{type: Avtaler[2].type, place: Avtaler[2].place, clinic: Avtaler[2].clinic, time: Avtaler[2].time }],
+
+     }
+
+     return(
         <View style={styles.container}>
 
                 <Agenda key={0}
 
-                    items={{
-                        '2020-07-22': [{type: 'Hjerteundersøkelse', place: 'Haukeland Sykehus', clinic: 'Poliklinikken', time: "11:20" }],
-                        '2020-07-31': [{type: 'Blodprøve', place: 'Oasen Legesenter', clinic: 'Inngang A ', time: "09:00"}],
-                        '2020-08-04': [{type: 'CT undersøkelse', place: 'Rikshospitalet', clinic: 'Røntgenavdeling', time: "14:15" }]
-                    }}
+                    items={item}
 
-                    markedDates={{
-                        '2020-07-22': {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
-                        '2020-07-31': {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f"  },
-                        '2020-08-04': {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
-                    }}
+                    markedDates={mark}
                         onCalendarToggled={(calendarOpened) => {console.log(calendarOpened)}}
                         onDayPress={(day)=>{console.log('day pressed')}}
 
