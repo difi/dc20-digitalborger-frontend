@@ -15,6 +15,7 @@
     "@react-navigation/material-bottom-tabs": "^5.2.12",
     "@react-navigation/native": "^5.6.1",
     "@react-navigation/stack": "^5.6.2",
+    "@shopify/restyle": "^1.0.4",
     "axios": "^0.19.2",
     "expo": "~38.0.1",
     "expo-app-auth": "~9.1.1",
@@ -44,7 +45,8 @@
     "react-native-vector-icons": "^6.6.0",
     "react-native-web": "~0.11.7",
     "expo-notifications": "~0.3.3",
-    "uri-scheme": "^1.0.22"
+    "uri-scheme": "^1.0.22",
+    "react-native-svg": "12.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
