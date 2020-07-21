@@ -98,11 +98,6 @@ const services = [
   },
 ];
 
-const images = [
-  require("../assets/politiet.png"),
-  require("../assets/vegvesenet.png")
-]
-
 //TODO: remove, temporary for design
 function calculateHeightOfCircle(offset: number) {
   return Dimensions.get("window").width / 2 - offset;
@@ -124,9 +119,9 @@ function AllServices({ navigation }) {
   });
 
   return (
-    <SafeAreaView style={styles.gridContainer}>
+    <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
       <ScrollView
-        style={styles.gridContainer}
+        style={{flex: 1, backgroundColor: "#F2F2F2"}}
         showsVerticalScrollIndicator={false}
       >
         <FlatList
@@ -162,7 +157,7 @@ function AllServices({ navigation }) {
             <TouchableOpacity
               onPress={() => navigation.navigate(service.name, { open: null })}
               key={index}
-              style={[stylesBottom.item, {padding: 0, backgroundColor: "white", borderRadius: 25, justifyContent: "center",
+              style={[stylesBottom.item, {backgroundColor: "white", borderRadius: 25, justifyContent: "center",
                 shadowColor: "#000",
                 shadowOffset: {
                   width: 0,
@@ -209,8 +204,9 @@ const stylesTop = StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 10,
     flex: 1,
-    borderBottomWidth: 2,
     borderColor: "#C0C0C0",
+    backgroundColor: "white"
+
   },
   item: {
     justifyContent: "center",
@@ -219,7 +215,7 @@ const stylesTop = StyleSheet.create({
     alignItems: "center",
   },
   imageContainer: { height: 50, width: 50 },
-  image: { width: "100%", height: "100%", borderRadius: 100 },
+  image: { width: "100%", height: "100%", borderRadius: 10 },
   textContainer: { alignSelf: "center", marginTop: 10 },
   buttonText: { fontSize: 13, fontWeight: "bold" },
 });
@@ -231,7 +227,8 @@ const stylesBottom = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: 20,
   },
   item: {
     margin: 10,
