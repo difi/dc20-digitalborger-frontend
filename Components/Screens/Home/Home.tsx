@@ -92,7 +92,7 @@ const services = [
   {
     name: "Skatteetaten",
     uri:
-        require("../assets/skatteetatenv2.jpg"),
+        require("../assets/skatteetaten.jpg"),
   },
   {
     name: "Lånekassen",
