@@ -11,7 +11,7 @@ const Avtaler = [
         place: "Haukeland Sykehus",
         clinic: "Poliklinikken",
         lege: "Nils Nilsen",
-        dato: "2020-07-22",
+        dato: "2020-07-24",
         time: "11:20"
 
     },
@@ -20,7 +20,7 @@ const Avtaler = [
         place: 'Oasen Legesenter',
         clinic: 'Inngang A ',
         lege: "Kari Hansen",
-        dato: "2020-07-24",
+        dato: "2020-07-25",
         time: "09:00"
     },
     {
@@ -28,7 +28,7 @@ const Avtaler = [
         place: 'Rikshospitalet',
         clinic: 'Røntgenavdeling',
         lege: "Jens Kversøy",
-        dato: "2020-08-01",
+        dato: "2020-08-03",
         time: "14:15"
     }
 ]
@@ -41,8 +41,6 @@ const legeKontor = {
 
 
 export default function TimeAvtaler() {
-
-
 
      const mark = {
          [Avtaler[0].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },

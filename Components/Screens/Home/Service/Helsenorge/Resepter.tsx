@@ -103,6 +103,7 @@ export default function Resepter() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "white"
     },
     status: {
         flexDirection: "row",
@@ -118,17 +119,17 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     nameText: {
-        fontSize: 16,
+        fontSize: 18,
         padding: "2%"
 
     },
     categoryText: {
-        fontSize: 15,
+        fontSize: 16,
         padding: "2%"
 
     },
     boldText: {
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: "bold",
         width: "100%",
         marginLeft: 10,
