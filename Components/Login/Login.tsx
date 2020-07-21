@@ -180,49 +180,6 @@ export default function Login({navigation}) {
     );
 }
 
-/*
-<View style={{flex: 0.7, alignItems: "center", backgroundColor: "#5CB6B0", borderTopLeftRadius: 65, borderTopRightRadius: 65, justifyContent: "center",
-               shadowColor: "#000",
-               shadowOffset: {
-                   width: 0,
-                   height: 2,
-               },
-               shadowOpacity: 0.3,
-               shadowRadius: 3,
-               }}>
-
-                    <View style={{flex: 1, backgroundColor: "red"}}>
-
-                    </View>
-
-
-           </View>
- */
-
-/*
-   <View style={{flex: 1, marginTop: 40, marginBottom: 30, backgroundColor: "red"}}>
-                   <Button onPress={() => promptAsync({ useProxy })}  variant={"default"} label={"Login"}/>
-               </View>
-               <View style={{flex: 1, backgroundColor: "cyan"}}>
-                   <Text style={{color: "white", textDecorationLine: "underline", letterSpacing: 0.6}}>
-                        Opprett minID
-                   </Text>
-                </View>
-               <TouchableOpacity onPress={() => navigation.goBack()} style={{flex: 1, alignSelf: "flex-start", marginLeft: 20, marginBottom: 20, flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
-                   <FontAwesome name={"arrow-circle-left"} color={"white"} size={25} />
-                   <Text style={{color: "white", fontWeight: "bold", marginLeft: 10}}>
-                       Tilbake
-                   </Text>
-               </TouchableOpacity>
- */
-
-
-
-
-
-
-
-
 
 
 
