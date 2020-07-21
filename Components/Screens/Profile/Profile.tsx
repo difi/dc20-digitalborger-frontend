@@ -13,6 +13,7 @@ import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useEffect } from "react";
 import Digipost from "./Digipost";
+import Mail from "./Mail";
 
 const Stack = createStackNavigator();
 
@@ -21,7 +22,7 @@ function ProfileContent({ navigation }) {
     <View>
       <TouchableOpacity
         style={styles.icon}
-        onPress={() => navigation.navigate("Digipost", { open: null })}
+        onPress={() => navigation.navigate("Digipost")}
       >
         <EntypoIcon name="mail" size={40}></EntypoIcon>
       </TouchableOpacity>
@@ -62,6 +63,7 @@ export default function Profile() {
     <Stack.Navigator>
       <Stack.Screen name={"Profil"} component={ProfileContent} />
       <Stack.Screen name={"Digipost"} component={Digipost} />
+      <Stack.Screen name={"Mail"} component={Mail} />
     </Stack.Navigator>
   );
 }
