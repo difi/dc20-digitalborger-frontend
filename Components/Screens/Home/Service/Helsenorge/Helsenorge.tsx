@@ -14,7 +14,8 @@ import {useState} from "react";
 import Footer from "../Footer";
 import Resepter from "./Resepter";
 import TimeAvtaler from "./TimeAvtaler";
-import Avtaler from "./Avtaler";
+import Av from "./Av";
+
 
 
 
@@ -63,7 +64,7 @@ export function Helsenorge(){
                 <View>
                     <ListItem key={0} iconName = {HELSE[0].icon.name} iconType={HELSE[0].icon.type} containerHeight={800} title={HELSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <Avtaler/>
+                            <Av/>
                         </View>
                     </ListItem>
 

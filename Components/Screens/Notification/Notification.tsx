@@ -10,7 +10,7 @@ import School from "../Home/Service/Vigo/School";
 import Skattemelding from "../Skattegiver";
 import KontaktPoliti from "../Home/Service/Politi/KontaktPoliti";
 import TimeAvtaler2 from "../Home/Service/Helsenorge/TimeAvtaler2";
-import Avtaler from "../Home/Service/Helsenorge/Avtaler";
+import Avtaler from "../Home/Service/Helsenorge/Av";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();

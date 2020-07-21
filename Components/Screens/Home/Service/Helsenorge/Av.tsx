@@ -4,13 +4,12 @@ import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {useState} from "react";
 
 
-
-
-const Avtaler = [
+const Avtale = [
     {
         type: "Undersøkelse",
         place: "Haukeland Sykehus",
         clinic: "Poliklinikken",
+        lege: "Nils Nilsen",
         dato: "2020-07-22",
         time: "11:20"
 
@@ -19,6 +18,7 @@ const Avtaler = [
         type: 'Blodprøve',
         place: 'Oasen Legesenter',
         clinic: 'Inngang A ',
+        lege: "Kari Hansen",
         dato: "2020-07-24",
         time: "09:00"
     },
@@ -26,6 +26,7 @@ const Avtaler = [
         type: 'CT undersøkelse',
         place: 'Rikshospitalet',
         clinic: 'Røntgenavdeling',
+        lege: "Jens Kversøy",
         dato: "2020-08-03",
         time: "14:15"
     }
@@ -43,22 +44,26 @@ export default function Av() {
 
     const mark = {
 
-        [Avtaler[0].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
-        [Avtaler[1].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
-        [Avtaler[2].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
+        [Avtale[0].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+        [Avtale[1].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+        [Avtale[2].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
     };
 
 
+    //Retunerer ukedagen fra dato string formatet
     function getDayOfWeek(date) {
         const dayOfWeek = new Date(date).getDay();
         return isNaN(dayOfWeek) ? null :
             ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'][dayOfWeek];
     }
 
+    //Retunerer dagen fra dato string formatet
     function getDay(date) {
         const day = new Date(date).getDate();
         return day
     }
+
+
 
 
     return(
@@ -79,12 +84,11 @@ export default function Av() {
 
                     />
 
-
                 </View>
 
 
-              {Avtaler.map((item1, index1) => (
-                <View key={0} style={{flexDirection: "row"}}>
+              {Avtale.map((item1, index1) => (
+                <View key={1} style={{flexDirection: "row"}}>
 
                     <View style={{flexDirection: "column"}}>
                         <Text style={styles.dateText}>{getDay(item1.dato)}</Text>
@@ -94,6 +98,7 @@ export default function Av() {
 
                     <View style={styles.item}>
                         <Text style={styles.text}>{item1.type + " " + item1.time}</Text>
+                        <Text style={styles.placeText}>{"Lege " + " " + item1.lege}</Text>
                         <Text style={styles.placeText}>{item1.place + ", " + item1.clinic}</Text>
 
 
