@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import * as Location from "expo-location";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import * as WebBrowser from "expo-web-browser";
-import { getSchools } from "../../../../ServerCommunications/Services/VigoService";
+import { getTrafficStations } from "../../../../ServerCommunications/Services/Politi";
 
 export default function School() {
-  const [schools, setSchools] = useState(Array);
+  const [stations, setStation] = useState(Array);
   const [location, setLocation] = useState();
   const [errorMsg, setErrorMsg] = useState("");
   const [status, setStatus] = useState("");
@@ -21,34 +20,27 @@ export default function School() {
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location); //trenger egentlig ikke lagre location
 
-      let result = await getSchools(
+      let result = await getTrafficStations(
         location.coords.longitude,
         location.coords.latitude,
-        5
+        3
       );
-      setSchools(result);
+      setStation(result);
     })();
   }, []);
 
   if (status == "granted") {
     return (
       <View>
-        {schools.map((school, index) => (
+        <View style={styles.title}>
+          <Text style={styles.text}>Stasjon: </Text>
+          <Text style={styles.text}>Distanse: </Text>
+        </View>
+        {stations.map((station, index) => (
           <View key={index} style={styles.container}>
             <Icon name="office-building" size={40}></Icon>
-            <Text style={styles.name}>{school.Skolenavn}</Text>
-            <Text style={styles.distance}>{school.Distanse + "km"}</Text>
-            <TouchableOpacity
-              style={styles.link}
-              onPress={() =>
-                WebBrowser.openBrowserAsync("http://" + school.Webside)
-              }
-            >
-              <Text>Gå til</Text>
-              <View style={styles.icon}>
-                <Icon name="arrow-right-circle-outline" size={20}></Icon>
-              </View>
-            </TouchableOpacity>
+            <Text style={styles.name}>{station.Trafikkstasjon}</Text>
+            <Text style={styles.distance}>{station.Distanse + "km"}</Text>
           </View>
         ))}
       </View>
@@ -58,7 +50,7 @@ export default function School() {
       <View>
         <Text>{errorMsg}</Text>
         <Text>
-          For å se skoler i ditt nærområde, skru på stedsposisjon i
+          For å se politistasjoner i ditt nærområde, skru på stedsposisjon i
           instillinger.
         </Text>
       </View>
@@ -75,16 +67,17 @@ const styles = StyleSheet.create({
   },
   name: {
     width: 140,
-    marginRight: 40,
-  },
-  distance: {
-    width: 40,
-  },
-  link: {
-    flexDirection: "row",
-    marginLeft: 60,
+    marginRight: 100,
   },
   icon: {
     marginLeft: 10,
+  },
+  title: {
+    flexDirection: "row",
+  },
+  text: {
+    marginRight: 205,
+    marginLeft: 5,
+    fontWeight: "bold",
   },
 });

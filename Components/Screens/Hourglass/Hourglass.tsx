@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { Image, Header } from "react-native-elements";
 import CountDown from "react-native-countdown-component";
 import { ScrollView } from "react-native-gesture-handler";
+import PushNotification from "./PushNotification";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -47,6 +48,12 @@ export default function Hourglass() {
       return "red";
     }
     return "#93E6F3";
+  }
+
+  function sendPush24hrsLeft(title: String, date: Date) {
+    if (getTimeLeft(date) <= 24 * 60 * 60) {
+      return <PushNotification title={title} date={date} />;
+    }
   }
 
   function getFormat(deadline: Date) {
@@ -110,6 +117,7 @@ export default function Hourglass() {
                   />
                 </View>
               </View>
+              {sendPush24hrsLeft(event.name, event.date)}
             </View>
           ))}
         </ScrollView>
