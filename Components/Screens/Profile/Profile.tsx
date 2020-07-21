@@ -5,25 +5,25 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ScrollView,
 } from "react-native";
 import { Header } from "react-native-elements";
 import UserInfo from "./UserInfo";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
+import { createStackNavigator } from "@react-navigation/stack";
+import { useEffect } from "react";
+import Digipost from "./Digipost";
+import Mail from "./Mail";
 
-export default function Profile() {
+const Stack = createStackNavigator();
+
+function ProfileContent({ navigation }) {
   return (
-    <View>
-      <Header
-        backgroundColor="#93E6F3"
-        centerComponent={{
-          boldText: "Min profil",
-          style: { fontWeight: "bold", fontSize: 16 },
-        }}
-      />
+    <ScrollView>
       <TouchableOpacity
         style={styles.icon}
-        onPress={() => Linking.openURL("https://www.digipost.no/")}
+        onPress={() => navigation.navigate("Digipost")}
       >
         <EntypoIcon name="mail" size={40}></EntypoIcon>
       </TouchableOpacity>
@@ -55,9 +55,20 @@ export default function Profile() {
           <Text> ENDRE E-POST ELLER MOBIL</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
+
+export default function Profile() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name={"Profil"} component={ProfileContent} />
+      <Stack.Screen name={"Digipost"} component={Digipost} />
+      <Stack.Screen name={"Mail"} component={Mail} />
+    </Stack.Navigator>
+  );
+}
+
 const styles = StyleSheet.create({
   icon: {
     height: 55,
@@ -70,13 +81,12 @@ const styles = StyleSheet.create({
     bottom: 10,
   },
   linksContainer: {
+    top: "10%",
     left: 30,
-    top: 65,
-    marginTop: 10,
+    height: "10%",
   },
   links: {
     flexDirection: "row",
     alignItems: "center",
-    top: "20%",
   },
 });
