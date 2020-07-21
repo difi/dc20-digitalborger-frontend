@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {Dimensions, Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import * as AuthSession from "expo-auth-session";
 import {ResponseType, useAuthRequest} from "expo-auth-session";
 import {storeData} from "../Storage";
-import Animated, {Easing, Extrapolate, interpolate} from "react-native-reanimated";
+import Animated, {Easing, Extrapolate, interpolate, multiply} from "react-native-reanimated";
 import {timing, useSpringTransition} from "react-native-redash";
 import {useEffect} from "react";
 import Button from "../Button";
@@ -27,6 +27,7 @@ const discovery = {
 
 const assets = [
     require("../../assets/Illustrations/idporten.png"),
+    require("../../assets/Illustrations/petter.png"),
 ]
 
 const useProxy = true;
@@ -122,9 +123,23 @@ export default function Login({navigation}) {
              outputRange: [0.5,1]
          });
 
+    const val = timing({
+        duration: 4000,
+        from: -300,
+        to: Dimensions.get("window").width,
+        easing: Easing.linear,
+    });
+
+
 
     return (
+        <>
+
        <View style={{flex: 1, backgroundColor: "white"}}>
+           <Animated.View style={{position: "absolute", overflow: "hidden", transform: [{translateX: multiply(val, 1)}]}}>
+               <Image source={assets[1]} style={{width: 300, height: 300, alignSelf: "center", }} resizeMode={"contain"}/>
+           </Animated.View>
+
            <View style={{flex: 0.5, justifyContent: "center", alignItems: "center", marginTop: 40}}>
                <Text style={{fontWeight: "bold", fontSize: 25, letterSpacing: 0.6}}>
                    Velkommen til ID-porten
@@ -143,7 +158,30 @@ export default function Login({navigation}) {
                </Text>
            </View>
 
-           <View style={{flex: 0.7, alignItems: "center", backgroundColor: "#5CB6B0", borderTopLeftRadius: 65, borderTopRightRadius: 65,
+           <View style={{flex: 0.7}}>
+                <View style={{flex: 2, backgroundColor: "#5CB6B0", justifyContent: "center", alignItems: "center", borderTopLeftRadius: 65, borderTopRightRadius: 65, paddingTop: 20}}>
+                    <Button onPress={() => promptAsync({ useProxy })}  variant={"default"} label={"Login"}/>
+                    <Text style={{color: "white", textDecorationLine: "underline", letterSpacing: 0.6, marginTop: 20}}>
+                        Opprett minID
+                    </Text>
+                </View>
+               <View style={{flex: 1, backgroundColor: "#5CB6B0"}}>
+                   <TouchableOpacity onPress={() => navigation.goBack()} style={{flex: 1, alignSelf: "flex-start", marginLeft: 20, flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
+                       <FontAwesome name={"arrow-circle-left"} color={"white"} size={25} />
+                       <Text style={{color: "white", fontWeight: "bold", marginLeft: 10}}>
+                           Tilbake
+                       </Text>
+                   </TouchableOpacity>
+               </View>
+           </View>
+
+       </View>
+            </>
+    );
+}
+
+/*
+<View style={{flex: 0.7, alignItems: "center", backgroundColor: "#5CB6B0", borderTopLeftRadius: 65, borderTopRightRadius: 65, justifyContent: "center",
                shadowColor: "#000",
                shadowOffset: {
                    width: 0,
@@ -151,44 +189,31 @@ export default function Login({navigation}) {
                },
                shadowOpacity: 0.3,
                shadowRadius: 3,
-
                }}>
 
-                   <View style={{flex: 1, marginTop: 40, marginBottom: 30}}>
-                       <Button onPress={() => promptAsync({ useProxy })}  variant={"default"} label={"Login"}/>
-                   </View>
-                   <View style={{flex: 2, flexDirection: "row"}}>
-                       <Text style={{color: "white", marginRight: 10, textDecorationLine: "underline", letterSpacing: 0.6}}>
-                            Opprett minID
-                       </Text>
-                   </View>
-               <TouchableOpacity onPress={() => navigation.goBack()} style={{alignSelf: "flex-start", marginLeft: 20, marginBottom: 20, flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
+                    <View style={{flex: 1, backgroundColor: "red"}}>
+
+                    </View>
+
+
+           </View>
+ */
+
+/*
+   <View style={{flex: 1, marginTop: 40, marginBottom: 30, backgroundColor: "red"}}>
+                   <Button onPress={() => promptAsync({ useProxy })}  variant={"default"} label={"Login"}/>
+               </View>
+               <View style={{flex: 1, backgroundColor: "cyan"}}>
+                   <Text style={{color: "white", textDecorationLine: "underline", letterSpacing: 0.6}}>
+                        Opprett minID
+                   </Text>
+                </View>
+               <TouchableOpacity onPress={() => navigation.goBack()} style={{flex: 1, alignSelf: "flex-start", marginLeft: 20, marginBottom: 20, flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
                    <FontAwesome name={"arrow-circle-left"} color={"white"} size={25} />
                    <Text style={{color: "white", fontWeight: "bold", marginLeft: 10}}>
                        Tilbake
                    </Text>
                </TouchableOpacity>
-
-           </View>
-       </View>
-    );
-}
-
-/*
-  <View style={{flex: 1, paddingRight: 20, paddingLeft: 20}}>
-           <Animated.View style={{opacity, flex: 1, justifyContent: "center", alignItems: "center", }}>
-               <Image source={assets[0]} style={{width: "75%", height: "75%", alignSelf: "center",}} resizeMode={"contain"}/>
-           </Animated.View>
-           <View style={{ flex: 1, alignItems: 'center' }}>
-               <TouchableOpacity disabled={!request} onPress={() => promptAsync({ useProxy })} style={{backgroundColor: "#6064E5", height: 50, width: "70%", borderRadius: 10, justifyContent: "center", alignItems: "center"}}>
-                   <Text style={{fontWeight: "bold", fontSize: 20, textTransform: "uppercase", color: "white"}}>
-                       login
-                   </Text>
-               </TouchableOpacity>
-
-               {result && <Text>{JSON.stringify(result, null, 2)}</Text>}
-           </View>
-       </View>
  */
 
 

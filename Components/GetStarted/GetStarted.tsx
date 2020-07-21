@@ -71,12 +71,12 @@ export default function GetStarted({navigation}){
 
                <Animated.View style={{flex: 1, backgroundColor}}>
                    <View style={{flex: 1, backgroundColor: "white",  borderTopLeftRadius: 75,}}>
-                       <View style={{marginTop: 30, justifyContent: "center", alignItems: "center", flexDirection: "row"}}>
+                       <View style={{paddingTop: 30, justifyContent: "center", alignItems: "center", flexDirection: "row"}}>
                            {Info.map(({}, index) => (
                                <Dot  key={index} currentIndex={divide(x, width)} {...{ index }}/>
                            ))}
                        </View>
-                       <Animated.View style={{flex: 1, transform: [{translateX: multiply(x, -1)}], flexDirection: "row", width: width * Info.length}}>
+                       <Animated.View style={{flex: 1, transform: [{translateX: multiply(x, -1)}], flexDirection: "row", width: width * Info.length,}}>
                            {Info.map( ({title, description}, index) => {
                                const last = index === Info.length - 1;
                                return(

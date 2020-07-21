@@ -24,19 +24,21 @@ interface SlidePageProps {
 
 export default function SubSlide({title, description, last, ...onPress} : SlidePageProps ){
     return(
-        <View style={{width: width, padding: 44}}>
+        <View style={{width: width, padding: 25}}>
             <View style={{flex: 1, justifyContent: "center", alignItems: "center",}}>
-                <View style={{marginBottom: 12,}}>
+                <View style={{flex: 1, paddingBottom: 10, justifyContent: "center"}}>
                     <Text style={{fontWeight: "bold", fontSize: 20}}>
                         {title}
                     </Text>
                 </View>
-                <View style={{marginBottom: 44}}>
+                <View style={{flex:2, justifyContent: "center"}}>
                     <Text style={{color: "#0C0D34",}}>
                         {description}
                     </Text>
                 </View>
-                <Button {...onPress}  variant={last ? "primary" : "default"} label={last ? "Kom i gang!" : "Gå videre"}/>
+                <View style={{flex:1, marginBottom: 10, marginTop: 10}}>
+                    <Button {...onPress}  variant={last ? "primary" : "default"} label={last ? "Kom i gang!" : "Gå videre"}/>
+                </View>
             </View>
         </View>
     );
