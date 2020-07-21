@@ -6,7 +6,7 @@ const Avtaler = [
     {
         type: "Undersøkelse",
         place: "Haukeland Sykehus",
-        clinic: "Polyklinikken",
+        clinic: "Poliklinikken",
         dato: "2020-08-01",
         time: "11:20"
 
@@ -22,7 +22,7 @@ markedDates={{
 export default function TimeAvtaler() {
     return(
         <View style={styles.container}>
-            {Avtaler.map((item, index) => (
+
                 <Agenda key={0}
 
                     items={{
@@ -39,8 +39,9 @@ export default function TimeAvtaler() {
                         onCalendarToggled={(calendarOpened) => {console.log(calendarOpened)}}
                         onDayPress={(day)=>{console.log('day pressed')}}
 
-                        renderEmptyData = {() => {return (<View />);}}
+                        loadItemsForMonth={(month) => {console.log('trigger items loading')}}
 
+                        renderEmptyData = {() => {return (<View />);}}
 
 
                         renderItem={(item) => {return(
@@ -51,7 +52,7 @@ export default function TimeAvtaler() {
                             </View>);}}
                 />
 
-            ))}
+
 
         </View>
     );

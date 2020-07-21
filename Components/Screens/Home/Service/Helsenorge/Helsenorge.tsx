@@ -14,6 +14,7 @@ import {useState} from "react";
 import Footer from "../Footer";
 import Resepter from "./Resepter";
 import TimeAvtaler from "./TimeAvtaler";
+import Avtaler from "./Avtaler";
 
 
 
@@ -60,13 +61,13 @@ export function Helsenorge(){
             <Header logo={"Components/Screens/Home/Service/Helsenorge/Helsenorge.tsx"} nameOfService={"Helsenorge"}/>
             <ScrollView style={{flex: 1, backgroundColor: "#9a1c6f"}} showsVerticalScrollIndicator={false}>
                 <View>
-                    <ListItem key={0} iconName = {HELSE[0].icon.name} iconType={HELSE[0].icon.type} containerHeight={200} title={HELSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
+                    <ListItem key={0} iconName = {HELSE[0].icon.name} iconType={HELSE[0].icon.type} containerHeight={800} title={HELSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <Text>hei</Text>
+                            <Avtaler/>
                         </View>
                     </ListItem>
 
-                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={400} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
+                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={600} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <TimeAvtaler/>
                         </View>
