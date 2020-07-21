@@ -154,7 +154,7 @@ export default function Login({navigation}) {
 
            <View style={{flex: 0.5, justifyContent: "center", alignItems: "center", marginRight: 40, marginLeft: 40}}>
                <Text style={{letterSpacing: 0.6}}>
-                   Gjennom oss har du mulighet til å logge in på hvilken som helst offentlige tjeneste. Hvor kult er ikke det!
+                   Gjennom oss har du mulighet til å logge inn på hvilken som helst offentlige tjeneste. Hvor kult er ikke det!
                </Text>
            </View>
 
