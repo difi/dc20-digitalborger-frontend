@@ -46,7 +46,7 @@ export default function Hourglass() {
     if (getTimeLeft(deadline) <= 86400) {
       return "red";
     }
-    return "#93E6F3";
+    return "black";
   }
 
   function getFormat(deadline: Date) {
@@ -59,12 +59,11 @@ export default function Hourglass() {
   return (
     <View>
       <Header
-        backgroundColor="#93E6F3"
+        backgroundColor="white"
         centerComponent={{
           text: "Dine frister",
           style: {
             fontWeight: "bold",
-            backgroundColor: "#93E6F3",
             fontSize: 16,
           },
         }}
@@ -73,7 +72,7 @@ export default function Hourglass() {
         <ScrollView>
           {events.map((event, index) => (
             <View style={styles.title} key={index}>
-              <Text style={{ fontWeight: "bold", fontSize: 18 }}>
+              <Text style={{ fontWeight: "bold", fontSize: 15 }}>
                 {event.name}
               </Text>
 

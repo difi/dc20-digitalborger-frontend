@@ -25,7 +25,7 @@ export default function Skattegiver() {
         <View>
             <View style={styles.container}>
                 <View style={styles.introText}>
-                    <Text style={{ fontWeight: "bold", fontSize: 15}}>{info.intro}</Text>
+                    <Text style={{ fontWeight: "bold",textDecorationLine: "underline", fontSize: 15}}>{info.intro}</Text>
                 </View>
                 <View style={styles.textContainer}>
                     <View style={styles.leftText}>
@@ -86,8 +86,6 @@ const styles = StyleSheet.create({
     },
 
     introText:{
-        borderBottomColor: "black",
-        borderBottomWidth: 1,
         marginBottom: 10,
     },
 

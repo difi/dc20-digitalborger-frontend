@@ -30,20 +30,16 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 180,
         width: "100%",
-
-
     },
 
     infoText: {
         margin: '5%',
         fontSize: 15,
     },
-
     LinkContainer: {
         margin: '5%',
         flexDirection: 'row',
     },
-
     buttonText: {
         fontSize: 16,
         fontWeight: "bold",

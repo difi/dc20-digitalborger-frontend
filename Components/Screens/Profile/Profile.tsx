@@ -15,7 +15,7 @@ export default function Profile() {
   return (
     <View>
       <Header
-        backgroundColor="#93E6F3"
+        backgroundColor="white"
         centerComponent={{
           text: "Min profil",
           style: { fontWeight: "bold", fontSize: 16 },
@@ -60,23 +60,22 @@ export default function Profile() {
 }
 const styles = StyleSheet.create({
   icon: {
-    height: 55,
-    width: 55,
+    height: "10%",
+    width: "16%",
     alignSelf: "flex-end",
-    marginTop: 5,
+    marginTop: "5%",
   },
   profilIcon: {
     alignSelf: "center",
-    bottom: 10,
+    bottom: "3%",
   },
   linksContainer: {
-    left: 30,
-    top: 65,
-    marginTop: 10,
+    left: "9%",
+    top: "9%",
+    marginTop: "5%",
   },
   links: {
     flexDirection: "row",
     alignItems: "center",
-    top: "20%",
   },
 });

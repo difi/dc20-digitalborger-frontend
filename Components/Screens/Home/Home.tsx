@@ -88,7 +88,7 @@ const services = [
   },
   {
     name: "Politi",
-    uri:"https://kommunikasjon.ntb.no/data/images/00987/776f818b-f8b4-41ff-a496-e8250e26788c.png/social",
+    uri: "https://scontent.fosl2-1.fna.fbcdn.net/v/t1.0-9/96765145_1167609036917836_8193031643359870976_n.jpg?_nc_cat=104&_nc_sid=dd9801&_nc_ohc=EUVNZmTzuekAX9VJMat&_nc_ht=scontent.fosl2-1.fna&oh=758e498da6f4a54e7569164d342e2a4d&oe=5F3992DD",
   },
   {
     name: "Helsenorge",

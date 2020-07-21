@@ -39,21 +39,18 @@ const styles = StyleSheet.create({
         height: 180,
         width: "100%",
     },
-
     linkContainer:{
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
         left: "4%",
-
+        marginTop: "10%",
     },
-
     text:{
         fontSize: 15,
         margin: 10,
         top: "5%",
     },
-
     linkText:{
         fontSize: 16,
         fontWeight: "bold",

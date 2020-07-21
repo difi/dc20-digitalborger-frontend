@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 import {SafeAreaView, ScrollView, Text, View} from "react-native";
 //import Header from "../Header";
@@ -30,7 +32,7 @@ const SKATT  = [
         title: 'Bestill time til teoriprøve',
         icon: {
             type: "Ionicons",
-            name: "school"
+            name: "school",
         },
         content: {
             description: "test2"
