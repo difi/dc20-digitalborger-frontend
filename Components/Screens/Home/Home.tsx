@@ -69,34 +69,39 @@ const PopularServices = [
 const services = [
   {
     name: "Vigo",
-    uri: "https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg",
+    uri: require("../assets/vigo.png"),
   },
   {
     name: "Vegvesenet",
     uri:
-      "https://www.sisteskrik.no/sites/miljoloftet_moss/wp-content/uploads/2019/05/Vegvesen_logo_200x141.png",
+        require("../assets/vegvesenet.png"),
   },
   {
     name: "Skatteetaten",
     uri:
-      "https://pbs.twimg.com/profile_images/685006400632827904/l8cgvWEZ_400x400.jpg",
+        require("../assets/skatteetatenv2.jpg"),
   },
   {
     name: "Lånekassen",
     uri:
-      "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+        require("../assets/Lånekassen.png"),
   },
   {
     name: "Politi",
     uri:
-      "https://kommunikasjon.ntb.no/data/images/00987/776f818b-f8b4-41ff-a496-e8250e26788c.png/social",
+        require("../assets/politiet.png"),
   },
   {
     name: "Helsenorge",
     uri:
-      "https://is2-ssl.mzstatic.com/image/thumb/Purple30/v4/98/70/29/98702972-bc67-653e-6230-afa23cac6ae1/pr_source.png/246x0w.png",
+        require("../assets/helsenorge.png"),
   },
 ];
+
+const images = [
+  require("../assets/politiet.png"),
+  require("../assets/vegvesenet.png")
+]
 
 //TODO: remove, temporary for design
 function calculateHeightOfCircle(offset: number) {
@@ -157,13 +162,19 @@ function AllServices({ navigation }) {
             <TouchableOpacity
               onPress={() => navigation.navigate(service.name, { open: null })}
               key={index}
-              style={stylesBottom.item}
+              style={[stylesBottom.item, {padding: 0, backgroundColor: "white", borderRadius: 25, justifyContent: "center",
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 1,
+                },
+                shadowOpacity: 0.1,
+                shadowRadius: 1.8,
+
+                elevation: 4,}]}
             >
-              <Image
-                source={{ uri: service.uri }}
-                resizeMethod={"resize"}
-                style={stylesBottom.image}
-              />
+
+              <Image source={service.uri} style={[{width: "55%", height: "55%", alignSelf: "center", borderRadius: 20}]} resizeMode={"contain"}/>
               <View style={stylesBottom.textContainer}>
                 <Text style={stylesBottom.buttonText}>{service.name}</Text>
               </View>
@@ -178,20 +189,13 @@ function AllServices({ navigation }) {
 export default function Home() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name={"Offentlige tjenester"} component={AllServices} />
-
-      <Stack.Screen name={"Karakterer"} component={Vigo} />
-      <Stack.Screen name={"Søk frikort"} component={Skatteetaten} />
-      <Stack.Screen name={"Forny resept"} component={Vigo} />
-      <Stack.Screen name={"Oppkjøring"} component={Vegvesenet} />
-      <Stack.Screen name={"Søknad om lån og stipend"} component={Lanekassen} />
-
-      <Stack.Screen name={"Vigo"} component={Vigo} />
-      <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
-      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} />
-      <Stack.Screen name={"Lånekassen"} component={Lanekassen} />
-      <Stack.Screen name={"Politi"} component={Politi} />
-      <Stack.Screen name={"Helsenorge"} component={Helsenorge} />
+      <Stack.Screen name={"Offentlige tjenester"} component={AllServices} options={{ headerShown: false }} />
+      <Stack.Screen name={"Vigo"} component={Vigo} options={{ headerShown: false }}/>
+      <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} options={{ headerShown: false }}/>
+      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} options={{ headerShown: false }}/>
+      <Stack.Screen name={"Lånekassen"} component={Lanekassen} options={{ headerShown: false }}/>
+      <Stack.Screen name={"Politi"} component={Politi} options={{ headerShown: false }} />
+      <Stack.Screen name={"Helsenorge"} component={Helsenorge} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
@@ -226,16 +230,18 @@ const stylesBottom = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center"
   },
   item: {
-    margin: 20,
-    marginBottom: 50,
+    margin: 10,
+    marginBottom: 10,
     height: calculateHeightOfCircle(40),
     width: Dimensions.get("window").width / 2 - 40,
   },
   image: {
-    width: "100%",
-    height: "100%",
+    width: "50%",
+    height: "50%",
     alignSelf: "center",
     borderRadius: 25,
   },
