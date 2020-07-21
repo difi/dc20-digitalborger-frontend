@@ -57,6 +57,7 @@ export default function TimeAvtaler() {
 
      }
 
+
      return(
         <View style={styles.container}>
 
@@ -69,6 +70,8 @@ export default function TimeAvtaler() {
                         onDayPress={(day)=>{console.log('day pressed')}}
 
                         loadItemsForMonth={(month) => {console.log('trigger items loading')}}
+
+                        minDate={Date()}
 
                         renderEmptyData = {() => {return (
                             <View style={styles.emptyDataContainer}>
