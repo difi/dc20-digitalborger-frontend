@@ -85,7 +85,7 @@ export default function Hourglass() {
               </Text>
 
               <View style={styles.cardContent}>
-                <View style={styles.logoContainer}>
+                <View key={index} style={styles.logoContainer}>
                   <Image
                     source={{ uri: event.logo }}
                     style={styles.logo}
