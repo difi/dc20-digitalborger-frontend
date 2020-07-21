@@ -92,7 +92,7 @@ export default function Resepter() {
             <TouchableOpacity
                 style={styles.buttonContainer} onPress={() => Linking.openURL("https://helsenorge.no/e-resept-og-mine-resepter/dine-resepter-pa-helsenorge-no")}>
                 <Text style={styles.buttonText}>Se alle resepter</Text>
-                <FontAwesome key ={0} name={"long-arrow-right"} size={20}/>
+                <FontAwesome key ={0} name={"long-arrow-right"} size={24}/>
             </TouchableOpacity>
 
         </ScrollView>
@@ -138,11 +138,11 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        width: 150,
+        width: 170,
 
     },
     buttonText:{
-        fontSize: 16,
+        fontSize: 18,
 
     }
 });

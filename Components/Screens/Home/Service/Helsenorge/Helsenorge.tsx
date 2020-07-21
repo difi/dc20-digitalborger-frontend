@@ -14,7 +14,7 @@ import {useState} from "react";
 import Footer from "../Footer";
 import Resepter from "./Resepter";
 import TimeAvtaler from "./TimeAvtaler";
-import Av from "./Av";
+
 
 
 

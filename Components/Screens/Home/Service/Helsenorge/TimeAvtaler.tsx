@@ -20,7 +20,7 @@ const Avtaler = [
         place: 'Oasen Legesenter',
         clinic: 'Inngang A ',
         lege: "Kari Hansen",
-        dato: "2020-07-25",
+        dato: "2020-07-26",
         time: "09:00"
     },
     {
