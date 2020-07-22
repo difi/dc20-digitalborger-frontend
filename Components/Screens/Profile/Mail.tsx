@@ -1,6 +1,6 @@
 import * as React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Octicons from "react-native-vector-icons/Octicons";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { ScrollView } from "react-native-gesture-handler";
 
 export default function Mail({ route }) {
@@ -13,10 +13,12 @@ export default function Mail({ route }) {
     <ScrollView>
       <View style={singleMailStyles.headerInfo}>
         <View style={singleMailStyles.icon}>
-          <Octicons name="mail-read" size={30}></Octicons>
+          <Icon name="account-circle" size={40} color="#007aff"></Icon>
         </View>
-        <Text style={singleMailStyles.sender}>{sender}</Text>
-        <Text style={singleMailStyles.date}>{date}</Text>
+        <View style={singleMailStyles.sender}>
+          <Text style={singleMailStyles.sender}>{sender}</Text>
+          <Text style={singleMailStyles.date}>{date}</Text>
+        </View>
       </View>
       <View style={singleMailStyles.content}>
         <Text style={singleMailStyles.subject}>{subject}</Text>
@@ -28,26 +30,26 @@ export default function Mail({ route }) {
 
 const singleMailStyles = StyleSheet.create({
   headerInfo: {
-    borderBottomColor: "grey",
-    borderBottomWidth: 0.5,
+    borderBottomColor: "#c7c7cc",
+    borderBottomWidth: 1,
     flexDirection: "row",
+    width: "92%",
+    alignSelf: "center",
   },
   sender: {
     fontWeight: "bold",
     fontFamily: "Helvetica",
     fontSize: 14,
-    paddingTop: 15,
+    paddingTop: 8,
   },
   date: {
     fontFamily: "Helvetica",
     fontSize: 14,
-    color: "grey",
-    paddingTop: 15,
-    position: "absolute",
-    right: 20,
+    color: "#c7c7cc",
   },
   icon: {
     padding: 10,
+    paddingLeft: 0,
   },
   subject: {
     fontFamily: "Helvetica",

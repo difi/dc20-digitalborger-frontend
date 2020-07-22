@@ -1,15 +1,28 @@
 import * as React from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
+import Icon from "react-native-vector-icons/Entypo";
 
 export default function Notification(props: {
   description: string;
   logo: string;
+  icon: string;
+  received: string;
+  icon_color: string;
+  service: string;
 }) {
   return (
     <View style={styles.gridContainer}>
-      <Image source={props.logo} style={styles.logo}></Image>
-      <View style={styles.bar}></View>
-      <Text style={styles.description}>{props.description}</Text>
+      <Icon
+        style={styles.logo}
+        name={props.icon}
+        size={55}
+        color={props.icon_color}
+      />
+      <View>
+        <Text style={styles.title}>{props.service}</Text>
+        <Text style={styles.description}>{props.description}</Text>
+        <Text style={styles.received}>{props.received}</Text>
+      </View>
     </View>
   );
 }
@@ -17,24 +30,34 @@ export default function Notification(props: {
 const styles = StyleSheet.create({
   gridContainer: {
     width: "100%",
-    height: 80,
+    height: 100,
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 5,
   },
   logo: {
-    width: 50,
-    height: 50,
-    borderRadius: 10,
-    margin: 10,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginHorizontal: 10,
+    marginTop: -10,
   },
-  bar: {
-    backgroundColor: "black",
-    height: "70%",
-    width: "0.4%",
-    marginRight: 10,
+  title: {
+    fontWeight: "bold",
+    fontFamily: "Helvetica",
+    fontSize: 17,
   },
   description: {
     width: "80%",
+    fontFamily: "Helvetica",
+    fontSize: 16,
+    maxWidth: "100%",
+  },
+  received: {
+    fontFamily: "Helvetica",
+    color: "grey",
+    paddingVertical: 5,
   },
 });
+
+/**/
