@@ -227,6 +227,8 @@ function AllServices({ navigation }) {
 export default function Home() {
   return (
     <Stack.Navigator>
+
+
       <Stack.Screen name={"Offentlige tjenester"} component={AllServices} options={{ headerShown: false}} />
       <Stack.Screen name={"Vigo"} component={Vigo} options={{ headerShown: true }}/>
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} options={{ headerShown: true }}/>

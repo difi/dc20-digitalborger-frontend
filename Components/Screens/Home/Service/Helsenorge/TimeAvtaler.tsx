@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Linking, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import * as WebBrowser from "expo-web-browser";
 
 // @ts-ignore
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -62,8 +63,8 @@ export default function TimeAvtaler() {
      return(
         <View style={styles.container}>
 
-            {Avtaler.map((avtale, i) => (
-                <Agenda key={avtale.date}
+
+                <Agenda
 
                         items={item}
 
@@ -91,7 +92,7 @@ export default function TimeAvtaler() {
 
                                 <View style={styles.bottomContainer}>
                                     <TouchableOpacity
-                                        style={styles.linkContainer} onPress={() => Linking.openURL("https://helsenorge.no/kontakt-fastlegen/kom-i-kontakt")}>
+                                        style={styles.linkContainer} onPress={() => WebBrowser.openBrowserAsync('https://helsenorge.no/kontakt-fastlegen/kom-i-kontakt')}>
                                         <Text style={styles.text}>Bestill time hos fastlege på nett</Text>
                                         <FontAwesome5 name={"arrow-right"} size={24}/>
                                     </TouchableOpacity>
@@ -110,8 +111,6 @@ export default function TimeAvtaler() {
                             </View>);}}
                 />
 
-
-            ))}
 
 
 

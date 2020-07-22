@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-
+import * as WebBrowser from "expo-web-browser";
 // @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // @ts-ignore
 import Entypo from 'react-native-vector-icons/Entypo';
+import {useState} from "react";
+import {retrieveData} from "../../../../Storage";
+import {getPrescriptionInfo} from "../../../../ServerCommunications/Services/HelseNorgeService";
 
 const  Prescriptions = [
     {
@@ -34,6 +37,16 @@ const ExpiredPrescriptions = [
 ];
 
 export default function Resepter() {
+    const [prescriptionData, setPrescription ] = useState([{name: " ", category: " ",  status: " "},]);
+
+
+    const data = async() => {
+        const pid: number = await retrieveData("pid");
+        return await getPrescriptionInfo(pid);
+    };
+
+
+
     return(
         <View style={styles.container}>
 
@@ -78,7 +91,7 @@ export default function Resepter() {
 
                         <TouchableOpacity
                             style={{flexDirection: "row"}}
-                            onPress={() => Linking.openURL("https://helsenorge.no/om-min-helse/meldinger")}>
+                            onPress={() => WebBrowser.openBrowserAsync("https://helsenorge.no/om-min-helse/meldinger")}>
                             <Text style={styles.categoryText}>{prescription1.status}</Text>
                             <Entypo name={"cycle"}size={20}/>
                         </TouchableOpacity>
@@ -89,7 +102,7 @@ export default function Resepter() {
             ))}
 
             <TouchableOpacity
-                style={styles.buttonContainer} onPress={() => Linking.openURL("https://helsenorge.no/e-resept-og-mine-resepter/dine-resepter-pa-helsenorge-no")}>
+                style={styles.buttonContainer} onPress={() =>  WebBrowser.openBrowserAsync("https://helsenorge.no/e-resept-og-mine-resepter/dine-resepter-pa-helsenorge-no")}>
                 <Text style={styles.buttonText}>Se alle resepter</Text>
                 <FontAwesome key ={0} name={"long-arrow-right"} size={24}/>
             </TouchableOpacity>
