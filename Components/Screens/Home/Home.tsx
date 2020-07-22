@@ -16,14 +16,26 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
-import {Lanekassen} from "./Service/Lånekassen/Lånekassen";
-import {ListItem} from "./Service/Collapsible/ListItem";
-import {retrieveData, storeData} from "../../Storage";
-import {Politi} from "./Service/Politi/Politi";
-import {Helsenorge} from "./Service/Helsenorge/Helsenorge";
-
+import { Lanekassen } from "./Service/Lånekassen/Lånekassen";
+import { ListItem } from "./Service/Collapsible/ListItem";
+import { retrieveData, storeData } from "../../Storage";
+import { Politi } from "./Service/Politi/Politi";
+import { Helsenorge } from "./Service/Helsenorge/Helsenorge";
+import {useClock, useSpringTransition, useValue} from "react-native-redash";
+import Animated, {
+  block,
+  Clock,
+  Easing,
+  interpolate,
+  multiply,
+  set,
+  startClock,
+  useCode,
+  timing,
+  Value, Extrapolate
+} from "react-native-reanimated";
 
 const PopularServices = [
   {
@@ -53,7 +65,7 @@ const PopularServices = [
   {
     name: "Søknad om lån og stipend",
     uri:
-        "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+      "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
   },
   {
     name: "Vegvesnet",
@@ -63,37 +75,40 @@ const PopularServices = [
   {
     name: "Lånekassen",
     uri:
-        "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+      "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
   },
 ];
 
 const services = [
   {
     name: "Vigo",
-    uri: "https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg",
+    uri: require("../assets/vigo.png"),
   },
   {
     name: "Vegvesenet",
     uri:
-      "https://www.sisteskrik.no/sites/miljoloftet_moss/wp-content/uploads/2019/05/Vegvesen_logo_200x141.png",
+        require("../assets/vegvesenet.png"),
   },
   {
     name: "Skatteetaten",
     uri:
-      "https://pbs.twimg.com/profile_images/685006400632827904/l8cgvWEZ_400x400.jpg",
+        require("../assets/skatteetaten.jpg"),
   },
   {
     name: "Lånekassen",
-    uri:"https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+    uri:
+        require("../assets/Lånekassen.png"),
   },
   {
     name: "Politi",
-    uri:"https://kommunikasjon.ntb.no/data/images/00987/776f818b-f8b4-41ff-a496-e8250e26788c.png/social",
+    uri:
+        require("../assets/politiet.png"),
   },
   {
     name: "Helsenorge",
-    uri: "https://is2-ssl.mzstatic.com/image/thumb/Purple30/v4/98/70/29/98702972-bc67-653e-6230-afa23cac6ae1/pr_source.png/246x0w.png",
-  }
+    uri:
+        require("../assets/helsenorge.png"),
+  },
 ];
 
 //TODO: remove, temporary for design
@@ -106,21 +121,44 @@ const Stack = createStackNavigator();
 //TODO: REMOVE - exist because of andorid eumlator problems
 const checkLocalStorage = async () => {
   const pid = await retrieveData("pid");
-  if(pid === null){
+  if (pid === null) {
     await storeData("pid", "23079418366");
   }
-}
+};
 
 function AllServices({ navigation }) {
-
   useEffect(() => {
-    checkLocalStorage().catch(err => console.log(err))
+    checkLocalStorage().catch((err) => console.log(err));
   });
 
+  const runTiming = (clock: Clock) => {
+    const state = {finished: new Value(0), position: new Value(0), frameTime: new Value(0), time: new Value(0) };
+    const config = {toValue: new Value(1), duration: 1000, easing: Easing.inOut(Easing.ease) }
+    return block([timing(clock, state, config), state.position]);
+  }
+
+  const clock = useClock();
+  const progress = useValue(0);
+  useCode(() => [
+      startClock(clock),
+      set(progress, runTiming(clock))
+  ],[]);
+
+  const delta = 1 / services.length;
+
+  const executeTransition = (index: number, start: number, end: number) => {
+    return interpolate(progress, {
+      inputRange: [start, end],
+      outputRange: [0, 1],
+      extrapolate: Extrapolate.CLAMP,
+    });
+
+  }
+
   return (
-    <SafeAreaView style={styles.gridContainer}>
+    <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
       <ScrollView
-        style={styles.gridContainer}
+        style={{flex: 1, backgroundColor: "#F2F2F2"}}
         showsVerticalScrollIndicator={false}
       >
         <FlatList
@@ -132,8 +170,9 @@ function AllServices({ navigation }) {
           renderItem={({ item, index }) => (
             <TouchableOpacity
               key={index}
-
-              onPress={() => navigation.navigate(item.name, {open: item.name})}
+              onPress={() =>
+                navigation.navigate(item.name, { open: item.name })
+              }
               style={stylesTop.item}
             >
               <View style={stylesTop.imageContainer}>
@@ -151,22 +190,34 @@ function AllServices({ navigation }) {
         />
 
         <View style={stylesBottom.gridContainer}>
-          {services.map((service, index) => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate(service.name, {open: null})}
-              key={index}
-              style={stylesBottom.item}
-            >
-              <Image
-                source={{ uri: service.uri }}
-                resizeMethod={"resize"}
-                style={stylesBottom.image}
-              />
-              <View style={stylesBottom.textContainer}>
-                <Text style={stylesBottom.buttonText}>{service.name}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
+          {services.map((service, index) => {
+                return(
+                    <Animated.View key={index} style={{transform: [{scale: executeTransition(index, index * delta, (index * delta) + delta)}]}}>
+                      <TouchableOpacity
+                          onPress={() => navigation.navigate(service.name, { open: null })}
+                          key={index}
+                          style={[stylesBottom.item, {backgroundColor: "white", borderRadius: 25, justifyContent: "center",
+                            shadowColor: "#000",
+                            shadowOffset: {
+                              width: 0,
+                              height: 1,
+                            },
+                            shadowOpacity: 0.1,
+                            shadowRadius: 1.8,
+
+                            elevation: 4,}]}
+                      >
+
+                        <Image source={service.uri} style={[{width: "55%", height: "55%", alignSelf: "center", borderRadius: 20}]} resizeMode={"contain"}/>
+                        <View style={stylesBottom.textContainer}>
+                          <Text style={stylesBottom.buttonText}>{service.name}</Text>
+                        </View>
+                      </TouchableOpacity>
+                    </Animated.View>
+                )
+          }
+
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -176,22 +227,13 @@ function AllServices({ navigation }) {
 export default function Home() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name={"Offentlige tjenester"} component={AllServices} />
-
-      <Stack.Screen name={"Karakterer"} component={Vigo}/>
-      <Stack.Screen name={"Søk frikort"} component={Skatteetaten}/>
-      <Stack.Screen name={"Forny resept"} component={Vigo}/>
-      <Stack.Screen name={"Oppkjøring"} component={Vegvesenet}/>
-      <Stack.Screen name={"Søknad om lån og stipend"} component={Lanekassen}/>
-
-
-      <Stack.Screen name={"Vigo"} component={Vigo} />
-      <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} />
-      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet}/>
-      <Stack.Screen name={"Lånekassen"} component={Lanekassen}/>
-      <Stack.Screen name={"Politi"} component={Politi}/>
-      <Stack.Screen name={"Helsenorge"} component={Helsenorge}/>
-
+      <Stack.Screen name={"Offentlige tjenester"} component={AllServices} options={{ headerShown: false}} />
+      <Stack.Screen name={"Vigo"} component={Vigo} options={{ headerShown: true }}/>
+      <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} options={{ headerShown: true }}/>
+      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} options={{ headerShown: true }}/>
+      <Stack.Screen name={"Lånekassen"} component={Lanekassen} options={{ headerShown: true }}/>
+      <Stack.Screen name={"Politi"} component={Politi} options={{ headerShown: true }} />
+      <Stack.Screen name={"Helsenorge"} component={Helsenorge} options={{ headerShown: true }}/>
     </Stack.Navigator>
   );
 }
@@ -205,8 +247,9 @@ const stylesTop = StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 10,
     flex: 1,
-    borderBottomWidth: 2,
     borderColor: "#C0C0C0",
+    backgroundColor: "white"
+
   },
   item: {
     justifyContent: "center",
@@ -215,7 +258,7 @@ const stylesTop = StyleSheet.create({
     alignItems: "center",
   },
   imageContainer: { height: 50, width: 50 },
-  image: { width: "100%", height: "100%", borderRadius: 100 },
+  image: { width: "100%", height: "100%", borderRadius: 10 },
   textContainer: { alignSelf: "center", marginTop: 10 },
   buttonText: { fontSize: 13, fontWeight: "bold" },
 });
@@ -226,14 +269,22 @@ const stylesBottom = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
   },
   item: {
-    margin: 20,
-    marginBottom: 50,
+    margin: 10,
+    marginBottom: 10,
     height: calculateHeightOfCircle(40),
     width: Dimensions.get("window").width / 2 - 40,
   },
-  image: { width: "100%", height: "100%", alignSelf: "center" },
+  image: {
+    width: "50%",
+    height: "50%",
+    alignSelf: "center",
+    borderRadius: 25,
+  },
   textContainer: { alignSelf: "center", marginTop: 10 },
   buttonText: { textTransform: "uppercase", fontSize: 13, fontWeight: "bold" },
 });
