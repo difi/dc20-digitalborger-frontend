@@ -6,7 +6,6 @@ import {ResponseType, useAuthRequest} from "expo-auth-session";
 import {storeData} from "../Storage";
 import Animated, {Easing, Extrapolate, interpolate, multiply} from "react-native-reanimated";
 import {timing, useSpringTransition} from "react-native-redash";
-import {useEffect} from "react";
 import Button from "../Button";
 
 // @ts-ignore
@@ -155,9 +154,13 @@ export default function Login({navigation}) {
            <View style={{flex: 0.7}}>
                 <View style={{flex: 2, backgroundColor: "#5CB6B0", justifyContent: "center", alignItems: "center", borderTopLeftRadius: 65, borderTopRightRadius: 65, paddingTop: 20}}>
                     <Button onPress={() => promptAsync({ useProxy })}  variant={"default"} label={"Login"}/>
-                    <Text style={{color: "white", textDecorationLine: "underline", letterSpacing: 0.6, marginTop: 20}}>
-                        Opprett minID
-                    </Text>
+                    <TouchableOpacity onPress={() =>
+                        WebBrowser.openBrowserAsync("https://eid.difi.no/nb/minid/registrere-minid-bruker")
+                    }>
+                        <Text style={{color: "white", textDecorationLine: "underline", letterSpacing: 0.6, marginTop: 20}}>
+                            Opprett minID
+                        </Text>
+                    </TouchableOpacity>
                 </View>
                <View style={{flex: 1, backgroundColor: "#5CB6B0"}}>
                    <TouchableOpacity onPress={() => navigation.goBack()} style={{flex: 1, alignSelf: "flex-start", marginLeft: 20, flexDirection: "row", justifyContent: "center", alignItems: "center"}}>

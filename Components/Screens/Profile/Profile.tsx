@@ -15,6 +15,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { useEffect } from "react";
 import Digipost from "./Digipost";
 import Mail from "./Mail";
+import * as WebBrowser from "expo-web-browser";
 
 const Stack = createStackNavigator();
 
@@ -35,7 +36,7 @@ function ProfileContent({ navigation }) {
         <TouchableOpacity
           style={styles.links}
           onPress={() =>
-            Linking.openURL("https://www.skatteetaten.no/person/folkeregister")
+              WebBrowser.openBrowserAsync("https://www.skatteetaten.no/person/folkeregister")
           }
         >
           <EntypoIcon name="export" size={20} />
@@ -46,9 +47,7 @@ function ProfileContent({ navigation }) {
         <TouchableOpacity
           style={styles.links}
           onPress={() =>
-            Linking.openURL(
-              "https://brukerprofil.difi.no/minprofil/?goto=https://sok.samordnaopptak.no/"
-            )
+              WebBrowser.openBrowserAsync("https://brukerprofil.difi.no/minprofil/?goto=https://sok.samordnaopptak.no/")
           }
         >
           <EntypoIcon name="export" size={20} />

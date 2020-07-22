@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import * as WebBrowser from "expo-web-browser";
 
 export default function Frikort() {
   return (
@@ -20,9 +21,7 @@ export default function Frikort() {
       <TouchableOpacity
         style={styles.LinkContainer}
         onPress={() =>
-          Linking.openURL(
-            "https://www.skatteetaten.no/person/skatt/skattekort/frikort/bestille-frikort/"
-          )
+            WebBrowser.openBrowserAsync("https://www.skatteetaten.no/person/skatt/skattekort/frikort/bestille-frikort/")
         }
       >
         <FontAwesome key={0} name={"arrow-circle-right"} size={20} />
