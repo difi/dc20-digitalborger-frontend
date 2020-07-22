@@ -8,6 +8,7 @@ import axios from "axios";
 import Skattemelding from "../Skattegiver";
 import KontaktPoliti from "../Home/Service/Politi/KontaktPoliti";
 
+
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
 var deadline2 = new Date();
@@ -52,7 +53,7 @@ export default function Notification() {
       <Header
         backgroundColor="white"
         centerComponent={{
-          text: "Varslinger",
+          boldText: "Varslinger",
           style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
         }}
       />
