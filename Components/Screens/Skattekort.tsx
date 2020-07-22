@@ -9,7 +9,7 @@ import * as WebBrowser from "expo-web-browser";
 export default function Skattekort() {
     return (
         <View style={styles.container}>
-            <Text style ={styles.text}>
+            <Text style ={styles.boldText}>
                 Tjener du mer en 55 000 kroner må du ha et skattekort.
             </Text>
 
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 
     },
 
-    text:{
+    boldText:{
         fontSize: 15,
         margin: 10,
         top: "5%",
