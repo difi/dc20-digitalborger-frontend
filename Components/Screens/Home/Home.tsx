@@ -39,43 +39,29 @@ import Animated, {
 
 const PopularServices = [
   {
+    service: "Vigo",
     name: "Karakterer",
-    uri: "https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg",
+    uri: require("../assets/vigo.png"),
   },
   {
+    service: "Skatteetaten",
     name: "Søk frikort",
-    uri:
-      "https://pbs.twimg.com/profile_images/685006400632827904/l8cgvWEZ_400x400.jpg",
+    uri:require("../assets/skatteetaten.jpg"),
   },
   {
+    service: "Helsenorge",
     name: "Forny resept",
-    uri:
-      "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
+    uri: require("../assets/helsenorge.png"),
   },
   {
+    service: "Vegvesnet",
     name: "Oppkjøring",
-    uri:
-      "https://www.sisteskrik.no/sites/miljoloftet_moss/wp-content/uploads/2019/05/Vegvesen_logo_200x141.png",
+    uri: require("../assets/vegvesenet.png"),
   },
   {
-    name: "Vegvesnet",
-    uri:
-      "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
-  },
-  {
+    service: "Lånekassen",
     name: "Søknad om lån og stipend",
-    uri:
-      "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
-  },
-  {
-    name: "Vegvesnet",
-    uri:
-      "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
-  },
-  {
-    name: "Lånekassen",
-    uri:
-      "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk.jpg",
+    uri: require("../assets/Lånekassen.png"),
   },
 ];
 
@@ -171,16 +157,12 @@ function AllServices({ navigation }) {
             <TouchableOpacity
               key={index}
               onPress={() =>
-                navigation.navigate(item.name, { open: item.name })
+                navigation.navigate(item.service, { open: item.name })
               }
               style={stylesTop.item}
             >
               <View style={stylesTop.imageContainer}>
-                <Image
-                  source={{ uri: item.uri }}
-                  resizeMethod={"resize"}
-                  style={stylesTop.image}
-                />
+                <Image source={item.uri} style={[{width: "80%", height: "80%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
               </View>
               <View style={stylesTop.textContainer}>
                 <Text style={stylesTop.buttonText}>{item.name}</Text>
