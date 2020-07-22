@@ -58,22 +58,23 @@ export default function Resepter() {
         <View style={styles.container}>
 
             <View style={styles.status}>
-                <FontAwesome name={"circle"}  color={"limegreen"}  size={20}/>
-                <Text style={styles.boldText}>Aktive resepter</Text>
+                <FontAwesome name={"circle"}  color={"limegreen"}  size={18} allowFontScaling={true}/>
+                <Text style={styles.boldText} allowFontScaling={true}>Aktive resepter</Text>
 
             </View>
 
 
             {prescriptionData.map((prescription, index) => (
                 <View key={index} style={{
+                    flexShrink: 1,
                     borderBottomColor: "lightgrey",
-                    borderBottomWidth: (index == Prescriptions.length-1) ? 0: 1}}>
+                    borderBottomWidth: (index == prescriptionData.length-1) ? 0: 1}}>
 
-                    <Text style={styles.nameText}>{prescription.name}</Text>
+                    <Text style={styles.nameText} allowFontScaling={true}>{prescription.name}</Text>
 
                     <View style={styles.Infogrid}>
-                        <Text style={styles.categoryText}>{prescription.category}</Text>
-                        <Text style={styles.categoryText}>{prescription.status}</Text>
+                        <Text style={styles.categoryText} allowFontScaling={true}>{prescription.category}</Text>
+                        <Text style={styles.categoryText} allowFontScaling={true}>{prescription.status}</Text>
                     </View>
 
                 </View>
@@ -82,8 +83,8 @@ export default function Resepter() {
             ))}
 
             <View style={styles.status}>
-                <FontAwesome name={"circle"} color={"crimson"} size={20}/>
-                <Text style={styles.boldText}>Utekspiderte resepter</Text>
+                <FontAwesome name={"circle"} color={"crimson"} size={18} allowFontScaling={true}/>
+                <Text style={styles.boldText} allowFontScaling={true} >Utekspiderte resepter</Text>
 
             </View>
 
@@ -91,16 +92,16 @@ export default function Resepter() {
             {ExpiredPrescriptions.map((prescription1, index1) => (
                 <View key={index1} style={styles.expiredContainer}>
 
-                    <Text style={styles.nameText}>{prescription1.name}</Text>
+                    <Text style={styles.nameText} allowFontScaling={true}>{prescription1.name}</Text>
 
                     <View style={styles.Infogrid}>
-                        <Text style={styles.categoryText}>{prescription1.category}</Text>
+                        <Text style={styles.categoryText} allowFontScaling={true} >{prescription1.category}</Text>
 
                         <TouchableOpacity
-                            style={{flexDirection: "row"}}
+                            style={{flexDirection: "row", flexShrink: 1}}
                             onPress={() => WebBrowser.openBrowserAsync("https://helsenorge.no/om-min-helse/meldinger")}>
-                            <Text style={styles.categoryText}>{prescription1.status}</Text>
-                            <Entypo name={"cycle"}size={20}/>
+                            <Text style={styles.categoryText} allowFontScaling={true}>{prescription1.status}</Text>
+                            <Entypo name={"cycle"}size={20}  allowFontScaling={true}/>
                         </TouchableOpacity>
 
                     </View>
@@ -110,8 +111,8 @@ export default function Resepter() {
 
             <TouchableOpacity
                 style={styles.buttonContainer} onPress={() =>  WebBrowser.openBrowserAsync("https://helsenorge.no/e-resept-og-mine-resepter/dine-resepter-pa-helsenorge-no")}>
-                <Text style={styles.buttonText}>Se alle resepter</Text>
-                <FontAwesome key ={0} name={"long-arrow-right"} size={24}/>
+                <Text style={styles.buttonText} allowFontScaling={true}>Se alle resepter</Text>
+                <FontAwesome key ={0} name={"long-arrow-right"} size={20}  allowFontScaling={true}/>
             </TouchableOpacity>
 
         </View>
@@ -126,27 +127,32 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     status: {
+        flexShrink: 1,
         flexDirection: "row",
         borderBottomColor: "black",
         borderBottomWidth: 1,
     },
     expiredContainer:{
+        flexShrink: 1,
         borderBottomWidth: 1,
-        borderBottomColor: "gray",
+        borderBottomColor: "lightgrey",
     },
     Infogrid: {
+        flexShrink: 1,
         flexWrap: "wrap",
         flexDirection: "row",
         justifyContent: "space-between"
     },
     nameText: {
         fontSize: 18,
-        padding: "2%"
+        marginLeft: "2%",
+        marginTop: "1%"
 
     },
     categoryText: {
         fontSize: 16,
-        padding: "2%"
+        marginLeft: "2%",
+        marginBottom: "1%"
 
     },
     boldText: {
@@ -155,8 +161,11 @@ const styles = StyleSheet.create({
         width: "100%",
         marginLeft: 10,
 
+
     },
     buttonContainer: {
+        flexShrink: 1,
+        marginTop: "2%",
         flexDirection: "row",
         justifyContent: "space-between",
         width: 170,
