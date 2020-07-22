@@ -61,7 +61,7 @@ const PopularServices = [
   {
     service: "Lånekassen",
     name: "Søknad om lån og stipend",
-    uri: require("../assets/Lånekassen.png"),
+    uri: require("../assets/lånekassenlogo.png"),
   },
 ];
 
@@ -83,7 +83,7 @@ const services = [
   {
     name: "Lånekassen",
     uri:
-        require("../assets/Lånekassen.png"),
+        require("../assets/lånekassenlogo.png"),
   },
   {
     name: "Politi",
