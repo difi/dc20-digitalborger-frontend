@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ScrollView,
 } from "react-native";
 import { Header } from "react-native-elements";
 import UserInfo from "./UserInfo";
@@ -19,7 +20,7 @@ const Stack = createStackNavigator();
 
 function ProfileContent({ navigation }) {
   return (
-    <View>
+    <ScrollView>
       <TouchableOpacity
         style={styles.icon}
         onPress={() => navigation.navigate("Digipost")}
@@ -54,7 +55,7 @@ function ProfileContent({ navigation }) {
           <Text> ENDRE E-POST ELLER MOBIL</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -80,13 +81,12 @@ const styles = StyleSheet.create({
     bottom: 10,
   },
   linksContainer: {
+    top: "10%",
     left: 30,
-    top: 65,
-    marginTop: 10,
+    height: "10%",
   },
   links: {
     flexDirection: "row",
     alignItems: "center",
-    top: "20%",
   },
 });
