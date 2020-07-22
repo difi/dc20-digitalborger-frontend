@@ -1,41 +1,31 @@
 import * as React from "react";
-import {
-  Linking,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
-import Octicons from "react-native-vector-icons/Octicons";
 import { ScrollView } from "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
-import Mail from "./Mail";
-
-const post = [
-  {
-    sender: "Digitaliseringsdirektoratet",
-    subject: "Signert arbeidsavtale",
-    date: "15.05.2020",
-    content:
-      "Sunt enim id consequat nulla magna ad commodo amet. Pariatur aliquip laborum sint occaecat fugiat do esse nulla incididunt commodo ipsum aliquip.",
-  },
-  {
-    sender: "KLP",
-    subject: "Endret pensjonsopptjening",
-    date: "28.10.2019",
-    content:
-      "Officia et amet ea culpa. Tempor aliquip amet voluptate culpa minim. Reprehenderit magna pariatur aliquip laboris laborum fugiat incididunt Lorem consequat laborum mollit non irure cupidatat.",
-  },
-];
-
-const Stack = createStackNavigator();
+import { getMail } from "../../ServerCommunications/Services/Digipost";
+import { retrieveData } from "../../Storage";
+import { useState, useEffect } from "react";
 
 export default function Digipost({ navigation }) {
+  const [data, setData] = useState(Array);
+  const Stack = createStackNavigator();
+
+  useEffect(() => {
+    const getData = async () => {
+      const pid: any = await retrieveData("pid").catch((err) =>
+        console.log(err)
+      );
+      const data = await getMail(pid);
+      setData(data);
+    };
+    getData();
+  }, []);
+
   return (
-    <View>
+    <ScrollView>
       <Text style={styles.title}>Innboks</Text>
-      {post.map((mail, index) => (
+      {data.map((mail, index) => (
         <TouchableOpacity
           onPress={() =>
             navigation.navigate("Mail", {
@@ -56,10 +46,12 @@ export default function Digipost({ navigation }) {
             </View>
           </View>
           <Text style={styles.subject}>{mail.subject}</Text>
-          <Text style={styles.content}>{mail.content}</Text>
+          <Text numberOfLines={3} style={styles.content}>
+            {mail.content}
+          </Text>
         </TouchableOpacity>
       ))}
-    </View>
+    </ScrollView>
   );
 }
 
