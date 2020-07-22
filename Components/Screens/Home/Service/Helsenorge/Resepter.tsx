@@ -5,9 +5,11 @@ import * as WebBrowser from "expo-web-browser";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // @ts-ignore
 import Entypo from 'react-native-vector-icons/Entypo';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {retrieveData} from "../../../../Storage";
 import {getPrescriptionInfo} from "../../../../ServerCommunications/Services/HelseNorgeService";
+import * as Location from "expo-location";
+import {getSchools} from "../../../../ServerCommunications/Services/VigoService";
 
 const  Prescriptions = [
     {
@@ -37,13 +39,18 @@ const ExpiredPrescriptions = [
 ];
 
 export default function Resepter() {
-    const [prescriptionData, setPrescription ] = useState([{name: " ", category: " ",  status: " "},]);
+    const [prescriptionData, setPrescription ] = useState([
+        { name: "", category: "", status: "" },
+    ]);
 
 
-    const data = async() => {
-        const pid: number = await retrieveData("pid");
-        return await getPrescriptionInfo(pid);
-    };
+    useEffect(() => {
+        (async () => {
+            const pid: number = await retrieveData("pid");
+            let result = await getPrescriptionInfo(pid);
+            setPrescription(result);
+        })();
+    }, []);
 
 
 
@@ -57,7 +64,7 @@ export default function Resepter() {
             </View>
 
 
-            {Prescriptions.map((prescription, index) => (
+            {prescriptionData.map((prescription, index) => (
                 <View key={index} style={{
                     borderBottomColor: "lightgrey",
                     borderBottomWidth: (index == Prescriptions.length-1) ? 0: 1}}>
