@@ -2,7 +2,7 @@ import * as React from "react";
 import {
   Dimensions,
   FlatList,
-  Image,
+  Image, Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -142,8 +142,72 @@ function AllServices({ navigation }) {
   }
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: "white"}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: "white", paddingTop: (Platform.OS === 'android') ? 30 : 0 }}>
       <ScrollView
+          style={{flex: 1, backgroundColor: "#F2F2F2"}}
+          showsVerticalScrollIndicator={false}
+      >
+        <FlatList
+            horizontal
+            scrollEventThrottle={1}
+            showsHorizontalScrollIndicator={false}
+            style={stylesTop.gridContainer}
+            data={PopularServices}
+            renderItem={({ item, index }) => (
+                <TouchableOpacity
+                    key={index}
+                    onPress={() =>
+                        navigation.navigate(item.service, { open: item.name })
+                    }
+                    style={stylesTop.item}
+                >
+                  <View style={stylesTop.imageContainer}>
+                    <Image source={item.uri} style={[{width: "80%", height: "80%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
+                  </View>
+                  <View style={stylesTop.textContainer}>
+                    <Text style={stylesTop.buttonText}>{item.name}</Text>
+                  </View>
+                </TouchableOpacity>
+            )}
+        />
+
+        <View style={stylesBottom.gridContainer}>
+          {services.map((service, index) => {
+                return(
+                    <Animated.View key={index} style={{transform: [{scale: executeTransition(index, index * delta, (index * delta) + delta)}]}}>
+                      <TouchableOpacity
+                          onPress={() => navigation.navigate(service.name, { open: null })}
+                          key={index}
+                          style={[stylesBottom.item, {backgroundColor: "white", borderRadius: 25, justifyContent: "center",
+                            shadowColor: "#000",
+                            shadowOffset: {
+                              width: 0,
+                              height: 1,
+                            },
+                            shadowOpacity: 0.1,
+                            shadowRadius: 1.8,
+
+                            elevation: 4,}]}
+                      >
+
+                        <Image source={service.uri} style={[{width: "55%", height: "55%", alignSelf: "center", borderRadius: 20}]} resizeMode={"contain"}/>
+                        <View style={stylesBottom.textContainer}>
+                          <Text style={stylesBottom.buttonText}>{service.name}</Text>
+                        </View>
+                      </TouchableOpacity>
+                    </Animated.View>
+                )
+              }
+
+          )}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+/*
+<ScrollView
         style={{flex: 1, backgroundColor: "#F2F2F2"}}
         showsVerticalScrollIndicator={false}
       >
@@ -202,14 +266,12 @@ function AllServices({ navigation }) {
           )}
         </View>
       </ScrollView>
-    </SafeAreaView>
-  );
-}
+ */
 
 export default function Home() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name={"Offentlige tjenester"} component={AllServices} options={{ headerShown: false}} />
+      <Stack.Screen name={"Offentlige tjenester"} component={AllServices} options={{ headerShown: false, }} />
       <Stack.Screen name={"Vigo"} component={Vigo} options={{ headerShown: true }}/>
       <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} options={{ headerShown: true }}/>
       <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} options={{ headerShown: true }}/>
