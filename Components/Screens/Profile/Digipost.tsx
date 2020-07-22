@@ -11,6 +11,9 @@ import Octicons from "react-native-vector-icons/Octicons";
 import { ScrollView } from "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
 import Mail from "./Mail";
+import { getMail } from "../../ServerCommunications/Services/Digipost";
+import { retrieveData } from "../../Storage";
+import { useState, useEffect } from "react";
 
 const post = [
   {
@@ -29,13 +32,25 @@ const post = [
   },
 ];
 
-const Stack = createStackNavigator();
-
 export default function Digipost({ navigation }) {
+  const [data, setData] = useState(Array);
+  const Stack = createStackNavigator();
+
+  useEffect(() => {
+    const getData = async () => {
+      const pid: any = await retrieveData("pid").catch((err) =>
+        console.log(err)
+      );
+      const data = await getMail(pid);
+      setData(data);
+    };
+    getData();
+  }, []);
+
   return (
     <View>
       <Text style={styles.title}>Innboks</Text>
-      {post.map((mail, index) => (
+      {data.map((mail, index) => (
         <TouchableOpacity
           onPress={() =>
             navigation.navigate("Mail", {
@@ -56,7 +71,9 @@ export default function Digipost({ navigation }) {
             </View>
           </View>
           <Text style={styles.subject}>{mail.subject}</Text>
-          <Text style={styles.content}>{mail.content}</Text>
+          <Text numberOfLines={3} style={styles.content}>
+            {mail.content}
+          </Text>
         </TouchableOpacity>
       ))}
     </View>
