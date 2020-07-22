@@ -10,8 +10,8 @@ const Avtaler = [
         type: "Undersøkelse",
         place: "Haukeland Sykehus",
         clinic: "Poliklinikken",
-        lege: "Nils Nilsen",
-        dato: "2020-07-24",
+        doctor: "Nils Nilsen",
+        date: "2020-07-24",
         time: "11:20"
 
     },
@@ -19,16 +19,16 @@ const Avtaler = [
         type: 'Blodprøve',
         place: 'Oasen Legesenter',
         clinic: 'Inngang A ',
-        lege: "Kari Hansen",
-        dato: "2020-07-26",
+        doctor: "Kari Hansen",
+        date: "2020-07-26",
         time: "09:00"
     },
     {
         type: 'CT undersøkelse',
         place: 'Rikshospitalet',
         clinic: 'Røntgenavdeling',
-        lege: "Jens Kversøy",
-        dato: "2020-08-03",
+        doctor: "Jens Kversøy",
+        date: "2020-08-03",
         time: "14:15"
     }
 ]
@@ -39,19 +39,22 @@ const legeKontor = {
 }
 
 
-
 export default function TimeAvtaler() {
 
+
      const mark = {
-         [Avtaler[0].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
-         [Avtaler[1].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
-         [Avtaler[2].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
+         [Avtaler[0].date]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+         [Avtaler[1].date]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+         [Avtaler[2].date]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
      };
 
+
+
      const item = {
-         [Avtaler[0].dato]: [{type: Avtaler[0].type, place: Avtaler[0].place, clinic: Avtaler[0].clinic, lege: Avtaler[0].lege, time: Avtaler[0].time }],
-         [Avtaler[1].dato]:  [{type: Avtaler[1].type, place: Avtaler[1].place, clinic: Avtaler[1].clinic, lege: Avtaler[1].lege, time: Avtaler[1].time }],
-         [Avtaler[2].dato]: [{type: Avtaler[2].type, place: Avtaler[2].place, clinic: Avtaler[2].clinic, lege: Avtaler[2].lege, time: Avtaler[2].time }],
+
+         [Avtaler[0].date]: [{type: Avtaler[0].type, place: Avtaler[0].place, clinic: Avtaler[0].clinic, doctor: Avtaler[0].doctor, time: Avtaler[0].time }],
+         [Avtaler[1].date]:  [{type: Avtaler[1].type, place: Avtaler[1].place, clinic: Avtaler[1].clinic, doctor: Avtaler[1].doctor, time: Avtaler[1].time }],
+         [Avtaler[2].date]: [{type: Avtaler[2].type, place: Avtaler[2].place, clinic: Avtaler[2].clinic, doctor: Avtaler[2].doctor, time: Avtaler[2].time }],
 
      }
 
@@ -59,16 +62,18 @@ export default function TimeAvtaler() {
      return(
         <View style={styles.container}>
 
-                <Agenda key={0}
+            {Avtaler.map((avtale, i) => (
+                <Agenda key={avtale.date}
 
-                    items={item}
+                        items={item}
 
-                    markedDates={mark}
+                        markedDates={mark}
                         onCalendarToggled={(calendarOpened) => {console.log(calendarOpened)}}
                         onDayPress={(day)=>{console.log('day pressed')}}
 
                         loadItemsForMonth={(month) => {console.log('trigger items loading')}}
 
+                        //Brukeren kan kun trykke på dagens dato eller frem i tid
                         minDate={Date()}
 
                         renderEmptyData = {() => {return (
@@ -93,7 +98,7 @@ export default function TimeAvtaler() {
                                 </View>
 
                             </View>
-                           );}}
+                        );}}
 
 
                         renderItem={(item) => {return(
@@ -104,6 +109,9 @@ export default function TimeAvtaler() {
 
                             </View>);}}
                 />
+
+
+            ))}
 
 
 

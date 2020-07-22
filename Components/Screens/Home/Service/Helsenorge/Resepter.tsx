@@ -33,8 +33,6 @@ const ExpiredPrescriptions = [
 
 ];
 
-
-
 export default function Resepter() {
     return(
         <View style={styles.container}>
