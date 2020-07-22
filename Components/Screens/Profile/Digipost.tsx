@@ -1,36 +1,11 @@
 import * as React from "react";
-import {
-  Linking,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
-import Octicons from "react-native-vector-icons/Octicons";
 import { ScrollView } from "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
-import Mail from "./Mail";
 import { getMail } from "../../ServerCommunications/Services/Digipost";
 import { retrieveData } from "../../Storage";
 import { useState, useEffect } from "react";
-
-const post = [
-  {
-    sender: "Digitaliseringsdirektoratet",
-    subject: "Signert arbeidsavtale",
-    date: "15.05.2020",
-    content:
-      "Sunt enim id consequat nulla magna ad commodo amet. Pariatur aliquip laborum sint occaecat fugiat do esse nulla incididunt commodo ipsum aliquip.",
-  },
-  {
-    sender: "KLP",
-    subject: "Endret pensjonsopptjening",
-    date: "28.10.2019",
-    content:
-      "Officia et amet ea culpa. Tempor aliquip amet voluptate culpa minim. Reprehenderit magna pariatur aliquip laboris laborum fugiat incididunt Lorem consequat laborum mollit non irure cupidatat.",
-  },
-];
 
 export default function Digipost({ navigation }) {
   const [data, setData] = useState(Array);
@@ -48,7 +23,7 @@ export default function Digipost({ navigation }) {
   }, []);
 
   return (
-    <View>
+    <ScrollView>
       <Text style={styles.title}>Innboks</Text>
       {data.map((mail, index) => (
         <TouchableOpacity
@@ -76,7 +51,7 @@ export default function Digipost({ navigation }) {
           </Text>
         </TouchableOpacity>
       ))}
-    </View>
+    </ScrollView>
   );
 }
 
