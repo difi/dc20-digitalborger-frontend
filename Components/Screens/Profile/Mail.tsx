@@ -10,7 +10,7 @@ export default function Mail({ route }) {
   const { content } = route.params;
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "white" }}>
       <View style={singleMailStyles.headerInfo}>
         <View style={singleMailStyles.icon}>
           <Icon name="account-circle" size={40} color="#007aff"></Icon>

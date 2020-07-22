@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 5,
+    /*borderBottomColor: "#D1D1D6",
+    borderBottomWidth: 1,
+    borderBottomStartRadius: 25,
+    borderBottomRightRadius: 25,*/
   },
   logo: {
     width: 60,
