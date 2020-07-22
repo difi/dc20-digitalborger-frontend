@@ -25,8 +25,6 @@ export default function SkatteMelding(){
           <View style={styles.Infogrid}>
               <Text style={styles.skattTitle}>Skattetrekk på hovedinntekt:</Text>
               <Text style={styles.skattInput}>{Skatt.trekk * 100 + "%"}</Text>
-
-
           </View>
 
           <View>

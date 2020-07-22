@@ -168,6 +168,7 @@ export function Politi() {
           description={
             "Politiet kan gi råd og veiledning, ta imot anmeldelse og vurdere behov for beskyttelse. På politiet.no finner du tjenester, åpningstider, kontakt og informasjon. "
           }
+          link={"https://www.politiet.no/"}
         />
       </ScrollView>
     </SafeAreaView>

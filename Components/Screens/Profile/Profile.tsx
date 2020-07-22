@@ -1,11 +1,11 @@
 import * as React from "react";
 import {
-  Linking,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  ScrollView,
+    Linking,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    ScrollView, Image,
 } from "react-native";
 import { Header } from "react-native-elements";
 import UserInfo from "./UserInfo";
@@ -26,7 +26,8 @@ function ProfileContent({ navigation }) {
         style={styles.icon}
         onPress={() => navigation.navigate("Digipost")}
       >
-        <EntypoIcon name="mail" size={40}></EntypoIcon>
+          <Image source={ require("./assets/test.png")} style={[{width: "80%", height: "80%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
+          <Text>Digipost</Text>
       </TouchableOpacity>
       <View style={styles.profilIcon}>
         <FontAwesomeIcon name="user-circle" size={130} />
@@ -73,7 +74,8 @@ const styles = StyleSheet.create({
     height: 55,
     width: 55,
     alignSelf: "flex-end",
-    marginTop: 5,
+    marginTop: 15,
+      marginRight: 15
   },
   profilIcon: {
     alignSelf: "center",

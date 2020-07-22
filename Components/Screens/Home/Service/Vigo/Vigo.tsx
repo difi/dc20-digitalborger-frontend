@@ -161,6 +161,7 @@ export function Vigo({ route }) {
           description={
             "Vigo er en internettportal for søking til videregående opplæring i skole og bedrift, fagskoleutdanning og videregående opplæring for voksne og realkompetansevurdering."
           }
+          link={"https://www.vigo.no/vigo/servlet/vigo"}
         />
       </ScrollView>
     </SafeAreaView>
