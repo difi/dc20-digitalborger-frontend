@@ -6,25 +6,33 @@ import Icon from "react-native-vector-icons/Entypo";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
 
-const vaccines = {
+const  vaccines = [
+    {
+        name: "HPV-injeksjon",
+        date: "10.01.2018",
+    },
+    {
+        name: "Poliomyelitt",
+        date: "19.12.2011",
+    },
+    {
+        name: "Influensa A",
+        date: "08.12.2009",
+    },
+    {
+        name: "Røde hunder",
+        date: "28.08.2008",
+    },
+    {
+        name: "Stivkrampe",
+        date: "08.11.2007",
+    },
+    {
+        name: "Kikhoste",
+        date: "07.07.1997",
+    },
+];
 
-    HPV: "HPV-injekson",
-    Polio: "Poliomyelitt",
-    Influ: "Influensa A",
-    Røde: "Røde hunder",
-    Stiv: "Stivkrampe",
-    Kik: "Kikhoste",
-};
-
-const date = {
-
-    HPVDate: "30.01.2018",
-    PolioDate: "19.12.2011",
-    InfluDate: "08.12.2009",
-    RødeDate: "28.08.2008",
-    StivDate: "08.11.2007",
-    KikDate: "07.07.1997",
-};
 
 export default function Vaksine() {
     return (
@@ -33,49 +41,27 @@ export default function Vaksine() {
             <View style={styles.container}>
                 <View style={styles.textContainer}>
                     <View style={styles.leftTextContainer}>
-                        <Text style={{ fontWeight: "bold", fontSize: 15, textDecorationLine: "underline"}}>Vaksinasjon:</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 17, textDecorationLine: "underline"}}>Vaksinasjon:</Text>
                     </View>
-
                     <View style={styles.rightTextContainer}>
-                        <Text style={{ fontWeight: "bold", fontSize: 15, textDecorationLine: "underline"}}>Vaksinasjonsdato:</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 17, textDecorationLine: "underline"}}>Vaksinasjonsdato:</Text>
                     </View>
-
                 </View>
                 <View style={styles.textContainer}>
                     <View style={styles.leftTextContainer}>
-                        <Text style={{fontSize: 13}}>{vaccines.HPV}</Text>
+                        {vaccines.map((vaccines, index) => (
+                            <View key={index}>
+                                <Text style={{fontSize: 16}}>{vaccines.name}</Text>
+                            </View>
+                        ))}
                     </View>
                     <View style={styles.rightTextContainer}>
-                        <Text style={{fontSize: 13}}>{date.HPVDate}</Text>
+                        {vaccines.map((vaccines, index) => (
+                            <View key={index}>
+                                <Text style={{fontSize: 16}}>{vaccines.date}</Text>
+                            </View>
+                        ))}
                     </View>
-                </View>
-
-                <View style={styles.textContainer}>
-                    <View style={styles.leftTextContainer}>
-                        <Text style={{fontSize: 13}}>{vaccines.Polio}</Text>
-                    </View>
-                    <View style={styles.rightTextContainer}>
-                        <Text style={{fontSize: 13}}>{date.PolioDate}</Text>
-                    </View>
-                </View>
-
-                <View style={styles.textContainer}>
-                    <View style={styles.leftTextContainer}>
-                        <Text style={{fontSize: 13}}>{vaccines.Influ}</Text>
-                    </View>
-                    <View style={styles.rightTextContainer}>
-                        <Text style={{fontSize: 13}}>{date.InfluDate}</Text>
-                    </View>
-                </View>
-
-                <View style={styles.textContainer}>
-                    <View style={styles.leftTextContainer}>
-                        <Text style={{fontSize: 13}}>{vaccines.Røde}</Text>
-                    </View>
-                    <View style={styles.rightTextContainer}>
-                        <Text style={{fontSize: 13}}>{date.RødeDate}</Text>
-                    </View>
-
                 </View>
                 <TouchableOpacity
                     onPress={() =>
@@ -85,10 +71,11 @@ export default function Vaksine() {
                     }
                 >
                     <View style={styles.linkContainer}>
-                        <Text style={{ fontWeight: "bold", fontSize: 13}}> Gå til din vaksine oversikt </Text>
-                        <Icon name="arrow-long-right" size={16} ></Icon>
+                        <Text style={{ fontWeight: "bold", fontSize: 17}}> Gå til din vaksine oversikt </Text>
+                        <Icon name="arrow-long-right" size={17} ></Icon>
                     </View>
                 </TouchableOpacity>
+
             </View>
         </View>
 
@@ -106,11 +93,10 @@ const styles = StyleSheet.create({
     textContainer:{
         flexDirection: "row",
         marginTop: 10,
-
     },
     rightTextContainer:{
         flex: 1,
-        left: 40,
+        left: 25,
     },
     leftTextContainer:{
         flex: 1,
@@ -118,6 +104,6 @@ const styles = StyleSheet.create({
     },
     linkContainer:{
         flexDirection: "row",
-        marginTop: 30,
+        marginTop: 40,
     },
 });
