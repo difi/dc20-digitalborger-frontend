@@ -39,7 +39,7 @@ export default function School() {
         {stations.map((station, index) => (
           <View key={index} style={styles.container}>
             <Icon name="office-building" size={40}></Icon>
-            <Text style={styles.name}>{station.Trafikkstasjon}</Text>
+            <Text style={styles.name}>{station.Politistasjon}</Text>
             <Text style={styles.distance}>{station.Distanse + "km"}</Text>
           </View>
         ))}

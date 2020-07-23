@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet, SafeAreaView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header, Text } from "react-native-elements";
 import { useEffect, useState } from "react";
@@ -26,10 +26,6 @@ const events = [
   },
   {
     service: "Lånekassen",
-    name: "Søk om støtte fra lånekassen",
-    logo:
-      "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk_400x400.jpg",
-    date: deadline2,
     description:
       "Lånekassen minner om at fristen for å søke støtte er 25.03.2020",
     received: "Mandag, 17:35",
@@ -38,12 +34,8 @@ const events = [
   },
   {
     service: "Helse Norge",
-    name: "Corona vaksine",
-    logo:
-      "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
     description:
       "Helsenorge ber alle holde seg hjemme da smitten har bredt seg til din by. For mer informasjon sjekk ut våre nettsider.",
-    date: deadline3,
     received: "Mars, 18 2020",
     icon: "info-with-circle",
     icon_color: "#BF5AF2",
@@ -53,8 +45,8 @@ const events = [
 
 export default function Notification() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Varslinger</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.heading}>Varslinger</Text>
       <ScrollView>
         {events.map((event, index) => (
           <NotificationBar
@@ -70,7 +62,7 @@ export default function Notification() {
           />
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -80,7 +72,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
   },
-  title: {
+  heading: {
     fontSize: 40,
     fontWeight: "bold",
     fontFamily: "Helvetica",
