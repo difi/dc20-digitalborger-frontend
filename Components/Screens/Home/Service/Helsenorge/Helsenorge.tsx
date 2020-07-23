@@ -1,8 +1,9 @@
-import * as React from 'react';
+ import * as React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 
 
 
@@ -14,16 +15,18 @@ import {useState} from "react";
 import Footer from "../Footer";
 import Resepter from "./Resepter";
 import TimeAvtaler from "./TimeAvtaler";
+ import Vaksine from "./Vaksine";
+ import Fastlege from "./Fastlege";
 
 
 
 
 const HELSE  = [
     {
-        title: 'Din journal',
+        title: 'Fastlege',
         icon: {
-            type: "AntDesign",
-            name: "profile"
+            type: "Fontisto",
+            name: "doctor"
         },
 
     },
@@ -62,7 +65,7 @@ export function Helsenorge(){
                 <View>
                     <ListItem key={0} iconName = {HELSE[0].icon.name} iconType={HELSE[0].icon.type} containerHeight={200} title={HELSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <Text>Hellu</Text>
+                            <Fastlege/>
                         </View>
                     </ListItem>
 
@@ -74,7 +77,7 @@ export function Helsenorge(){
 
                     <ListItem key={2} iconName = {HELSE[2].icon.name} iconType={HELSE[2].icon.type} containerHeight={200} title={HELSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
-                            <Text>hei</Text>
+                            <Vaksine/>
                         </View>
                     </ListItem>
                     <ListItem key={3} iconName = {HELSE[3].icon.name} iconType={HELSE[3].icon.type} containerHeight={450} title={HELSE[3].title} parentCallback={(item) => {setSelectedIndex(3); console.log("toggled", item)}} pressed={(selectedIndex === 3) ? true : false}>
