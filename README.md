@@ -1,24 +1,25 @@
 # dc20-digitalborger-frontend
 
-##Digital Borger
+## Digital Borger
+
 
 ## Bibliotek
 
 ## Installasjonsguide
 
-part 1:
+part 1: 
 1.
 2.
 3.
 4.
 
-part 2:
+part 2: 
 1.
 2.
 3.
 
 ##Beskrivelse
-
+D
 
 ##Hvordan kjøre programmet
 For å kjøre programmet må du ha expo (se installasjonsguide)

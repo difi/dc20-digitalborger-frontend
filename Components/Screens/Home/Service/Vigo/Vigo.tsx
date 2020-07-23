@@ -109,11 +109,10 @@ export function Vigo({ route }) {
             iconType={VIGO[0].icon.type}
             containerHeight={210}
             title={VIGO[0].title}
-            parentCallback={(item) => {
+            parentCallback={() => {
               setSelectedIndex(0);
-              console.log("toggled", item);
             }}
-            pressed={selectedIndex === 0 ? true : false}
+            pressed={selectedIndex === 0}
           >
             <View style={{ padding: 10, flex: 1 }}>
               <Grades />
@@ -126,11 +125,10 @@ export function Vigo({ route }) {
             iconType={VIGO[1].icon.type}
             containerHeight={210}
             title={VIGO[1].title}
-            parentCallback={(item) => {
+            parentCallback={() => {
               setSelectedIndex(1);
-              console.log("toggled", item);
             }}
-            pressed={selectedIndex === 1 ? true : false}
+            pressed={selectedIndex === 1}
           >
             <View style={{ padding: 10, flex: 1 }}>
               <View style={{ flex: 1 }}>
@@ -144,11 +142,10 @@ export function Vigo({ route }) {
             iconType={VIGO[2].icon.type}
             containerHeight={420}
             title={VIGO[2].title}
-            parentCallback={(item) => {
+            parentCallback={() => {
               setSelectedIndex(2);
-              console.log("toggled", item);
             }}
-            pressed={selectedIndex === 2 ? true : false}
+            pressed={selectedIndex === 2}
           >
             <View style={{ padding: 10, flex: 1 }}>
               <View style={styles.titles}>
@@ -164,6 +161,7 @@ export function Vigo({ route }) {
           description={
             "Vigo er en internettportal for søking til videregående opplæring i skole og bedrift, fagskoleutdanning og videregående opplæring for voksne og realkompetansevurdering."
           }
+          link={"https://www.vigo.no/vigo/servlet/vigo"}
         />
       </ScrollView>
     </SafeAreaView>

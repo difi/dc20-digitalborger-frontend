@@ -1,11 +1,11 @@
 import * as React from "react";
 import {
-  Linking,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  ScrollView,
+    Linking,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    ScrollView, Image,
 } from "react-native";
 import { Header } from "react-native-elements";
 import UserInfo from "./UserInfo";
@@ -15,6 +15,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { useEffect } from "react";
 import Digipost from "./Digipost";
 import Mail from "./Mail";
+import * as WebBrowser from "expo-web-browser";
 
 const Stack = createStackNavigator();
 
@@ -25,7 +26,8 @@ function ProfileContent({ navigation }) {
         style={styles.icon}
         onPress={() => navigation.navigate("Digipost")}
       >
-        <EntypoIcon name="mail" size={40}></EntypoIcon>
+          <Image source={ require("./assets/test.png")} style={[{width: "80%", height: "80%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
+          <Text>Digipost</Text>
       </TouchableOpacity>
       <View style={styles.profilIcon}>
         <FontAwesomeIcon name="user-circle" size={130} />
@@ -35,7 +37,7 @@ function ProfileContent({ navigation }) {
         <TouchableOpacity
           style={styles.links}
           onPress={() =>
-            Linking.openURL("https://www.skatteetaten.no/person/folkeregister")
+              WebBrowser.openBrowserAsync("https://www.skatteetaten.no/person/folkeregister")
           }
         >
           <EntypoIcon name="export" size={20} />
@@ -46,9 +48,7 @@ function ProfileContent({ navigation }) {
         <TouchableOpacity
           style={styles.links}
           onPress={() =>
-            Linking.openURL(
-              "https://brukerprofil.difi.no/minprofil/?goto=https://sok.samordnaopptak.no/"
-            )
+              WebBrowser.openBrowserAsync("https://brukerprofil.difi.no/minprofil/?goto=https://sok.samordnaopptak.no/")
           }
         >
           <EntypoIcon name="export" size={20} />
@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
     height: 55,
     width: 55,
     alignSelf: "flex-end",
-    marginTop: 5,
+    marginTop: 15,
+      marginRight: 15
   },
   profilIcon: {
     alignSelf: "center",

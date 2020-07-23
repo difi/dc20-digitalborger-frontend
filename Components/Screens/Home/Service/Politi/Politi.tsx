@@ -14,6 +14,7 @@ import HeaderPoliti from "./HeaderPoliti";
 import { Component, useEffect, useState } from "react";
 // @ts-ignore
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+
 // @ts-ignore
 import AntDesign from "react-native-vector-icons/AntDesign";
 // @ts-ignore
@@ -49,8 +50,8 @@ const POLITI = [
   {
     title: "Forny eller søk om pass",
     icon: {
-      type: "FontAwesome",
-      name: "camera",
+      type: "FontAwesome5",
+      name: "passport",
     },
     content: {
       description: "test",
@@ -168,6 +169,7 @@ export function Politi() {
           description={
             "Politiet kan gi råd og veiledning, ta imot anmeldelse og vurdere behov for beskyttelse. På politiet.no finner du tjenester, åpningstider, kontakt og informasjon. "
           }
+          link={"https://www.politiet.no/"}
         />
       </ScrollView>
     </SafeAreaView>

@@ -43,8 +43,8 @@ interface ListItemProps {
 
 export function ListItem({parentCallback, pressed, children, title, containerHeight, iconName, iconType}: ListItemProps) {
     let [toggled, setToggled] = useState(false);
-    const height = useRef(new Animated.Value(1)).current;
-    const rotate = useRef(new Animated.Value(1)).current;
+    const height = useRef(new Animated.Value(0)).current;
+    const rotate = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
         setToggled(pressed)
@@ -125,7 +125,7 @@ export function ListItem({parentCallback, pressed, children, title, containerHei
         <View>
             <TouchableOpacity
                 style={{flex: 1, backgroundColor: 'red', height: 50}}
-                onPress={() => {setToggled((prev) => !prev); parentCallback(toggled)}}>
+                onPress={() => {setToggled((prev) => !prev); parentCallback()}}>
                 <View style={{flex: 1, backgroundColor: "white", height: 50, paddingLeft: SPACE, paddingRight: SPACE, justifyContent: "center", alignItems:"center", borderWidth: 0.5, borderColor: "#999999", flexDirection: "row"}}>
                     <View style={{flex: 1, flexDirection: "row"}}>
                         {fontType(iconType, iconName, "black", 26)}
