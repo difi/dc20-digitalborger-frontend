@@ -64,11 +64,11 @@ export default function Resepter() {
             </View>
 
 
-            {prescriptionData.map((prescription, index) => (
+            {Prescriptions.map((prescription, index) => (
                 <View key={index} style={{
                     flexShrink: 1,
                     borderBottomColor: "lightgrey",
-                    borderBottomWidth: (index == prescriptionData.length-1) ? 0: 1}}>
+                    borderBottomWidth: (index == Prescriptions.length-1) ? 0: 1}}>
 
                     <Text style={styles.nameText} allowFontScaling={true}>{prescription.name}</Text>
 
@@ -169,6 +169,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         width: 170,
+        position: "absolute",
+        bottom: 0
 
     },
     buttonText:{

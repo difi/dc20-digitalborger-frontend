@@ -12,7 +12,7 @@ const Avtaler = [
         place: "Haukeland Sykehus",
         clinic: "Poliklinikken",
         doctor: "Nils Nilsen",
-        date: "2020-07-24",
+        date: "2020-07-23",
         time: "11:20"
 
     },
