@@ -91,7 +91,7 @@ export function Vigo({ route }) {
           break;
       }
     }
-  },[open]);
+  }, [open]);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
