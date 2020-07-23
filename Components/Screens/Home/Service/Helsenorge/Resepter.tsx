@@ -64,17 +64,17 @@ export default function Resepter() {
             </View>
 
 
-            {Prescriptions.map((prescription, index) => (
+            {prescriptionData.map((prescription, index) => (
                 <View key={index} style={{
                     flexShrink: 1,
                     borderBottomColor: "lightgrey",
-                    borderBottomWidth: (index == Prescriptions.length-1) ? 0: 1}}>
+                    borderBottomWidth: (index == prescriptionData.length-1) ? 0: 1}}>
 
                     <Text style={styles.nameText} allowFontScaling={true}>{prescription.name}</Text>
 
                     <View style={styles.Infogrid}>
-                        <Text style={styles.categoryText} allowFontScaling={true}>{prescription.category}</Text>
-                        <Text style={styles.categoryText} allowFontScaling={true}>{prescription.status}</Text>
+                        <Text style={styles.text} allowFontScaling={true}>{prescription.category}</Text>
+                        <Text style={styles.text} allowFontScaling={true}>{prescription.status}</Text>
                     </View>
 
                 </View>
@@ -95,12 +95,12 @@ export default function Resepter() {
                     <Text style={styles.nameText} allowFontScaling={true}>{prescription1.name}</Text>
 
                     <View style={styles.Infogrid}>
-                        <Text style={styles.categoryText} allowFontScaling={true} >{prescription1.category}</Text>
+                        <Text style={styles.text} allowFontScaling={true} >{prescription1.category}</Text>
 
                         <TouchableOpacity
                             style={{flexDirection: "row", flexShrink: 1}}
                             onPress={() => WebBrowser.openBrowserAsync("https://helsenorge.no/om-min-helse/meldinger")}>
-                            <Text style={styles.categoryText} allowFontScaling={true}>{prescription1.status}</Text>
+                            <Text style={styles.text} allowFontScaling={true}>{prescription1.status}</Text>
                             <Entypo name={"cycle"}size={20}  allowFontScaling={true}/>
                         </TouchableOpacity>
 
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
         marginTop: "1%"
 
     },
-    categoryText: {
+    text: {
         fontSize: 16,
         marginLeft: "2%",
         marginBottom: "1%"
