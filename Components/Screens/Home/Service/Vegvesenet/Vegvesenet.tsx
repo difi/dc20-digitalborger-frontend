@@ -88,7 +88,7 @@ export function Vegvesenet({ route }) {
             pressed={selectedIndex === 0 ? true : false}
           >
             <View style={{ padding: 10, flex: 1 }}>
-              <VeienTilForerkortet />
+              <VeienTilForerkortet/>
             </View>
           </ListItem>
 
@@ -105,7 +105,7 @@ export function Vegvesenet({ route }) {
             pressed={selectedIndex === 1 ? true : false}
           >
             <View style={{ padding: 10, flex: 1 }}>
-              <TeoriProve />
+              <TeoriProve/>
             </View>
           </ListItem>
 
