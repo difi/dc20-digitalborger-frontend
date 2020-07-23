@@ -1,13 +1,9 @@
 import * as React from "react";
-import { Text, View, StyleSheet, SafeAreaView } from "react-native";
-import { Image, Header, Card } from "react-native-elements";
+import { Text, View, StyleSheet, SafeAreaView, Dimensions } from "react-native";
+import { Card } from "react-native-elements";
 import CountDown from "react-native-countdown-component";
 import { ScrollView } from "react-native-gesture-handler";
 import PushNotification from "./PushNotification";
-import { backgroundColor } from "@shopify/restyle";
-import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
-import Animated from "react-native-reanimated";
-import { shadow } from "react-native-paper";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -52,7 +48,7 @@ export default function Hourglass() {
 
   function getColor(deadline: Date) {
     if (getTimeLeft(deadline) <= 86400) {
-      return "red";
+      return "white";
     }
     return "white";
   }
@@ -79,11 +75,18 @@ export default function Hourglass() {
             <Card
               containerStyle={{
                 backgroundColor: event.icon_color,
-                shadowRadius: 5,
-                //shadowColor: "grey",
                 borderWidth: 0,
                 borderTopLeftRadius: 15,
                 borderTopRightRadius: 15,
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.3,
+                shadowRadius: 1.8,
+
+                elevation: 4,
               }}
             >
               <View style={styles.countDownContainer}>
@@ -99,7 +102,7 @@ export default function Hourglass() {
                     backgroundColor: event.icon_color,
                   }}
                   digitTxtStyle={{
-                    color: getColor(event.date),
+                    color: "white",
                     fontFamily: "Helvetica",
                     fontWeight: "normal",
                   }}
@@ -113,7 +116,14 @@ export default function Hourglass() {
               </View>
             </Card>
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>{event.name}</Text>
+              <Text
+                style={[
+                  styles.title,
+                  { color: index === 0 ? "rgb(255, 102, 102)" : "black" },
+                ]}
+              >
+                {event.name}
+              </Text>
               <Text style={styles.date}>25.03.2020</Text>
             </View>
           </View>
@@ -121,83 +131,6 @@ export default function Hourglass() {
       </ScrollView>
     </SafeAreaView>
   );
-
-  return (
-    <SafeAreaView>
-      <View>
-        <Text style={styles.heading}> Nedtelling </Text>
-        <ScrollView style={{ height: "100%" }}>
-          {events.map((event, index) => (
-            <View key={index} style={{}}>
-              <View style={styles.title}>
-                <Text style={{ fontWeight: "bold", fontSize: 18 }}>
-                  {event.name}
-                </Text>
-
-                <View style={styles.countDownContainer}>
-                  <CountDown
-                    until={getTimeLeft(event.date)}
-                    size={30}
-                    timeToShow={getFormat(event.date)}
-                    timeLabelStyle={{
-                      color: "black",
-                      fontWeight: "bold",
-                      fontSize: 10,
-                      fontFamily: "Helvetica",
-                    }}
-                    digitStyle={{
-                      //backgroundColor: "#30D158",
-                      borderWidth: 2,
-                      borderColor: "#E1E1E1",
-                      //fontFamily: "Helvetica",
-                      //fontWeight: "bold",
-                      borderRadius: 50,
-                    }}
-                    digitTxtStyle={{
-                      color: getColor(event.date),
-                      fontFamily: "Helvetica",
-                    }}
-                    timeLabels={{
-                      d: "Dager",
-                      h: "Timer",
-                      m: "Min",
-                      s: "Sek",
-                    }}
-                  />
-                </View>
-              </View>
-            </View>
-          ))}
-        </ScrollView>
-      </View>
-    </SafeAreaView>
-  );
-
-  /*return (
-    <SafeAreaView>
-      <Text style={styles.heading}>Nedtellinger</Text>
-      <View>
-        <CountdownCircleTimer
-          isPlaying
-          duration={120}
-          colors={[
-            ["#004777", 0.4],
-            ["#F7B801", 0.4],
-            ["#A30000", 0.2],
-          ]}
-          size={150}
-          strokeWidth={10}
-          initialRemainingTime={60}
-        >
-          {({ remainingTime, animatedColor }) => (
-            <Animated.Text style={{ color: "blue" }}>
-              {remainingTime}
-            </Animated.Text>
-          )}
-        </CountdownCircleTimer>
-      </View>
-    </SafeAreaView>
-  );*/
 }
 
 const styles = StyleSheet.create({
@@ -210,31 +143,11 @@ const styles = StyleSheet.create({
   },
   cardContent: {
     flexDirection: "row",
-    //backgroundColor: "#30D158",
     borderBottomColor: "#E1E1E1",
     borderBottomWidth: 1,
-    //borderRadius: 20,
   },
-  /*logoContainer: {
-    width: 50,
-    height: 50,
-    marginVertical: 17,
-    left: 15,
-  },
-  logo: {
-    width: "100%",
-    height: "100%",
-    borderRadius: 100,
-  },*/
-  /*countDownContainer: {
-    flex: 2,
-    marginRight: 65,
-    marginTop: 10,
-    marginVertical: 20,
-  },*/
+
   countDownContainer: {
-    //backgroundColor: "lavender",
-    //alignSelf: "flex-start",
     padding: 10,
   },
   title: {
@@ -242,7 +155,7 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica",
     fontSize: 20,
     marginLeft: 10,
-    //color: "white",
+    color: "red",
     marginTop: 7,
   },
   titleContainer: {
@@ -252,6 +165,15 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 1.8,
+
+    elevation: 4,
   },
   date: {
     fontFamily: "Helvetica",
@@ -260,14 +182,3 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
 });
-
-//{sendPush24hrsLeft(event.name, event.date)}
-
-/* <View style={styles.cardContent}>
-                  <View key={index} style={styles.logoContainer}>
-                    <Image
-                      source={{ uri: event.logo }}
-                      style={styles.logo}
-                    ></Image>
-                  </View>
-                </View>*/
