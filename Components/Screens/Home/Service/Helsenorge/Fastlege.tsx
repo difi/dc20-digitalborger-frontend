@@ -5,15 +5,13 @@ import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
+const  doctor = [
+    {
+        name: "Lars Breheim",
+        office: "Sogndal legekontor",
+    },
+];
 
-const health = {
-
-    docIntro: "Din fastlege:",
-    officeIntro: "Instutisjon:",
-    doctor: "Lars Breheim",
-    office: "Leikanger legekontor",
-
-};
 
 export default function Fastlege() {
     return (
@@ -31,14 +29,22 @@ export default function Fastlege() {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.firstTextContainer}>
-                    <Text style={{fontWeight: "bold", fontSize: 15}}>{health.docIntro}</Text>
-                    <Text>{health.doctor}</Text>
+                    {doctor.map((doctor, index) => (
+                        <View key={index}>
+                            <Text style={{ fontWeight: "bold", fontSize: 17}}>Din fastlege:</Text>
+                            <Text style={{fontSize: 16}}>{doctor.name}</Text>
+                        </View>
+                    ))}
                 </View>
             </View>
             <View style={styles.row}>
                 <View style={styles.secondTextContainer}>
-                    <Text style={{fontWeight: "bold", fontSize: 15}}>{health.officeIntro}</Text>
-                    <Text>{health.office}</Text>
+                    {doctor.map((doctor, index) => (
+                        <View key={index}>
+                            <Text style={{ fontWeight: "bold", fontSize: 17}}>Instutisjon:</Text>
+                            <Text style={{fontSize: 16}}>{doctor.office}</Text>
+                        </View>
+                    ))}
                 </View>
             </View>
             <TouchableOpacity
@@ -50,7 +56,7 @@ export default function Fastlege() {
                 }
             >
                 <View style={styles.linkContainer}>
-                    <Text style={{ fontWeight: "bold",fontSize: 15}}> Mer om din fastlege </Text>
+                    <Text style={{ fontWeight: "bold",fontSize: 17}}> Mer om din fastlege </Text>
                     <Icon name="long-arrow-alt-right" size={15}></Icon>
                 </View>
             </TouchableOpacity>
@@ -66,16 +72,19 @@ const styles = StyleSheet.create({
         borderColor: "#E1E1E1",
     },
     firstTextContainer: {
-        right: "50%",
+        right: 19,
+        marginTop: 5,
     },
     secondTextContainer:{
-        left: "6%",
+        marginTop: 10,
     },
     iconContainer:{
         left: 320,
+        marginTop: 10,
     },
     linkContainer:{
         flexDirection: "row",
-        marginTop: 15,
+        marginTop: 20,
+        right: 1,
     },
 });
