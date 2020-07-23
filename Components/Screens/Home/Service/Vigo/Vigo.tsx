@@ -112,7 +112,7 @@ export function Vigo({ route }) {
             parentCallback={() => {
               setSelectedIndex(0);
             }}
-            pressed={selectedIndex === 0 ? true : false}
+            pressed={selectedIndex === 0}
           >
             <View style={{ padding: 10, flex: 1 }}>
               <Grades />
@@ -128,7 +128,7 @@ export function Vigo({ route }) {
             parentCallback={() => {
               setSelectedIndex(1);
             }}
-            pressed={selectedIndex === 1 ? true : false}
+            pressed={selectedIndex === 1}
           >
             <View style={{ padding: 10, flex: 1 }}>
               <View style={{ flex: 1 }}>
@@ -145,7 +145,7 @@ export function Vigo({ route }) {
             parentCallback={() => {
               setSelectedIndex(2);
             }}
-            pressed={selectedIndex === 2 ? true : false}
+            pressed={selectedIndex === 2}
           >
             <View style={{ padding: 10, flex: 1 }}>
               <View style={styles.titles}>
