@@ -12,7 +12,7 @@ const Avtaler = [
         place: "Haukeland Sykehus",
         clinic: "Poliklinikken",
         doctor: "Nils Nilsen",
-        date: "2020-07-23",
+        date: "2020-07-24",
         time: "11:20"
 
     },
@@ -105,7 +105,7 @@ export default function TimeAvtaler() {
                         renderItem={(item) => {return(
                             <View style = {[styles.item, {height: item.height}]}>
                                 <Text style={styles.boldText}>{item.type + " kl " + item.time}</Text>
-                                <Text style={styles.text}>{"Lege: " + " " + item.lege}</Text>
+                                <Text style={styles.text}>{"Lege: " + " " + item.doctor}</Text>
                                 <Text style={styles.text}>{"Sted: " + item.place + ", " + item.clinic}</Text>
 
                             </View>);}}
