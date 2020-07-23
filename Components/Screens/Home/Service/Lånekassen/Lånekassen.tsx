@@ -131,6 +131,7 @@ export function Lanekassen({ route }) {
           description={
             "Statens lånekasse for utdanning er et statlig forvaltningsorgan underlagt Kunnskapsdepartementet. Lånekassen gir stipend og lån til utdanning i Norge og utlandet, og administrerer tilbakebetaling av studielån."
           }
+          link={"https://www.lanekassen.no/"}
         />
       </ScrollView>
     </SafeAreaView>

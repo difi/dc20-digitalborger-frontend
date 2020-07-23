@@ -83,7 +83,10 @@ export function Helsenorge(){
                         </View>
                     </ListItem>
                 </View>
-                <Footer description={"Helsenorge har kvalitetssikret informasjon om helse, sykdom og rettigheter, og digitale tjenester som bytt fastlege, e-resepter og kjernejournal. Flere tjenester som hjelper deg å følge opp din egen helse finner du på helsenorge.no."}/>
+                <Footer
+                    description={"Helsenorge har kvalitetssikret informasjon om helse, sykdom og rettigheter, og digitale tjenester som bytt fastlege, e-resepter og kjernejournal. Flere tjenester som hjelper deg å følge opp din egen helse finner du på helsenorge.no."}
+                link={"https://helsenorge.no/"}
+                />
             </ScrollView>
         </SafeAreaView>
     )

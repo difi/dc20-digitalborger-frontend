@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Linking, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {black} from "react-native-paper/lib/typescript/src/styles/colors";
+import * as WebBrowser from "expo-web-browser";
 
 
 const Skatt =
@@ -24,12 +25,11 @@ export default function SkatteMelding(){
           <View style={styles.Infogrid}>
               <Text style={styles.skattTitle}>Skattetrekk på hovedinntekt:</Text>
               <Text style={styles.skattInput}>{Skatt.trekk * 100 + "%"}</Text>
-
-
           </View>
 
           <View>
-              <TouchableOpacity style = {styles.LinkContainer} onPress={() => Linking.openURL('https://www.skatteetaten.no/person/skatt/skatteoppgjor/')}>
+              <TouchableOpacity style = {styles.LinkContainer} onPress={() =>
+                  WebBrowser.openBrowserAsync('https://www.skatteetaten.no/person/skatt/skatteoppgjor/')}>
                   <FontAwesome key ={0} name ={'arrow-circle-right'} size={20} />
                   <Text style = {styles.buttonText}>Se hele skattemeldingen din</Text>
               </TouchableOpacity>

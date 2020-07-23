@@ -23,7 +23,7 @@ export default function Digipost({ navigation }) {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "white" }}>
       <Text style={styles.title}>Innboks</Text>
       {data.map((mail, index) => (
         <TouchableOpacity

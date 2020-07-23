@@ -77,7 +77,7 @@ export default function Hourglass() {
         }}
       />
       <View>
-        <ScrollView>
+        <ScrollView style={{ height: "100%" }}>
           {events.map((event, index) => (
             <View style={styles.title} key={index}>
               <Text style={{ fontWeight: "bold", fontSize: 18 }}>

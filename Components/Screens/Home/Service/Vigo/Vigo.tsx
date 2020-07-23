@@ -109,9 +109,8 @@ export function Vigo({ route }) {
             iconType={VIGO[0].icon.type}
             containerHeight={210}
             title={VIGO[0].title}
-            parentCallback={(item) => {
+            parentCallback={() => {
               setSelectedIndex(0);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 0 ? true : false}
           >
@@ -126,9 +125,8 @@ export function Vigo({ route }) {
             iconType={VIGO[1].icon.type}
             containerHeight={210}
             title={VIGO[1].title}
-            parentCallback={(item) => {
+            parentCallback={() => {
               setSelectedIndex(1);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 1 ? true : false}
           >
@@ -144,9 +142,8 @@ export function Vigo({ route }) {
             iconType={VIGO[2].icon.type}
             containerHeight={420}
             title={VIGO[2].title}
-            parentCallback={(item) => {
+            parentCallback={() => {
               setSelectedIndex(2);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 2 ? true : false}
           >
@@ -164,6 +161,7 @@ export function Vigo({ route }) {
           description={
             "Vigo er en internettportal for søking til videregående opplæring i skole og bedrift, fagskoleutdanning og videregående opplæring for voksne og realkompetansevurdering."
           }
+          link={"https://www.vigo.no/vigo/servlet/vigo"}
         />
       </ScrollView>
     </SafeAreaView>
