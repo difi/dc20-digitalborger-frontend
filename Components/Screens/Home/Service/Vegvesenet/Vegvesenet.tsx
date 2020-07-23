@@ -62,7 +62,7 @@ export function Vegvesenet({ route }) {
           break;
       }
     }
-  });
+  },[open]);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
