@@ -14,6 +14,7 @@ import HeaderPoliti from "./HeaderPoliti";
 import { Component, useEffect, useState } from "react";
 // @ts-ignore
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+
 // @ts-ignore
 import AntDesign from "react-native-vector-icons/AntDesign";
 // @ts-ignore
@@ -49,8 +50,8 @@ const POLITI = [
   {
     title: "Forny eller søk om pass",
     icon: {
-      type: "FontAwesome",
-      name: "camera",
+      type: "FontAwesome5",
+      name: "passport",
     },
     content: {
       description: "test",

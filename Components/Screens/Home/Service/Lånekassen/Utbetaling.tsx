@@ -50,7 +50,7 @@ export default function Utbetaling() {
                 {Betalinger.map((item, index) => (
                     <View  key = {index} style={styles.listItems}>
                         <Text style={styles.ItemText}>{item.date}</Text>
-                        <Text style={styles.ItemText}>{item.occurrence}</Text>
+                        <Text style={styles.ItemText}>{item.occurrence + "     "}</Text>
                         <Text style={styles.ItemText}>{item.sum + " kr"}</Text>
                     </View>
 
