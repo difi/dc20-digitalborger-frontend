@@ -19,7 +19,7 @@ part 2:
 3.
 
 ##Beskrivelse
-
+D
 
 ##Hvordan kjøre programmet
 For å kjøre programmet må du ha expo (se installasjonsguide)
