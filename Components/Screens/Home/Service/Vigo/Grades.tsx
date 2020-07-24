@@ -21,7 +21,7 @@ const snittRegnet = {
 
     export default function Grades() {
         const [index, setIndex] = React.useState(0);
-        const [grades, setGrades] = useState({first: [{absence: 0, grade: 0, subject: ""}], second: [{absence: 0, grade: 0, subject: ""}], third: [{absence: 0, grade: 0, subject: ""}]});
+        const [grades, setGrades] = useState({first: [{absence: 0, grade: 0, subject: ""}], second: [{absence: 0, grade: 0, subject: ""}], third: [{absence: 0, grade: 0, subject: ""}], average: 0});
 
         const data = async () => {
             const pid = await retrieveData("pid");
@@ -54,10 +54,16 @@ const snittRegnet = {
         const averageEstimate = () => {
 
             return (
-                <View style={{flexDirection: "row"}}>
+                <View>
+
+                    <View style={{flexDirection: "row"}}>
                     <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
-                    <Text style={styles.boldText}>{snittRegnet.snitt}</Text>
+                    <Text style={styles.boldText}>{grades.average.toFixed(2)}</Text>
                 </View>
+
+                </View>
+
+
             )
 
         }
