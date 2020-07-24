@@ -36,8 +36,21 @@ const snittRegnet = {
 
 
 
-        //
+        //setter opp beskrivelses titler Fag og Karakterer
+        const titleDescription = () => {
 
+            return (
+                <View style={styles.TitleArea}>
+                    <Text style={styles.boldText}>{gradeTitle.leftTitle}</Text>
+                    <Text style={styles.boldText}>{gradeTitle.rightTitle}</Text>
+
+                </View>
+            )
+
+        }
+
+
+        //Snittet for brukeren
         const averageEstimate = () => {
 
             return (
@@ -53,11 +66,9 @@ const snittRegnet = {
         const firstYear = () => (
 
             <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
-                <View style={styles.TitleArea}>
-                    <Text style={styles.boldText}>{gradeTitle.leftTitle}</Text>
-                    <Text style={styles.boldText}>{gradeTitle.rightTitle}</Text>
 
-                </View>
+                <View>{titleDescription()}</View>
+
                 {grades.first.map((item1, index1) => (
 
                     <View key = {index1} style = {[styles.GradesDisplay, {height: 10 * grades.first.length}]}>
@@ -73,11 +84,9 @@ const snittRegnet = {
 
         const secondYear = () => (
             <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
-                <View style={styles.TitleArea}>
-                    <Text style={styles.boldText}>{gradeTitle.leftTitle}</Text>
-                    <Text style={styles.boldText}>{gradeTitle.rightTitle}</Text>
 
-                </View>
+                <View>{titleDescription()}</View>
+
                 {grades.second.map((item2, index2) => (
 
                     <View key = {index2} style = {[styles.GradesDisplay, {height: 10 * grades.second.length}]}>
@@ -93,11 +102,9 @@ const snittRegnet = {
 
         const thirdYear = () => (
             <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
-                <View style={styles.TitleArea}>
-                    <Text style={styles.boldText}>{gradeTitle.leftTitle}</Text>
-                    <Text style={styles.boldText}>{gradeTitle.rightTitle}</Text>
 
-                </View>
+                <View>{titleDescription()}</View>
+
                 {grades.third.map((item3, index3) => (
                     <View key = {index3} style = {[styles.GradesDisplay,  {height: 10 * grades.third.length}]}>
                         <Text style={styles.text}>{item3.subject}</Text>
@@ -173,7 +180,6 @@ const styles = StyleSheet.create({
         marginRight: '8%',
 },
     averageContainer: {
-        justifyContent: "space-between",
         flexDirection: "row",
         marginRight: '2.6%',
         position: "absolute",

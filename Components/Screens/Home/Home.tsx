@@ -36,6 +36,7 @@ import Animated, {
   timing,
   Value, Extrapolate
 } from "react-native-reanimated";
+import {white} from "react-native-paper/lib/typescript/src/styles/colors";
 
 const PopularServices = [
   {
@@ -143,6 +144,12 @@ function AllServices({ navigation }) {
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: "white", paddingTop: (Platform.OS === 'android') ? 30 : 0 }}>
+
+      <View style={styleInfo.gridContainer}>
+        <Text style={styleInfo.text}>Ofte brukte funksjoner</Text>
+      </View>
+
+
       <ScrollView
           style={{flex: 1, backgroundColor: "#F2F2F2"}}
           showsVerticalScrollIndicator={false}
@@ -170,6 +177,10 @@ function AllServices({ navigation }) {
                 </TouchableOpacity>
             )}
         />
+
+
+
+
 
         <View style={stylesBottom.gridContainer}>
           {services.map((service, index) => {
@@ -332,3 +343,14 @@ const stylesBottom = StyleSheet.create({
   textContainer: { alignSelf: "center", marginTop: 10 },
   buttonText: { textTransform: "uppercase", fontSize: 13, fontWeight: "bold" },
 });
+
+const styleInfo = StyleSheet.create({
+  gridContainer: {
+    alignItems: "center",
+    marginBottom: 2,
+  },
+  text: {
+    fontSize: 14,
+    fontWeight: "bold",
+  }
+})
