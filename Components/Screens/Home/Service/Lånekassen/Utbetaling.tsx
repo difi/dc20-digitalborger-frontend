@@ -59,7 +59,7 @@ export default function Utbetaling() {
 
                 <View>
                 <TouchableOpacity style={styles.LinkContainer} onPress={() => Linking.openURL("https://lanekassen.no/nb-NO/verktoy-og-frister/Frister-i-Lanekassen/utbetaling-av-utdanningsstotte/") }>
-                    <FontAwesome key ={0} name ={'arrow-circle-right'} size={30} />
+                    <FontAwesome key ={0} name ={'arrow-circle-right'} size={30} color={'#4d264f'} />
                 </TouchableOpacity>
                 </View>
 
