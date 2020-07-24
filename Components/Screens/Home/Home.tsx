@@ -155,41 +155,44 @@ function AllServices({ navigation }) {
         style={{ flex: 1, backgroundColor: "#F2F2F2" }}
         showsVerticalScrollIndicator={false}
       >
-        <FlatList
-          horizontal
-          scrollEventThrottle={1}
-          showsHorizontalScrollIndicator={false}
-          style={stylesTop.gridContainer}
-          data={PopularServices}
-          renderItem={({ item, index }) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() =>
-                navigation.navigate(item.service, { open: item.name })
-              }
-              style={stylesTop.item}
-            >
-              <View style={stylesTop.imageContainer}>
-                <Image
-                  source={item.uri}
-                  style={[
-                    {
-                      width: "80%",
-                      height: "80%",
-                      alignSelf: "center",
-                      justifyContent: "center",
-                      borderRadius: 10,
-                    },
-                  ]}
-                  resizeMode={"contain"}
-                />
-              </View>
-              <View style={stylesTop.textContainer}>
-                <Text style={stylesTop.buttonText}>{item.name}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
+        <View style={{flex: 1, backgroundColor: "white"}}>
+          <Text style={{fontWeight: "bold", marginLeft: 20, marginTop: 10, marginBottom: 10, fontSize: 18}}>Populære tjenester</Text>
+          <FlatList
+              horizontal
+              scrollEventThrottle={1}
+              showsHorizontalScrollIndicator={false}
+              style={stylesTop.gridContainer}
+              data={PopularServices}
+              renderItem={({ item, index }) => (
+                  <TouchableOpacity
+                      key={index}
+                      onPress={() =>
+                          navigation.navigate(item.service, { open: item.name })
+                      }
+                      style={stylesTop.item}
+                  >
+                    <View style={stylesTop.imageContainer}>
+                      <Image
+                          source={item.uri}
+                          style={[
+                            {
+                              width: "80%",
+                              height: "80%",
+                              alignSelf: "center",
+                              justifyContent: "center",
+                              borderRadius: 10,
+                            },
+                          ]}
+                          resizeMode={"contain"}
+                      />
+                    </View>
+                    <View style={stylesTop.textContainer}>
+                      <Text style={stylesTop.buttonText}>{item.name}</Text>
+                    </View>
+                  </TouchableOpacity>
+              )}
+          />
+        </View>
 
         <View style={stylesBottom.gridContainer}>
           {services.map((service, index) => {
