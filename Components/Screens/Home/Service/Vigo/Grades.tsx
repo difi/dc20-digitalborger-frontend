@@ -8,6 +8,12 @@ import {getSubjectInfo} from "../../../../ServerCommunications/Services/VigoServ
 const gradeTitle = {
         leftTitle: 'Fag',
         rightTitle: 'Karakterer',
+        snitt: '5.2'
+
+}
+const snittRegnet = {
+    description: 'Snitt:',
+    snitt: '5.2'
 
 }
     const initialLayout = { width: Dimensions.get('window').width};
@@ -15,7 +21,7 @@ const gradeTitle = {
 
     export default function Grades() {
         const [index, setIndex] = React.useState(0);
-        const [grades, setGrades] = useState({first: [{absence: 0, grade: 0, subject: ""}], second: [{absence: 0, grade: 0, subject: ""}], third: [{absence: 0, grade: 0, subject: ""}]});
+        const [grades, setGrades] = useState({first: [{absence: 0, grade: 0, subject: ""}], second: [{absence: 0, grade: 0, subject: ""}], third: [{absence: 0, grade: 0, subject: ""}], average: 0});
 
         const data = async () => {
             const pid = await retrieveData("pid");
@@ -28,55 +34,95 @@ const gradeTitle = {
                 .catch(err => console.log(err));
         },[]);
 
+
+
+        //setter opp beskrivelses titler Fag og Karakterer
+        const titleDescription = () => {
+
+            return (
+                <View style={styles.TitleArea}>
+                    <Text style={styles.boldText}>{gradeTitle.leftTitle}</Text>
+                    <Text style={styles.boldText}>{gradeTitle.rightTitle}</Text>
+
+                </View>
+            )
+
+        }
+
+
+        //Snittet for brukeren
+        const averageEstimate = () => {
+
+            let arg = grades.average*10;
+
+            return (
+                <View>
+
+                    <View style={{flexDirection: "row"}}>
+                    <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
+                    <Text style={styles.boldText}>{arg.toFixed(1)}</Text>
+                </View>
+
+                </View>
+
+
+            )
+
+        }
+
+
         const firstYear = () => (
 
             <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
-                <View style={styles.TitleArea}>
-                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
-                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
 
-                </View>
+                <View>{titleDescription()}</View>
+
                 {grades.first.map((item1, index1) => (
 
                     <View key = {index1} style = {[styles.GradesDisplay, {height: 10 * grades.first.length}]}>
-                        <Text style={styles.textStyle}>{item1.subject}</Text>
-                        <Text style={styles.textStyle}>{item1.grade}</Text>
+                        <Text style={styles.text}>{item1.subject}</Text>
+                        <Text style={styles.text}>{item1.grade}</Text>
                     </View>
                 ))}
+
+                <View style={styles.averageContainer}>{averageEstimate()}</View>
 
             </View>
         );
 
         const secondYear = () => (
             <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
-                <View style={styles.TitleArea}>
-                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
-                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
 
-                </View>
+                <View>{titleDescription()}</View>
+
                 {grades.second.map((item2, index2) => (
 
                     <View key = {index2} style = {[styles.GradesDisplay, {height: 10 * grades.second.length}]}>
-                        <Text style={styles.textStyle}>{item2.subject}</Text>
-                        <Text style={styles.textStyle}>{item2.grade}</Text>
+                        <Text style={styles.text}>{item2.subject}</Text>
+                        <Text style={styles.text}>{item2.grade}</Text>
                     </View>
                 ))}
+
+                <View style={styles.averageContainer}>{averageEstimate()}</View>
+
             </View>
         );
 
         const thirdYear = () => (
             <View style = {[styles.gridContainer, {backgroundColor: "transparent"}]}>
-                <View style={styles.TitleArea}>
-                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.leftTitle}</Text>
-                    <Text style={{fontSize: 15 , fontWeight: "bold"}}>{gradeTitle.rightTitle}</Text>
 
-                </View>
+                <View>{titleDescription()}</View>
+
                 {grades.third.map((item3, index3) => (
                     <View key = {index3} style = {[styles.GradesDisplay,  {height: 10 * grades.third.length}]}>
-                        <Text style={styles.textStyle}>{item3.subject}</Text>
-                        <Text style={styles.textStyle}>{item3.grade}</Text>
+                        <Text style={styles.text}>{item3.subject}</Text>
+                        <Text style={styles.text}>{item3.grade}</Text>
                     </View>
                 ))}
+
+                <View style={styles.averageContainer}>{averageEstimate()}</View>
+
+
             </View>
         );
 
@@ -131,9 +177,24 @@ const styles = StyleSheet.create({
         alignItems: "center",
 
     },
-    textStyle: {
+    boldText: {
+        fontSize: 15 ,
+        fontWeight: "bold"
+    },
+    text: {
         fontSize: 15,
-        padding: '3%',
+        marginTop: '3%',
+        marginLeft: '3%',
+        marginRight: '8%',
 },
+    averageContainer: {
+        flexDirection: "row",
+        marginRight: '2.6%',
+        position: "absolute",
+        bottom: 0,
+        right: 0
+
+    },
+
 
 });

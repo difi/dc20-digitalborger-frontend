@@ -5,6 +5,9 @@ import * as WebBrowser from "expo-web-browser";
 
 // @ts-ignore
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {useEffect, useState} from "react";
+import {retrieveData} from "../../../../Storage";
+import {getAppointmentData} from "../../../../ServerCommunications/Services/HelseNorgeService";
 
 const Avtaler = [
     {
@@ -42,29 +45,53 @@ const legeKontor = {
 
 export default function TimeAvtaler() {
 
+    const [prescriptionData, setPrescription ] = useState([
+        { type: "", place: "", clinic: "", lege: "", dato: "", time: "" },
+    ]);
 
-     const mark = {
-         [Avtaler[0].date]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
-         [Avtaler[1].date]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
-         [Avtaler[2].date]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" }
+
+    useEffect(() => {
+        (async () => {
+            const pid: number = await retrieveData("pid");
+            let result = await getAppointmentData(pid);
+            setPrescription(result);
+        })();
+
+        return(
+            <View>
+                {prescriptionData.map((avtale, i) =>(
+                    <Text key={i}>{avtale.dato}</Text>
+                ))}
+            </View>
+        )
+
+    }, []);
+
+
+
+
+
+
+    const mark = {
+         [prescriptionData[0].dato]: {marked: true , selectedColor: "#9a1c6f", dotColor: "#9a1c6f" },
+
+
      };
 
 
 
      const item = {
 
-         [Avtaler[0].date]: [{type: Avtaler[0].type, place: Avtaler[0].place, clinic: Avtaler[0].clinic, doctor: Avtaler[0].doctor, time: Avtaler[0].time }],
-         [Avtaler[1].date]:  [{type: Avtaler[1].type, place: Avtaler[1].place, clinic: Avtaler[1].clinic, doctor: Avtaler[1].doctor, time: Avtaler[1].time }],
-         [Avtaler[2].date]: [{type: Avtaler[2].type, place: Avtaler[2].place, clinic: Avtaler[2].clinic, doctor: Avtaler[2].doctor, time: Avtaler[2].time }],
+         [prescriptionData[0].dato]: [{type: prescriptionData[0].type, place: prescriptionData[0].place, clinic: prescriptionData[0].clinic, doctor: prescriptionData[0].lege, time: prescriptionData[0].time }],
+
+
 
      }
 
 
      return(
         <View style={styles.container}>
-
-
-                <Agenda
+            <Agenda
 
                         items={item}
 
@@ -102,6 +129,7 @@ export default function TimeAvtaler() {
                         );}}
 
 
+                        data={prescriptionData}
                         renderItem={(item) => {return(
                             <View style = {[styles.item, {height: item.height}]}>
                                 <Text style={styles.boldText}>{item.type + " kl " + item.time}</Text>
@@ -109,6 +137,7 @@ export default function TimeAvtaler() {
                                 <Text style={styles.text}>{"Sted: " + item.place + ", " + item.clinic}</Text>
 
                             </View>);}}
+                        keyExtractor={item => item.dato}
                 />
 
 
