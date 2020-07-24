@@ -2,7 +2,8 @@ import * as React from "react";
 import {
   Dimensions,
   FlatList,
-  Image, Platform,
+  Image,
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -16,14 +17,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Vigo } from "./Service/Vigo/Vigo";
 import { Skatteetaten } from "./Service/Skatteetaten/Skatteetaten";
 import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 import { Lanekassen } from "./Service/Lånekassen/Lånekassen";
 import { ListItem } from "./Service/Collapsible/ListItem";
 import { retrieveData, storeData } from "../../Storage";
 import { Politi } from "./Service/Politi/Politi";
 import { Helsenorge } from "./Service/Helsenorge/Helsenorge";
-import {useClock, useSpringTransition, useValue} from "react-native-redash";
+import { useClock, useSpringTransition, useValue } from "react-native-redash";
 import Animated, {
   block,
   Clock,
@@ -34,9 +35,9 @@ import Animated, {
   startClock,
   useCode,
   timing,
-  Value, Extrapolate
+  Value,
+  Extrapolate,
 } from "react-native-reanimated";
-import {white} from "react-native-paper/lib/typescript/src/styles/colors";
 
 const PopularServices = [
   {
@@ -47,7 +48,7 @@ const PopularServices = [
   {
     service: "Skatteetaten",
     name: "Søk frikort",
-    uri:require("../assets/skatteetaten.jpg"),
+    uri: require("../assets/skatteetaten.jpg"),
   },
   {
     service: "Helsenorge",
@@ -55,7 +56,7 @@ const PopularServices = [
     uri: require("../assets/helsenorge.png"),
   },
   {
-    service: "Vegvesnet",
+    service: "Vegvesenet",
     name: "Oppkjøring",
     uri: require("../assets/vegvesenet.png"),
   },
@@ -73,28 +74,23 @@ const services = [
   },
   {
     name: "Vegvesenet",
-    uri:
-        require("../assets/vegvesenet.png"),
+    uri: require("../assets/vegvesenet.png"),
   },
   {
     name: "Skatteetaten",
-    uri:
-        require("../assets/skatteetaten.jpg"),
+    uri: require("../assets/skatteetaten.jpg"),
   },
   {
     name: "Lånekassen",
-    uri:
-        require("../assets/lånekassenlogo.png"),
+    uri: require("../assets/lånekassenlogo.png"),
   },
   {
     name: "Politi",
-    uri:
-        require("../assets/politiet.png"),
+    uri: require("../assets/politiet.png"),
   },
   {
     name: "Helsenorge",
-    uri:
-        require("../assets/helsenorge.png"),
+    uri: require("../assets/helsenorge.png"),
   },
 ];
 
@@ -119,17 +115,23 @@ function AllServices({ navigation }) {
   });
 
   const runTiming = (clock: Clock) => {
-    const state = {finished: new Value(0), position: new Value(0), frameTime: new Value(0), time: new Value(0) };
-    const config = {toValue: new Value(1), duration: 1000, easing: Easing.inOut(Easing.ease) }
+    const state = {
+      finished: new Value(0),
+      position: new Value(0),
+      frameTime: new Value(0),
+      time: new Value(0),
+    };
+    const config = {
+      toValue: new Value(1),
+      duration: 1000,
+      easing: Easing.inOut(Easing.ease),
+    };
     return block([timing(clock, state, config), state.position]);
-  }
+  };
 
   const clock = useClock();
   const progress = useValue(0);
-  useCode(() => [
-      startClock(clock),
-      set(progress, runTiming(clock))
-  ],[]);
+  useCode(() => [startClock(clock), set(progress, runTiming(clock))], []);
 
   const delta = 1 / services.length;
 
@@ -139,78 +141,115 @@ function AllServices({ navigation }) {
       outputRange: [0, 1],
       extrapolate: Extrapolate.CLAMP,
     });
-
-  }
+  };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: "white", paddingTop: (Platform.OS === 'android') ? 30 : 0 }}>
-
-      <View style={styleInfo.gridContainer}>
-        <Text style={styleInfo.text}>Ofte brukte funksjoner</Text>
-      </View>
-
-
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: "white",
+        paddingTop: Platform.OS === "android" ? 30 : 0,
+      }}
+    >
       <ScrollView
-          style={{flex: 1, backgroundColor: "#F2F2F2"}}
-          showsVerticalScrollIndicator={false}
+        style={{ flex: 1, backgroundColor: "#F2F2F2" }}
+        showsVerticalScrollIndicator={false}
       >
         <FlatList
-            horizontal
-            scrollEventThrottle={1}
-            showsHorizontalScrollIndicator={false}
-            style={stylesTop.gridContainer}
-            data={PopularServices}
-            renderItem={({ item, index }) => (
-                <TouchableOpacity
-                    key={index}
-                    onPress={() =>
-                        navigation.navigate(item.service, { open: item.name })
-                    }
-                    style={stylesTop.item}
-                >
-                  <View style={stylesTop.imageContainer}>
-                    <Image source={item.uri} style={[{width: "80%", height: "80%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
-                  </View>
-                  <View style={stylesTop.textContainer}>
-                    <Text style={stylesTop.buttonText}>{item.name}</Text>
-                  </View>
-                </TouchableOpacity>
-            )}
+          horizontal
+          scrollEventThrottle={1}
+          showsHorizontalScrollIndicator={false}
+          style={stylesTop.gridContainer}
+          data={PopularServices}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() =>
+                navigation.navigate(item.service, { open: item.name })
+              }
+              style={stylesTop.item}
+            >
+              <View style={stylesTop.imageContainer}>
+                <Image
+                  source={item.uri}
+                  style={[
+                    {
+                      width: "80%",
+                      height: "80%",
+                      alignSelf: "center",
+                      justifyContent: "center",
+                      borderRadius: 10,
+                    },
+                  ]}
+                  resizeMode={"contain"}
+                />
+              </View>
+              <View style={stylesTop.textContainer}>
+                <Text style={stylesTop.buttonText}>{item.name}</Text>
+              </View>
+            </TouchableOpacity>
+          )}
         />
-
-
-
-
 
         <View style={stylesBottom.gridContainer}>
           {services.map((service, index) => {
-                return(
-                    <Animated.View key={index} style={{transform: [{scale: executeTransition(index, index * delta, (index * delta) + delta)}]}}>
-                      <TouchableOpacity
-                          onPress={() => navigation.navigate(service.name, { open: null })}
-                          key={index}
-                          style={[stylesBottom.item, {backgroundColor: "white", borderRadius: 25, justifyContent: "center",
-                            shadowColor: "#000",
-                            shadowOffset: {
-                              width: 0,
-                              height: 1,
-                            },
-                            shadowOpacity: 0.1,
-                            shadowRadius: 1.8,
+            return (
+              <Animated.View
+                key={index}
+                style={{
+                  transform: [
+                    {
+                      scale: executeTransition(
+                        index,
+                        index * delta,
+                        index * delta + delta
+                      ),
+                    },
+                  ],
+                }}
+              >
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate(service.name, { open: null })
+                  }
+                  key={index}
+                  style={[
+                    stylesBottom.item,
+                    {
+                      backgroundColor: "white",
+                      borderRadius: 25,
+                      justifyContent: "center",
+                      shadowColor: "#000",
+                      shadowOffset: {
+                        width: 0,
+                        height: 1,
+                      },
+                      shadowOpacity: 0.1,
+                      shadowRadius: 1.8,
 
-                            elevation: 4,}]}
-                      >
-
-                        <Image source={service.uri} style={[{width: "55%", height: "55%", alignSelf: "center", borderRadius: 20}]} resizeMode={"contain"}/>
-                        <View style={stylesBottom.textContainer}>
-                          <Text style={stylesBottom.buttonText}>{service.name}</Text>
-                        </View>
-                      </TouchableOpacity>
-                    </Animated.View>
-                )
-              }
-
-          )}
+                      elevation: 4,
+                    },
+                  ]}
+                >
+                  <Image
+                    source={service.uri}
+                    style={[
+                      {
+                        width: "55%",
+                        height: "55%",
+                        alignSelf: "center",
+                        borderRadius: 20,
+                      },
+                    ]}
+                    resizeMode={"contain"}
+                  />
+                  <View style={stylesBottom.textContainer}>
+                    <Text style={stylesBottom.buttonText}>{service.name}</Text>
+                  </View>
+                </TouchableOpacity>
+              </Animated.View>
+            );
+          })}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -282,13 +321,41 @@ function AllServices({ navigation }) {
 export default function Home() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name={"Offentlige tjenester"} component={AllServices} options={{ headerShown: false, }} />
-      <Stack.Screen name={"Vigo"} component={Vigo} options={{ headerShown: true }}/>
-      <Stack.Screen name={"Skatteetaten"} component={Skatteetaten} options={{ headerShown: true }}/>
-      <Stack.Screen name={"Vegvesenet"} component={Vegvesenet} options={{ headerShown: true }}/>
-      <Stack.Screen name={"Lånekassen"} component={Lanekassen} options={{ headerShown: true }}/>
-      <Stack.Screen name={"Politi"} component={Politi} options={{ headerShown: true }} />
-      <Stack.Screen name={"Helsenorge"} component={Helsenorge} options={{ headerShown: true }}/>
+      <Stack.Screen
+        name={"Offentlige tjenester"}
+        component={AllServices}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={"Vigo"}
+        component={Vigo}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name={"Skatteetaten"}
+        component={Skatteetaten}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name={"Vegvesenet"}
+        component={Vegvesenet}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name={"Lånekassen"}
+        component={Lanekassen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name={"Politi"}
+        component={Politi}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name={"Helsenorge"}
+        component={Helsenorge}
+        options={{ headerShown: true }}
+      />
     </Stack.Navigator>
   );
 }
@@ -303,8 +370,7 @@ const stylesTop = StyleSheet.create({
     paddingTop: 10,
     flex: 1,
     borderColor: "#C0C0C0",
-    backgroundColor: "white"
-
+    backgroundColor: "white",
   },
   item: {
     justifyContent: "center",
@@ -343,14 +409,3 @@ const stylesBottom = StyleSheet.create({
   textContainer: { alignSelf: "center", marginTop: 10 },
   buttonText: { textTransform: "uppercase", fontSize: 13, fontWeight: "bold" },
 });
-
-const styleInfo = StyleSheet.create({
-  gridContainer: {
-    alignItems: "center",
-    marginBottom: 2,
-  },
-  text: {
-    fontSize: 14,
-    fontWeight: "bold",
-  }
-})

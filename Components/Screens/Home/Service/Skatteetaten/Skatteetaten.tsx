@@ -80,7 +80,7 @@ export function Skatteetaten({route}){
                     break;
             }
         }
-    });
+    }, [open]);
 
     return(
         <SafeAreaView style={{flex: 1}}>
