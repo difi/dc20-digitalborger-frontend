@@ -11,13 +11,11 @@ const gradeTitle = {
         snitt: '5.2'
 
 }
-const snitt = {
+const snittRegnet = {
     description: 'Snitt:',
-    average: '5.2'
+    snitt: '5.2'
 
 }
-
-
     const initialLayout = { width: Dimensions.get('window').width};
 
 
@@ -38,14 +36,19 @@ const snitt = {
 
 
 
-        const average = () =>(
+        //
 
+        const averageEstimate = () => {
 
-            <View style={styles.averageContainer}>
-                <Text style={{fontSize: 15}}>{snitt.description}</Text>
-                <Text style={{fontSize: 15}}>{snitt.average}</Text>
-            </View>
-        )
+            return (
+                <View style={{flexDirection: "row"}}>
+                    <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
+                    <Text style={styles.boldText}>{snittRegnet.snitt}</Text>
+                </View>
+            )
+
+        }
+
 
         const firstYear = () => (
 
@@ -63,10 +66,7 @@ const snitt = {
                     </View>
                 ))}
 
-                <View style={styles.averageContainer}>
-                    <Text style={styles.boldText}>{snitt.description + " "}</Text>
-                    <Text style={styles.boldText}>{snitt.average}</Text>
-                </View>
+                <View style={styles.averageContainer}>{averageEstimate()}</View>
 
             </View>
         );
@@ -86,10 +86,7 @@ const snitt = {
                     </View>
                 ))}
 
-                <View style={styles.averageContainer}>
-                    <Text style={styles.boldText}>{snitt.description + " "}</Text>
-                    <Text style={styles.boldText}>{snitt.average}</Text>
-                </View>
+                <View style={styles.averageContainer}>{averageEstimate()}</View>
 
             </View>
         );
@@ -108,14 +105,11 @@ const snitt = {
                     </View>
                 ))}
 
-                <View style={styles.averageContainer}>
-                    <Text style={styles.boldText}>{snitt.description + " "}</Text>
-                    <Text style={styles.boldText}>{snitt.average}</Text>
-                </View>
+                <View style={styles.averageContainer}>{averageEstimate()}</View>
+
 
             </View>
         );
-
 
         const [routes] = React.useState([
             { key: 'first', title: '1.året'},
@@ -181,7 +175,7 @@ const styles = StyleSheet.create({
     averageContainer: {
         justifyContent: "space-between",
         flexDirection: "row",
-        marginRight: '5%',
+        marginRight: '2.6%',
         position: "absolute",
         bottom: 0,
         right: 0
