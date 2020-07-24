@@ -10,6 +10,8 @@ import Button from "../Button";
 
 // @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {useState} from "react";
+import PopUp from "./PopUp";
 
 let jwtDecode = require('jwt-decode');
 
@@ -124,11 +126,10 @@ export default function Login({navigation}) {
     });
 
 
-
+    const [show, setShow] = useState(false);
     return (
-        <>
-
        <View style={{flex: 1, backgroundColor: "white"}}>
+           <PopUp pressed={show} parentCallback={item => {setShow(item)}} />
            <Animated.View style={{position: "absolute", overflow: "hidden", transform: [{translateX: multiply(val, 1)}]}}>
                <Image source={assets[1]} style={{width: 300, height: 300, alignSelf: "center", }} resizeMode={"contain"}/>
            </Animated.View>
@@ -155,7 +156,7 @@ export default function Login({navigation}) {
                 <View style={{flex: 2, backgroundColor: "#5CB6B0", justifyContent: "center", alignItems: "center", borderTopLeftRadius: 65, borderTopRightRadius: 65, paddingTop: 20}}>
                     <Button onPress={() => promptAsync({ useProxy })}  variant={"default"} label={"Login"}/>
                     <TouchableOpacity onPress={() =>
-                        WebBrowser.openBrowserAsync("https://eid.difi.no/nb/minid/registrere-minid-bruker")
+                        setShow(true)
                     }>
                         <Text style={{color: "white", textDecorationLine: "underline", letterSpacing: 0.6, marginTop: 20}}>
                             Opprett minID
@@ -173,7 +174,6 @@ export default function Login({navigation}) {
            </View>
 
        </View>
-            </>
     );
 }
 

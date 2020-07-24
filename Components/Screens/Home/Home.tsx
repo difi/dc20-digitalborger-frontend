@@ -155,42 +155,45 @@ function AllServices({ navigation }) {
         style={{ flex: 1, backgroundColor: "#F2F2F2" }}
         showsVerticalScrollIndicator={false}
       >
-        <FlatList
-          horizontal
-          scrollEventThrottle={1}
-          showsHorizontalScrollIndicator={false}
-          style={stylesTop.gridContainer}
-          data={PopularServices}
-          renderItem={({ item, index }) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() =>
-                navigation.navigate(item.service, { open: item.name })
-              }
-              style={stylesTop.item}
-            >
-              <View style={stylesTop.imageContainer}>
-                <Image
-                  source={item.uri}
-                  style={[
-                    {
-                      width: "80%",
-                      height: "80%",
-                      alignSelf: "center",
-                      justifyContent: "center",
-                      borderRadius: 10,
-                    },
-                  ]}
-                  resizeMode={"contain"}
-                />
-              </View>
-              <View style={stylesTop.textContainer}>
-                <Text style={stylesTop.buttonText}>{item.name}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
-
+        <View style={{flex: 1, backgroundColor: "white"}}>
+          <Text style={{fontWeight: "bold", marginLeft: 20, marginTop: 10, marginBottom: 10, fontSize: 18}}>Populære tjenester</Text>
+          <FlatList
+              horizontal
+              scrollEventThrottle={1}
+              showsHorizontalScrollIndicator={false}
+              style={stylesTop.gridContainer}
+              data={PopularServices}
+              renderItem={({ item, index }) => (
+                  <TouchableOpacity
+                      key={index}
+                      onPress={() =>
+                          navigation.navigate(item.service, { open: item.name })
+                      }
+                      style={stylesTop.item}
+                  >
+                    <View style={stylesTop.imageContainer}>
+                      <Image
+                          source={item.uri}
+                          style={[
+                            {
+                              width: "80%",
+                              height: "80%",
+                              alignSelf: "center",
+                              justifyContent: "center",
+                              borderRadius: 10,
+                            },
+                          ]}
+                          resizeMode={"contain"}
+                      />
+                    </View>
+                    <View style={stylesTop.textContainer}>
+                      <Text style={stylesTop.buttonText}>{item.name}</Text>
+                    </View>
+                  </TouchableOpacity>
+              )}
+          />
+        </View>
+        <Text style={{fontWeight: "bold", marginLeft: 20, marginTop: 30, fontSize: 18}}>Offentlige tjenester</Text>
         <View style={stylesBottom.gridContainer}>
           {services.map((service, index) => {
             return (
@@ -255,68 +258,6 @@ function AllServices({ navigation }) {
     </SafeAreaView>
   );
 }
-
-/*
-<ScrollView
-        style={{flex: 1, backgroundColor: "#F2F2F2"}}
-        showsVerticalScrollIndicator={false}
-      >
-        <FlatList
-          horizontal
-          scrollEventThrottle={1}
-          showsHorizontalScrollIndicator={false}
-          style={stylesTop.gridContainer}
-          data={PopularServices}
-          renderItem={({ item, index }) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() =>
-                navigation.navigate(item.service, { open: item.name })
-              }
-              style={stylesTop.item}
-            >
-              <View style={stylesTop.imageContainer}>
-                <Image source={item.uri} style={[{width: "80%", height: "80%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
-              </View>
-              <View style={stylesTop.textContainer}>
-                <Text style={stylesTop.buttonText}>{item.name}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
-
-        <View style={stylesBottom.gridContainer}>
-          {services.map((service, index) => {
-                return(
-                    <Animated.View key={index} style={{transform: [{scale: executeTransition(index, index * delta, (index * delta) + delta)}]}}>
-                      <TouchableOpacity
-                          onPress={() => navigation.navigate(service.name, { open: null })}
-                          key={index}
-                          style={[stylesBottom.item, {backgroundColor: "white", borderRadius: 25, justifyContent: "center",
-                            shadowColor: "#000",
-                            shadowOffset: {
-                              width: 0,
-                              height: 1,
-                            },
-                            shadowOpacity: 0.1,
-                            shadowRadius: 1.8,
-
-                            elevation: 4,}]}
-                      >
-
-                        <Image source={service.uri} style={[{width: "55%", height: "55%", alignSelf: "center", borderRadius: 20}]} resizeMode={"contain"}/>
-                        <View style={stylesBottom.textContainer}>
-                          <Text style={stylesBottom.buttonText}>{service.name}</Text>
-                        </View>
-                      </TouchableOpacity>
-                    </Animated.View>
-                )
-          }
-
-          )}
-        </View>
-      </ScrollView>
- */
 
 export default function Home() {
   return (
