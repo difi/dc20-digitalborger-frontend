@@ -4,6 +4,19 @@ import { Card } from "react-native-elements";
 import CountDown from "react-native-countdown-component";
 import { ScrollView } from "react-native-gesture-handler";
 import PushNotification from "./PushNotification";
+import { useEffect, useState } from "react";
+import { getCountdowns } from "../../ServerCommunications/Services/Countdowns";
+
+function getTimeLeft(deadline: Date) {
+  return (deadline.getTime() - date.getTime()) / 1000;
+}
+
+function getFormat(deadline: Date) {
+  if (getTimeLeft(deadline) <= 86400) {
+    return ["H", "M", "S"];
+  }
+  return ["D", "H"];
+}
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -40,33 +53,20 @@ const events = [
 // Slutt data
 
 export default function Hourglass() {
+  const [data, setData] = useState();
   var date = new Date();
 
-  function getTimeLeft(deadline: Date) {
-    return (deadline.getTime() - date.getTime()) / 1000;
-  }
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getCountdowns();
+      console.log("Data:", data);
+      setData(data);
+    };
+    getData();
+  }, []);
 
-  function getColor(deadline: Date) {
-    if (getTimeLeft(deadline) <= 86400) {
-      return "white";
-    }
-    return "white";
-  }
-
-  function sendPush24hrsLeft(title: String, date: Date) {
-    if (getTimeLeft(date) <= 24 * 60 * 60) {
-      return <PushNotification title={title} date={date} />;
-    }
-  }
-
-  function getFormat(deadline: Date) {
-    if (getTimeLeft(deadline) <= 86400) {
-      return ["H", "M", "S"];
-    }
-    return ["D", "H"];
-  }
-
-  return (
+  return <View></View>;
+  /*return (
     <SafeAreaView>
       <Text style={styles.heading}>Nedtellinger</Text>
       <ScrollView style={{}}>
@@ -130,7 +130,7 @@ export default function Hourglass() {
         ))}
       </ScrollView>
     </SafeAreaView>
-  );
+  );*/
 }
 
 const styles = StyleSheet.create({
@@ -172,7 +172,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 1.8,
-
     elevation: 4,
   },
   date: {
