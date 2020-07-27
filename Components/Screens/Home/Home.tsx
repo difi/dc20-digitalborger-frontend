@@ -38,6 +38,8 @@ import Animated, {
   Value,
   Extrapolate,
 } from "react-native-reanimated";
+import Digipost from "../Profile/Digipost";
+import Mail from "../Profile/Mail";
 
 const PopularServices = [
   {
@@ -260,30 +262,32 @@ function AllServices({ navigation }) {
               );
             })}
           </View>
-          <Animated.View style={{flex: 1, backgroundColor: "white", height: 150, width: width, borderRadius: 25, justifyContent: "center", alignItems: "center",
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 1,
-            },
-            shadowOpacity: 0.1,
-            shadowRadius: 1.8,
-
-            elevation: 4,
-            transform: [
-              {
-                scale: executeTransition(
-                    1,
-                    delta,
-                    services.length * delta + delta
-                ),
+          <TouchableOpacity style={{flex: 1}} onPress={() => navigation.navigate("Digipost")}>
+            <Animated.View style={{flex: 1, backgroundColor: "white", height: 150, width: width, borderRadius: 25, justifyContent: "center", alignItems: "center",
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 1,
               },
-            ],}}>
-            <Image source={ require("./assets/digipost.png")} style={[{width: "70%", height: "70%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
-            <Text style={{}}>
-              (1 ny epost)
-            </Text>
-          </Animated.View>
+              shadowOpacity: 0.1,
+              shadowRadius: 1.8,
+
+              elevation: 4,
+              transform: [
+                {
+                  scale: executeTransition(
+                      1,
+                      delta,
+                      services.length * delta + delta
+                  ),
+                },
+              ],}}>
+              <Image source={ require("./assets/digipost.png")} style={[{width: "70%", height: "70%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
+              <Text style={{}}>
+                (1 ny epost)
+              </Text>
+            </Animated.View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -327,6 +331,16 @@ export default function Home() {
         name={"Helsenorge"}
         component={Helsenorge}
         options={{ headerShown: true }}
+      />
+      <Stack.Screen
+          name={"Digipost"}
+          component={Digipost}
+          options={{ headerShown: true }}
+      />
+      <Stack.Screen
+          name={"Mail"}
+          component={Mail}
+          options={{ headerShown: true }}
       />
     </Stack.Navigator>
   );
