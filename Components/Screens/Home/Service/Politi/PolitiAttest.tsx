@@ -15,16 +15,16 @@ export default function PolitiAttest() {
 
             <View style={styles.container}>
                 <View style={styles.textContainer}>
-                    <Text style={{ fontWeight: "bold", textDecorationLine: "underline", fontSize: 15}}>Før du søker politiattest:</Text>
+                    <Text style={{ fontWeight: "bold", fontSize: 17}}>NB! Før du søker politiattest:</Text>
                 </View>
                 <View style={styles.textContainer}>
-                        <Text style={{fontSize: 13}}>{'\u30FB'}Du kan ikke søke om politiattest for andre enn deg selv.</Text>
+                        <Text style={{fontSize: 15}}>{'\u30FB'}Du kan bare søke om politiattest for deg selv.</Text>
                 </View>
                 <View style={styles.textContainer}>
-                        <Text style={{fontSize: 13}}>{'\u30FB'}En politiattest er kun gylding i tre måneder</Text>
+                        <Text style={{fontSize: 15}}>{'\u30FB'}En politiattest er kun gylding i tre måneder</Text>
                 </View>
                 <View style={styles.textContainer}>
-                        <Text style={{fontSize: 13}}>{'\u30FB'}Er du under 18 år må foresatt også skrive under.</Text>
+                        <Text style={{fontSize: 15}}>{'\u30FB'}Er du under 18 år må foresatt også skrive under.</Text>
                 </View>
                 <TouchableOpacity
                     containerStyle={styles.linkContainer}
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     linkContainer:{
         width: "90%",
         height: "20%",
-        marginTop: 25,
+        marginTop: 40,
         left: 10,
         backgroundColor:"#212a3b",
     },

@@ -5,6 +5,9 @@ import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
+import {useEffect, useState} from "react";
+import {retrieveData} from "../../../../Storage";
+import {getDoctorData} from "../../../../ServerCommunications/Services/HelseNorgeService";
 const  doctor = [
     {
         name: "Lars Breheim",
@@ -14,6 +17,22 @@ const  doctor = [
 
 
 export default function Fastlege() {
+
+    const [legeData, setLege] = useState([
+        { name: "", office: "", phone: "" },
+    ]);
+
+    useEffect(() => {
+        (async () => {
+            const pid: number = await retrieveData("pid");
+            let result = await getDoctorData(pid);
+            setLege(result);
+        })();
+
+    }, []);
+
+
+
     return (
         <View>
             <View style={styles.row}>
@@ -29,7 +48,7 @@ export default function Fastlege() {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.firstTextContainer}>
-                    {doctor.map((doctor, index) => (
+                    {legeData.map((doctor, index) => (
                         <View key={index}>
                             <Text style={{ fontWeight: "bold", fontSize: 17}}>Din fastlege:</Text>
                             <Text style={{fontSize: 16}}>{doctor.name}</Text>
