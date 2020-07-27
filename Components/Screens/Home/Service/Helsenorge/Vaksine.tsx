@@ -5,6 +5,9 @@ import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/Entypo";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
+import {useEffect, useState} from "react";
+import {retrieveData} from "../../../../Storage";
+import {getPrescriptionInfo, getVaccineData} from "../../../../ServerCommunications/Services/HelseNorgeService";
 
 const  vaccines = [
     {
@@ -35,30 +38,47 @@ const  vaccines = [
 
 
 export default function Vaksine() {
+
+    const [vaccineData, setVaccine] = useState([
+        { name: "", date: ""},
+    ])
+
+
+    useEffect(() => {
+        (async () => {
+            const pid: number = await retrieveData("pid");
+            let result = await getVaccineData(pid);
+            setVaccine(result);
+        })();
+    }, []);
+
+
+
+
     return (
 
         <View>
             <View style={styles.container}>
                 <View style={styles.textContainer}>
                     <View style={styles.leftTextContainer}>
-                        <Text style={{ fontWeight: "bold", fontSize: 17, textDecorationLine: "underline"}}>Vaksinasjon:</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 17, textDecorationLine: "underline"}} allowFontScaling={true}>Vaksinasjon:</Text>
                     </View>
                     <View style={styles.rightTextContainer}>
-                        <Text style={{ fontWeight: "bold", fontSize: 17, textDecorationLine: "underline"}}>Vaksinasjonsdato:</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 17, textDecorationLine: "underline"}} allowFontScaling={true}>Vaksinasjonsdato:</Text>
                     </View>
                 </View>
                 <View style={styles.textContainer}>
                     <View style={styles.leftTextContainer}>
-                        {vaccines.map((vaccines, index) => (
+                        {vaccineData.map((vaccines, index) => (
                             <View key={index}>
-                                <Text style={{fontSize: 16}}>{vaccines.name}</Text>
+                                <Text style={{fontSize: 14}} allowFontScaling={true}>{vaccines.name}</Text>
                             </View>
                         ))}
                     </View>
                     <View style={styles.rightTextContainer}>
-                        {vaccines.map((vaccines, index) => (
-                            <View key={index}>
-                                <Text style={{fontSize: 16}}>{vaccines.date}</Text>
+                        {vaccineData.map((vaccines1, index1) => (
+                            <View key={index1}>
+                                <Text style={{fontSize: 14}} allowFontScaling={true}>{vaccines1.date}</Text>
                             </View>
                         ))}
                     </View>
@@ -71,7 +91,7 @@ export default function Vaksine() {
                     }
                 >
                     <View style={styles.linkContainer}>
-                        <Text style={{ fontWeight: "bold", fontSize: 17}}> Gå til din vaksine oversikt </Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 17}} allowFontScaling={true}> Gå til din vaksine oversikt </Text>
                         <Icon name="arrow-long-right" size={17} ></Icon>
                     </View>
                 </TouchableOpacity>
@@ -91,6 +111,7 @@ const styles = StyleSheet.create({
         height: "100%",
     },
     textContainer:{
+        flexShrink: 1,
         flexDirection: "row",
         marginTop: 10,
     },
@@ -104,6 +125,6 @@ const styles = StyleSheet.create({
     },
     linkContainer:{
         flexDirection: "row",
-        marginTop: 40,
+        marginTop: 50,
     },
 });

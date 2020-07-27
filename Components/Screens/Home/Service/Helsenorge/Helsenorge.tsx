@@ -75,7 +75,7 @@ export function Helsenorge(){
                         </View>
                     </ListItem>
 
-                    <ListItem key={2} iconName = {HELSE[2].icon.name} iconType={HELSE[2].icon.type} containerHeight={250} title={HELSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
+                    <ListItem key={2} iconName = {HELSE[2].icon.name} iconType={HELSE[2].icon.type} containerHeight={300} title={HELSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <Vaksine/>
                         </View>
