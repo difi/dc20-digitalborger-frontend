@@ -155,9 +155,6 @@ function AllServices({ navigation }) {
         paddingTop: Platform.OS === "android" ? 30 : 0,
       }}
     >
-      <View style={styleInfo.gridContainer}>
-        <Text style={styleInfo.text}>Ofte brukte tjenester</Text>
-      </View>
       <ScrollView
         style={{ flex: 1, backgroundColor: "#F2F2F2"}}
         showsVerticalScrollIndicator={false}
