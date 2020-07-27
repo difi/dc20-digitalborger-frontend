@@ -30,7 +30,7 @@ const snittRegnet = {
 
         useEffect(() => {
             data()
-                .then(item => {setGrades(item); console.log(item)})
+                .then(item => {setGrades(item);})
                 .catch(err => console.log(err));
         },[]);
 
@@ -53,14 +53,14 @@ const snittRegnet = {
         //Snittet for brukeren
         const averageEstimate = () => {
 
-            let arg = grades.average*10;
+
 
             return (
                 <View>
 
                     <View style={{flexDirection: "row"}}>
                     <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
-                    <Text style={styles.boldText}>{arg.toFixed(1)}</Text>
+                    <Text style={styles.boldText}>{grades.average.toFixed(1)}</Text>
                 </View>
 
                 </View>

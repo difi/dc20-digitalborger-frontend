@@ -38,6 +38,8 @@ import Animated, {
   Value,
   Extrapolate,
 } from "react-native-reanimated";
+import Digipost from "../Profile/Digipost";
+import Mail from "../Profile/Mail";
 
 const PopularServices = [
   {
@@ -93,6 +95,8 @@ const services = [
     uri: require("../assets/helsenorge.png"),
   },
 ];
+
+const {width} = Dimensions.get("window");
 
 //TODO: remove, temporary for design
 function calculateHeightOfCircle(offset: number) {
@@ -155,7 +159,7 @@ function AllServices({ navigation }) {
         <Text style={styleInfo.text}>Ofte brukte tjenester</Text>
       </View>
       <ScrollView
-        style={{ flex: 1, backgroundColor: "#F2F2F2" }}
+        style={{ flex: 1, backgroundColor: "#F2F2F2"}}
         showsVerticalScrollIndicator={false}
       >
         <View style={{flex: 1, backgroundColor: "white"}}>
@@ -197,65 +201,93 @@ function AllServices({ navigation }) {
           />
         </View>
         <Text style={{fontWeight: "bold", marginLeft: 20, marginTop: 30, fontSize: 18}}>Offentlige tjenester</Text>
-        <View style={stylesBottom.gridContainer}>
-          {services.map((service, index) => {
-            return (
-              <Animated.View
-                key={index}
-                style={{
-                  transform: [
-                    {
-                      scale: executeTransition(
-                        index,
-                        index * delta,
-                        index * delta + delta
-                      ),
-                    },
-                  ],
-                }}
-              >
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate(service.name, { open: null })
-                  }
-                  key={index}
-                  style={[
-                    stylesBottom.item,
-                    {
-                      backgroundColor: "white",
-                      borderRadius: 25,
-                      justifyContent: "center",
-                      shadowColor: "#000",
-                      shadowOffset: {
-                        width: 0,
-                        height: 1,
-                      },
-                      shadowOpacity: 0.1,
-                      shadowRadius: 1.8,
+        <View style={{marginLeft: 20, marginRight: 20, paddingBottom: 20, justifyContent: "center", alignItems: "center"}}>
+          <View style={stylesBottom.gridContainer}>
+            {services.map((service, index) => {
+              return (
+                  <Animated.View
+                      key={index}
+                      style={{
+                        transform: [
+                          {
+                            scale: executeTransition(
+                                index,
+                                index * delta,
+                                index * delta + delta
+                            ),
+                          },
+                        ],
+                      }}
+                  >
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigation.navigate(service.name, { open: null })
+                        }
+                        key={index}
+                        style={[
+                          stylesBottom.item,
+                          {
+                            backgroundColor: "white",
+                            borderRadius: 25,
+                            justifyContent: "center",
+                            shadowColor: "#000",
+                            shadowOffset: {
+                              width: 0,
+                              height: 1,
+                            },
+                            shadowOpacity: 0.1,
+                            shadowRadius: 1.8,
 
-                      elevation: 4,
-                    },
-                  ]}
-                >
-                  <Image
-                    source={service.uri}
-                    style={[
-                      {
-                        width: "55%",
-                        height: "55%",
-                        alignSelf: "center",
-                        borderRadius: 20,
-                      },
-                    ]}
-                    resizeMode={"contain"}
-                  />
-                  <View style={stylesBottom.textContainer}>
-                    <Text style={stylesBottom.buttonText}>{service.name}</Text>
-                  </View>
-                </TouchableOpacity>
-              </Animated.View>
-            );
-          })}
+                            elevation: 4,
+                          },
+                        ]}
+                    >
+                      <Image
+                          source={service.uri}
+                          style={[
+                            {
+                              width: "55%",
+                              height: "55%",
+                              alignSelf: "center",
+                              borderRadius: 20,
+                            },
+                          ]}
+                          resizeMode={"contain"}
+                      />
+                      <View style={stylesBottom.textContainer}>
+                        <Text style={stylesBottom.buttonText}>{service.name}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  </Animated.View>
+              );
+            })}
+          </View>
+          <TouchableOpacity style={{flex: 1}} onPress={() => navigation.navigate("Digipost")}>
+            <Animated.View style={{flex: 1, backgroundColor: "white", height: 150, width: width, borderRadius: 25, justifyContent: "center", alignItems: "center",
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 1,
+              },
+              shadowOpacity: 0.1,
+              shadowRadius: 1.8,
+
+              elevation: 4,
+              transform: [
+                {
+                  scale: executeTransition(
+                      1,
+                      delta,
+                      services.length * delta + delta
+                  ),
+                },
+              ],}}>
+              <Image source={ require("./assets/digipost.png")} style={[{width: "70%", height: "70%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
+              <Text style={{}}>
+                (1 ny epost)
+              </Text>
+            </Animated.View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -299,6 +331,16 @@ export default function Home() {
         name={"Helsenorge"}
         component={Helsenorge}
         options={{ headerShown: true }}
+      />
+      <Stack.Screen
+          name={"Digipost"}
+          component={Digipost}
+          options={{ headerShown: true }}
+      />
+      <Stack.Screen
+          name={"Mail"}
+          component={Mail}
+          options={{ headerShown: true }}
       />
     </Stack.Navigator>
   );
