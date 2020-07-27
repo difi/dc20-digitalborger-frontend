@@ -5,6 +5,7 @@ import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
+import {useState} from "react";
 
 
 const info = {
@@ -29,6 +30,11 @@ const Arbeidsgiver = [
 }]
 
 export default function Skattegiver() {
+
+    const [employerData, setEmployer] = useState({Skatt: {inntekt: 0, beregnet: 0, trekk: 0}, Arbeidsgiver: [{company: "", date: ""}],})
+
+
+
     return (
 
         <View>

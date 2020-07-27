@@ -3,6 +3,10 @@ import {Linking, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {black} from "react-native-paper/lib/typescript/src/styles/colors";
 import * as WebBrowser from "expo-web-browser";
+import {useEffect, useState} from "react";
+import {retrieveData} from "../../../../Storage";
+import {getDoctorData} from "../../../../ServerCommunications/Services/HelseNorgeService";
+import {getSkattInfo} from "../../../../ServerCommunications/Services/SkatteetatenService";
 
 
 const Skatt =
@@ -12,6 +16,19 @@ const Skatt =
     }
 
 export default function SkatteMelding(){
+
+    const [employerData, setEmployer] = useState({Skatt: {inntekt: 0, beregnet: 0, trekk: 0}, Arbeidsgiver: [{company: "", date: ""}],})
+
+    useEffect(() => {
+        (async () => {
+            const pid: number = await retrieveData("pid");
+            let result = await getSkattInfo(pid);
+            setEmployer(result);
+        })();
+
+    }, []);
+
+
     return(
       <View style={styles.gridContainer}>
           <View style={styles.Infogrid}>
