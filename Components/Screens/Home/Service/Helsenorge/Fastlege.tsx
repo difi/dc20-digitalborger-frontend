@@ -18,9 +18,9 @@ const  doctor = [
 
 export default function Fastlege() {
 
-    const [legeData, setLege] = useState([
+    const [legeData, setLege] = useState(
         { name: "", office: "", phone: "" },
-    ]);
+    );
 
     useEffect(() => {
         (async () => {
@@ -48,22 +48,14 @@ export default function Fastlege() {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.firstTextContainer}>
-                    {legeData.map((doctor, index) => (
-                        <View key={index}>
                             <Text style={{ fontWeight: "bold", fontSize: 17}}>Din fastlege:</Text>
-                            <Text style={{fontSize: 16}}>{doctor.name}</Text>
-                        </View>
-                    ))}
+                            <Text style={{fontSize: 16}}>{legeData.name}</Text>
                 </View>
             </View>
             <View style={styles.row}>
                 <View style={styles.secondTextContainer}>
-                    {doctor.map((doctor, index) => (
-                        <View key={index}>
                             <Text style={{ fontWeight: "bold", fontSize: 17}}>Instutisjon:</Text>
-                            <Text style={{fontSize: 16}}>{doctor.office}</Text>
-                        </View>
-                    ))}
+                            <Text style={{fontSize: 16}}>{legeData.office}</Text>
                 </View>
             </View>
             <TouchableOpacity

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Linking, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+
 import * as WebBrowser from "expo-web-browser";
 
 // @ts-ignore
