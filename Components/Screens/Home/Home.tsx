@@ -153,6 +153,9 @@ function AllServices({ navigation }) {
         paddingTop: Platform.OS === "android" ? 30 : 0,
       }}
     >
+      <View style={styleInfo.gridContainer}>
+        <Text style={styleInfo.text}>Ofte brukte tjenester</Text>
+      </View>
       <ScrollView
         style={{ flex: 1, backgroundColor: "#F2F2F2"}}
         showsVerticalScrollIndicator={false}
@@ -378,3 +381,15 @@ const stylesBottom = StyleSheet.create({
   textContainer: { alignSelf: "center", marginTop: 10 },
   buttonText: { textTransform: "uppercase", fontSize: 13, fontWeight: "bold" },
 });
+
+const styleInfo = StyleSheet.create({
+  gridContainer: {
+    alignItems: "center",
+
+  },
+  text: {
+    fontSize: 15,
+    fontWeight: "bold",
+    marginLeft: 6,
+  }
+})

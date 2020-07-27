@@ -11,7 +11,8 @@ import {getPrescriptionInfo} from "../../../../ServerCommunications/Services/Hel
 import * as Location from "expo-location";
 import {getSchools} from "../../../../ServerCommunications/Services/VigoService";
 
-const  Prescriptions = [
+const  PrescriptionsList = [
+
     {
         name: "Telfast",
         category: "Allergimedisn",
@@ -24,7 +25,7 @@ const  Prescriptions = [
     },
 ];
 
-const ExpiredPrescriptions = [
+const ExpiredPrescriptionsList = [
     {
         name: "Tramadal",
         category: "Smertestillende",
@@ -39,9 +40,9 @@ const ExpiredPrescriptions = [
 ];
 
 export default function Resepter() {
-    const [prescriptionData, setPrescription ] = useState([
-        { name: "", category: "", status: "" },
-    ]);
+    const [prescriptionData, setPrescription ] = useState(
+        {Prescriptions: [{name: "", category: "", status: ""}],
+        ExpiredPrescriptions: [{name: "", category: "", status: ""}]},);
 
 
     useEffect(() => {
@@ -64,17 +65,17 @@ export default function Resepter() {
             </View>
 
 
-            {Prescriptions.map((prescription, index) => (
+            {prescriptionData.Prescriptions.map((prescription, index) => (
                 <View key={index} style={{
                     flexShrink: 1,
                     borderBottomColor: "lightgrey",
-                    borderBottomWidth: (index == Prescriptions.length-1) ? 0: 1}}>
+                    borderBottomWidth: (index == prescriptionData.Prescriptions.length-1) ? 0: 1}}>
 
                     <Text style={styles.nameText} allowFontScaling={true}>{prescription.name}</Text>
 
                     <View style={styles.Infogrid}>
-                        <Text style={styles.categoryText} allowFontScaling={true}>{prescription.category}</Text>
-                        <Text style={styles.categoryText} allowFontScaling={true}>{prescription.status}</Text>
+                        <Text style={styles.text} allowFontScaling={true}>{prescription.category}</Text>
+                        <Text style={styles.text} allowFontScaling={true}>{prescription.status}</Text>
                     </View>
 
                 </View>
@@ -89,18 +90,18 @@ export default function Resepter() {
             </View>
 
 
-            {ExpiredPrescriptions.map((prescription1, index1) => (
+            {prescriptionData.ExpiredPrescriptions.map((prescription1, index1) => (
                 <View key={index1} style={styles.expiredContainer}>
 
                     <Text style={styles.nameText} allowFontScaling={true}>{prescription1.name}</Text>
 
                     <View style={styles.Infogrid}>
-                        <Text style={styles.categoryText} allowFontScaling={true} >{prescription1.category}</Text>
+                        <Text style={styles.text} allowFontScaling={true} >{prescription1.category}</Text>
 
                         <TouchableOpacity
                             style={{flexDirection: "row", flexShrink: 1}}
                             onPress={() => WebBrowser.openBrowserAsync("https://helsenorge.no/om-min-helse/meldinger")}>
-                            <Text style={styles.categoryText} allowFontScaling={true}>{prescription1.status}</Text>
+                            <Text style={styles.text} allowFontScaling={true}>{prescription1.status}</Text>
                             <Entypo name={"cycle"}size={20}  allowFontScaling={true}/>
                         </TouchableOpacity>
 
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
         marginTop: "1%"
 
     },
-    categoryText: {
+    text: {
         fontSize: 16,
         marginLeft: "2%",
         marginBottom: "1%"
