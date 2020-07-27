@@ -5,6 +5,9 @@ import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
+import {useEffect, useState} from "react";
+import {retrieveData} from "../../../../Storage";
+import {getDoctorData} from "../../../../ServerCommunications/Services/HelseNorgeService";
 const  doctor = [
     {
         name: "Lars Breheim",
@@ -14,6 +17,11 @@ const  doctor = [
 
 
 export default function Fastlege() {
+
+
+
+
+
     return (
         <View>
             <View style={styles.row}>
