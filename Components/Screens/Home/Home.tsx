@@ -38,6 +38,8 @@ import Animated, {
   Value,
   Extrapolate,
 } from "react-native-reanimated";
+import Digipost from "../Profile/Digipost";
+import Mail from "../Profile/Mail";
 
 const PopularServices = [
   {
@@ -93,6 +95,8 @@ const services = [
     uri: require("../assets/helsenorge.png"),
   },
 ];
+
+const {width} = Dimensions.get("window");
 
 //TODO: remove, temporary for design
 function calculateHeightOfCircle(offset: number) {
@@ -151,148 +155,81 @@ function AllServices({ navigation }) {
         paddingTop: Platform.OS === "android" ? 30 : 0,
       }}
     >
+      <View style={styleInfo.gridContainer}>
+        <Text style={styleInfo.text}>Ofte brukte tjenester</Text>
+      </View>
       <ScrollView
-        style={{ flex: 1, backgroundColor: "#F2F2F2" }}
+        style={{ flex: 1, backgroundColor: "#F2F2F2"}}
         showsVerticalScrollIndicator={false}
       >
-        <FlatList
-          horizontal
-          scrollEventThrottle={1}
-          showsHorizontalScrollIndicator={false}
-          style={stylesTop.gridContainer}
-          data={PopularServices}
-          renderItem={({ item, index }) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() =>
-                navigation.navigate(item.service, { open: item.name })
-              }
-              style={stylesTop.item}
-            >
-              <View style={stylesTop.imageContainer}>
-                <Image
-                  source={item.uri}
-                  style={[
-                    {
-                      width: "80%",
-                      height: "80%",
-                      alignSelf: "center",
-                      justifyContent: "center",
-                      borderRadius: 10,
-                    },
-                  ]}
-                  resizeMode={"contain"}
-                />
-              </View>
-              <View style={stylesTop.textContainer}>
-                <Text style={stylesTop.buttonText}>{item.name}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
-
-        <View style={stylesBottom.gridContainer}>
-          {services.map((service, index) => {
-            return (
-              <Animated.View
-                key={index}
-                style={{
-                  transform: [
-                    {
-                      scale: executeTransition(
-                        index,
-                        index * delta,
-                        index * delta + delta
-                      ),
-                    },
-                  ],
-                }}
-              >
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate(service.name, { open: null })
-                  }
-                  key={index}
-                  style={[
-                    stylesBottom.item,
-                    {
-                      backgroundColor: "white",
-                      borderRadius: 25,
-                      justifyContent: "center",
-                      shadowColor: "#000",
-                      shadowOffset: {
-                        width: 0,
-                        height: 1,
-                      },
-                      shadowOpacity: 0.1,
-                      shadowRadius: 1.8,
-
-                      elevation: 4,
-                    },
-                  ]}
-                >
-                  <Image
-                    source={service.uri}
-                    style={[
-                      {
-                        width: "55%",
-                        height: "55%",
-                        alignSelf: "center",
-                        borderRadius: 20,
-                      },
-                    ]}
-                    resizeMode={"contain"}
-                  />
-                  <View style={stylesBottom.textContainer}>
-                    <Text style={stylesBottom.buttonText}>{service.name}</Text>
-                  </View>
-                </TouchableOpacity>
-              </Animated.View>
-            );
-          })}
+        <View style={{flex: 1, backgroundColor: "white"}}>
+          <Text style={{fontWeight: "bold", marginLeft: 20, marginTop: 10, marginBottom: 10, fontSize: 18}}>Populære tjenester</Text>
+          <FlatList
+              horizontal
+              scrollEventThrottle={1}
+              showsHorizontalScrollIndicator={false}
+              style={stylesTop.gridContainer}
+              data={PopularServices}
+              renderItem={({ item, index }) => (
+                  <TouchableOpacity
+                      key={index}
+                      onPress={() =>
+                          navigation.navigate(item.service, { open: item.name })
+                      }
+                      style={stylesTop.item}
+                  >
+                    <View style={stylesTop.imageContainer}>
+                      <Image
+                          source={item.uri}
+                          style={[
+                            {
+                              width: "80%",
+                              height: "80%",
+                              alignSelf: "center",
+                              justifyContent: "center",
+                              borderRadius: 10,
+                            },
+                          ]}
+                          resizeMode={"contain"}
+                      />
+                    </View>
+                    <View style={stylesTop.textContainer}>
+                      <Text style={stylesTop.buttonText}>{item.name}</Text>
+                    </View>
+                  </TouchableOpacity>
+              )}
+          />
         </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-/*
-<ScrollView
-        style={{flex: 1, backgroundColor: "#F2F2F2"}}
-        showsVerticalScrollIndicator={false}
-      >
-        <FlatList
-          horizontal
-          scrollEventThrottle={1}
-          showsHorizontalScrollIndicator={false}
-          style={stylesTop.gridContainer}
-          data={PopularServices}
-          renderItem={({ item, index }) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() =>
-                navigation.navigate(item.service, { open: item.name })
-              }
-              style={stylesTop.item}
-            >
-              <View style={stylesTop.imageContainer}>
-                <Image source={item.uri} style={[{width: "80%", height: "80%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
-              </View>
-              <View style={stylesTop.textContainer}>
-                <Text style={stylesTop.buttonText}>{item.name}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
-
-        <View style={stylesBottom.gridContainer}>
-          {services.map((service, index) => {
-                return(
-                    <Animated.View key={index} style={{transform: [{scale: executeTransition(index, index * delta, (index * delta) + delta)}]}}>
-                      <TouchableOpacity
-                          onPress={() => navigation.navigate(service.name, { open: null })}
-                          key={index}
-                          style={[stylesBottom.item, {backgroundColor: "white", borderRadius: 25, justifyContent: "center",
+        <Text style={{fontWeight: "bold", marginLeft: 20, marginTop: 30, fontSize: 18}}>Offentlige tjenester</Text>
+        <View style={{marginLeft: 20, marginRight: 20, paddingBottom: 20, justifyContent: "center", alignItems: "center"}}>
+          <View style={stylesBottom.gridContainer}>
+            {services.map((service, index) => {
+              return (
+                  <Animated.View
+                      key={index}
+                      style={{
+                        transform: [
+                          {
+                            scale: executeTransition(
+                                index,
+                                index * delta,
+                                index * delta + delta
+                            ),
+                          },
+                        ],
+                      }}
+                  >
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigation.navigate(service.name, { open: null })
+                        }
+                        key={index}
+                        style={[
+                          stylesBottom.item,
+                          {
+                            backgroundColor: "white",
+                            borderRadius: 25,
+                            justifyContent: "center",
                             shadowColor: "#000",
                             shadowOffset: {
                               width: 0,
@@ -301,22 +238,61 @@ function AllServices({ navigation }) {
                             shadowOpacity: 0.1,
                             shadowRadius: 1.8,
 
-                            elevation: 4,}]}
-                      >
+                            elevation: 4,
+                          },
+                        ]}
+                    >
+                      <Image
+                          source={service.uri}
+                          style={[
+                            {
+                              width: "55%",
+                              height: "55%",
+                              alignSelf: "center",
+                              borderRadius: 20,
+                            },
+                          ]}
+                          resizeMode={"contain"}
+                      />
+                      <View style={stylesBottom.textContainer}>
+                        <Text style={stylesBottom.buttonText}>{service.name}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  </Animated.View>
+              );
+            })}
+          </View>
+          <TouchableOpacity style={{flex: 1}} onPress={() => navigation.navigate("Digipost")}>
+            <Animated.View style={{flex: 1, backgroundColor: "white", height: 150, width: width, borderRadius: 25, justifyContent: "center", alignItems: "center",
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 1,
+              },
+              shadowOpacity: 0.1,
+              shadowRadius: 1.8,
 
-                        <Image source={service.uri} style={[{width: "55%", height: "55%", alignSelf: "center", borderRadius: 20}]} resizeMode={"contain"}/>
-                        <View style={stylesBottom.textContainer}>
-                          <Text style={stylesBottom.buttonText}>{service.name}</Text>
-                        </View>
-                      </TouchableOpacity>
-                    </Animated.View>
-                )
-          }
-
-          )}
+              elevation: 4,
+              transform: [
+                {
+                  scale: executeTransition(
+                      1,
+                      delta,
+                      services.length * delta + delta
+                  ),
+                },
+              ],}}>
+              <Image source={ require("./assets/digipost.png")} style={[{width: "70%", height: "70%", alignSelf: "center", justifyContent: "center", borderRadius: 10}]} resizeMode={"contain"}/>
+              <Text style={{}}>
+                (1 ny epost)
+              </Text>
+            </Animated.View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
- */
+    </SafeAreaView>
+  );
+}
 
 export default function Home() {
   return (
@@ -355,6 +331,16 @@ export default function Home() {
         name={"Helsenorge"}
         component={Helsenorge}
         options={{ headerShown: true }}
+      />
+      <Stack.Screen
+          name={"Digipost"}
+          component={Digipost}
+          options={{ headerShown: true }}
+      />
+      <Stack.Screen
+          name={"Mail"}
+          component={Mail}
+          options={{ headerShown: true }}
       />
     </Stack.Navigator>
   );
@@ -409,3 +395,15 @@ const stylesBottom = StyleSheet.create({
   textContainer: { alignSelf: "center", marginTop: 10 },
   buttonText: { textTransform: "uppercase", fontSize: 13, fontWeight: "bold" },
 });
+
+const styleInfo = StyleSheet.create({
+  gridContainer: {
+    alignItems: "center",
+
+  },
+  text: {
+    fontSize: 15,
+    fontWeight: "bold",
+    marginLeft: 6,
+  }
+})

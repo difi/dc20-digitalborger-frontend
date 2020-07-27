@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+// @ts-ignore
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import * as WebBrowser from "expo-web-browser";
 
