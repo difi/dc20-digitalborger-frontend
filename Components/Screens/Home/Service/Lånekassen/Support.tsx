@@ -48,9 +48,13 @@ export default function Support() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Text style={styles.textInfo}>
-        Gjennomsnittstøtte i vanlig videregående opplæring:{" "}
-      </Text>
+
+      <View style={styles.titleContainer}>
+        <Text style={styles.textInfo}>
+          Gjennomsnittstøtte i vanlig videregående opplæring: {" "}
+        </Text>
+      </View>
+
 
       {scholarship.map((item, index) => (
         <View
@@ -58,11 +62,11 @@ export default function Support() {
           style={
             index == SupportForStudent.length - 1
               ? styles.LastElement
-              : styles.listContainer
+              : styles.listElements
           }
         >
           {console.log(index)}
-          <Text style={styles.listText}>{item.scholarship}</Text>
+          <Text style={styles.text}>{item.scholarship}</Text>
           <Text
             style={{
               fontWeight: index == scholarship.length - 1 ? "bold" : "normal",
@@ -88,8 +92,20 @@ const styles = StyleSheet.create({
   textInfo: {
     fontSize: 15,
     fontStyle: "italic",
+    color: 'white',
   },
-  listContainer: {
+  text: {
+    fontSize: 16,
+    padding: "5%",
+  },
+  titleContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: '#4d264f',
+    height: 40,
+  },
+  listElements: {
     flexDirection: "row",
     alignItems: "center",
     borderBottomWidth: 1,
@@ -102,8 +118,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexShrink: 1,
   },
-  listText: {
-    fontSize: 16,
-    padding: "5%",
-  },
+
+
 });

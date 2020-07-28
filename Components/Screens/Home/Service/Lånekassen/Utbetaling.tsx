@@ -41,7 +41,7 @@ export default function Utbetaling() {
     return(
         <SafeAreaView style={styles.container}>
 
-            <View style = {styles.titleHeader}>
+            <View style = {styles.titleContainer}>
                 <Text style={styles.titleText}>Dato</Text>
                 <Text style={styles.titleText}>Hendelse</Text>
                 <Text style={styles.titleText}>Beløp</Text>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         height: '100%',
 
     },
-    titleHeader: {
+    titleContainer: {
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
