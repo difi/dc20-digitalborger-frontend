@@ -46,19 +46,6 @@ export default function Hourglass() {
     return (deadline.getTime() - date.getTime()) / 1000;
   }
 
-  function getColor(deadline: Date) {
-    if (getTimeLeft(deadline) <= 86400) {
-      return "white";
-    }
-    return "white";
-  }
-
-  function sendPush24hrsLeft(title: String, date: Date) {
-    if (getTimeLeft(date) <= 24 * 60 * 60) {
-      return <PushNotification title={title} date={date} />;
-    }
-  }
-
   function getFormat(deadline: Date) {
     if (getTimeLeft(deadline) <= 86400) {
       return ["H", "M", "S"];
