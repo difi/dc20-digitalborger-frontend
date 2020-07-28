@@ -38,16 +38,15 @@ const styles = StyleSheet.create({
     container: {
         height: 180,
         width: "100%",
+        borderWidth: 5,
+        borderColor: "#e6e6e6",
     },
-
     linkContainer:{
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
         left: "4%",
-
     },
-
     boldText:{
         fontSize: 15,
         margin: 10,

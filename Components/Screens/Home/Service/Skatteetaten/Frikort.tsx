@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 180,
     width: "100%",
+    borderWidth: 5,
+    borderColor: "#e6e6e6",
   },
 
   infoText: {
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
   },
 
   LinkContainer: {
-    margin: "5%",
+    left: 20,
     flexDirection: "row",
   },
 

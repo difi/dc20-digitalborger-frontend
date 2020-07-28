@@ -47,19 +47,16 @@ export default function PolitiAttest() {
 }
 
 
-
 const styles = StyleSheet.create({
 
     container:{
         height: "100%",
         bottom: 5,
     },
-
     textContainer:{
         marginTop: 20,
         left: 5,
     },
-
     linkContainer:{
         width: "90%",
         height: "20%",
@@ -67,15 +64,12 @@ const styles = StyleSheet.create({
         left: 10,
         backgroundColor:"#212a3b",
     },
-
     linkStyleContainer:{
         flexDirection: "row",
         marginTop: 15,
         left: 5,
     },
-
     iconContainer:{
         left: 15,
     },
-
 });

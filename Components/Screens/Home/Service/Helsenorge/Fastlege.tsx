@@ -8,12 +8,6 @@ import * as WebBrowser from "expo-web-browser";
 import {useEffect, useState} from "react";
 import {retrieveData} from "../../../../Storage";
 import {getDoctorData} from "../../../../ServerCommunications/Services/HelseNorgeService";
-const  doctor = [
-    {
-        name: "Lars Breheim",
-        office: "Sogndal legekontor",
-    },
-];
 
 
 export default function Fastlege() {
@@ -36,6 +30,12 @@ export default function Fastlege() {
     return (
         <View>
             <View style={styles.row}>
+                    <View style={styles.introContainer}>
+                        <Text style={{ fontWeight: "bold", fontSize: 13}}>Din fastlege:</Text>
+                    </View>
+                     <View style={styles.contentContainer}>
+                            <Text style={{fontSize: 13}}>{legeData.name}</Text>
+                    </View>
                 <View style={styles.iconContainer}>
                     <TouchableOpacity
                         onPress={() =>
@@ -47,17 +47,26 @@ export default function Fastlege() {
                         <Icon name="pen" size={20} ></Icon>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.firstTextContainer}>
-                            <Text style={{ fontWeight: "bold", fontSize: 17}}>Din fastlege:</Text>
-                            <Text style={{fontSize: 16}}>{legeData.name}</Text>
                 </View>
-            </View>
-            <View style={styles.row}>
-                <View style={styles.secondTextContainer}>
-                            <Text style={{ fontWeight: "bold", fontSize: 17}}>Instutisjon:</Text>
-                            <Text style={{fontSize: 16}}>{legeData.office}</Text>
+                <View style={styles.row}>
+                    <View style={styles.introContainer}>
+                    <Text style={{ fontWeight: "bold", fontSize: 13}}>Ditt legekontor:</Text>
+                    </View>
+                    <View style={styles.contentContainer}>
+                            <Text style={{fontSize: 13}}>{legeData.office}</Text>
+                    </View>
+                    <View style={styles.iconContainer}>
+                        <TouchableOpacity
+                            onPress={() =>
+                                WebBrowser.openBrowserAsync(
+                                    "https://tjenester.helsenorge.no/bytte-fastlege?"
+                                )
+                            }
+                        >
+                            <Icon name="pen" size={20} ></Icon>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
             <TouchableOpacity
                 containerStyle={styles.linkContainer}
                 onPress={() =>
@@ -67,7 +76,7 @@ export default function Fastlege() {
                 }
             >
                 <View style={styles.linkContainer}>
-                    <Text style={{ fontWeight: "bold",fontSize: 17}}> Mer om din fastlege </Text>
+                    <Text style={{ fontWeight: "bold",fontSize: 15}}> Mer om din fastlege </Text>
                     <Icon name="long-arrow-alt-right" size={15}></Icon>
                 </View>
             </TouchableOpacity>
@@ -77,25 +86,29 @@ export default function Fastlege() {
 const styles = StyleSheet.create({
     row: {
         flexDirection: "row",
-        marginBottom: 15,
+        marginBottom: 20,
         top: 10,
         borderBottomWidth: 1,
         borderColor: "#E1E1E1",
     },
-    firstTextContainer: {
-        right: 19,
-        marginTop: 5,
+    introContainer:{
+        flex: 1,
+        justifyContent: "flex-end",
+        marginBottom: 10,
     },
-    secondTextContainer:{
-        marginTop: 10,
+    contentContainer: {
+        flex: 1,
+        alignSelf: "flex-start",
+        right: 8,
+        top: 5,
     },
     iconContainer:{
-        left: 320,
+        bottom: 15,
         marginTop: 10,
     },
     linkContainer:{
         flexDirection: "row",
-        marginTop: 20,
+        marginTop: 12,
         right: 1,
     },
 });

@@ -55,25 +55,20 @@ const styles = StyleSheet.create({
         marginTop: 30,
         height: "100%",
     },
-
     topContainer:{
         borderBottomWidth: 1,
         borderBottomColor: "#E1E1E1",
-        borderRadius: 20,
-
     },
     topContainerText:{
         flexDirection: "row",
-        bottom: 7,
+
         left: 10,
     },
-
     bottomContainer:{
         marginTop: 10,
         left: 10,
         flexDirection: "row",
     },
-
     linkContainer:{
         width: "90%",
         height: "20%",
@@ -81,13 +76,11 @@ const styles = StyleSheet.create({
         left: 10,
         backgroundColor:"#212a3b",
     },
-
     linkStyleContainer:{
         flexDirection: "row",
         marginTop: 15,
         left: 5,
     },
-
     iconContainer:{
         left: 95,
     },
