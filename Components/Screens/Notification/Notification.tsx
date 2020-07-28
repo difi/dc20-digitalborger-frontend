@@ -75,18 +75,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 40,
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     marginTop: 10,
     padding: 20,
   },
 });
-
-/*<Header
-        title="Varslinger"
-        backgroundColor="white"
-        centerComponent={{
-          text: "Varslinger",
-          boldText: "Varslinger",
-          style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
-        }}
-      />*/

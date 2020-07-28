@@ -113,36 +113,6 @@ export default function Profile() {
           <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
           <Card icon={"home"} data={"Kong Inges Gate 22"} editable={true} />
           <Card icon={"phone"} data={"+47 90910636"} editable={true} />
-          <TouchableOpacity
-            style={{ flex: 1 }}
-            onPress={() => setVisibility(true)}
-          >
-            <Card icon={"book"} data={"Din historikk"} editable={false} />
-          </TouchableOpacity>
-          <Overlay
-            isVisible={visibility}
-            overlayStyle={{
-              shadowOpacity: 5,
-              shadowRadius: 10,
-              shadowColor: "red",
-              borderRadius: 15,
-            }}
-          >
-            <View style={styles.historyContainer}>
-              <View style={{ flexDirection: "row" }}>
-                <View>
-                  <Text style={{ fontWeight: "bold" }}>Innlogging:</Text>
-                  <Text>MinID</Text>
-                </View>
-                <View style={{ position: "absolute", right: 0 }}>
-                  <Text style={{ fontWeight: "bold" }}>Dato:</Text>
-                  <Text>1234</Text>
-                  <Text>blablablablabla</Text>
-                </View>
-              </View>
-              <Button title="Lukk" onPress={() => setVisibility(false)} />
-            </View>
-          </Overlay>
         </View>
       </View>
     </SafeAreaView>
