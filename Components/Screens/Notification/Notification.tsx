@@ -2,11 +2,11 @@ import * as React from "react";
 import { View, ScrollView, StyleSheet, SafeAreaView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header, Text } from "react-native-elements";
+import { Font, AppLoading } from "expo";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import Skattemelding from "../Skattegiver";
-import KontaktPoliti from "../Home/Service/Politi/KontaktPoliti";
+
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -43,7 +43,18 @@ const events = [
 ];
 // Slutt data
 
+//For at fonten skal lastes inn
+/*const [fontLoading, setLoading] = useState(true);
+
+useEffect(() => {
+  (async () => await Font.loadAsync({
+    Roboto: require('native-base/Fonts/Roboto.ttf'),
+  }))();
+  setLoading(false);
+}, []) */
+
 export default function Notification() {
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>Varslinger</Text>
