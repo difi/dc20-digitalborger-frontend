@@ -38,8 +38,8 @@ import Animated, {
   Value,
   Extrapolate,
 } from "react-native-reanimated";
-import Digipost from "../Profile/Digipost";
-import Mail from "../Profile/Mail";
+import Digipost from "../Home/Service/Digipost/Digipost";
+import Mail from "../Home/Service/Digipost/Mail";
 
 const PopularServices = [
   {
@@ -155,9 +155,6 @@ function AllServices({ navigation }) {
         paddingTop: Platform.OS === "android" ? 30 : 0,
       }}
     >
-      <View style={styleInfo.gridContainer}>
-        <Text style={styleInfo.text}>Ofte brukte tjenester</Text>
-      </View>
       <ScrollView
         style={{ flex: 1, backgroundColor: "#F2F2F2"}}
         showsVerticalScrollIndicator={false}
