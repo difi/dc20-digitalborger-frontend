@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   Text,
   TouchableOpacity,
+  TextInput,
   Button,
 } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -14,17 +15,19 @@ import Dude from "./assets/Dude";
 // @ts-ignore
 import ProfileHeader from "./assets/ProfileHeader";
 import { useState } from "react";
-import { overlay } from "react-native-paper";
 import { Overlay } from "react-native-elements";
-import PopUp from "../../Login/PopUp";
-import { backgroundColor } from "@shopify/restyle";
+import symbolicateStackTrace from "react-native/Libraries/Core/Devtools/symbolicateStackTrace";
+
 interface CardProps {
   icon: string;
   data: string;
   editable: boolean;
 }
+
 const Card = ({ icon, data, editable }: CardProps) => {
   const [edit, setEdit] = useState(false);
+  const [value, setValue] = useState(data);
+  const [changeLayout, setChangeLayout] = useState(false);
   return (
     <View
       style={{
@@ -40,6 +43,7 @@ const Card = ({ icon, data, editable }: CardProps) => {
         },
         shadowOpacity: 0.1,
         shadowRadius: 7,
+
         elevation: 5,
       }}
     >
@@ -66,25 +70,71 @@ const Card = ({ icon, data, editable }: CardProps) => {
           </View>
         </View>
       </View>
-      <View style={{ flex: 4, justifyContent: "center", alignItems: "center" }}>
-        <Text style={{ fontSize: 16 }}>{data}</Text>
+
+      <View style={{ flex: 3 }}>
+        {changeLayout ? (
+          <View style={{ flex: 1, justifyContent: "center" }}>
+            <TextInput
+              style={{
+                borderWidth: 1,
+                borderColor: "gray",
+                borderRadius: 10,
+                alignItems: "center",
+                padding: 10,
+              }}
+              onChangeText={(text) => setValue(text)}
+              value={value}
+            />
+          </View>
+        ) : (
+          <View
+            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          >
+            <Text style={{ fontSize: 16 }}>{value}</Text>
+          </View>
+        )}
       </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <TouchableOpacity onPress={() => console.log("hei")}>
-          <View style={{ justifyContent: "center", alignItems: "center" }}>
-            {editable ? (
-              <FontAwesome name="edit" size={20} color={"black"} />
-            ) : (
-              <View />
-            )}
-          </View>
-        </TouchableOpacity>
+        {editable ? (
+          <TouchableOpacity onPress={() => setChangeLayout(!changeLayout)}>
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {changeLayout ? (
+                <View
+                  style={{
+                    width: 50,
+                    height: 40,
+                    backgroundColor: "#68CE67",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderRadius: 5,
+                  }}
+                >
+                  <Text style={{ color: "white", fontWeight: "bold" }}>
+                    Lagre
+                  </Text>
+                </View>
+              ) : (
+                <FontAwesome name="edit" size={20} color={"black"} />
+              )}
+            </View>
+          </TouchableOpacity>
+        ) : (
+          <View />
+        )}
       </View>
     </View>
   );
 };
+
 export default function Profile() {
   const [visibility, setVisibility] = useState(false);
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#A4D7F4" }}>
       <Text style={styles.heading}>Din Profil</Text>
@@ -110,25 +160,62 @@ export default function Profile() {
             paddingTop: 30,
           }}
         >
-          <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
-          <Card icon={"home"} data={"Kong Inges Gate 22"} editable={true} />
-          <Card icon={"phone"} data={"+47 90910636"} editable={true} />
+          <View style={{ flex: 1 }}>
+            <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Card icon={"home"} data={"Kong inges gt 22"} editable={true} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Card icon={"phone"} data={"+47 90910636"} editable={true} />
+          </View>
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => setVisibility(true)}
+          >
+            <Card icon={"book"} data={"Din historikk"} editable={false} />
+          </TouchableOpacity>
+          <Overlay
+            isVisible={visibility}
+            overlayStyle={{
+              shadowOpacity: 1,
+              shadowRadius: 2,
+              shadowColor: "#606060",
+              borderRadius: 15,
+              width: "90%",
+            }}
+          >
+            <View>
+              <View style={{ marginBottom: 20, margin: 10 }}>
+                <View style={styles.historyText}>
+                  <Text style={{ fontWeight: "bold" }}>Innlogging:</Text>
+                  <Text>MinID.no</Text>
+                  <Text>Skatteetaten.no</Text>
+                </View>
+                <View style={styles.historyDate}>
+                  <Text style={{ fontWeight: "bold" }}>Dato:</Text>
+                  <Text>1234</Text>
+                  <Text>blablablablabla</Text>
+                </View>
+              </View>
+              <Button title="Lukk" onPress={() => setVisibility(false)} />
+            </View>
+          </Overlay>
         </View>
       </View>
     </SafeAreaView>
   );
 }
+
 const styles = StyleSheet.create({
   heading: {
     fontSize: 40,
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     marginTop: 10,
     padding: 20,
   },
-  historyContainer: {
-    width: 300,
-  },
-  historyTitle: {},
+  historyContainer: { width: 300 },
+  historyTitle: { fontWeight: "bold" },
   historyText: {},
+  historyDate: { position: "absolute", right: 0 },
 });

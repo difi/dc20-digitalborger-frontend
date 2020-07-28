@@ -115,6 +115,7 @@ export default function Hourglass() {
             </View>
           </View>
         ))}
+        <View style={{ height: 200 }}></View>
       </ScrollView>
     </SafeAreaView>
   );
