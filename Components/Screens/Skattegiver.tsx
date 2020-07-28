@@ -5,7 +5,9 @@ import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {retrieveData} from "../Storage";
+import {getSkattInfo} from "../ServerCommunications/Services/SkatteetatenService";
 
 
 const info = {
@@ -34,6 +36,31 @@ export default function Skattegiver() {
     const [employerData, setEmployer] = useState({Skatt: {inntekt: 0, beregnet: 0, trekk: 0}, Arbeidsgiver: [{company: "", date: ""}],})
 
 
+    useEffect(() => {
+        (async () => {
+            const pid: number = await retrieveData("pid");
+            let result = await getSkattInfo(pid);
+            setEmployer(result);
+        })();
+
+    }, []);
+
+    const formatDate = (date) => {
+
+
+        let time = new Date(date).toLocaleDateString();
+        let format = String(time).split('/')
+
+        let day = format[1];
+        let month = format[0];
+        let year = format[2];
+
+
+        return [day + '.' + month + '.' + year]
+
+    }
+
+
 
     return (
 
@@ -43,14 +70,14 @@ export default function Skattegiver() {
                     <Text style={{ fontWeight: "bold", fontSize: 15}}>{info.intro}</Text>
                 </View>
 
-                {Arbeidsgiver.map((item, indexSkatt) => (
+                {employerData.Arbeidsgiver.map((item, indexSkatt) => (
                     <View key={indexSkatt} style={styles.textContainer}>
                         <View style={styles.leftText}>
                             <Text style={{fontSize: 15}}>{item.company}</Text>
                         </View>
                         <View style={styles.rightText}>
                             <Text style={{fontSize: 15}}>{info.fetched}</Text>
-                            <Text style={{ fontWeight: "bold", fontSize: 15}}>{item.date}</Text>
+                            <Text style={{ fontWeight: "bold", fontSize: 15}}>{formatDate(item.date)}</Text>
                         </View>
                     </View>
                 ))}
@@ -66,7 +93,7 @@ export default function Skattegiver() {
                 >
                     <View style={styles.linkContainer}>
                         <Icon name="arrow-circle-right" size={15}></Icon>
-                        <Text style={{ fontWeight: "bold",fontSize: 13}}> Detaljer om hvem som har hentet skattekorte ditt </Text>
+                        <Text style={{ fontWeight: "bold",fontSize: 14}}> Detaljer om hvem som har hentet skattekorte ditt </Text>
                     </View>
                 </TouchableOpacity>
 

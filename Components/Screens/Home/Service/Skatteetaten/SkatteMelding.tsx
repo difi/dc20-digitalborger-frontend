@@ -9,7 +9,7 @@ import {getDoctorData} from "../../../../ServerCommunications/Services/HelseNorg
 import {getSkattInfo} from "../../../../ServerCommunications/Services/SkatteetatenService";
 
 
-const Skatt =
+const SkattInfo =
     {
         beregnet: 10000,
         trekk: 0.11,
@@ -17,13 +17,13 @@ const Skatt =
 
 export default function SkatteMelding(){
 
-    const [employerData, setEmployer] = useState({Skatt: {inntekt: 0, beregnet: 0, trekk: 0}, Arbeidsgiver: [{company: "", date: ""}],})
+    const [taxData, setTax] = useState({Skatt: {inntekt: 0, beregnet: 0, trekk: 0}, Arbeidsgiver: [{company: "", date: ""}],})
 
     useEffect(() => {
         (async () => {
             const pid: number = await retrieveData("pid");
             let result = await getSkattInfo(pid);
-            setEmployer(result);
+            setTax(result);
         })();
 
     }, []);
@@ -33,7 +33,7 @@ export default function SkatteMelding(){
       <View style={styles.gridContainer}>
           <View style={styles.Infogrid}>
               <Text style={styles.skattTitle}>Totalt beregnet skatt 2020:</Text>
-              <Text style={styles.skattInput}>{Skatt.beregnet + "kr"}</Text>
+              <Text style={styles.skattInput}>{taxData.Skatt.beregnet + " kr"}</Text>
 
           </View>
 
@@ -41,7 +41,7 @@ export default function SkatteMelding(){
 
           <View style={styles.Infogrid}>
               <Text style={styles.skattTitle}>Skattetrekk på hovedinntekt:</Text>
-              <Text style={styles.skattInput}>{Skatt.trekk * 100 + "%"}</Text>
+              <Text style={styles.skattInput}>{taxData.Skatt.trekk * 100 + "%"}</Text>
           </View>
 
           <View>
