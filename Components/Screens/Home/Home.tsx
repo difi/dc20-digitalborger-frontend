@@ -160,7 +160,7 @@ function AllServices({ navigation }) {
         showsVerticalScrollIndicator={false}
       >
         <View style={{flex: 1, backgroundColor: "white"}}>
-          <Text style={{fontWeight: "bold", marginLeft: 20, marginTop: 10, marginBottom: 10, fontSize: 18}}>Populære tjenester</Text>
+          <Text style={{fontWeight: "bold", marginLeft: 20, marginTop: 10, marginBottom: 10, fontSize: 18}}>Snarveier</Text>
           <FlatList
               horizontal
               scrollEventThrottle={1}
