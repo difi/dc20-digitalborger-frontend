@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Dude from "./assets/Dude";
+import ProfileHeader from "./assets/ProfileHeader";
 
 
 interface CardProps {
@@ -29,7 +30,7 @@ const Card = ({icon, data, editable}: CardProps) => {
             elevation: 5,}}>
             <View style={{flex: 1, margin: 20}}>
                 <View style={{flex: 1, margin: 20, justifyContent: "center", alignItems: "center"}}>
-                    <View style={{width: 50, height: 50, backgroundColor: "#EE8970", borderRadius: 100, justifyContent: "center", alignItems: "center",}}>
+                    <View style={{width: 50, height: 50, backgroundColor: "#68CE67", borderRadius: 100, justifyContent: "center", alignItems: "center",}}>
                         <FontAwesome name={icon} size={30} color={"white"} />
                     </View>
                 </View>
@@ -55,18 +56,18 @@ const Card = ({icon, data, editable}: CardProps) => {
 export default function Profile() {
   return (
       <SafeAreaView style={{flex: 1, backgroundColor: "#A4D7F4"}}>
+          <Text style={styles.heading}>Din Profil</Text>
           <View style={{flex: 1, backgroundColor: "#A4D7F4"}}>
               <View style={{flex: 1, backgroundColor: "white"}}>
                   <View style={{flex: 1, backgroundColor: "#A4D7F4", borderBottomRightRadius: 75, justifyContent: "center"}}>
-                      <Dude width={"80%"} height={"80%"}/>
+                      <ProfileHeader width={"100%"} height={"100%"}/>
                   </View>
               </View>
               <View style={{flex: 2, backgroundColor: "white", borderTopLeftRadius: 55, padding: 25, paddingTop: 30}}>
                   <Card icon={"user"} data={"Jørgen Hollum"} editable={true}/>
                   <Card icon={"home"} data={"Kong inges gt 22"} editable={true}/>
                   <Card icon={"phone"} data={"+47 90910636"} editable={true}/>
-
-
+                  <Card icon={"book"} data={"Din historikk"} editable={false}/>
               </View>
           </View>
       </SafeAreaView>
@@ -74,7 +75,14 @@ export default function Profile() {
 }
 
 const styles = StyleSheet.create({
-  icon: {
+    heading: {
+        fontSize: 40,
+        fontWeight: "bold",
+        fontFamily: "Helvetica",
+        marginTop: 10,
+        padding: 20,
+    },
+    icon: {
     height: 55,
     width: 55,
     alignSelf: "flex-end",

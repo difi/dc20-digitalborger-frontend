@@ -38,8 +38,8 @@ import Animated, {
   Value,
   Extrapolate,
 } from "react-native-reanimated";
-import Digipost from "../Profile/Digipost";
-import Mail from "../Profile/Mail";
+import Digipost from "../Home/Service/Digipost/Digipost";
+import Mail from "../Home/Service/Digipost/Mail";
 
 const PopularServices = [
   {
