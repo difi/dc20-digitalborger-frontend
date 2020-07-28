@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Linking, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 // @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import * as WebBrowser from "expo-web-browser";
 
 
 const Betalinger = [
@@ -58,7 +59,8 @@ export default function Utbetaling() {
             </ScrollView>
 
                 <View>
-                <TouchableOpacity style={styles.LinkContainer} onPress={() => Linking.openURL("https://lanekassen.no/nb-NO/verktoy-og-frister/Frister-i-Lanekassen/utbetaling-av-utdanningsstotte/") }>
+                <TouchableOpacity style={styles.LinkContainer} onPress={() =>  WebBrowser.openBrowserAsync("https://lanekassen.no/nb-NO/verktoy-og-frister/Frister-i-Lanekassen/utbetaling-av-utdanningsstotte/") }>
+                    <Text style={styles.ItemText}>Se alle utbetalinger: </Text>
                     <FontAwesome key ={0} name ={'arrow-circle-right'} size={30} color={'#4d264f'} />
                 </TouchableOpacity>
                 </View>
@@ -100,6 +102,7 @@ const styles = StyleSheet.create({
 
     },
     LinkContainer: {
+        flexDirection: "row",
         position: "absolute",
         right: 0,
         bottom: 0
