@@ -188,12 +188,12 @@ export default function Profile() {
             <View>
               <View style={{ marginBottom: 20, margin: 10 }}>
                 <View style={styles.historyText}>
-                  <Text style={{ fontWeight: "bold" }}>Innlogging:</Text>
+                  <Text style={styles.historyTitle}>Innlogging:</Text>
                   <Text>MinID.no</Text>
                   <Text>Skatteetaten.no</Text>
                 </View>
                 <View style={styles.historyDate}>
-                  <Text style={{ fontWeight: "bold" }}>Dato:</Text>
+                  <Text style={styles.historyTitle}>Dato:</Text>
                   <Text>1234</Text>
                   <Text>blablablablabla</Text>
                 </View>
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   historyContainer: { width: 300 },
-  historyTitle: { fontWeight: "bold" },
+  historyTitle: { fontWeight: "bold", marginBottom: 5 },
   historyText: {},
   historyDate: { position: "absolute", right: 0 },
 });
