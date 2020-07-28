@@ -1,11 +1,12 @@
 import * as React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+// @ts-ignore
 import Icon from "react-native-vector-icons/AntDesign";
 import { ScrollView } from "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
-import { getMail } from "../../ServerCommunications/Services/Digipost";
-import { retrieveData } from "../../Storage";
 import { useState, useEffect } from "react";
+import {getMail} from "../../../../ServerCommunications/Services/Digipost";
+import {retrieveData} from "../../../../Storage";
 
 export default function Digipost({ navigation }) {
   const [data, setData] = useState(Array);
