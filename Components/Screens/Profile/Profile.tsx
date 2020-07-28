@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 40,
         fontWeight: "bold",
-        fontFamily: "Helvetica",
         marginTop: 10,
         padding: 20,
     },

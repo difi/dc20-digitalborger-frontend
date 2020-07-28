@@ -2,8 +2,7 @@ import * as React from "react";
 import { View, ScrollView, StyleSheet, SafeAreaView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header, Text } from "react-native-elements";
-import { Font, AppLoading } from "expo";
-import { useEffect, useState } from "react";
+
 import axios from "axios";
 
 
@@ -43,15 +42,6 @@ const events = [
 ];
 // Slutt data
 
-//For at fonten skal lastes inn
-/*const [fontLoading, setLoading] = useState(true);
-
-useEffect(() => {
-  (async () => await Font.loadAsync({
-    Roboto: require('native-base/Fonts/Roboto.ttf'),
-  }))();
-  setLoading(false);
-}, []) */
 
 export default function Notification() {
 
@@ -86,7 +76,6 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 40,
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     marginTop: 10,
     padding: 20,
   },

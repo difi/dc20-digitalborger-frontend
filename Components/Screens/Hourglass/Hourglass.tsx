@@ -137,7 +137,6 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 40,
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     marginTop: 10,
     padding: 20,
   },
@@ -152,7 +151,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     fontSize: 20,
     marginLeft: 10,
     color: "red",
@@ -176,7 +174,6 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   date: {
-    fontFamily: "Helvetica",
     color: "grey",
     paddingLeft: 12,
     paddingTop: 5,

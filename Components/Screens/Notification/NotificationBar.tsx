@@ -48,17 +48,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     fontSize: 17,
   },
   description: {
     width: "80%",
-    fontFamily: "Helvetica",
     fontSize: 16,
     maxWidth: "100%",
   },
   received: {
-    fontFamily: "Helvetica",
     color: "grey",
     paddingVertical: 5,
   },
