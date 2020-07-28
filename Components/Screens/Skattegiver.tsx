@@ -10,14 +10,23 @@ import * as WebBrowser from "expo-web-browser";
 const info = {
     intro: "Disse har hentet skattekortet ditt:",
     fetched: "Hentet:",
-    domstol: "DOMSTOLENE I NORGE",
-    domstolDate: "12.04.2020",
-    digdir: "DIGITALISERINGSDIREKTORATET",
-    digdirDate: "24.06.2020",
-    sogndal: "SOGNDAL KOMMUNE",
-    sogndalDate: "18.08.2020",
 
 };
+
+const Arbeidsgiver = [
+    {
+        company: "DOMSTOLENE I NORGE",
+        date:  "12.04.2020",
+    },
+    {
+        company: "DIGITALISERINGSDIREKTORATET",
+        date:  "24.06.2020",
+    },
+    {
+        company:  "SOGNDAL KOMMUNE",
+        date: "18.08.2020",
+
+}]
 
 export default function Skattegiver() {
     return (
@@ -27,34 +36,18 @@ export default function Skattegiver() {
                 <View style={styles.introText}>
                     <Text style={{ fontWeight: "bold", fontSize: 15}}>{info.intro}</Text>
                 </View>
-                <View style={styles.textContainer}>
-                    <View style={styles.leftText}>
-                        <Text style={{fontSize: 15}}>{info.domstol}</Text>
-                    </View>
-                    <View style={styles.rightText}>
-                        <Text style={{fontSize: 15}}>{info.fetched}</Text>
-                        <Text style={{ fontWeight: "bold", fontSize: 15}}>{info.domstolDate}</Text>
-                    </View>
-                </View>
-                <View style={styles.textContainer}>
-                    <View style={styles.leftText}>
-                        <Text style={{fontSize: 15}}>{info.digdir}</Text>
-                    </View>
-                    <View style={styles.rightText}>
-                        <Text style={{fontSize: 15}}>{info.fetched}</Text>
-                        <Text style={{ fontWeight: "bold", fontSize: 15}}>{info.digdirDate}</Text>
-                    </View>
-                </View>
-                <View style={styles.textContainer}>
-                    <View style={styles.leftText}>
-                        <Text style={{fontSize: 15}}>{info.sogndal}</Text>
-                    </View>
-                    <View style={styles.rightText}>
-                        <Text style={{fontSize: 15}}>{info.fetched}</Text>
-                        <Text style={{ fontWeight: "bold",fontSize: 15}}>{info.sogndalDate}</Text>
-                    </View>
-                </View>
 
+                {Arbeidsgiver.map((item, indexSkatt) => (
+                    <View key={indexSkatt} style={styles.textContainer}>
+                        <View style={styles.leftText}>
+                            <Text style={{fontSize: 15}}>{item.company}</Text>
+                        </View>
+                        <View style={styles.rightText}>
+                            <Text style={{fontSize: 15}}>{info.fetched}</Text>
+                            <Text style={{ fontWeight: "bold", fontSize: 15}}>{item.date}</Text>
+                        </View>
+                    </View>
+                ))}
 
 
                 <TouchableOpacity
@@ -70,6 +63,7 @@ export default function Skattegiver() {
                         <Text style={{ fontWeight: "bold",fontSize: 13}}> Detaljer om hvem som har hentet skattekorte ditt </Text>
                     </View>
                 </TouchableOpacity>
+
             </View>
 
             </View>
