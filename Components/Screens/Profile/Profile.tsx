@@ -73,26 +73,41 @@ const Card = ({ icon, data, editable }: CardProps) => {
   );
 };
 
-/*export default function Profile() {
+export default function Profile() {
   return (
-      <SafeAreaView style={{flex: 1, backgroundColor: "#A4D7F4"}}>
-          <Text style={styles.heading}>Din Profil</Text>
-          <View style={{flex: 1, backgroundColor: "#A4D7F4"}}>
-              <View style={{flex: 1, backgroundColor: "white"}}>
-                  <View style={{flex: 1, backgroundColor: "#A4D7F4", borderBottomRightRadius: 75, justifyContent: "center"}}>
-                      <ProfileHeader width={"100%"} height={"100%"}/>
-                  </View>
-              </View>
-              <View style={{flex: 2, backgroundColor: "white", borderTopLeftRadius: 55, padding: 25, paddingTop: 30}}>
-                  <Card icon={"user"} data={"Jørgen Hollum"} editable={true}/>
-                  <Card icon={"home"} data={"Kong inges gt 22"} editable={true}/>
-                  <Card icon={"phone"} data={"+47 90910636"} editable={true}/>
-                  <Card icon={"book"} data={"Din historikk"} editable={false}/>
-              </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#A4D7F4" }}>
+      <Text style={styles.heading}>Din Profil</Text>
+      <View style={{ flex: 1, backgroundColor: "#A4D7F4" }}>
+        <View style={{ flex: 1, backgroundColor: "white" }}>
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: "#A4D7F4",
+              borderBottomRightRadius: 75,
+              justifyContent: "center",
+            }}
+          >
+            <ProfileHeader width={"100%"} height={"100%"} />
           </View>
-      </SafeAreaView>
+        </View>
+        <View
+          style={{
+            flex: 2,
+            backgroundColor: "white",
+            borderTopLeftRadius: 55,
+            padding: 25,
+            paddingTop: 30,
+          }}
+        >
+          <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
+          <Card icon={"home"} data={"Kong inges gt 22"} editable={true} />
+          <Card icon={"phone"} data={"+47 90910636"} editable={true} />
+          <Card icon={"book"} data={"Din historikk"} editable={false} />
+        </View>
+      </View>
+    </SafeAreaView>
   );
-}*/
+}
 
 const styles = StyleSheet.create({
   heading: {
