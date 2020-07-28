@@ -30,28 +30,6 @@ const SupportForStudent = [
   },
 ];
 
-const ss = [
-  {
-    scholarship: "Borteboerstipend",
-    sum: 23000,
-  },
-  {
-    scholarship: "Lån",
-    sum: 0,
-  },
-  {
-    scholarship: "Stipend",
-    sum: 500000,
-  },
-  {
-    scholarship: "Utbetaling",
-    sum: 4333,
-  },
-  {
-    scholarship: "Utstyrstipend",
-    sum: 43242,
-  },
-];
 
 const getScholarship = async () => {
   const pid: any = await retrieveData("pid").catch((err) => console.log(err));
@@ -60,7 +38,6 @@ const getScholarship = async () => {
 };
 
 export default function Support() {
-  const [status, setStatus] = useState("");
   const [scholarship, setScholarship] = useState([{ scholarship: "", sum: 0 }]);
 
   useEffect(() => {
