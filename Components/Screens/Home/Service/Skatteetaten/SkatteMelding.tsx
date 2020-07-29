@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: '3%'
+        padding: '1%',
     },
     skattTitle: {
         fontSize: 15,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     buttonText: {
-        fontSize: 13,
+        fontSize: 15,
         fontWeight: "bold",
         marginLeft: 10
     }
