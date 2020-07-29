@@ -3,11 +3,8 @@ import { Text, View, StyleSheet, SafeAreaView, Dimensions } from "react-native";
 import { Card } from "react-native-elements";
 import CountDown from "react-native-countdown-component";
 import { ScrollView } from "react-native-gesture-handler";
-import PushNotification from "./PushNotification";
 import { useEffect, useState } from "react";
 import { getCountdowns } from "../../ServerCommunications/Services/Countdowns";
-
-const colors = [{ red: "#EE8970" }, { blue: "#AED5F1" }, { yellow: "#F7D590" }];
 
 function getTimeLeft(data: Date) {
   let date = new Date();
@@ -24,7 +21,6 @@ function getFormat(deadline: Date) {
 
 function getTimeString(deadline: Date) {
   let date = new Date(deadline);
-  console.log(date.toLocaleDateString("en-GB"));
   return date.toLocaleDateString("en-GB");
 }
 
@@ -34,11 +30,9 @@ export default function Hourglass() {
   useEffect(() => {
     const getData = async () => {
       const data = await getCountdowns();
-      console.log("Data:", data);
       setData(data);
     };
     getData();
-    console.log(events);
   }, []);
 
   return (
@@ -118,15 +112,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 10,
     padding: 20,
-  },
-  cardContent: {
-    flexDirection: "row",
-    borderBottomColor: "#E1E1E1",
-    borderBottomWidth: 1,
-  },
-
-  countDownContainer: {
-    padding: 10,
   },
   title: {
     fontWeight: "bold",
