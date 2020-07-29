@@ -80,13 +80,3 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 });
-
-/*<Header
-        title="Varslinger"
-        backgroundColor="white"
-        centerComponent={{
-          text: "Varslinger",
-          boldText: "Varslinger",
-          style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
-        }}
-      />*/
