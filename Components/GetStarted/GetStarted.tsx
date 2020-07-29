@@ -22,19 +22,19 @@ const Info = [
         description: "Er en app som samler dine personlige opplysninger på et sted!"
     },
     {
+        title: "Offentlige tjenester",
+        description: "Gjennom denne appen kan du finne informasjon som omhandler Vigo, Helsenorge, Skatteetaten, Vegvesnet, Politiet og Lånekassen."
+    },
+    {
         title: "Sikkerhet med ID porten",
         description: "For å kunne få oversikt over alle våre tjenester er du nødt til å logge inn med MinID eller BankID. Dette gjøres gjennom noe som heter ID porten."
     },
-    {
-        title: "Offentlige tjenester",
-        description: "Gjennom denne appen kan du finne informasjon som omhandler Vigo, Helsenorge, Skatteetaten, Vegvesnet, Politiet og Lånekassen."
-    }
 ]
 
 const assets = [
     require("../../assets/Illustrations/auth.png"),
+    require("../../assets/Illustrations/services.png"),
     require("../../assets/Illustrations/phone.png"),
-    require("../../assets/Illustrations/services.png")
 ]
 
 export default function GetStarted({navigation}){
@@ -43,10 +43,7 @@ export default function GetStarted({navigation}){
     const onScroll = onScrollEvent({x});
     const backgroundColor = interpolateColor(x, {
         inputRange: [0, width, width * 2],
-        outputRange: ["#E7BF6A", "#9875AA", "#7899B7"]
-    });
-
-    useEffect(() => {
+        outputRange: ["#E7BF6A", "#7899B7", "#9875AA"]
     });
 
     return(
@@ -63,9 +60,10 @@ export default function GetStarted({navigation}){
                         bounces= {false}
                         {...{onScroll}}
                     >
-                        <SlidePage image={assets[0]}/>
-                        <SlidePage image={assets[1]}/>
-                        <SlidePage image={assets[2]}/>
+                        {assets.map(({}, index) => (
+                            <SlidePage key={index} image={assets[index]}/>
+                        ))}
+
                     </Animated.ScrollView>
                 </Animated.View>
 
@@ -73,7 +71,7 @@ export default function GetStarted({navigation}){
                    <View style={{flex: 1, backgroundColor: "white",  borderTopLeftRadius: 75,}}>
                        <View style={{paddingTop: 30, justifyContent: "center", alignItems: "center", flexDirection: "row"}}>
                            {Info.map(({}, index) => (
-                               <Dot  key={index} currentIndex={divide(x, width)} {...{ index }}/>
+                               <Dot key={index} currentIndex={divide(x, width)} {...{ index }}/>
                            ))}
                        </View>
                        <Animated.View style={{flex: 1, transform: [{translateX: multiply(x, -1)}], flexDirection: "row", width: width * Info.length,}}>
@@ -82,6 +80,7 @@ export default function GetStarted({navigation}){
                                return(
                                    (
                                        <SubSlide
+                                           key={index}
                                            title={title}
                                            description={description}
                                            onPress={() => {
