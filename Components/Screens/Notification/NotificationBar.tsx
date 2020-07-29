@@ -29,15 +29,11 @@ export default function Notification(props: {
 
 const styles = StyleSheet.create({
   gridContainer: {
-    width: "100%",
+    maxWidth: "99%",
     height: 100,
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 5,
-    /*borderBottomColor: "#D1D1D6",
-    borderBottomWidth: 1,
-    borderBottomStartRadius: 25,
-    borderBottomRightRadius: 25,*/
   },
   logo: {
     width: 60,
@@ -52,7 +48,7 @@ const styles = StyleSheet.create({
   },
   description: {
     width: "80%",
-    fontSize: 16,
+    fontSize: 15,
     maxWidth: "100%",
   },
   received: {
@@ -60,5 +56,3 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
 });
-
-/**/
