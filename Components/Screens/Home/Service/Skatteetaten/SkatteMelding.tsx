@@ -3,20 +3,37 @@ import {Linking, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {black} from "react-native-paper/lib/typescript/src/styles/colors";
 import * as WebBrowser from "expo-web-browser";
+import {useEffect, useState} from "react";
+import {retrieveData} from "../../../../Storage";
+import {getDoctorData} from "../../../../ServerCommunications/Services/HelseNorgeService";
+import {getSkattInfo} from "../../../../ServerCommunications/Services/SkatteetatenService";
 
 
-const Skatt =
+const SkattInfo =
     {
         beregnet: 10000,
         trekk: 0.11,
     }
 
 export default function SkatteMelding(){
+
+    const [taxData, setTax] = useState({Skatt: {inntekt: 0, beregnet: 0, trekk: 0}, Arbeidsgiver: [{company: "", date: ""}],})
+
+    useEffect(() => {
+        (async () => {
+            const pid: number = await retrieveData("pid");
+            let result = await getSkattInfo(pid);
+            setTax(result);
+        })();
+
+    }, []);
+
+
     return(
       <View style={styles.gridContainer}>
           <View style={styles.Infogrid}>
               <Text style={styles.skattTitle}>Totalt beregnet skatt 2020:</Text>
-              <Text style={styles.skattInput}>{Skatt.beregnet + "kr"}</Text>
+              <Text style={styles.skattInput}>{taxData.Skatt.beregnet + " kr"}</Text>
 
           </View>
 
@@ -24,7 +41,7 @@ export default function SkatteMelding(){
 
           <View style={styles.Infogrid}>
               <Text style={styles.skattTitle}>Skattetrekk på hovedinntekt:</Text>
-              <Text style={styles.skattInput}>{Skatt.trekk * 100 + "%"}</Text>
+              <Text style={styles.skattInput}>{taxData.Skatt.trekk * 100 + "%"}</Text>
           </View>
 
           <View>

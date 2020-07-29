@@ -29,15 +29,11 @@ export default function Notification(props: {
 
 const styles = StyleSheet.create({
   gridContainer: {
-    width: "100%",
+    maxWidth: "99%",
     height: 100,
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 5,
-    /*borderBottomColor: "#D1D1D6",
-    borderBottomWidth: 1,
-    borderBottomStartRadius: 25,
-    borderBottomRightRadius: 25,*/
   },
   logo: {
     width: 60,
@@ -48,20 +44,15 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     fontSize: 17,
   },
   description: {
     width: "80%",
-    fontFamily: "Helvetica",
-    fontSize: 16,
+    fontSize: 15,
     maxWidth: "100%",
   },
   received: {
-    fontFamily: "Helvetica",
     color: "grey",
     paddingVertical: 5,
   },
 });
-
-/**/

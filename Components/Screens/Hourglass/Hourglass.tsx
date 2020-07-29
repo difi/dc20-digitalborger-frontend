@@ -46,19 +46,6 @@ export default function Hourglass() {
     return (deadline.getTime() - date.getTime()) / 1000;
   }
 
-  function getColor(deadline: Date) {
-    if (getTimeLeft(deadline) <= 86400) {
-      return "white";
-    }
-    return "white";
-  }
-
-  function sendPush24hrsLeft(title: String, date: Date) {
-    if (getTimeLeft(date) <= 24 * 60 * 60) {
-      return <PushNotification title={title} date={date} />;
-    }
-  }
-
   function getFormat(deadline: Date) {
     if (getTimeLeft(deadline) <= 86400) {
       return ["H", "M", "S"];
@@ -96,14 +83,13 @@ export default function Hourglass() {
                   timeToShow={getFormat(event.date)}
                   timeLabelStyle={{
                     fontSize: 15,
-                    fontFamily: "Helvetica",
                   }}
                   digitStyle={{
                     backgroundColor: event.icon_color,
                   }}
                   digitTxtStyle={{
                     color: "white",
-                    fontFamily: "Helvetica",
+
                     fontWeight: "normal",
                   }}
                   timeLabels={{
@@ -128,6 +114,7 @@ export default function Hourglass() {
             </View>
           </View>
         ))}
+        <View style={{ height: 200 }}></View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -137,7 +124,6 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 40,
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     marginTop: 10,
     padding: 20,
   },
@@ -152,7 +138,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     fontSize: 20,
     marginLeft: 10,
     color: "red",
@@ -176,7 +161,6 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   date: {
-    fontFamily: "Helvetica",
     color: "grey",
     paddingLeft: 12,
     paddingTop: 5,

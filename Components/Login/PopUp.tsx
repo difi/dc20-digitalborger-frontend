@@ -46,7 +46,7 @@ export default function PopUp({pressed, parentCallback}: PopUpProps){
                                 parentCallback(false);
                             }}
                         >
-                            <Text style={styles.textStyle}>Tilbake</Text>
+                            <Text style={styles.textStyle}>Lukk</Text>
                         </TouchableHighlight>
                         <TouchableHighlight
                             style={{ ...styles.openButton, backgroundColor: "#2196F3",flex: 1}}
