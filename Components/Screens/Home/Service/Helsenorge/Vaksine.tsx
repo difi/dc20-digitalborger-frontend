@@ -1,129 +1,109 @@
 import * as React from "react";
-import {View, ScrollView, Text, StyleSheet} from "react-native";
-import NotificationBar from "./NotificationBar";
-import { Header } from "react-native-elements";
-import Icon from "react-native-vector-icons/Entypo";
-import {TouchableOpacity} from "react-native-gesture-handler";
+import {
+  Linking,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+// @ts-ignore
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 import * as WebBrowser from "expo-web-browser";
-import {useEffect, useState} from "react";
-import {retrieveData} from "../../../../Storage";
-import {getPrescriptionInfo, getVaccineData} from "../../../../ServerCommunications/Services/HelseNorgeService";
-
-const  vaccines = [
-    {
-        name: "HPV-injeksjon",
-        date: "10.01.2018",
-    },
-    {
-        name: "Poliomyelitt",
-        date: "19.12.2011",
-    },
-    {
-        name: "Influensa A",
-        date: "08.12.2009",
-    },
-    {
-        name: "Røde hunder",
-        date: "28.08.2008",
-    },
-    {
-        name: "Stivkrampe",
-        date: "08.11.2007",
-    },
-    {
-        name: "Kikhoste",
-        date: "07.07.1997",
-    },
-];
-
+import { getVaccineData } from "../../../../ServerCommunications/Services/HelseNorgeService";
+import { retrieveData } from "../../../../Storage";
+import { useEffect, useState } from "react";
 
 export default function Vaksine() {
+  const [vaccineData, setVaccine] = useState([{ name: "", date: "" }]);
 
-    const [vaccineData, setVaccine] = useState([
-        { name: "", date: ""},
-    ])
+  useEffect(() => {
+    (async () => {
+      const pid: number = await retrieveData("pid");
+      let result = await getVaccineData(pid);
+      setVaccine(result);
+    })();
+  }, []);
 
-
-    useEffect(() => {
-        (async () => {
-            const pid: number = await retrieveData("pid");
-            let result = await getVaccineData(pid);
-            setVaccine(result);
-        })();
-    }, []);
-
-
-
-    return (
-
-        <View>
-            <View style={styles.container}>
-                <View style={styles.textContainer}>
-                    <View style={styles.leftTextContainer}>
-                        <Text style={{ fontWeight: "bold", fontSize: 17, textDecorationLine: "underline"}} allowFontScaling={true}>Vaksinasjon:</Text>
-                    </View>
-                    <View style={styles.rightTextContainer}>
-                        <Text style={{ fontWeight: "bold", fontSize: 17, textDecorationLine: "underline"}} allowFontScaling={true}>Vaksinasjonsdato:</Text>
-                    </View>
-                </View>
-                <View style={styles.textContainer}>
-                    <View style={styles.leftTextContainer}>
-                        {vaccineData.map((vaccines, index) => (
-                            <View key={index}>
-                                <Text style={{fontSize: 16}} allowFontScaling={true}>{vaccines.name}</Text>
-                            </View>
-                        ))}
-                    </View>
-                    <View style={styles.rightTextContainer}>
-                        {vaccineData.map((vaccines1, index1) => (
-                            <View key={index1}>
-                                <Text style={{fontSize: 16}} allowFontScaling={true}>{vaccines1.date}</Text>
-                            </View>
-                        ))}
-                    </View>
-                </View>
-                <TouchableOpacity
-                    onPress={() =>
-                        WebBrowser.openBrowserAsync(
-                            "https://skatt.skatteetaten.no/web/minskatteside/?innvalg=minearbeidsgivere#/minearbeidsgivere"
-                        )
-                    }
-                >
-                    <View style={styles.linkContainer}>
-                        <Text style={{ fontWeight: "bold", fontSize: 17}} allowFontScaling={true}> Gå til din vaksine oversikt </Text>
-                        <Icon name="arrow-long-right" size={17} ></Icon>
-                    </View>
-                </TouchableOpacity>
-
-            </View>
-        </View>
-
-    );
+  return (
+    <SafeAreaView>
+      <View style={styles.titleHeader}>
+        <Text style={styles.titleTextLeft}>Vaksinasjon</Text>
+        <Text style={styles.titleTextRight}>Vaksinasjonsdato</Text>
+      </View>
+      <ScrollView>
+        {vaccineData.map((item, index) => (
+          <View key={index} style={styles.listItems}>
+            <Text style={styles.ItemLeftText}>{item.name}</Text>
+            <Text style={styles.ItemRightText}>{item.date}</Text>
+          </View>
+        ))}
+      </ScrollView>
+      <View>
+        <TouchableOpacity
+          style={styles.LinkContainer}
+          onPress={() =>
+            WebBrowser.openBrowserAsync(
+              "https://tjenester.helsenorge.no/vaksiner"
+            )
+          }
+        >
+          <Text style={{ fontSize: 15 }}> Full vaksine oversikt </Text>
+          <FontAwesome
+            key={0}
+            name={"arrow-circle-right"}
+            size={20}
+            color="#4d264f"
+          />
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
 }
 
-
-
 const styles = StyleSheet.create({
-
-    container:{
-        width: "100%",
-        height: "100%",
-    },
-    textContainer:{
-        flexShrink: 1,
-        flexDirection: "row",
-        marginTop: 10,
-    },
-    rightTextContainer:{
-        flex: 1,
-        left: 25,
-    },
-    leftTextContainer:{
-        flex: 1,
-        left: 4,
-    },
-    linkContainer:{
-        flexDirection: "row",
-        marginTop: 50,
-    },
+  titleHeader: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    height: "15%",
+    width: "100%",
+    bottom: 10,
+    backgroundColor: "#9a1c6f",
+  },
+  titleTextLeft: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 15,
+    right: 25,
+  },
+  titleTextRight: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 15,
+    left: 24,
+  },
+  listItems: {
+    flexDirection: "row",
+    borderBottomWidth: 1,
+    marginBottom: 10,
+  },
+  ItemLeftText: {
+    fontSize: 15,
+    marginBottom: 10,
+    flex: 1 / 2,
+    left: 10,
+  },
+  ItemRightText: {
+    fontSize: 15,
+    flex: 1 / 2,
+    left: 40,
+  },
+  LinkContainer: {
+    flexDirection: "row",
+    alignSelf: "flex-end",
+    right: 15,
+    top: 10,
+  },
 });

@@ -15,10 +15,10 @@ export default function Anmelde() {
 
         <View style={styles.container}>
             <View style={styles.textContainer}>
-                <Text style={{ fontWeight: "bold", textDecorationLine: "underline", fontSize: 15}}>Før du anmelder:</Text>
+                <Text style={{ fontWeight: "bold", fontSize: 17}}>NB! Før du anmelder:</Text>
             </View>
             <View style={styles.textContainer}>
-                <Text style={{fontSize: 13}}>Hva som har skjedd, alder og statsborgerskap har betydning for hvordan du kan levere en anmeldelse. Noe kan anmeldes på nett, i andre tilfeller må du møte hos politiet.</Text>
+                <Text style={{fontSize: 15}}>Hva som har skjedd, alder og statsborgerskap har betydning for hvordan du kan levere en anmeldelse. Noe kan anmeldes på nett, i andre tilfeller må du møte hos politiet.</Text>
             </View>
             <TouchableOpacity
                 containerStyle={styles.linkContainer}
