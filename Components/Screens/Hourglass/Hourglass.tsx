@@ -19,14 +19,14 @@ const events = [
     logo: "https://www.vigo.no/vigo/html/img/vigo-logo.png",
     description: "23:00:21",
     date: deadline,
-    icon_color: "#64D2FF",
+    icon_color: "#AED5F1",
   },
   {
     name: "Søk om støtte fra lånekassen",
     logo:
       "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk_400x400.jpg",
     date: deadline2,
-    icon_color: "#BF5AF2",
+    icon_color: "#F7D590",
   },
   {
     name: "Corona vaksine",
@@ -34,7 +34,7 @@ const events = [
       "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
     description: "10 dager",
     date: deadline3,
-    icon_color: "#30D158",
+    icon_color: "#EE8970",
   },
 ];
 // Slutt data
@@ -83,14 +83,13 @@ export default function Hourglass() {
                   timeToShow={getFormat(event.date)}
                   timeLabelStyle={{
                     fontSize: 15,
-                    fontFamily: "Helvetica",
                   }}
                   digitStyle={{
                     backgroundColor: event.icon_color,
                   }}
                   digitTxtStyle={{
                     color: "white",
-                    fontFamily: "Helvetica",
+
                     fontWeight: "normal",
                   }}
                   timeLabels={{
