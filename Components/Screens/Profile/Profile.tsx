@@ -31,10 +31,11 @@ const Card = ({ icon, data, editable }: CardProps) => {
   return (
     <View
       style={{
+          marginBottom: 10,
         maxHeight: 100,
+          minHeight: 62,
         backgroundColor: "white",
         borderRadius: 20,
-        marginBottom: 20,
         flexDirection: "row",
         shadowColor: "#000",
         shadowOffset: {
@@ -47,7 +48,7 @@ const Card = ({ icon, data, editable }: CardProps) => {
         elevation: 5,
       }}
     >
-      <View style={{ flex: 1, margin: 20 }}>
+      <View style={{ flex: 1}}>
         <View
           style={{
             flex: 1,
@@ -58,15 +59,15 @@ const Card = ({ icon, data, editable }: CardProps) => {
         >
           <View
             style={{
-              width: 50,
-              height: 50,
               backgroundColor: "#68CE67",
+                height: 40,
+                width: 40,
               borderRadius: 100,
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <FontAwesome name={icon} size={30} color={"white"} />
+            <FontAwesome name={icon} size={27} color={"white"} />
           </View>
         </View>
       </View>
@@ -125,7 +126,9 @@ const Card = ({ icon, data, editable }: CardProps) => {
             </View>
           </TouchableOpacity>
         ) : (
-          <View />
+          <View style={{flex: 1,
+              justifyContent: "center",
+              alignItems: "center",}}/>
         )}
       </View>
     </View>
@@ -160,21 +163,36 @@ export default function Profile() {
             paddingTop: 30,
           }}
         >
-          <View style={{ flex: 1 }}>
-            <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
-          </View>
-          <View style={{ flex: 1 }}>
-            <Card icon={"home"} data={"Kong inges gt 22"} editable={true} />
-          </View>
-          <View style={{ flex: 1 }}>
-            <Card icon={"phone"} data={"+47 90910636"} editable={true} />
-          </View>
-          <TouchableOpacity
-            style={{ flex: 1 }}
-            onPress={() => setVisibility(true)}
-          >
-            <Card icon={"book"} data={"Din historikk"} editable={false} />
-          </TouchableOpacity>
+            <View style={{ flex: 1 }}>
+                <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
+            </View>
+            <View style={{ flex: 1 }}>
+                <Card icon={"home"} data={"Kong inges gt 22"} editable={true} />
+            </View>
+            <View style={{ flex: 1 }}>
+                <Card icon={"phone"} data={"+47 90910636"} editable={true} />
+            </View>
+            <TouchableOpacity
+                style={{ flex: 1 }}
+                onPress={() => setVisibility(true)}
+            >
+                <View style={{flex: 1,justifyContent: "center"}}>
+                    <View style={{flex: 1, backgroundColor: "#68CE67", borderRadius: 50, justifyContent: "center", alignItems: "center", maxHeight: 50,
+                        shadowColor: "#000",
+                        shadowOffset: {
+                            width: 0,
+                            height: 2,
+                        },
+                        shadowOpacity: 0.1,
+                        shadowRadius: 7,
+
+                        elevation: 5,}}>
+                        <Text style={{color: "white", fontWeight: "bold"}}>
+                            Se innloggingshistorikk
+                        </Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
           <Overlay
             isVisible={visibility}
             overlayStyle={{
@@ -206,6 +224,22 @@ export default function Profile() {
     </SafeAreaView>
   );
 }
+/*
+
+          <View style={{ flex: 1 }}>
+            <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Card icon={"home"} data={"Kong inges gt 22"} editable={true} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Card icon={"phone"} data={"+47 90910636"} editable={true} />
+          </View>
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => setVisibility(true)}
+          >
+ */
 
 const styles = StyleSheet.create({
   heading: {
