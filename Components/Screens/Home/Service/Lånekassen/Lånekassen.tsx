@@ -24,7 +24,7 @@ const LAANEKASSE = [
     },
   },
   {
-    title: "Støttebeløp til elever",
+    title: "Støtte til videregående opplæring",
     icon: {
       type: "FontAwesome5",
       name: "coins",

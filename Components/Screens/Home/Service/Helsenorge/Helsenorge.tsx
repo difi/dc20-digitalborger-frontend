@@ -63,7 +63,7 @@ export function Helsenorge(){
             <Header logo={"Components/Screens/Home/Service/Helsenorge/Helsenorge.tsx"} nameOfService={"Helsenorge"}/>
             <ScrollView style={{flex: 1, backgroundColor: "#9a1c6f"}} showsVerticalScrollIndicator={false}>
                 <View>
-                    <ListItem key={0} iconName = {HELSE[0].icon.name} iconType={HELSE[0].icon.type} containerHeight={230} title={HELSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
+                    <ListItem key={0} iconName = {HELSE[0].icon.name} iconType={HELSE[0].icon.type} containerHeight={120} title={HELSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <Fastlege/>
                         </View>
@@ -75,7 +75,7 @@ export function Helsenorge(){
                         </View>
                     </ListItem>
 
-                    <ListItem key={2} iconName = {HELSE[2].icon.name} iconType={HELSE[2].icon.type} containerHeight={300} title={HELSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
+                    <ListItem key={2} iconName = {HELSE[2].icon.name} iconType={HELSE[2].icon.type} containerHeight={290} title={HELSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <Vaksine/>
                         </View>
