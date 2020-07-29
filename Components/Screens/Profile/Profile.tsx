@@ -224,7 +224,6 @@ export default function Profile() {
             borderTopLeftRadius: 55,
             padding: 25,
             paddingTop: 30,
-            paddingBottom: 50,
           }}
         >
           <View style={{ flex: 1 }}>
