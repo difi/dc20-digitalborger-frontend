@@ -12,7 +12,7 @@ const gradeTitle = {
 
 }
 const snittRegnet = {
-    description: 'Snitt:',
+    description: 'Karakterpoeng:',
     snitt: '5.2'
 
 }

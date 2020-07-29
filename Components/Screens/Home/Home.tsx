@@ -169,7 +169,7 @@ function AllServices({ navigation }) {
               fontSize: 18,
             }}
           >
-            Populære tjenester
+            Snarveier
           </Text>
           <FlatList
             horizontal

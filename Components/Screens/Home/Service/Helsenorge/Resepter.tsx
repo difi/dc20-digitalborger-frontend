@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between"
     },
     nameText: {
-        fontSize: 18,
+        fontSize: 17,
         marginLeft: "2%",
         marginTop: "1%"
 
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
 
     },
     boldText: {
-        fontSize: 18,
+        fontSize: 17,
         fontWeight: "bold",
         width: "100%",
         marginLeft: 10,
@@ -168,14 +168,16 @@ const styles = StyleSheet.create({
         flexShrink: 1,
         marginTop: "2%",
         flexDirection: "row",
-        justifyContent: "space-between",
         width: 170,
+        marginLeft: 10,
         position: "absolute",
         bottom: 0
 
     },
     buttonText:{
-        fontSize: 18,
+        fontSize: 17,
+        fontWeight: "bold",
+        marginRight: 10,
 
     }
 });

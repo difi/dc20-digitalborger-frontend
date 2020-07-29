@@ -54,7 +54,6 @@ export default function Vaksine() {
 
 
 
-
     return (
 
         <View>
@@ -71,14 +70,14 @@ export default function Vaksine() {
                     <View style={styles.leftTextContainer}>
                         {vaccineData.map((vaccines, index) => (
                             <View key={index}>
-                                <Text style={{fontSize: 14}} allowFontScaling={true}>{vaccines.name}</Text>
+                                <Text style={{fontSize: 16}} allowFontScaling={true}>{vaccines.name}</Text>
                             </View>
                         ))}
                     </View>
                     <View style={styles.rightTextContainer}>
                         {vaccineData.map((vaccines1, index1) => (
                             <View key={index1}>
-                                <Text style={{fontSize: 14}} allowFontScaling={true}>{vaccines1.date}</Text>
+                                <Text style={{fontSize: 16}} allowFontScaling={true}>{vaccines1.date}</Text>
                             </View>
                         ))}
                     </View>
