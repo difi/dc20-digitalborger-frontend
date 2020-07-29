@@ -20,7 +20,6 @@ import { Vegvesenet } from "./Service/Vegvesenet/Vegvesenet";
 import { useEffect, useState } from "react";
 
 import { Lanekassen } from "./Service/Lånekassen/Lånekassen";
-import { ListItem } from "./Service/Collapsible/ListItem";
 import { retrieveData, storeData } from "../../Storage";
 import { Politi } from "./Service/Politi/Politi";
 import { Helsenorge } from "./Service/Helsenorge/Helsenorge";
@@ -205,6 +204,7 @@ function AllServices({ navigation }) {
                 </View>
               </TouchableOpacity>
             )}
+            keyExtractor={(item, index) => index.toString()}
           />
         </View>
         <Text
@@ -227,8 +227,7 @@ function AllServices({ navigation }) {
           }}
         >
           <View style={stylesBottom.gridContainer}>
-            {services.map((service, index) => {
-              return (
+            {services.map((service, index) => (
                 <Animated.View
                   key={index}
                   style={{
@@ -285,8 +284,8 @@ function AllServices({ navigation }) {
                     </View>
                   </TouchableOpacity>
                 </Animated.View>
-              );
-            })}
+              )
+            )}
           </View>
           <TouchableOpacity
             style={{ flex: 1 }}
