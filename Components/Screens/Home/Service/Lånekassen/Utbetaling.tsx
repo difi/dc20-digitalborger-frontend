@@ -3,6 +3,9 @@ import {Linking, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, V
 // @ts-ignore
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import * as WebBrowser from "expo-web-browser";
+import {useEffect, useState} from "react";
+import {retrieveData} from "../../../../Storage";
+import {getPayoutData} from "../../../../ServerCommunications/Services/LaanekassenService";
 
 
 const Betalinger = [
@@ -37,6 +40,31 @@ const Betalinger = [
     ];
 
 export default function Utbetaling() {
+    const [payloadData, setPayload] = useState([{ date: "", occurrence: "", sum: 0}],);
+
+    useEffect(() => {
+        (async () => {
+            const pid: number = await retrieveData("pid");
+            let result = await getPayoutData(pid);
+            setPayload(result);
+        })();
+    }, []);
+
+    const formatDate = (date) => {
+
+
+        let time = new Date(date).toLocaleDateString();
+        let format = String(time).split('/')
+
+        let day = format[1];
+        let month = format[0];
+        let year = format[2];
+
+
+        return [day + '.' + month + '.' + year]
+
+    }
+
 
     return(
         <SafeAreaView style={styles.container}>
@@ -48,9 +76,9 @@ export default function Utbetaling() {
             </View>
 
             <ScrollView>
-                {Betalinger.map((item, index) => (
+                {payloadData.map((item, index) => (
                     <View  key = {index} style={styles.listItems}>
-                        <Text style={styles.ItemText}>{item.date}</Text>
+                        <Text style={styles.ItemText}>{formatDate(item.date)}</Text>
                         <Text style={styles.ItemText}>{item.occurrence + "     "}</Text>
                         <Text style={styles.ItemText}>{item.sum + " kr"}</Text>
                     </View>
@@ -105,7 +133,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         position: "absolute",
         right: 0,
-        bottom: 0
+        bottom: 0,
+
     },
     ScrollViewCont: {
 
