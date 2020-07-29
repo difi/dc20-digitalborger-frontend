@@ -1,23 +1,19 @@
-import * as React from "react";
-import {
-  Linking,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { black } from "react-native-paper/lib/typescript/src/styles/colors";
+import * as React from 'react';
+import {Linking, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {black} from "react-native-paper/lib/typescript/src/styles/colors";
 import * as WebBrowser from "expo-web-browser";
 import { useEffect, useState } from "react";
 import { retrieveData } from "../../../../Storage";
 import { getDoctorData } from "../../../../ServerCommunications/Services/HelseNorgeService";
 import { getSkattInfo } from "../../../../ServerCommunications/Services/SkatteetatenService";
 
-const SkattInfo = {
-  beregnet: 10000,
-  trekk: 0.11,
-};
+
+const SkattInfo =
+    {
+        beregnet: 10000,
+        trekk: 0.11,
+    }
 
 export default function SkatteMelding() {
   const [taxData, setTax] = useState({
@@ -33,16 +29,18 @@ export default function SkatteMelding() {
     })();
   }, []);
 
-  return (
-    <View style={styles.gridContainer}>
-      <View style={styles.Infogrid}>
-        <Text style={styles.skattTitle}>Totalt beregnet skatt 2020:</Text>
-        <Text style={styles.skattInput}>{taxData.Skatt.beregnet + " kr"}</Text>
-      </View>
 
-      <View style={styles.meldingDivider}></View>
+    return(
+      <View style={styles.gridContainer}>
+          <View style={styles.InfoContainer}>
+              <Text style={styles.skattTitle}>Totalt beregnet skatt 2020:</Text>
+              <Text style={styles.skattInput}>{taxData.Skatt.beregnet + " kr"}</Text>
 
-      <View style={styles.Infogrid}>
+          </View>
+
+          <View style={styles.meldingDivider}></View>
+
+      <View style={styles.InfoContainer}>
         <Text style={styles.skattTitle}>Skattetrekk på hovedinntekt:</Text>
         <Text style={styles.skattInput}>{taxData.Skatt.trekk * 100 + "%"}</Text>
       </View>
@@ -71,13 +69,14 @@ const styles = StyleSheet.create({
     borderBottomColor: "black",
     borderBottomWidth: 1,
   },
-  Infogrid: {
-    flex: 1,
+  InfoContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "3%",
+    marginTop: 10,
+    marginBottom: 10,
+
   },
   skattTitle: {
     fontSize: 15,
@@ -93,7 +92,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
   buttonText: {
-    fontSize: 13,
+    fontSize: 15,
     fontWeight: "bold",
     marginRight: 10,
     marginTop: 2,
