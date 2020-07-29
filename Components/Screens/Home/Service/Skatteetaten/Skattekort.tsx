@@ -10,7 +10,8 @@ export default function Skattekort() {
   return (
     <View style={styles.container}>
       <Text style={styles.boldText}>
-        Tjener du mer en 55 000 kroner må du ha et skattekort.
+        Tjener du mer en 55 000 kroner må du ha et skattekort. {'\n'}
+        {'\n'} Om du tjener 55 000 kroner eller mindre anbefaler vi deg å søke frikort
       </Text>
 
       <TouchableOpacity

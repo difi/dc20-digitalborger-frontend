@@ -29,11 +29,22 @@ export default function Notification(props: {
 
 const styles = StyleSheet.create({
   gridContainer: {
-    maxWidth: "99%",
-    height: 100,
+    width: "98%",
+    height: 110,
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 5,
+    backgroundColor: "white",
+    shadowColor: "gainsboro",
+    borderRadius: 20,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 1.8,
+    elevation: 4,
+    alignSelf: "center",
   },
   logo: {
     width: 60,

@@ -73,7 +73,7 @@ export default function Resepter() {
 
                     <Text style={styles.nameText} allowFontScaling={true}>{prescription.name}</Text>
 
-                    <View style={styles.Infogrid}>
+                    <View style={styles.InfoContainer}>
                         <Text style={styles.text} allowFontScaling={true}>{prescription.category}</Text>
                         <Text style={styles.text} allowFontScaling={true}>{prescription.status}</Text>
                     </View>
@@ -95,7 +95,7 @@ export default function Resepter() {
 
                     <Text style={styles.nameText} allowFontScaling={true}>{prescription1.name}</Text>
 
-                    <View style={styles.Infogrid}>
+                    <View style={styles.InfoContainer}>
                         <Text style={styles.text} allowFontScaling={true} >{prescription1.category}</Text>
 
                         <TouchableOpacity
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: "lightgrey",
     },
-    Infogrid: {
+    InfoContainer: {
         flexShrink: 1,
         flexWrap: "wrap",
         flexDirection: "row",
