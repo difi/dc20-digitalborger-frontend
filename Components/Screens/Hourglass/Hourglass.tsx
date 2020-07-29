@@ -96,14 +96,12 @@ export default function Hourglass() {
                   timeToShow={getFormat(event.date)}
                   timeLabelStyle={{
                     fontSize: 15,
-                    fontFamily: "Helvetica",
                   }}
                   digitStyle={{
                     backgroundColor: event.icon_color,
                   }}
                   digitTxtStyle={{
                     color: "white",
-                    fontFamily: "Helvetica",
                     fontWeight: "normal",
                   }}
                   timeLabels={{
