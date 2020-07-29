@@ -71,10 +71,10 @@ const styles = StyleSheet.create({
     Infogrid: {
         flex: 1,
         flexDirection: "row",
-        flexWrap: "wrap",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: '3%'
+        marginLeft: 10,
+        marginRight: 10,
     },
     skattTitle: {
         fontSize: 15,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     buttonText: {
-        fontSize: 13,
+        fontSize: 15,
         fontWeight: "bold",
         marginLeft: 10
     }
