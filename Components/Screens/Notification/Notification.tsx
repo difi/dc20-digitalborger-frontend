@@ -2,11 +2,10 @@ import * as React from "react";
 import { View, ScrollView, StyleSheet, SafeAreaView } from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header, Text } from "react-native-elements";
-import { useEffect, useState } from "react";
+
 import axios from "axios";
 
-import Skattemelding from "../Skattegiver";
-import KontaktPoliti from "../Home/Service/Politi/KontaktPoliti";
+
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -43,7 +42,9 @@ const events = [
 ];
 // Slutt data
 
+
 export default function Notification() {
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>Varslinger</Text>
@@ -75,7 +76,6 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 40,
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     marginTop: 10,
     padding: 20,
   },

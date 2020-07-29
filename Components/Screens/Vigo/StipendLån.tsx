@@ -5,6 +5,7 @@ import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
+import {white} from "react-native-paper/lib/typescript/src/styles/colors";
 
 
 
@@ -102,8 +103,6 @@ export default function StipendLån() {
     );
 }
 
-
-
 const styles = StyleSheet.create({
 
     container:{
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
         width: "49%",
         height: "25%",
         marginTop: 20,
-        backgroundColor: "white",
+        backgroundColor: 'white'
 
     },
 
@@ -129,12 +128,15 @@ const styles = StyleSheet.create({
         marginTop: 16,
         alignSelf: "flex-end",
         right: 8,
+
     },
 
     textContainer:{
         left: 5,
         bottom: 15,
+
     },
+
 
 
 });

@@ -20,8 +20,6 @@ export default function Fastlege() {
 
 
 
-
-
     return (
         <View>
             <View style={styles.row}>
