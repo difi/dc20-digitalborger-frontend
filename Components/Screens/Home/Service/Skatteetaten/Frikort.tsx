@@ -22,11 +22,13 @@ export default function Frikort() {
       <TouchableOpacity
         style={styles.LinkContainer}
         onPress={() =>
-            WebBrowser.openBrowserAsync("https://www.skatteetaten.no/person/skatt/skattekort/frikort/bestille-frikort/")
+          WebBrowser.openBrowserAsync(
+            "https://www.skatteetaten.no/person/skatt/skattekort/frikort/bestille-frikort/"
+          )
         }
       >
-        <FontAwesome key={0} name={"arrow-circle-right"} size={20} />
         <Text style={styles.buttonText}>Bestill frikort her</Text>
+        <FontAwesome key={0} name={"arrow-circle-right"} size={20} />
       </TouchableOpacity>
     </View>
   );
@@ -40,18 +42,19 @@ const styles = StyleSheet.create({
   },
 
   infoText: {
-    margin: "5%",
     fontSize: 15,
+    marginHorizontal: "2%",
+    marginTop: "2%",
   },
 
   LinkContainer: {
-    margin: "5%",
     flexDirection: "row",
+    alignSelf: "flex-end",
   },
-
   buttonText: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "bold",
-    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 2,
   },
 });
