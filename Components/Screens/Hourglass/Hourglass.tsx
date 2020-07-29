@@ -19,14 +19,14 @@ const events = [
     logo: "https://www.vigo.no/vigo/html/img/vigo-logo.png",
     description: "23:00:21",
     date: deadline,
-    icon_color: "#64D2FF",
+    icon_color: "#AED5F1",
   },
   {
     name: "Søk om støtte fra lånekassen",
     logo:
       "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk_400x400.jpg",
     date: deadline2,
-    icon_color: "#BF5AF2",
+    icon_color: "#F7D590",
   },
   {
     name: "Corona vaksine",
@@ -34,7 +34,7 @@ const events = [
       "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
     description: "10 dager",
     date: deadline3,
-    icon_color: "#30D158",
+    icon_color: "#EE8970",
   },
 ];
 // Slutt data
@@ -44,19 +44,6 @@ export default function Hourglass() {
 
   function getTimeLeft(deadline: Date) {
     return (deadline.getTime() - date.getTime()) / 1000;
-  }
-
-  function getColor(deadline: Date) {
-    if (getTimeLeft(deadline) <= 86400) {
-      return "white";
-    }
-    return "white";
-  }
-
-  function sendPush24hrsLeft(title: String, date: Date) {
-    if (getTimeLeft(date) <= 24 * 60 * 60) {
-      return <PushNotification title={title} date={date} />;
-    }
   }
 
   function getFormat(deadline: Date) {
@@ -96,14 +83,13 @@ export default function Hourglass() {
                   timeToShow={getFormat(event.date)}
                   timeLabelStyle={{
                     fontSize: 15,
-                    fontFamily: "Helvetica",
                   }}
                   digitStyle={{
                     backgroundColor: event.icon_color,
                   }}
                   digitTxtStyle={{
                     color: "white",
-                    fontFamily: "Helvetica",
+
                     fontWeight: "normal",
                   }}
                   timeLabels={{
@@ -128,6 +114,7 @@ export default function Hourglass() {
             </View>
           </View>
         ))}
+        <View style={{ height: 200 }}></View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -137,7 +124,6 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 40,
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     marginTop: 10,
     padding: 20,
   },
@@ -152,7 +138,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     fontSize: 20,
     marginLeft: 10,
     color: "red",
@@ -176,7 +161,6 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   date: {
-    fontFamily: "Helvetica",
     color: "grey",
     paddingLeft: 12,
     paddingTop: 5,

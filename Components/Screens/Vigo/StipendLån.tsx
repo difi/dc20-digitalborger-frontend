@@ -113,22 +113,31 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         width: "90%",
         left: 17,
+
     },
+
     linkContainer:{
         width: "49%",
         height: "25%",
         marginTop: 20,
         backgroundColor: "white",
+
     },
+
     iconContainer:{
         flexDirection: "row",
         marginTop: 16,
         alignSelf: "flex-end",
         right: 8,
+
     },
+
     textContainer:{
         left: 5,
         bottom: 15,
+
     },
+
+
 
 });
