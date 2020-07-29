@@ -114,7 +114,7 @@ export function Lanekassen({ route }) {
             key={2}
             iconName={LAANEKASSE[2].icon.name}
             iconType={LAANEKASSE[2].icon.type}
-            containerHeight={550}
+            containerHeight={350}
             title={LAANEKASSE[2].title}
             parentCallback={(item) => {
               setSelectedIndex(2);
