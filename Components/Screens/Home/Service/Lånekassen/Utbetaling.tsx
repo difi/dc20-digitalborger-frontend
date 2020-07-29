@@ -11,36 +11,46 @@ import {
 // @ts-ignore
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import * as WebBrowser from "expo-web-browser";
+import {useEffect, useState} from "react";
+import {retrieveData} from "../../../../Storage";
+import {getPayoutData} from "../../../../ServerCommunications/Services/LaanekassenService";
 
-const Betalinger = [
-  {
-    date: "16.04.2020",
+const Betalinger = {
     occurrence: "Utbetaling",
-    sum: 11020,
-  },
-  {
-    date: "15.03.2020",
-    occurrence: "Utbetaling",
-    sum: 8265,
-  },
-  {
-    date: "14.02.2020",
-    occurrence: "Utbetaling",
-    sum: 8265,
-  },
-  {
-    date: "14.01.2020",
-    occurrence: "Utbetaling",
-    sum: 8265,
-  },
-  {
-    date: "14.12.2019",
-    occurrence: "Utbetaling",
-    sum: 8200,
-  },
-];
+  }
+
 
 export default function Utbetaling() {
+
+  const [payout, setPayout] = useState([
+    { date: "", occurrence: "null", sum: 0 },
+  ]);
+
+
+  useEffect(() => {
+    (async () => {
+      const pid: number = await retrieveData("pid");
+      let result = await getPayoutData(pid);
+      setPayout(result);
+    })();
+  }, []);
+
+
+  const formatDate = (date) => {
+
+
+    let time = new Date(date).toLocaleDateString();
+    let format = String(time).split('/')
+
+    let day = format[1];
+    let month = format[0];
+    let year = format[2];
+
+
+    return [day + '.' + month + '.' + year]
+
+  }
+
   return (
     <SafeAreaView>
       <View style={styles.titleHeader}>
@@ -49,10 +59,10 @@ export default function Utbetaling() {
         <Text style={styles.titleText}>Beløp</Text>
       </View>
       <ScrollView>
-        {Betalinger.map((item, index) => (
+        {payout.slice(0, 6).map((item, index) => (
           <View key={index} style={styles.listItems}>
-            <Text style={styles.ItemText}>{item.date}</Text>
-            <Text style={styles.ItemText}>{item.occurrence}</Text>
+            <Text style={styles.ItemText}>{formatDate(item.date)}</Text>
+            <Text style={styles.ItemText}>{Betalinger.occurrence}</Text>
             <Text style={styles.ItemText}>{item.sum + " kr"}</Text>
           </View>
         ))}
@@ -66,13 +76,14 @@ export default function Utbetaling() {
             )
           }
         >
-          <FontAwesome
-            key={0}
-            name={"arrow-circle-right"}
-            size={20}
-            color="#4d264f"
-          />
+
           <Text style={styles.linkText}>Til dine sider</Text>
+          <FontAwesome
+              key={0}
+              name={"arrow-circle-right"}
+              size={20}
+              color="#4d264f"
+          />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -84,10 +95,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    height: "15%",
+    height: 40,
     width: "100%",
     backgroundColor: "#4d264f",
     bottom: 10,
+    flexShrink: 1,
   },
   titleText: {
     color: "white",
@@ -96,6 +108,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   listItems: {
+    flexShrink: 1,
     flexDirection: "row",
     borderBottomWidth: 1,
     justifyContent: "space-around",
@@ -110,11 +123,13 @@ const styles = StyleSheet.create({
   },
   LinkContainer: {
     flexDirection: "row",
-    top: 10,
-    left: 15,
+    position: "absolute",
+    right: 0,
+    top: 5,
   },
   linkText: {
+    fontWeight: "bold",
     fontSize: 16,
-    marginLeft: 10,
+    marginRight: 10,
   },
 });
