@@ -14,7 +14,7 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Dude from "./assets/Dude";
 // @ts-ignore
 import ProfileHeader from "./assets/ProfileHeader";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Overlay } from "react-native-elements";
 import symbolicateStackTrace from "react-native/Libraries/Core/Devtools/symbolicateStackTrace";
 
@@ -25,9 +25,27 @@ interface CardProps {
 }
 
 const Card = ({ icon, data, editable }: CardProps) => {
-  const [edit, setEdit] = useState(false);
   const [value, setValue] = useState(data);
   const [changeLayout, setChangeLayout] = useState(false);
+  const [finalValue, setFinalValue] = useState("");
+
+  useEffect(() => {
+      setFinalValue(data);
+  }, [data]);
+
+  const saveData = async () => {
+      if(value !== finalValue){
+          //Send to DB
+          //await sendChange(finalValue);
+      }
+      setChangeLayout(!changeLayout);
+  }
+
+    const abort = () => {
+        setValue(finalValue);
+        setChangeLayout(!changeLayout);
+    }
+
   return (
     <View
       style={{
@@ -48,29 +66,51 @@ const Card = ({ icon, data, editable }: CardProps) => {
         elevation: 5,
       }}
     >
-      <View style={{ flex: 1}}>
-        <View
-          style={{
-            flex: 1,
-            margin: 20,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: "#68CE67",
-                height: 40,
-                width: 40,
-              borderRadius: 100,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <FontAwesome name={icon} size={27} color={"white"} />
-          </View>
+        {changeLayout ? (
+            <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+                <TouchableOpacity onPress={() => abort()}>
+                    <View
+                        style={{
+                            width: 50,
+                            height: 40,
+                            backgroundColor: "red",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            borderRadius: 5,
+                        }}
+                    >
+                        <Text style={{ color: "white", fontWeight: "bold"}}>
+                            Avbryt
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+
         </View>
-      </View>
+        ) : (
+            <View style={{ flex: 1}}>
+                <View
+                    style={{
+                        flex: 1,
+                        margin: 20,
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    <View
+                        style={{
+                            backgroundColor: "#68CE67",
+                            height: 40,
+                            width: 40,
+                            borderRadius: 100,
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        <FontAwesome name={icon} size={27} color={"white"} />
+                    </View>
+                </View>
+            </View>
+        )}
 
       <View style={{ flex: 3 }}>
         {changeLayout ? (
@@ -96,7 +136,7 @@ const Card = ({ icon, data, editable }: CardProps) => {
         )}
       </View>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        {editable ? (
+        {editable && (
           <TouchableOpacity onPress={() => setChangeLayout(!changeLayout)}>
             <View
               style={{
@@ -106,29 +146,45 @@ const Card = ({ icon, data, editable }: CardProps) => {
               }}
             >
               {changeLayout ? (
-                <View
-                  style={{
-                    width: 50,
-                    height: 40,
-                    backgroundColor: "#68CE67",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderRadius: 5,
-                  }}
-                >
-                  <Text style={{ color: "white", fontWeight: "bold" }}>
-                    Lagre
-                  </Text>
-                </View>
+                      <TouchableOpacity onPress={() => saveData()}>
+                          <View
+                              style={{
+                                  flex: 1,
+                                  justifyContent: "center",
+                                  alignItems: "center",
+                              }}
+                          >
+                              <View
+                                  style={{
+                                      width: 50,
+                                      height: 40,
+                                      backgroundColor: "#68CE67",
+                                      justifyContent: "center",
+                                      alignItems: "center",
+                                      borderRadius: 5,
+                                  }}
+                              >
+                                  <Text style={{ color: "white", fontWeight: "bold" }}>
+                                      Lagre
+                                  </Text>
+                              </View>
+                          </View>
+                      </TouchableOpacity>
               ) : (
-                <FontAwesome name="edit" size={20} color={"black"} />
+                  <TouchableOpacity onPress={() => setChangeLayout(!changeLayout)}>
+                      <View
+                          style={{
+                              flex: 1,
+                              justifyContent: "center",
+                              alignItems: "center",
+                          }}
+                      >
+                          <FontAwesome name="edit" size={20} color={"black"} />
+                      </View>
+                  </TouchableOpacity>
               )}
             </View>
           </TouchableOpacity>
-        ) : (
-          <View style={{flex: 1,
-              justifyContent: "center",
-              alignItems: "center",}}/>
         )}
       </View>
     </View>
