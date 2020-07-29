@@ -45,18 +45,40 @@ export default function Skattegiver() {
 
     }, []);
 
+
+    const formatMonth = (month) => {
+
+            switch (month) {
+                case "May":
+                    return "Mai";
+                    break;
+                case "Oct":
+                    return "Okt";
+                    break;
+                case "Dec":
+                    return "Des";
+                    break;
+                default:
+                    return month;
+                    break;
+
+            }
+        }
+
     const formatDate = (date) => {
 
 
-        let time = new Date(date).toLocaleDateString();
-        let format = String(time).split('/')
+        let time = new Date(date).toDateString();
+        let format = String(time).split(' ')
 
-        let day = format[1];
-        let month = format[0];
-        let year = format[2];
+        let month = format[1];
+        let day = format[2];
+        let year = format[3];
+
+        console.log(time)
 
 
-        return [day + '.' + month + '.' + year]
+        return day + "." + formatMonth(month) + "." + year ;
 
     }
 
