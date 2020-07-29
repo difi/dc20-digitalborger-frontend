@@ -24,7 +24,7 @@ export default function App() {
         />
         <Stack.Screen
           name={"GetStarted"}
-          component={GetStarted}
+          component={ScreenTabs}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
