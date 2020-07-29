@@ -15,12 +15,10 @@ export default function KontaktPoliti() {
 
 
         <View style={styles.mainContainer}>
-            <View style={styles.topContainer}>
                 <View style={styles.topContainerText}>
                     <Text style={{fontSize: 17}}>Ring politiet</Text>
                     <Text onPress={()=>{Linking.openURL("tel: 02800");}} style={{fontSize: 17, fontWeight:"bold"}}>    02800</Text>
                 </View>
-            </View>
             <View style={styles.bottomContainer}>
                 <Text style={{fontSize: 17}}>Nødnummer</Text>
                 <Text onPress={()=>{Linking.openURL("tel: 112");}} style={{fontSize: 17, fontWeight:"bold"}}>   112</Text>
@@ -55,25 +53,15 @@ const styles = StyleSheet.create({
         marginTop: 30,
         height: "100%",
     },
-
-    topContainer:{
-        borderBottomWidth: 1,
-        borderBottomColor: "#E1E1E1",
-        borderRadius: 20,
-
-    },
     topContainerText:{
         flexDirection: "row",
-        bottom: 7,
         left: 10,
     },
-
     bottomContainer:{
-        marginTop: 10,
+        marginTop: 20,
         left: 10,
         flexDirection: "row",
     },
-
     linkContainer:{
         width: "90%",
         height: "20%",
@@ -81,13 +69,11 @@ const styles = StyleSheet.create({
         left: 10,
         backgroundColor:"#212a3b",
     },
-
     linkStyleContainer:{
         flexDirection: "row",
         marginTop: 15,
         left: 5,
     },
-
     iconContainer:{
         left: 95,
     },
