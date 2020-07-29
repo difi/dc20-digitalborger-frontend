@@ -8,15 +8,12 @@ import {
     TextInput,
     Button, ScrollView,
 } from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
+// @ts-ignore
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import Dude from "./assets/Dude";
 // @ts-ignore
 import ProfileHeader from "./assets/ProfileHeader";
 import {useEffect, useState} from "react";
 import { Overlay } from "react-native-elements";
-import symbolicateStackTrace from "react-native/Libraries/Core/Devtools/symbolicateStackTrace";
 
 interface CardProps {
   icon: string;
