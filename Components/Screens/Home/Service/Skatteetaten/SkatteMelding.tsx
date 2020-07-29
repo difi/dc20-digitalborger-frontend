@@ -32,7 +32,7 @@ export default function SkatteMelding() {
 
     return(
       <View style={styles.gridContainer}>
-          <View style={styles.Infogrid}>
+          <View style={styles.InfoContainer}>
               <Text style={styles.skattTitle}>Totalt beregnet skatt 2020:</Text>
               <Text style={styles.skattInput}>{taxData.Skatt.beregnet + " kr"}</Text>
 
@@ -40,7 +40,7 @@ export default function SkatteMelding() {
 
           <View style={styles.meldingDivider}></View>
 
-      <View style={styles.Infogrid}>
+      <View style={styles.InfoContainer}>
         <Text style={styles.skattTitle}>Skattetrekk på hovedinntekt:</Text>
         <Text style={styles.skattInput}>{taxData.Skatt.trekk * 100 + "%"}</Text>
       </View>
@@ -69,13 +69,15 @@ const styles = StyleSheet.create({
     borderBottomColor: "black",
     borderBottomWidth: 1,
   },
-  Infogrid: {
-    flex: 1,
+  InfoContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "3%",
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 10,
+    marginRight: 10,
   },
   skattTitle: {
     fontSize: 15,
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
   buttonText: {
-    fontSize: 13,
+    fontSize: 15,
     fontWeight: "bold",
     marginRight: 10,
     marginTop: 2,
