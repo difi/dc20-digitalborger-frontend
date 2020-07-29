@@ -1,18 +1,19 @@
 import * as React from "react";
 import {
-    StyleSheet,
-    View,
-    SafeAreaView,
-    Text,
-    TouchableOpacity,
-    TextInput,
-    Button, ScrollView,
+  StyleSheet,
+  View,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Button,
+  ScrollView,
 } from "react-native";
 // @ts-ignore
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 // @ts-ignore
 import ProfileHeader from "./assets/ProfileHeader";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { Overlay } from "react-native-elements";
 
 interface CardProps {
@@ -27,28 +28,28 @@ const Card = ({ icon, data, editable }: CardProps) => {
   const [finalValue, setFinalValue] = useState("");
 
   useEffect(() => {
-      setFinalValue(data);
+    setFinalValue(data);
   }, [data]);
 
   const saveData = async () => {
-      if(value !== finalValue){
-          //Send to DB
-          //await sendChange(finalValue);
-      }
-      setChangeLayout(!changeLayout);
-  }
-
-    const abort = () => {
-        setValue(finalValue);
-        setChangeLayout(!changeLayout);
+    if (value !== finalValue) {
+      //Send to DB
+      //await sendChange(finalValue);
     }
+    setChangeLayout(!changeLayout);
+  };
+
+  const abort = () => {
+    setValue(finalValue);
+    setChangeLayout(!changeLayout);
+  };
 
   return (
     <View
       style={{
-          marginBottom: 10,
+        marginBottom: 10,
         backgroundColor: "white",
-          minHeight: 50,
+        minHeight: 50,
         borderRadius: 20,
         flexDirection: "row",
         shadowColor: "#000",
@@ -62,51 +63,55 @@ const Card = ({ icon, data, editable }: CardProps) => {
         elevation: 5,
       }}
     >
-        {changeLayout ? (
-            <View style={{flex: 1, justifyContent: "center", alignItems: "center", height: 80}}>
-                <TouchableOpacity onPress={() => abort()}>
-                    <View
-                        style={{
-                            width: 50,
-                            height: 40,
-                            backgroundColor: "red",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            borderRadius: 5,
-                        }}
-                    >
-                        <Text style={{ color: "white", fontWeight: "bold"}}>
-                            Avbryt
-                        </Text>
-                    </View>
-                </TouchableOpacity>
-
-        </View>
-        ) : (
-            <View style={{ flex: 1}}>
-                <View
-                    style={{
-                        flex: 1,
-                        margin: 20,
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    <View
-                        style={{
-                            backgroundColor: "#68CE67",
-                            height: 40,
-                            width: 40,
-                            borderRadius: 100,
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}
-                    >
-                        <FontAwesome name={icon} size={27} color={"white"} />
-                    </View>
-                </View>
+      {changeLayout ? (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            height: 80,
+          }}
+        >
+          <TouchableOpacity onPress={() => abort()}>
+            <View
+              style={{
+                width: 50,
+                height: 40,
+                backgroundColor: "red",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 5,
+              }}
+            >
+              <Text style={{ color: "white", fontWeight: "bold" }}>Avbryt</Text>
             </View>
-        )}
+          </TouchableOpacity>
+        </View>
+      ) : (
+        <View style={{ flex: 1 }}>
+          <View
+            style={{
+              flex: 1,
+              margin: 20,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: "#68CE67",
+                height: 40,
+                width: 40,
+                borderRadius: 100,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <FontAwesome name={icon} size={27} color={"white"} />
+            </View>
+          </View>
+        </View>
+      )}
 
       <View style={{ flex: 3 }}>
         {changeLayout ? (
@@ -142,42 +147,44 @@ const Card = ({ icon, data, editable }: CardProps) => {
               }}
             >
               {changeLayout ? (
-                      <TouchableOpacity onPress={() => saveData()}>
-                          <View
-                              style={{
-                                  flex: 1,
-                                  justifyContent: "center",
-                                  alignItems: "center",
-                              }}
-                          >
-                              <View
-                                  style={{
-                                      width: 50,
-                                      height: 40,
-                                      backgroundColor: "#68CE67",
-                                      justifyContent: "center",
-                                      alignItems: "center",
-                                      borderRadius: 5,
-                                  }}
-                              >
-                                  <Text style={{ color: "white", fontWeight: "bold" }}>
-                                      Lagre
-                                  </Text>
-                              </View>
-                          </View>
-                      </TouchableOpacity>
+                <TouchableOpacity onPress={() => saveData()}>
+                  <View
+                    style={{
+                      flex: 1,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <View
+                      style={{
+                        width: 50,
+                        height: 40,
+                        backgroundColor: "#68CE67",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: 5,
+                      }}
+                    >
+                      <Text style={{ color: "white", fontWeight: "bold" }}>
+                        Lagre
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
               ) : (
-                  <TouchableOpacity onPress={() => setChangeLayout(!changeLayout)}>
-                      <View
-                          style={{
-                              flex: 1,
-                              justifyContent: "center",
-                              alignItems: "center",
-                          }}
-                      >
-                          <FontAwesome name="edit" size={20} color={"black"} />
-                      </View>
-                  </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => setChangeLayout(!changeLayout)}
+                >
+                  <View
+                    style={{
+                      flex: 1,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <FontAwesome name="edit" size={20} color={"black"} />
+                  </View>
+                </TouchableOpacity>
               )}
             </View>
           </TouchableOpacity>
@@ -192,16 +199,19 @@ export default function Profile() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#A4D7F4" }}>
-      <ScrollView style={{ flex: 1, backgroundColor: "#A4D7F4" }} showsVerticalScrollIndicator={false}>
-          <Text style={styles.heading}>Din profil</Text>
-        <View style={{ flex: 1, backgroundColor: "white"}}>
+      <ScrollView
+        style={{ flex: 1, backgroundColor: "#A4D7F4" }}
+        showsVerticalScrollIndicator={false}
+      >
+        <Text style={styles.heading}>Din profil</Text>
+        <View style={{ flex: 1, backgroundColor: "white" }}>
           <View
             style={{
               flex: 1,
               backgroundColor: "#A4D7F4",
               borderBottomRightRadius: 75,
               justifyContent: "center",
-                alignItems: "center"
+              alignItems: "center",
             }}
           >
             <ProfileHeader width={200} height={200} />
@@ -214,38 +224,47 @@ export default function Profile() {
             borderTopLeftRadius: 55,
             padding: 25,
             paddingTop: 30,
+            paddingBottom: 50,
           }}
         >
-            <View style={{ flex: 1}}>
-                <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
-            </View>
-            <View style={{ flex: 1 }}>
-                <Card icon={"home"} data={"Kong inges gt 22"} editable={true} />
-            </View>
-            <View style={{ flex: 1 }}>
-                <Card icon={"phone"} data={"+47 90910636"} editable={true} />
-            </View>
-            <TouchableOpacity
-                style={{ flex: 1 }}
-                onPress={() => setVisibility(true)}
-            >
-                <View style={{flex: 1,justifyContent: "center", height: 50}}>
-                    <View style={{flex: 1, backgroundColor: "#68CE67", borderRadius: 50, justifyContent: "center", alignItems: "center",
-                        shadowColor: "#000",
-                        shadowOffset: {
-                            width: 0,
-                            height: 2,
-                        },
-                        shadowOpacity: 0.1,
-                        shadowRadius: 7,
+          <View style={{ flex: 1 }}>
+            <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Card icon={"home"} data={"Kong inges gt 22"} editable={true} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Card icon={"phone"} data={"+47 90910636"} editable={true} />
+          </View>
+          <TouchableOpacity
+            style={{ flex: 1 }}
+            onPress={() => setVisibility(true)}
+          >
+            <View style={{ flex: 1, justifyContent: "center", height: 50 }}>
+              <View
+                style={{
+                  flex: 1,
+                  backgroundColor: "#68CE67",
+                  borderRadius: 50,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  shadowColor: "#000",
+                  shadowOffset: {
+                    width: 0,
+                    height: 2,
+                  },
+                  shadowOpacity: 0.1,
+                  shadowRadius: 7,
 
-                        elevation: 5,}}>
-                        <Text style={{color: "white", fontWeight: "bold"}}>
-                            Se innloggingshistorikk
-                        </Text>
-                    </View>
-                </View>
-            </TouchableOpacity>
+                  elevation: 5,
+                }}
+              >
+                <Text style={{ color: "white", fontWeight: "bold" }}>
+                  Se innloggingshistorikk
+                </Text>
+              </View>
+            </View>
+          </TouchableOpacity>
           <Overlay
             isVisible={visibility}
             overlayStyle={{

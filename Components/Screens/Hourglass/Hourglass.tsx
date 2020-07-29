@@ -38,7 +38,7 @@ export default function Hourglass() {
   return (
     <SafeAreaView>
       <Text style={styles.heading}>Nedtellinger</Text>
-      <ScrollView style={{}}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {events.map((event, index) => (
           <View key={index}>
             <Card
