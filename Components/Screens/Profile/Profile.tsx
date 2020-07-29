@@ -137,7 +137,7 @@ export default function Profile() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#A4D7F4" }}>
-      <Text style={styles.heading}>Din Profil</Text>
+      <Text style={styles.heading}>Din profil</Text>
       <View style={{ flex: 1, backgroundColor: "#A4D7F4" }}>
         <View style={{ flex: 1, backgroundColor: "white" }}>
           <View
