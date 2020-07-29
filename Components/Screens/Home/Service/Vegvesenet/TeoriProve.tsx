@@ -8,7 +8,7 @@ export default function TeoriProve() {
   return (
     <View style={styles.gridContainer}>
       <Text style={styles.buttonText}>
-            Bestilling av time til teoriprøven gjøres på vegvesenet sine nettsider. 
+        Bestilling av time til teoriprøven gjøres på vegvesenet sine nettsider.
       </Text>
 
       <TouchableOpacity
@@ -21,7 +21,7 @@ export default function TeoriProve() {
       >
         <View style={styles.linkContainer}>
           <Text style={styles.linkText}> Gå til timebestilling</Text>
-          <Icon name="arrow-right-circle-outline" size={40}></Icon>
+          <Icon name="arrow-right-circle-outline" size={20}></Icon>
         </View>
       </TouchableOpacity>
     </View>
@@ -32,24 +32,24 @@ const styles = StyleSheet.create({
   gridContainer: {
     borderWidth: 5,
     borderColor: "#e6e6e6",
-    height: 150,
+    height: "auto",
     width: "100%",
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: 15,
     margin: 10,
   },
   linkContainer: {
     display: "flex",
     flexDirection: "row",
-    marginTop: 10,
+    marginBottom: 10,
     alignSelf: "flex-end",
+    marginEnd: 5,
   },
 
   linkText: {
-    fontSize: 20,
+    fontSize: 15,
     paddingLeft: 10,
-    marginTop: 6,
-    marginRight: 8,
+    marginRight: 5,
   },
 });
