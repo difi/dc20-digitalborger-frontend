@@ -7,6 +7,8 @@ import PushNotification from "./PushNotification";
 import { useEffect, useState } from "react";
 import { getCountdowns } from "../../ServerCommunications/Services/Countdowns";
 
+const colors = [{ red: "#EE8970" }, { blue: "#AED5F1" }, { yellow: "#F7D590" }];
+
 function getTimeLeft(data: Date) {
   let date = new Date();
   let deadline = new Date(data);
@@ -18,6 +20,12 @@ function getFormat(deadline: Date) {
     return ["H", "M", "S"];
   }
   return ["D", "H"];
+}
+
+function getTimeString(deadline: Date) {
+  let date = new Date(deadline);
+  console.log(date.toLocaleDateString("en-GB"));
+  return date.toLocaleDateString("en-GB");
 }
 
 export default function Hourglass() {
@@ -84,12 +92,17 @@ export default function Hourglass() {
               <Text
                 style={[
                   styles.title,
-                  { color: index === 0 ? "rgb(255, 102, 102)" : "black" },
+                  {
+                    color:
+                      getTimeLeft(event.fristnavn) < 24 * 60 * 60
+                        ? "rgb(255, 102, 102)"
+                        : "black",
+                  },
                 ]}
               >
                 {event.fristnavn}
               </Text>
-              <Text style={styles.date}>25.03.2020</Text>
+              <Text style={styles.date}>{getTimeString(event.fristdato)}</Text>
             </View>
           </View>
         ))}
