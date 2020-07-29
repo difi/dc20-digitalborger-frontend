@@ -97,7 +97,7 @@ export function Politi() {
             key={0}
             iconName={POLITI[0].icon.name}
             iconType={POLITI[0].icon.type}
-            containerHeight={250}
+            containerHeight={280}
             title={POLITI[0].title}
             parentCallback={(item) => {
               setSelectedIndex(0);
