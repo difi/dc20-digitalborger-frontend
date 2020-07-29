@@ -3,9 +3,7 @@ import { AxiosError } from "axios";
 
 export const getCountdowns = async () => {
   try {
-    const response = await apiClient.get(
-      "sonapi/node/frist?include=field_tjeneste&sort=field_dato"
-    );
+    const response = await apiClient.get("frister");
     if (response.status !== 404) {
       return response.data;
     }

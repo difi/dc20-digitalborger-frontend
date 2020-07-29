@@ -67,10 +67,10 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={"ScreenTabs"} headerMode={"none"}>
+      <Stack.Navigator initialRouteName={"GetStarted"} headerMode={"none"}>
         <Stack.Screen
           name="Login"
-          component={Login}
+          component={ScreenTabs}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -80,7 +80,7 @@ export default function App() {
         />
         <Stack.Screen
           name={"GetStarted"}
-          component={GetStarted}
+          component={ScreenTabs}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
