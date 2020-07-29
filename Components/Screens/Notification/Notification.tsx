@@ -1,12 +1,27 @@
 import * as React from "react";
-import { View, ScrollView, StyleSheet, SafeAreaView } from "react-native";
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  SafeAreaView,
+  Platform,
+} from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header, Text } from "react-native-elements";
-import { useEffect, useState } from "react";
+
 import axios from "axios";
 
 import Skattemelding from "../Skattegiver";
 import KontaktPoliti from "../Home/Service/Politi/KontaktPoliti";
+import { retrieveData } from "../../Storage";
+import {
+  sendToken,
+  updateBagde,
+} from "../../ServerCommunications/Services/PushNotifications";
+import Constants from "expo-constants";
+import * as Notifications from "expo-notifications";
+import * as Permissions from "expo-permissions";
+import { useState, useEffect } from "react";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -22,7 +37,7 @@ const events = [
     description: "Fristen for å søke videregående skole er 25.05.2020",
     received: "25 minutter siden",
     icon: "mail-with-circle",
-    icon_color: "#30D158",
+    icon_color: "#F7D590",
   },
   {
     service: "Lånekassen",
@@ -30,7 +45,7 @@ const events = [
       "Lånekassen minner om at fristen for å søke støtte er 25.03.2020",
     received: "Mandag, 17:35",
     icon: "mail-with-circle",
-    icon_color: "#64D2FF",
+    icon_color: "#AED5F1",
   },
   {
     service: "Helse Norge",
@@ -38,12 +53,65 @@ const events = [
       "Helsenorge ber alle holde seg hjemme da smitten har bredt seg til din by. For mer informasjon sjekk ut våre nettsider.",
     received: "Mars, 18 2020",
     icon: "info-with-circle",
-    icon_color: "#BF5AF2",
+    icon_color: "#EE8970",
   },
 ];
 // Slutt data
 
+async function registerForPushNotificationsAsync() {
+  let token;
+  if (Constants.isDevice) {
+    const { status: existingStatus } = await Permissions.getAsync(
+      Permissions.NOTIFICATIONS
+    );
+    let finalStatus = existingStatus;
+    if (existingStatus !== "granted") {
+      const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+      finalStatus = status;
+    }
+    if (finalStatus !== "granted") {
+      alert("Failed to get push token for push notification!");
+      return;
+    }
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+  } else {
+    //alert("Must use physical device for Push Notifications");
+  }
+
+  if (Platform.OS === "android") {
+    Notifications.setNotificationChannelAsync("default", {
+      name: "default",
+      importance: Notifications.AndroidImportance.MAX,
+      vibrationPattern: [0, 250, 250, 250],
+      lightColor: "#FF231F7C",
+    });
+  }
+
+  const pid: any = await retrieveData("pid").catch((err) => console.log(err));
+  return token;
+}
+
+//TODO: Add Init component for checking whether user has valid token or not
+
 export default function Notification() {
+  const [expoPushToken, setExpoPushToken] = useState("");
+
+  useEffect(() => {
+    registerForPushNotificationsAsync().then((token) =>
+      setExpoPushToken(token)
+    );
+    const updateBagdeCount = async () => {
+      const pid: any = await retrieveData("pid").catch((err) =>
+        console.log(err)
+      );
+      const data = await updateBagde(expoPushToken);
+    };
+    {
+    }
+    Notifications.setBadgeCountAsync(0);
+    updateBagdeCount();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>Varslinger</Text>
@@ -75,18 +143,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 40,
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     marginTop: 10,
     padding: 20,
   },
 });
-
-/*<Header
-        title="Varslinger"
-        backgroundColor="white"
-        centerComponent={{
-          text: "Varslinger",
-          boldText: "Varslinger",
-          style: { fontWeight: "bold", backgroundColor: "white", fontSize: 16 },
-        }}
-      />*/

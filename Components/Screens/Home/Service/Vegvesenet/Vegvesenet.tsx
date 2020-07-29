@@ -83,12 +83,11 @@ export function Vegvesenet({ route }) {
             title={SKATT[0].title}
             parentCallback={(item) => {
               setSelectedIndex(0);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 0 ? true : false}
           >
             <View style={{ padding: 10, flex: 1 }}>
-              <VeienTilForerkortet/>
+              <VeienTilForerkortet />
             </View>
           </ListItem>
 
@@ -96,16 +95,15 @@ export function Vegvesenet({ route }) {
             key={1}
             iconName={SKATT[1].icon.name}
             iconType={SKATT[1].icon.type}
-            containerHeight={175}
+            containerHeight={130}
             title={SKATT[1].title}
             parentCallback={(item) => {
               setSelectedIndex(1);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 1 ? true : false}
           >
             <View style={{ padding: 10, flex: 1 }}>
-              <TeoriProve/>
+              <TeoriProve />
             </View>
           </ListItem>
 
@@ -113,11 +111,10 @@ export function Vegvesenet({ route }) {
             key={2}
             iconName={SKATT[2].icon.name}
             iconType={SKATT[2].icon.type}
-            containerHeight={200}
+            containerHeight={140}
             title={SKATT[2].title}
             parentCallback={(item) => {
               setSelectedIndex(2);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 2 ? true : false}
           >

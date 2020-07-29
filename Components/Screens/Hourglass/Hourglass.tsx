@@ -4,67 +4,34 @@ import { Card } from "react-native-elements";
 import CountDown from "react-native-countdown-component";
 import { ScrollView } from "react-native-gesture-handler";
 import PushNotification from "./PushNotification";
+import { useEffect, useState } from "react";
+import { getCountdowns } from "../../ServerCommunications/Services/Countdowns";
 
-// data -> Skal byttes ut med data fra database
-var deadline = new Date();
-var deadline2 = new Date();
-var deadline3 = new Date();
-deadline2.setDate(deadline2.getDate() + 10);
-deadline.setDate(deadline.getDate() + 1);
-deadline3.setDate(deadline3.getDate() + 15);
+function getTimeLeft(data: Date) {
+  let date = new Date();
+  let deadline = new Date(data);
+  return (deadline.getTime() - date.getTime()) / 1000;
+}
 
-const events = [
-  {
-    name: "Søk høyere utdanning",
-    logo: "https://www.vigo.no/vigo/html/img/vigo-logo.png",
-    description: "23:00:21",
-    date: deadline,
-    icon_color: "#64D2FF",
-  },
-  {
-    name: "Søk om støtte fra lånekassen",
-    logo:
-      "https://pbs.twimg.com/profile_images/1237666131407785984/rVBZZwGk_400x400.jpg",
-    date: deadline2,
-    icon_color: "#BF5AF2",
-  },
-  {
-    name: "Corona vaksine",
-    logo:
-      "https://is4-ssl.mzstatic.com/image/thumb/Purple60/v4/77/f0/d7/77f0d76b-f164-5569-6ce0-49800468c8fe/source/256x256bb.jpg",
-    description: "10 dager",
-    date: deadline3,
-    icon_color: "#30D158",
-  },
-];
-// Slutt data
+function getFormat(deadline: Date) {
+  if (getTimeLeft(deadline) <= 86400) {
+    return ["H", "M", "S"];
+  }
+  return ["D", "H"];
+}
 
 export default function Hourglass() {
-  var date = new Date();
+  const [events, setData] = useState(Array);
 
-  function getTimeLeft(deadline: Date) {
-    return (deadline.getTime() - date.getTime()) / 1000;
-  }
-
-  function getColor(deadline: Date) {
-    if (getTimeLeft(deadline) <= 86400) {
-      return "white";
-    }
-    return "white";
-  }
-
-  function sendPush24hrsLeft(title: String, date: Date) {
-    if (getTimeLeft(date) <= 24 * 60 * 60) {
-      return <PushNotification title={title} date={date} />;
-    }
-  }
-
-  function getFormat(deadline: Date) {
-    if (getTimeLeft(deadline) <= 86400) {
-      return ["H", "M", "S"];
-    }
-    return ["D", "H"];
-  }
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getCountdowns();
+      console.log("Data:", data);
+      setData(data);
+    };
+    getData();
+    console.log(events);
+  }, []);
 
   return (
     <SafeAreaView>
@@ -74,7 +41,7 @@ export default function Hourglass() {
           <View key={index}>
             <Card
               containerStyle={{
-                backgroundColor: event.icon_color,
+                backgroundColor: "#EE8970",
                 borderWidth: 0,
                 borderTopLeftRadius: 15,
                 borderTopRightRadius: 15,
@@ -91,19 +58,17 @@ export default function Hourglass() {
             >
               <View style={styles.countDownContainer}>
                 <CountDown
-                  until={getTimeLeft(event.date)}
+                  until={getTimeLeft(event.fristdato)}
                   size={40}
-                  timeToShow={getFormat(event.date)}
+                  timeToShow={getFormat(event.fristdato)}
                   timeLabelStyle={{
                     fontSize: 15,
-                    fontFamily: "Helvetica",
                   }}
                   digitStyle={{
-                    backgroundColor: event.icon_color,
+                    backgroundColor: "#EE8970",
                   }}
                   digitTxtStyle={{
                     color: "white",
-                    fontFamily: "Helvetica",
                     fontWeight: "normal",
                   }}
                   timeLabels={{
@@ -122,12 +87,13 @@ export default function Hourglass() {
                   { color: index === 0 ? "rgb(255, 102, 102)" : "black" },
                 ]}
               >
-                {event.name}
+                {event.fristnavn}
               </Text>
               <Text style={styles.date}>25.03.2020</Text>
             </View>
           </View>
         ))}
+        <View style={{ height: 200 }}></View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -137,7 +103,6 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 40,
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     marginTop: 10,
     padding: 20,
   },
@@ -152,7 +117,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     fontSize: 20,
     marginLeft: 10,
     color: "red",
@@ -172,11 +136,9 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 1.8,
-
     elevation: 4,
   },
   date: {
-    fontFamily: "Helvetica",
     color: "grey",
     paddingLeft: 12,
     paddingTop: 5,

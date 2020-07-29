@@ -62,7 +62,6 @@ async function registerForPushNotificationsAsync() {
       return;
     }
     token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
   } else {
     alert("Must use physical device for Push Notifications");
   }
@@ -75,6 +74,5 @@ async function registerForPushNotificationsAsync() {
       lightColor: "#FF231F7C",
     });
   }
-
   return token;
 }
