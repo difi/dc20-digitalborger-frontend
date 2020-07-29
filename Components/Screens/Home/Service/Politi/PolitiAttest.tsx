@@ -5,6 +5,7 @@ import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/Entypo";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
+import Button from "../assets/Button";
 
 
 
@@ -26,6 +27,10 @@ export default function PolitiAttest() {
                 <View style={styles.textContainer}>
                         <Text style={{fontSize: 15}}>{'\u30FB'}Er du under 18 år må foresatt også skrive under.</Text>
                 </View>
+                <Button label={"Søk om politiattest"} color={"#222A3A"} onPress={() =>
+                    WebBrowser.openBrowserAsync(
+                    "https://attest.politiet.no/web/"
+                )} textColor={"white"}/>
                 <TouchableOpacity
                     containerStyle={styles.linkContainer}
                     onPress={()=>
