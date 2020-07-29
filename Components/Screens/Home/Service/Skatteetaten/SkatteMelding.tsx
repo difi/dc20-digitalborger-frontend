@@ -76,8 +76,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginTop: 10,
     marginBottom: 10,
-    marginLeft: 10,
-    marginRight: 10,
+
   },
   skattTitle: {
     fontSize: 15,
