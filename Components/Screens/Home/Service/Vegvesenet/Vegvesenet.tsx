@@ -71,7 +71,7 @@ export function Vegvesenet({ route }) {
         nameOfService={"Statens vegvesen"}
       />
       <ScrollView
-        style={{ flex: 1, backgroundColor: "red" }}
+        style={{ flex: 1, backgroundColor: "#DA3737" }}
         showsVerticalScrollIndicator={false}
       >
         <View>
