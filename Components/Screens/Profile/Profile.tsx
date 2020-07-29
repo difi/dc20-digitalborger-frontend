@@ -1,12 +1,12 @@
 import * as React from "react";
 import {
-  StyleSheet,
-  View,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  Button,
+    StyleSheet,
+    View,
+    SafeAreaView,
+    Text,
+    TouchableOpacity,
+    TextInput,
+    Button, ScrollView,
 } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -50,9 +50,8 @@ const Card = ({ icon, data, editable }: CardProps) => {
     <View
       style={{
           marginBottom: 10,
-        maxHeight: 100,
-          minHeight: 62,
         backgroundColor: "white",
+          minHeight: 50,
         borderRadius: 20,
         flexDirection: "row",
         shadowColor: "#000",
@@ -67,7 +66,7 @@ const Card = ({ icon, data, editable }: CardProps) => {
       }}
     >
         {changeLayout ? (
-            <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+            <View style={{flex: 1, justifyContent: "center", alignItems: "center", height: 80}}>
                 <TouchableOpacity onPress={() => abort()}>
                     <View
                         style={{
@@ -196,18 +195,19 @@ export default function Profile() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#A4D7F4" }}>
-      <Text style={styles.heading}>Din Profil</Text>
-      <View style={{ flex: 1, backgroundColor: "#A4D7F4" }}>
-        <View style={{ flex: 1, backgroundColor: "white" }}>
+      <ScrollView style={{ flex: 1, backgroundColor: "#A4D7F4" }} showsVerticalScrollIndicator={false}>
+          <Text style={styles.heading}>Din Profil</Text>
+        <View style={{ flex: 1, backgroundColor: "white"}}>
           <View
             style={{
               flex: 1,
               backgroundColor: "#A4D7F4",
               borderBottomRightRadius: 75,
               justifyContent: "center",
+                alignItems: "center"
             }}
           >
-            <ProfileHeader width={"100%"} height={"100%"} />
+            <ProfileHeader width={200} height={200} />
           </View>
         </View>
         <View
@@ -219,7 +219,7 @@ export default function Profile() {
             paddingTop: 30,
           }}
         >
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1}}>
                 <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
             </View>
             <View style={{ flex: 1 }}>
@@ -232,8 +232,8 @@ export default function Profile() {
                 style={{ flex: 1 }}
                 onPress={() => setVisibility(true)}
             >
-                <View style={{flex: 1,justifyContent: "center"}}>
-                    <View style={{flex: 1, backgroundColor: "#68CE67", borderRadius: 50, justifyContent: "center", alignItems: "center", maxHeight: 50,
+                <View style={{flex: 1,justifyContent: "center", height: 50}}>
+                    <View style={{flex: 1, backgroundColor: "#68CE67", borderRadius: 50, justifyContent: "center", alignItems: "center",
                         shadowColor: "#000",
                         shadowOffset: {
                             width: 0,
@@ -276,26 +276,10 @@ export default function Profile() {
             </View>
           </Overlay>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
-/*
-
-          <View style={{ flex: 1 }}>
-            <Card icon={"user"} data={"Jørgen Hollum"} editable={true} />
-          </View>
-          <View style={{ flex: 1 }}>
-            <Card icon={"home"} data={"Kong inges gt 22"} editable={true} />
-          </View>
-          <View style={{ flex: 1 }}>
-            <Card icon={"phone"} data={"+47 90910636"} editable={true} />
-          </View>
-          <TouchableOpacity
-            style={{ flex: 1 }}
-            onPress={() => setVisibility(true)}
-          >
- */
 
 const styles = StyleSheet.create({
   heading: {
