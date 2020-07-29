@@ -35,7 +35,7 @@ export default function PolitiAttest() {
                     }
                     >
                     <View style={styles.linkStyleContainer}>
-                        <Text style={{fontWeight: "bold", fontSize: 15, color: "white",}}> Søk om politiattest eller sjekk status  </Text>
+                        <Text style={{fontWeight: "bold", fontSize: 15, color: "white",}}> Søk om politiattest her</Text>
                         <View style={styles.iconContainer}>
                             <Icon name ="arrow-long-right" size={15} color="white"></Icon>
                         </View>
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
         left: 5,
     },
     iconContainer:{
-        left: 15,
+        left: 115,
+        top: 2,
     },
 });

@@ -2,7 +2,7 @@ import * as React from "react";
 import {View, ScrollView, Text, StyleSheet} from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/Feather";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
 
@@ -22,7 +22,7 @@ export default function StipendLån() {
                     }
                 >
                     <View style={styles.iconContainer}>
-                        <Icon name="arrow-circle-right" size={15}></Icon>
+                        <Icon name="plus-circle" size={15}></Icon>
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={{fontSize: 13}}>Videregående-{"\n"}opplæring </Text>
@@ -39,7 +39,7 @@ export default function StipendLån() {
                     }
                 >
                     <View style={styles.iconContainer}>
-                        <Icon name="arrow-circle-right" size={15}></Icon>
+                        <Icon name="plus-circle" size={15}></Icon>
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={{fontSize: 13}}>Grunnskole-{"\n"}opplæring </Text>
@@ -55,7 +55,7 @@ export default function StipendLån() {
                     }
                 >
                     <View style={styles.iconContainer}>
-                        <Icon name="arrow-circle-right" size={15}></Icon>
+                        <Icon name="plus-circle" size={15}></Icon>
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={{fontSize: 13}}>Høyere utdanning </Text>
@@ -71,7 +71,7 @@ export default function StipendLån() {
                     }
                 >
                     <View style={styles.iconContainer}>
-                        <Icon name="arrow-circle-right" size={15}></Icon>
+                        <Icon name="plus-circle" size={15}></Icon>
                     </View>
                     <View style={styles.textContainer}>
                         <Text style={{fontSize: 13}}>Lærling </Text>
@@ -88,7 +88,7 @@ export default function StipendLån() {
                 >
 
                     <View style={styles.iconContainer}>
-                        <Icon name="arrow-circle-right" size={15}></Icon>
+                        <Icon name="plus-circle" size={15}></Icon>
                     </View>
                         <View style={styles.textContainer}>
                             <Text style={{fontSize: 13}}>Sommerkurs </Text>

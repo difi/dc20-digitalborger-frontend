@@ -3,6 +3,7 @@ import {View, ScrollView, Text, StyleSheet} from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
 import {useEffect, useState} from "react";
@@ -31,10 +32,10 @@ export default function Fastlege() {
         <View>
             <View style={styles.row}>
                     <View style={styles.introContainer}>
-                        <Text style={{ fontWeight: "bold", fontSize: 13}}>Din fastlege:</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 15}}>Din fastlege:</Text>
                     </View>
                      <View style={styles.contentContainer}>
-                            <Text style={{fontSize: 13}}>{legeData.name}</Text>
+                            <Text style={{fontSize: 15}}>{legeData.name}</Text>
                     </View>
                 <View style={styles.iconContainer}>
                     <TouchableOpacity
@@ -44,16 +45,16 @@ export default function Fastlege() {
                             )
                         }
                     >
-                        <Icon name="pen" size={20} ></Icon>
+                        <Icon name="pen" size={15} ></Icon>
                     </TouchableOpacity>
                 </View>
                 </View>
                 <View style={styles.row}>
                     <View style={styles.introContainer}>
-                    <Text style={{ fontWeight: "bold", fontSize: 13}}>Ditt legekontor:</Text>
+                    <Text style={{ fontWeight: "bold", fontSize: 15}}>Ditt legekontor:</Text>
                     </View>
                     <View style={styles.contentContainer}>
-                            <Text style={{fontSize: 13}}>{legeData.office}</Text>
+                            <Text style={{fontSize: 15}}>{legeData.office}</Text>
                     </View>
                     <View style={styles.iconContainer}>
                         <TouchableOpacity
@@ -63,24 +64,11 @@ export default function Fastlege() {
                                 )
                             }
                         >
-                            <Icon name="pen" size={20} ></Icon>
+                            <Icon name="pen" size={15} ></Icon>
                         </TouchableOpacity>
                     </View>
                 </View>
-            <TouchableOpacity
-                containerStyle={styles.linkContainer}
-                onPress={() =>
-                    WebBrowser.openBrowserAsync(
-                        "https://tjenester.helsenorge.no/Fastlegen"
-                    )
-                }
-            >
-                <View style={styles.linkContainer}>
-                    <Text style={{ fontWeight: "bold",fontSize: 15}}> Mer om din fastlege </Text>
-                    <Icon name="long-arrow-alt-right" size={15}></Icon>
-                </View>
-            </TouchableOpacity>
-        </View>
+             </View>
     );
 }
 const styles = StyleSheet.create({
@@ -88,27 +76,18 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         marginBottom: 20,
         top: 10,
-        borderBottomWidth: 1,
-        borderColor: "#E1E1E1",
     },
     introContainer:{
-        flex: 1,
-        justifyContent: "flex-end",
-        marginBottom: 10,
+        flex: 2,
     },
     contentContainer: {
-        flex: 1,
-        alignSelf: "flex-start",
-        right: 8,
-        top: 5,
+        flex: 2,
+        height: "100%",
+        width: "100%",
+        right: 15,
     },
     iconContainer:{
-        bottom: 15,
+        bottom: 5,
         marginTop: 10,
-    },
-    linkContainer:{
-        flexDirection: "row",
-        marginTop: 12,
-        right: 1,
     },
 });

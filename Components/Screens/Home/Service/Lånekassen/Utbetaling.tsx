@@ -105,8 +105,6 @@ const styles = StyleSheet.create({
     },
     linkText: {
         fontSize: 16,
-
-
         marginLeft: 10,
     },
 
