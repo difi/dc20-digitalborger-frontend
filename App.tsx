@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={"GetStarted"} headerMode={"none"}>
+      <Stack.Navigator initialRouteName={"ScreenTabs"} headerMode={"none"}>
         <Stack.Screen
           name="Login"
           component={ScreenTabs}
