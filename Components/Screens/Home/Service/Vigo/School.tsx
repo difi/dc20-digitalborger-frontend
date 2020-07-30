@@ -20,7 +20,7 @@ export default function School() {
       if (status !== "granted") {
         setErrorMsg(
           "Tillatelse for tilgang til stedsposisjon er avvist. For å se skoler i ditt nærområde, skru på stedsposisjon" +
-            "i innstillinger."
+            " i innstillinger."
         );
       }
       let location = await Location.getCurrentPositionAsync({});
