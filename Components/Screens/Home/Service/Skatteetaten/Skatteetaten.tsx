@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SafeAreaView, ScrollView, Text, View } from "react-native";
-import HeaderSkatt from "./HeaderSkatt";
+import Header from "../Header";
 import { ListItem } from "../Collapsible/ListItem";
 import { useEffect, useState } from "react";
 import Footer from "../Footer";
@@ -81,8 +81,8 @@ export function Skatteetaten({ route }) {
         style={{ flex: 1, backgroundColor: "#6f2c3f" }}
         showsVerticalScrollIndicator={false}
       >
-        <HeaderSkatt
-          logo={"Components/Screens/Home/Service/Skatteetaten/HeaderSkatt.tsx"}
+        <Header
+          logo={require("./assets/skatteetaten.jpg")}
           nameOfService={"Skatteetaten"}
         />
         <View>

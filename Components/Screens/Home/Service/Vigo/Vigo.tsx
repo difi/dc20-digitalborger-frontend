@@ -33,11 +33,11 @@ import {
 import Animated, { interpolate } from "react-native-reanimated";
 import VeienTilForerkort from "../Vegvesenet/VeienTilForerkort";
 import { ListItem } from "../Collapsible/ListItem";
-import Header from "../Header";
 import Footer from "../Footer";
 import Absence from "./Absence";
 import Grades from "./Grades";
 import School from "./School";
+import Header from "../Header";
 
 const VIGO = [
   {
@@ -98,14 +98,14 @@ export function Vigo({ route }) {
         showsVerticalScrollIndicator={false}
       >
         <Header
-          logo={"https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg"}
+          logo={require("./assets/vigo.png")}
         />
         <View>
           <ListItem
             key={0}
             iconName={VIGO[0].icon.name}
             iconType={VIGO[0].icon.type}
-            containerHeight={240}
+            containerHeight={250}
             title={VIGO[0].title}
             parentCallback={() => {
               setSelectedIndex(0);

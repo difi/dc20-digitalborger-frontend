@@ -7,7 +7,7 @@ import Fontisto from "react-native-vector-icons/Fontisto";
 
 import { SafeAreaView, ScrollView, Text, View } from "react-native";
 //import Header from "../Header";
-import Header from "./HeaderHelsenorge";
+import Header from "../Header";
 import { ListItem } from "../Collapsible/ListItem";
 import { useEffect, useState } from "react";
 import Footer from "../Footer";
@@ -71,14 +71,14 @@ export function Helsenorge({ route }) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Header
-        logo={"Components/Screens/Home/Service/Helsenorge/Helsenorge.tsx"}
-        nameOfService={"Helsenorge"}
-      />
       <ScrollView
         style={{ flex: 1, backgroundColor: "#9a1c6f" }}
         showsVerticalScrollIndicator={false}
       >
+        <Header
+          logo={require("./assets/helsenorge.png")}
+          nameOfService={"Helsenorge"}
+        />
         <View>
           <ListItem
             key={0}
@@ -88,6 +88,7 @@ export function Helsenorge({ route }) {
             title={HELSE[0].title}
             parentCallback={(item) => {
               setSelectedIndex(0);
+              console.log("toggled", item);
             }}
             pressed={selectedIndex === 0 ? true : false}
           >
@@ -104,6 +105,7 @@ export function Helsenorge({ route }) {
             title={HELSE[1].title}
             parentCallback={(item) => {
               setSelectedIndex(1);
+              console.log("toggled", item);
             }}
             pressed={selectedIndex === 1 ? true : false}
           >
@@ -120,6 +122,7 @@ export function Helsenorge({ route }) {
             title={HELSE[2].title}
             parentCallback={(item) => {
               setSelectedIndex(2);
+              console.log("toggled", item);
             }}
             pressed={selectedIndex === 2 ? true : false}
           >
@@ -135,6 +138,7 @@ export function Helsenorge({ route }) {
             title={HELSE[3].title}
             parentCallback={(item) => {
               setSelectedIndex(3);
+              console.log("toggled", item);
             }}
             pressed={selectedIndex === 3 ? true : false}
           >

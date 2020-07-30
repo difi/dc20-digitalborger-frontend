@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { ListItem } from "../Collapsible/ListItem";
 
 import Utbetaling from "./Utbetaling";
-import Header from "./HeaderLan";
+import Header from "../Header";
 import Support from "./Support";
 import StipendLån from "./StipendLån";
 
@@ -67,14 +67,14 @@ export function Lanekassen({ route }) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Header
-        logo={"Components/Screens/Home/Service/Lånekassen/Lånekassen.tsx"}
-        nameOfService={"Lånekassen"}
-      />
       <ScrollView
         style={{ flex: 1, backgroundColor: "#97469d" }}
         showsVerticalScrollIndicator={false}
       >
+        <Header
+            logo={require("./assets/lånekassenlogo.png")}
+            nameOfService={"Lånekassen"}
+        />
         <View>
           <ListItem
             key={0}
