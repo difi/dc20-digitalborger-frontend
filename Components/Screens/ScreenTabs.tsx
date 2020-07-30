@@ -32,7 +32,7 @@ export default function ScreenTabs() {
         options={{
           tabBarLabel: "Hjem",
           tabBarIcon: ({ color }) => (
-            <Entypo name="home" color={color} size={26} />
+            <FontAwesome5 name="home" color={color} size={22} />
           ),
         }}
       />
@@ -42,7 +42,7 @@ export default function ScreenTabs() {
         options={{
           tabBarLabel: "Varsel",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="ios-notifications" color={color} size={26} />
+            <FontAwesome5 name="bell" color={color} size={24} />
           ),
         }}
       />
@@ -52,7 +52,7 @@ export default function ScreenTabs() {
         options={{
           tabBarLabel: "Timeglass",
           tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="hourglass-end" color={color} size={26} />
+            <FontAwesome5 name="hourglass-end" color={color} size={21} />
           ),
         }}
       />
@@ -62,7 +62,7 @@ export default function ScreenTabs() {
         options={{
           tabBarLabel: "Profil",
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="user" color={color} size={26} />
+            <FontAwesome5 name="user-alt" color={color} size={24} />
           ),
         }}
       />
