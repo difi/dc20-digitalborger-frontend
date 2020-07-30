@@ -8,6 +8,7 @@ import {
   TextInput,
   Button,
   ScrollView,
+  Dimensions,
 } from "react-native";
 // @ts-ignore
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -15,6 +16,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import ProfileHeader from "./assets/ProfileHeader";
 import { useEffect, useState } from "react";
 import { Overlay } from "react-native-elements";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 interface CardProps {
   icon: string;
@@ -194,14 +196,17 @@ const Card = ({ icon, data, editable }: CardProps) => {
   );
 };
 
+const { height } = Dimensions.get("window");
+
 export default function Profile() {
   const [visibility, setVisibility] = useState(false);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#A4D7F4" }}>
-      <ScrollView
-        style={{ flex: 1, backgroundColor: "white" }}
+      <KeyboardAwareScrollView
+        style={{ height: height, backgroundColor: "white" }}
         showsVerticalScrollIndicator={false}
+        scrollEnabled={false}
       >
         <View style={{ flex: 1, backgroundColor: "white" }}>
           <View
@@ -291,7 +296,7 @@ export default function Profile() {
             </View>
           </Overlay>
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 }
