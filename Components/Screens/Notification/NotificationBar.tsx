@@ -33,7 +33,7 @@ export default function Notification(props: {
         size={55}
         color={props.icon_color}
       />
-      <View>
+      <View style={{ marginVertical: 10 }}>
         <Text style={styles.title}>{props.service}</Text>
         <Text style={styles.description}>{props.description}</Text>
         <Text style={styles.received}>{getTimeFormat(props.received)}</Text>
@@ -44,8 +44,8 @@ export default function Notification(props: {
 
 const styles = StyleSheet.create({
   gridContainer: {
-    width: "98%",
-    height: 110,
+    width: "95%",
+    height: "auto",
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 5,
@@ -73,12 +73,11 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   description: {
-    width: "80%",
     fontSize: 15,
-    maxWidth: "100%",
+    maxWidth: "90%",
   },
   received: {
     color: "grey",
-    paddingVertical: 5,
+    marginTop: 5,
   },
 });

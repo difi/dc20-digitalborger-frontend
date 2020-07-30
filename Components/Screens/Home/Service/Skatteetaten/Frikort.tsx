@@ -37,7 +37,7 @@ export default function Frikort() {
 const styles = StyleSheet.create({
   gridContainer: {
     flex: 1,
-    height: 180,
+    height: "auto",
     width: "100%",
   },
 
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   LinkContainer: {
     flexDirection: "row",
     alignSelf: "flex-end",
+    margin: 10,
   },
   buttonText: {
     fontSize: 15,
