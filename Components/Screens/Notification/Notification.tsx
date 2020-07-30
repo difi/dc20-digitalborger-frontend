@@ -7,17 +7,9 @@ import {
   Platform,
 } from "react-native";
 import NotificationBar from "./NotificationBar";
-import { Header, Text } from "react-native-elements";
-
-import axios from "axios";
-
-import Skattemelding from "../Skattegiver";
-import KontaktPoliti from "../Home/Service/Politi/KontaktPoliti";
+import { Text } from "react-native-elements";
 import { retrieveData } from "../../Storage";
-import {
-  sendToken,
-  updateBagde,
-} from "../../ServerCommunications/Services/PushNotifications";
+import { updateBagde } from "../../ServerCommunications/Services/PushNotifications";
 import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
@@ -136,7 +128,6 @@ export default function Notification() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
     height: "100%",
     width: "100%",
   },
