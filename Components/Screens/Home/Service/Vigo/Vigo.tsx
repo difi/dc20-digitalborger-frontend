@@ -72,11 +72,10 @@ const VIGO = [
   },
 ];
 
-const SPACE = 20;
 
 export function Vigo({ route }) {
-  const { open } = route.params;
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const { open } = route.params;
   useEffect(() => {
     if (open !== null) {
       switch (open) {

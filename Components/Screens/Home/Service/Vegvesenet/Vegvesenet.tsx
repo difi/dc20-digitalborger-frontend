@@ -45,9 +45,8 @@ const SKATT = [
 ];
 
 export function Vegvesenet({ route }) {
-  const { open } = route.params;
   const [selectedIndex, setSelectedIndex] = useState(null);
-
+  const { open } = route.params;
   useEffect(() => {
     if (open !== null) {
       switch (open) {

@@ -36,7 +36,7 @@ export default function PopUp({pressed, parentCallback}: PopUpProps){
                         }>
                             <Text style={{color: "#2196F3"}}>Bestill PIN-kode brev</Text>
                         </TouchableOpacity>
-                        <Text style={{marginBottom: 20}}>Dersom du allerede har motatt brevet følger du denne linken og trykker på "Registrer Bruker". Du følger videre stegene opgitt på siden.</Text>
+                        <Text style={{marginBottom: 20}}>Dersom du allerede har motatt brevet følger du denne linken og trykker på "Registrer Bruker". Du følger videre stegene oppgitt på siden.</Text>
                     </View>
                     <View style={{flex: 1, justifyContent: "center", alignItems: "flex-end", flexDirection: "row"}}>
                         <TouchableHighlight
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     modalView: {
-        height: height / 2.3, width: width / 1.4, alignSelf: "center",
+        height: "60%", width: "80%", alignSelf: "center",
         margin: 20,
         backgroundColor: "white",
         borderRadius: 20,
