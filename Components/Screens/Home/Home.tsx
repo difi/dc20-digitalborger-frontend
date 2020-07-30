@@ -53,7 +53,7 @@ const PopularServices = [
   },
   {
     service: "Helsenorge",
-    name: "Forny resept",
+    name: "Bestill time",
     uri: require("../assets/helsenorge.png"),
   },
   {
@@ -66,6 +66,11 @@ const PopularServices = [
     name: "Søknad om lån og stipend",
     uri: require("../assets/lånekassenlogo.png"),
   },
+    {
+        service: "Politi",
+        name: "Søk om politiattest",
+        uri: require("../assets/politiet.png"),
+    },
 ];
 
 const services = [
@@ -412,7 +417,7 @@ const stylesTop = StyleSheet.create({
     marginLeft: 20,
     alignItems: "center",
   },
-  imageContainer: { height: 50, width: 50 },
+  imageContainer: { height: 55, width: 55, backgroundColor: "#F2F2F2", justifyContent: "center", borderRadius: 10},
   image: { width: "100%", height: "100%", borderRadius: 10 },
   textContainer: { alignSelf: "center", marginTop: 10 },
   buttonText: { fontSize: 13, fontWeight: "bold" },
