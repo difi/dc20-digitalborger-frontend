@@ -2,7 +2,7 @@ import * as React from "react";
 import {View, ScrollView, Text, StyleSheet} from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import Icon from "react-native-vector-icons/FontAwesome";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
@@ -43,7 +43,7 @@ export default function Fastlege() {
                             )
                         }
                     >
-                        <Icon name="pen" size={15} ></Icon>
+                        <Icon name="pencil-square-o" size={20} ></Icon>
                     </TouchableOpacity>
                 </View>
                 </View>
@@ -54,7 +54,6 @@ export default function Fastlege() {
                     <View style={styles.contentContainer}>
                             <Text style={{fontSize: 15}}>{legeData.office}</Text>
                     </View>
-                    <View style={styles.iconContainer}>
                         <TouchableOpacity
                             onPress={() =>
                                 WebBrowser.openBrowserAsync(
@@ -62,9 +61,8 @@ export default function Fastlege() {
                                 )
                             }
                         >
-                            <Icon name="pen" size={15} ></Icon>
+                            <Icon name="pencil-square-o" size={20} ></Icon>
                         </TouchableOpacity>
-                    </View>
                 </View>
              </View>
     );
@@ -84,8 +82,5 @@ const styles = StyleSheet.create({
         width: "100%",
         right: 15,
     },
-    iconContainer:{
-        bottom: 5,
-        marginTop: 10,
-    },
+
 });
