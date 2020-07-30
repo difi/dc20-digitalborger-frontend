@@ -95,15 +95,16 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     rightText:{
-        alignItems: "flex-start",
+        alignSelf: "flex-end",
+        left: 95,
         marginBottom: "2%",
-        right: "1%",
+        flex: 1/2,
     },
     leftText:{
         alignItems: "flex-start",
         flexDirection: "column",
-        marginBottom:"2%",
-        flex: 1,
+        marginBottom: "2%",
+        flex: 1/2,
     },
     buttonContainer: {
         margin: "10%",

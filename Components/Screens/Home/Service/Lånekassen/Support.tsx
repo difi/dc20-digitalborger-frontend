@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: '#4d264f',
+    backgroundColor: '#97469d',
     height: 40,
   },
   listElements: {
