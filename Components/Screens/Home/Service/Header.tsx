@@ -14,22 +14,24 @@ export default function Header({ nameOfService, logo }: HeaderProps) {
       style={{
           flex: 1,
         backgroundColor: "white",
-        justifyContent: "flex-start",
         flexDirection: "row",
-        alignItems: "center",
         padding: SPACE,
       }}
     >
-      <View style={{ height: 100, width: 100 }}>
+      <View style={{ flex: 1, height: 100, width: 100, justifyContent: "center", alignItems: "center"}}>
         <Image
           source={logo}
           resizeMode={"contain"}
-          style={{ width: "100%", height: "100%", borderRadius: 10, }}
+          style={{ flex: 1, width: "80%", height: "80%", borderRadius: 10, alignSelf: "center",
+              justifyContent: "center", }}
         />
+          {console.log(nameOfService)}
       </View>
-      <View style={{ marginLeft: 10 }}>
-        <Text style={{ fontSize: 30 }}>{nameOfService}</Text>
-      </View>
+        {(nameOfService !== undefined) && (
+            <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
+                <Text style={{ fontSize: 25 }}>{nameOfService}</Text>
+            </View>
+        )}
     </View>
   );
 }
