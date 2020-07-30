@@ -16,7 +16,6 @@ import { retrieveData } from "../../../../Storage";
 import { useEffect, useState } from "react";
 import Button from "../assets/Button";
 
-
 export default function Vaksine() {
   const [vaccineData, setVaccine] = useState([{ name: "", date: "" }]);
 
@@ -29,15 +28,13 @@ export default function Vaksine() {
   }, []);
 
   const formatDate = (date) => {
-    let time = String(date).split('-');
-    console.log(time);
-
+    let time = String(date).split("-");
     let year = time[0];
     let month = time[1];
     let day = time[2];
 
     return day + "." + month + "." + year;
-  }
+  };
 
   return (
     <SafeAreaView>
@@ -45,18 +42,24 @@ export default function Vaksine() {
         <Text style={styles.titleTextLeft}>Vaksinasjon</Text>
         <Text style={styles.titleTextRight}>Vaksinasjonsdato</Text>
       </View>
-        {vaccineData.map((item, index) => (
-          <View key={index} style={styles.listItems}>
-            <Text style={styles.ItemLeftText}>{item.name}</Text>
-            <Text style={styles.ItemRightText}>{formatDate(item.date)}</Text>
-          </View>
-        ))}
+      {vaccineData.map((item, index) => (
+        <View key={index} style={styles.listItems}>
+          <Text style={styles.ItemLeftText}>{item.name}</Text>
+          <Text style={styles.ItemRightText}>{formatDate(item.date)}</Text>
+        </View>
+      ))}
       <View>
         <View style={styles.buttonContainer}>
-          <Button label={"Gå til vaksine oversikt"} color={"#9a1c6f"} onPress={() =>
+          <Button
+            label={"Gå til vaksine oversikt"}
+            color={"#9a1c6f"}
+            onPress={() =>
               WebBrowser.openBrowserAsync(
-                  "https://tjenester.helsenorge.no/vaksiner"
-              )} textColor={"white"}/>
+                "https://tjenester.helsenorge.no/vaksiner"
+              )
+            }
+            textColor={"white"}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -93,12 +96,12 @@ const styles = StyleSheet.create({
   ItemLeftText: {
     fontSize: 15,
     marginBottom: 10,
-    flex: 1/2,
+    flex: 1 / 2,
     left: 10,
   },
   ItemRightText: {
     fontSize: 15,
-    flex: 1/2,
+    flex: 1 / 2,
     left: 40,
   },
   buttonContainer: {

@@ -12,10 +12,16 @@ export default function TeoriProve() {
         Bestilling av time til teoriprøven gjøres på vegvesenet sine nettsider.
       </Text>
       <View style={styles.buttonContainer}>
-        <Button label={" Gå til timebestilling"} color={"#DA3737"} onPress={() =>
+        <Button
+          label={" Gå til timebestilling"}
+          color={"#DA3737"}
+          onPress={() =>
             WebBrowser.openBrowserAsync(
-                "https://ventus.enalog.se/Booking/Booking/Index/VegvesenRislokka"
-            )} textColor={"white"}/>
+              "https://ventus.enalog.se/Booking/Booking/Index/VegvesenRislokka"
+            )
+          }
+          textColor={"white"}
+        />
       </View>
     </View>
   );
@@ -30,11 +36,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     margin: 10,
   },
-  buttonContainer:{
+  buttonContainer: {
     margin: "10%",
     marginLeft: 10,
     marginRight: 10,
     marginTop: 5,
   },
-
 });

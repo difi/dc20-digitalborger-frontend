@@ -94,7 +94,6 @@ export function Skatteetaten({ route }) {
             title={SKATT[0].title}
             parentCallback={(item) => {
               setSelectedIndex(0);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 0 ? true : false}
           >

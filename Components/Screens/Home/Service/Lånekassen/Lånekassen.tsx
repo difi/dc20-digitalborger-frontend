@@ -65,7 +65,6 @@ export function Lanekassen({ route }) {
     }
   }, [open]);
 
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Header
@@ -85,7 +84,6 @@ export function Lanekassen({ route }) {
             title={LAANEKASSE[0].title}
             parentCallback={(item) => {
               setSelectedIndex(0);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 0 ? true : false}
           >
@@ -102,7 +100,6 @@ export function Lanekassen({ route }) {
             title={LAANEKASSE[1].title}
             parentCallback={(item) => {
               setSelectedIndex(1);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 1 ? true : false}
           >
@@ -119,7 +116,6 @@ export function Lanekassen({ route }) {
             title={LAANEKASSE[2].title}
             parentCallback={(item) => {
               setSelectedIndex(2);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 2 ? true : false}
           >

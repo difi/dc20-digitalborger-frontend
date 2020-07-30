@@ -30,7 +30,6 @@ const SupportForStudent = [
   },
 ];
 
-
 const getScholarship = async () => {
   const pid: any = await retrieveData("pid").catch((err) => console.log(err));
   const data = await getSupport(pid);
@@ -48,13 +47,11 @@ export default function Support() {
 
   return (
     <View style={{ flex: 1 }}>
-
       <View style={styles.titleContainer}>
         <Text style={styles.textInfo}>
-          Gjennomsnittstøtte i vanlig videregående opplæring: {" "}
+          Gjennomsnittstøtte i vanlig videregående opplæring:{" "}
         </Text>
       </View>
-
 
       {scholarship.map((item, index) => (
         <View
@@ -65,7 +62,6 @@ export default function Support() {
               : styles.listElements
           }
         >
-          {console.log(index)}
           <Text style={styles.text}>{item.scholarship}</Text>
           <Text
             style={{
@@ -92,7 +88,7 @@ const styles = StyleSheet.create({
   textInfo: {
     fontSize: 15,
     fontStyle: "italic",
-    color: 'white',
+    color: "white",
   },
   text: {
     fontSize: 16,
@@ -102,7 +98,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: '#97469d',
+    backgroundColor: "#97469d",
     height: 40,
   },
   listElements: {
@@ -118,6 +114,4 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexShrink: 1,
   },
-
-
 });

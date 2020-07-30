@@ -31,9 +31,9 @@ export default function UserInfo() {
         </View>
       </View>
       <View style={styles.row}>
-      <View style={styles.iconContainer}>
-        <Icon name="phone" size={40}></Icon>
-      </View>
+        <View style={styles.iconContainer}>
+          <Icon name="phone" size={40}></Icon>
+        </View>
         <View style={styles.textContainer}>
           <Text style={styles.upperText}>{persons.email}</Text>
           <Text>{persons.number}</Text>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     left: 20,
   },
-  iconContainer:{
+  iconContainer: {
     left: 20,
   },
   row: {

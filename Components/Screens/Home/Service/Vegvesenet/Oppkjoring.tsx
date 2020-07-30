@@ -13,10 +13,16 @@ export default function Oppkjoring() {
         trenger trafikkskolen en fullmakt fra deg.
       </Text>
       <View style={styles.buttonContainer}>
-        <Button label={" Gi fullmakt"} color={"#DA3737"} onPress={() =>
+        <Button
+          label={" Gi fullmakt"}
+          color={"#DA3737"}
+          onPress={() =>
             WebBrowser.openBrowserAsync(
-                "https://www.vegvesen.no/dinside/dittforerkort/timebestilling/timer"
-            )} textColor={"white"}/>
+              "https://www.vegvesen.no/dinside/dittforerkort/timebestilling/timer"
+            )
+          }
+          textColor={"white"}
+        />
       </View>
     </View>
   );
@@ -37,5 +43,4 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginTop: 5,
   },
-
 });

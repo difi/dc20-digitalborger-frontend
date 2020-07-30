@@ -81,7 +81,7 @@ const POLITI = [
 
 const SPACE = 20;
 
-export function Politi({route}) {
+export function Politi({ route }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const { open } = route.params;
   useEffect(() => {
@@ -99,7 +99,6 @@ export function Politi({route}) {
         case "Kontakt politiet":
           setSelectedIndex(3);
           break;
-
       }
     }
   }, [open]);
@@ -122,7 +121,6 @@ export function Politi({route}) {
             title={POLITI[0].title}
             parentCallback={(item) => {
               setSelectedIndex(0);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 0 ? true : false}
           >
@@ -139,7 +137,6 @@ export function Politi({route}) {
             title={POLITI[1].title}
             parentCallback={(item) => {
               setSelectedIndex(1);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 1 ? true : false}
           >
@@ -157,7 +154,6 @@ export function Politi({route}) {
             title={POLITI[2].title}
             parentCallback={(item) => {
               setSelectedIndex(2);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 2 ? true : false}
           >
@@ -175,7 +171,6 @@ export function Politi({route}) {
             title={POLITI[3].title}
             parentCallback={(item) => {
               setSelectedIndex(3);
-              console.log("toggled", item);
             }}
             pressed={selectedIndex === 3 ? true : false}
           >
