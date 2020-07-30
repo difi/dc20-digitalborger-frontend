@@ -164,10 +164,10 @@ const styles = StyleSheet.create({
     TitleArea: {
         flexDirection: "row",
         justifyContent: "space-between",
-        padding: '3%',
         borderBottomColor: 'gray',
         borderBottomWidth: 1,
-        backgroundColor: "transparent"
+        backgroundColor: "transparent",
+        marginBottom: 5,
     },
     GradesDisplay:{
         flexDirection: "row",

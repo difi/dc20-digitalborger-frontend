@@ -28,6 +28,17 @@ export default function Vaksine() {
     })();
   }, []);
 
+  const formatDate = (date) => {
+    let time = String(date).split('-');
+    console.log(time);
+
+    let year = time[0];
+    let month = time[1];
+    let day = time[2];
+
+    return day + "." + month + "." + year;
+  }
+
   return (
     <SafeAreaView>
       <View style={styles.titleHeader}>
@@ -37,7 +48,7 @@ export default function Vaksine() {
         {vaccineData.map((item, index) => (
           <View key={index} style={styles.listItems}>
             <Text style={styles.ItemLeftText}>{item.name}</Text>
-            <Text style={styles.ItemRightText}>{item.date}</Text>
+            <Text style={styles.ItemRightText}>{formatDate(item.date)}</Text>
           </View>
         ))}
       <View>
@@ -92,8 +103,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     margin: "10%",
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 12,
+    marginLeft: "2%",
+    marginRight: "2%",
+    marginTop: "3%",
   },
 });

@@ -37,40 +37,17 @@ export default function Utbetaling() {
   }, []);
 
 
-  const formatMonth = (month) => {
-
-    switch (month) {
-      case "May":
-        return "Mai";
-        break;
-      case "Oct":
-        return "Okt";
-        break;
-      case "Dec":
-        return "Des";
-        break;
-      default:
-        return month;
-        break;
-
-    }
-  }
-
   const formatDate = (date) => {
+    let time = String(date).split('-');
+    console.log(time);
 
+    let year = time[0];
+    let month = time[1];
+    let day = time[2];
 
-    let time = new Date(date).toDateString();
-    let format = String(time).split(' ')
-
-    let month = format[1];
-    let day = format[2];
-    let year = format[3];
-
-
-
-    return day + "." + formatMonth(month) + "." + year ;
-
+    return day + "." + month + "." + year;
   }
+
 
   return (
     <SafeAreaView>
@@ -133,8 +110,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer:{
     margin: "10%",
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 5,
+    marginLeft: "2%",
+    marginRight: "2%",
+    marginTop: "3%",
   },
 });

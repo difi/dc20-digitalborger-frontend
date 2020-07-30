@@ -34,40 +34,17 @@ export default function Skattegiver() {
     }, []);
 
 
-    const formatMonth = (month) => {
-
-            switch (month) {
-                case "May":
-                    return "Mai";
-                    break;
-                case "Oct":
-                    return "Okt";
-                    break;
-                case "Dec":
-                    return "Des";
-                    break;
-                default:
-                    return month;
-                    break;
-
-            }
-        }
-
     const formatDate = (date) => {
+        let time = String(date).split('-');
+        console.log(time);
 
+        let year = time[0];
+        let month = time[1];
+        let day = time[2];
 
-        let time = new Date(date).toDateString();
-        let format = String(time).split(' ')
-
-        let month = format[1];
-        let day = format[2];
-        let year = format[3];
-
-
-
-        return day + "." + formatMonth(month) + "." + year ;
-
+        return day + "." + month + "." + year;
     }
+
 
 
     return (
@@ -106,33 +83,33 @@ export default function Skattegiver() {
 const styles = StyleSheet.create({
 
     container: {
-        top: 10,
+        top: "2%",
     },
     introText:{
-        marginBottom: 10,
+        marginBottom: "2%",
     },
     textContainer:{
         flexDirection: "row",
-        marginTop: 5,
+        marginTop: "1%",
         borderBottomColor: "#E1E1E1",
         borderBottomWidth: 1,
     },
     rightText:{
         alignItems: "flex-start",
-        marginBottom: 10,
-        right: 5,
+        marginBottom: "2%",
+        right: "1%",
     },
     leftText:{
         alignItems: "flex-start",
         flexDirection: "column",
-        marginBottom: 10,
+        marginBottom:"2%",
         flex: 1,
     },
     buttonContainer: {
         margin: "10%",
-        marginLeft: 10,
-        marginRight: 10,
-        marginTop: 25,
+        marginLeft: "2%",
+        marginRight: "2%",
+        marginTop: "6%",
     },
 
 });
