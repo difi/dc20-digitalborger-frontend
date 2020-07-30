@@ -39,8 +39,6 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "auto",
     width: "100%",
-    borderWidth: 5,
-    borderColor: "#e6e6e6",
   },
 
   infoText: {

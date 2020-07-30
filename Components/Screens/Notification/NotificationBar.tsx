@@ -1,6 +1,21 @@
 import * as React from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/Entypo";
+import { floor } from "react-native-reanimated";
+
+function getTimeFormat(dateString: string) {
+  const date = new Date(dateString);
+  const today = new Date();
+  const difference = (today.getTime() - date.getTime()) / 1000;
+
+  if (difference < 3600) {
+    return Math.floor(difference / 60) + "minutter siden";
+  } else if (difference < 86400) {
+    return Math.floor(difference / 60 / 60) + " timer siden";
+  } else {
+    return date.toLocaleDateString();
+  }
+}
 
 export default function Notification(props: {
   description: string;
@@ -21,7 +36,7 @@ export default function Notification(props: {
       <View style={{ marginVertical: 10 }}>
         <Text style={styles.title}>{props.service}</Text>
         <Text style={styles.description}>{props.description}</Text>
-        <Text style={styles.received}>{props.received}</Text>
+        <Text style={styles.received}>{getTimeFormat(props.received)}</Text>
       </View>
     </View>
   );
