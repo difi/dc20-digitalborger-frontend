@@ -38,12 +38,10 @@ const singleMailStyles = StyleSheet.create({
   },
   sender: {
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     fontSize: 14,
     paddingTop: 8,
   },
   date: {
-    fontFamily: "Helvetica",
     fontSize: 14,
     color: "#c7c7cc",
   },
@@ -52,7 +50,6 @@ const singleMailStyles = StyleSheet.create({
     paddingLeft: 0,
   },
   subject: {
-    fontFamily: "Helvetica",
     fontSize: 20,
     fontWeight: "bold",
     padding: 15,

@@ -62,11 +62,11 @@ const PopularServices = [
     name: "Oppkjøring",
     uri: require("../assets/vegvesenet.png"),
   },
-    {
-        service: "Politi",
-        name: "Søk om politiattest",
-        uri: require("../assets/politiet.png"),
-    },
+  {
+    service: "Politi",
+    name: "Søk om politiattest",
+    uri: require("../assets/politiet.png"),
+  },
   {
     service: "Lånekassen",
     name: "Søknad om lån og stipend",
@@ -126,7 +126,6 @@ function AllServices({ navigation }) {
   };
 
   let handleNotificationResponse = (response) => {
-    console.log(response);
     navigation.navigate("Notification");
   };
 
@@ -433,7 +432,13 @@ const stylesTop = StyleSheet.create({
     marginLeft: 20,
     alignItems: "center",
   },
-  imageContainer: { height: 50, width: 50, backgroundColor: "#F2F2F2", justifyContent: "center", borderRadius: 10},
+  imageContainer: {
+    height: 50,
+    width: 50,
+    backgroundColor: "#F2F2F2",
+    justifyContent: "center",
+    borderRadius: 10,
+  },
   image: { width: "100%", height: "100%", borderRadius: 10 },
   textContainer: { alignSelf: "center", marginTop: 10 },
   buttonText: { fontSize: 13, fontWeight: "bold" },

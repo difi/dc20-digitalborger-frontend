@@ -11,22 +11,19 @@ import {
 // @ts-ignore
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import * as WebBrowser from "expo-web-browser";
-import {useEffect, useState} from "react";
-import {retrieveData} from "../../../../Storage";
-import {getPayoutData} from "../../../../ServerCommunications/Services/LaanekassenService";
+import { useEffect, useState } from "react";
+import { retrieveData } from "../../../../Storage";
+import { getPayoutData } from "../../../../ServerCommunications/Services/LaanekassenService";
 import Button from "../assets/Button";
 
 const Betalinger = {
-    occurrence: "Utbetaling",
-  }
-
+  occurrence: "Utbetaling",
+};
 
 export default function Utbetaling() {
-
   const [payout, setPayout] = useState([
     { date: "", occurrence: "null", sum: 0 },
   ]);
-
 
   useEffect(() => {
     (async () => {
@@ -36,18 +33,14 @@ export default function Utbetaling() {
     })();
   }, []);
 
-
   const formatDate = (date) => {
-    let time = String(date).split('-');
-    console.log(time);
-
+    let time = String(date).split("-");
     let year = time[0];
     let month = time[1];
     let day = time[2];
 
     return day + "." + month + "." + year;
-  }
-
+  };
 
   return (
     <SafeAreaView>
@@ -67,10 +60,16 @@ export default function Utbetaling() {
       </ScrollView>
       <View>
         <View style={styles.buttonContainer}>
-          <Button label={"Til dine sider"} color={"#97469d"} onPress={() =>
+          <Button
+            label={"Til dine sider"}
+            color={"#97469d"}
+            onPress={() =>
               WebBrowser.openBrowserAsync(
-                  "https://lanekassen.no/nb-NO/verktoy-og-frister/Frister-i-Lanekassen/utbetaling-av-utdanningsstotte/"
-              )} textColor={"white"}/>
+                "https://lanekassen.no/nb-NO/verktoy-og-frister/Frister-i-Lanekassen/utbetaling-av-utdanningsstotte/"
+              )
+            }
+            textColor={"white"}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
   titleText: {
     color: "white",
     fontSize: 16,
-    flex: 1/3,
+    flex: 1 / 3,
     textAlign: "center",
   },
   listItems: {
@@ -105,10 +104,10 @@ const styles = StyleSheet.create({
   ItemText: {
     fontSize: 15,
     marginBottom: 10,
-    flex: 1/3,
+    flex: 1 / 3,
     textAlign: "center",
   },
-  buttonContainer:{
+  buttonContainer: {
     margin: "10%",
     marginLeft: "2%",
     marginRight: "2%",

@@ -6,7 +6,9 @@ import * as WebBrowser from "expo-web-browser";
 import { getSchools } from "../../../../ServerCommunications/Services/VigoService";
 
 export default function School() {
-  const [schools, setSchools] = useState(Array);
+  const [schools, setSchools] = useState([
+    { Skolenavn: "Laster...", Distanse: 0 },
+  ]);
   const [location, setLocation] = useState();
   const [errorMsg, setErrorMsg] = useState("");
   const [status, setStatus] = useState("");

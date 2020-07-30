@@ -72,7 +72,6 @@ const VIGO = [
   },
 ];
 
-
 export function Vigo({ route }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const { open } = route.params;

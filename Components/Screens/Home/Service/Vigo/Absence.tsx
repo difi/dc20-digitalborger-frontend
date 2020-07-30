@@ -48,7 +48,6 @@ export default function Absence() {
     data()
       .then((item) => {
         setAbsence(item.third);
-        console.log(item.third);
       })
       .catch((err) => console.log(err));
   }, []);
