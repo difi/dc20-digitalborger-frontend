@@ -126,7 +126,6 @@ function AllServices({ navigation }) {
   };
 
   let handleNotificationResponse = (response) => {
-    console.log(response);
     navigation.navigate("Notification");
   };
 
