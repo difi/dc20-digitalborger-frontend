@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     right: 8,
   },
   textContainer: {
-    left: 5,
-    bottom: 15,
+    left: 10,
+    bottom: 20,
   },
 });

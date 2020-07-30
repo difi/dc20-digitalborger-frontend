@@ -11,7 +11,7 @@ import {SafeAreaView, ScrollView, Text, View} from "react-native";
 //import Header from "../Header";
 import Header from "./HeaderHelsenorge";
 import {ListItem} from "../Collapsible/ListItem";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Footer from "../Footer";
 import Resepter from "./Resepter";
 import TimeAvtaler from "./TimeAvtaler";
@@ -54,9 +54,28 @@ const HELSE  = [
 
 ];
 
-export function Helsenorge(){
+export function Helsenorge({route}){
 
     const [selectedIndex, setSelectedIndex] = useState(null);
+    const { open } = route.params;
+    useEffect(() => {
+        if (open !== null) {
+            switch (open) {
+                case "Fastlege":
+                    setSelectedIndex(0);
+                    break;
+                case "Bestill time":
+                    setSelectedIndex(1);
+                    break;
+                case "Vaksine":
+                    setSelectedIndex(2);
+                    break;
+                case "Resepter":
+                    setSelectedIndex(3);
+                    break;
+            }
+        }
+    }, [open]);
 
     return(
         <SafeAreaView style={{flex: 1}}>
@@ -69,13 +88,13 @@ export function Helsenorge(){
                         </View>
                     </ListItem>
 
-                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={230} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
+                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={140} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <TimeAvtaler/>
                         </View>
                     </ListItem>
 
-                    <ListItem key={2} iconName = {HELSE[2].icon.name} iconType={HELSE[2].icon.type} containerHeight={290} title={HELSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
+                    <ListItem key={2} iconName = {HELSE[2].icon.name} iconType={HELSE[2].icon.type} containerHeight={340} title={HELSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <Vaksine/>
                         </View>

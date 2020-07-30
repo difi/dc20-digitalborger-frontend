@@ -7,9 +7,9 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
 import {useEffect, useState} from "react";
-import {retrieveData} from "../Storage";
-import {getSkattInfo} from "../ServerCommunications/Services/SkatteetatenService";
-
+import {retrieveData} from "../../../../Storage";
+import {getSkattInfo} from "../../../../ServerCommunications/Services/SkatteetatenService";
+import Button from "../assets/Button";
 
 const info = {
     intro: "Disse har hentet skattekortet ditt:",
@@ -17,20 +17,7 @@ const info = {
 
 };
 
-const Arbeidsgiver = [
-    {
-        company: "DOMSTOLENE I NORGE",
-        date:  "12.04.2020",
-    },
-    {
-        company: "DIGITALISERINGSDIREKTORATET",
-        date:  "24.06.2020",
-    },
-    {
-        company:  "SOGNDAL KOMMUNE",
-        date: "18.08.2020",
 
-}]
 
 export default function Skattegiver() {
 
@@ -88,7 +75,7 @@ export default function Skattegiver() {
         <View>
             <View style={styles.container}>
                 <View style={styles.introText}>
-                    <Text style={{ fontWeight: "bold", fontSize: 15}}>{info.intro}</Text>
+                    <Text style={{ fontWeight: "bold", fontSize: 15, textDecorationLine: "underline", }}>{info.intro}</Text>
                 </View>
 
                 {employerData.Arbeidsgiver.map((item, indexSkatt) => (
@@ -102,24 +89,13 @@ export default function Skattegiver() {
                         </View>
                     </View>
                 ))}
-
-
-                <TouchableOpacity
-                    containerStyle={styles.linkContainer}
-                    onPress={() =>
+                <View style={styles.buttonContainer}>
+                    <Button label={"Flere detaljer"} color={"#6f2c3f"} onPress={() =>
                         WebBrowser.openBrowserAsync(
                             "https://skatt.skatteetaten.no/web/minskatteside/?innvalg=minearbeidsgivere#/minearbeidsgivere"
-                        )
-                    }
-                >
-                    <View style={styles.linkContainer}>
-                        <Icon name="arrow-circle-right" size={15}></Icon>
-                        <Text style={{ fontWeight: "bold",fontSize: 14}}> Detaljer om hvem som har hentet skattekorte ditt </Text>
-                    </View>
-                </TouchableOpacity>
-
+                        )} textColor={"white"}/>
+                </View>
             </View>
-
             </View>
 
     );
@@ -132,36 +108,31 @@ const styles = StyleSheet.create({
     container: {
         top: 10,
     },
-
     introText:{
-        borderBottomColor: "black",
-        borderBottomWidth: 1,
         marginBottom: 10,
     },
-
     textContainer:{
         flexDirection: "row",
-        marginTop: 10,
+        marginTop: 5,
         borderBottomColor: "#E1E1E1",
         borderBottomWidth: 1,
     },
-
     rightText:{
         alignItems: "flex-start",
         marginBottom: 10,
         right: 5,
     },
-
     leftText:{
         alignItems: "flex-start",
         flexDirection: "column",
         marginBottom: 10,
         flex: 1,
     },
-
-    linkContainer:{
-        flexDirection: "row",
-        marginTop: 15,
+    buttonContainer: {
+        margin: "10%",
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 25,
     },
 
 });

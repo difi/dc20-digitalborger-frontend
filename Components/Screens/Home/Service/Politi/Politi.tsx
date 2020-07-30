@@ -81,8 +81,29 @@ const POLITI = [
 
 const SPACE = 20;
 
-export function Politi() {
+export function Politi({route}) {
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const { open } = route.params;
+  useEffect(() => {
+    if (open !== null) {
+      switch (open) {
+        case "Søk om politiattest":
+          setSelectedIndex(0);
+          break;
+        case "Forny eller søk om pass":
+          setSelectedIndex(1);
+          break;
+        case "Anmelde":
+          setSelectedIndex(2);
+          break;
+        case "Kontakt politiet":
+          setSelectedIndex(3);
+          break;
+
+      }
+    }
+  }, [open]);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView
@@ -97,7 +118,7 @@ export function Politi() {
             key={0}
             iconName={POLITI[0].icon.name}
             iconType={POLITI[0].icon.type}
-            containerHeight={280}
+            containerHeight={250}
             title={POLITI[0].title}
             parentCallback={(item) => {
               setSelectedIndex(0);
@@ -132,7 +153,7 @@ export function Politi() {
             key={2}
             iconName={POLITI[2].icon.name}
             iconType={POLITI[2].icon.type}
-            containerHeight={250}
+            containerHeight={215}
             title={POLITI[2].title}
             parentCallback={(item) => {
               setSelectedIndex(2);
@@ -150,7 +171,7 @@ export function Politi() {
             key={3}
             iconName={POLITI[3].icon.name}
             iconType={POLITI[3].icon.type}
-            containerHeight={220}
+            containerHeight={170}
             title={POLITI[3].title}
             parentCallback={(item) => {
               setSelectedIndex(3);
