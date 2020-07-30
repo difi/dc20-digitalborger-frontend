@@ -34,7 +34,7 @@ const Button = ({ label, color, textColor, onPress }: ButtonProps) => {
                 </Text>
             </View>
             <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-                <Icon name ="arrow-long-right" size={15} color="white"></Icon>
+                <Icon name ="arrow-long-right" size={15} color={textColor}></Icon>
             </View>
         </RectButton>
     );

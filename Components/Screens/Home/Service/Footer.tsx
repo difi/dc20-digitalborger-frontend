@@ -2,6 +2,7 @@ import {Text, TouchableOpacity, View} from "react-native";
 import * as React from "react";
 import * as WebBrowser from "expo-web-browser";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Button from "./assets/Button";
 
 const SPACE = 20;
 
@@ -24,21 +25,11 @@ export default function Footer({description, link}: FooterProps) {
                    {description}
                </Text>
            </View>
-            <View style={{flex: 1, alignSelf: "flex-end"}}>
-                <TouchableOpacity
-                    style={{
-                        flexDirection: "row",
-                        }}
-                    onPress={() =>
-                        WebBrowser.openBrowserAsync(link)
-                    }
-                >
-                    <Text style={{color: "white"}}>Gå til</Text>
-                    <View style={{paddingLeft: 7, }}>
-                        <Icon name="arrow-right-circle-outline" size={20} color={"white"}></Icon>
-                    </View>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity onPress={() => WebBrowser.openBrowserAsync(link)} style={{flex: 1, paddingTop: 10, alignSelf: "flex-end"}}>
+               <Text style={{color: "white", fontWeight: "bold", textDecorationLine: "underline"}}>
+                   Gå til hjemmeside
+               </Text>
+            </TouchableOpacity>
         </View>
     );
 }
