@@ -199,18 +199,11 @@ export default function Profile() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#A4D7F4" }}>
-<<<<<<< HEAD
       <ScrollView
-        style={{ flex: 1, backgroundColor: "#A4D7F4" }}
+        style={{ flex: 1, backgroundColor: "white" }}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.heading}>Din profil</Text>
         <View style={{ flex: 1, backgroundColor: "white" }}>
-=======
-      <ScrollView style={{ flex: 1, backgroundColor: "white" }} showsVerticalScrollIndicator={false}>
-
-        <View style={{ flex: 1, backgroundColor: "white"}}>
->>>>>>> f1bf88f890ddcb136a265904f624ae51faf44168
           <View
             style={{
               flex: 1,
@@ -220,7 +213,7 @@ export default function Profile() {
               alignItems: "center",
             }}
           >
-              <Text style={styles.heading}>Din profil</Text>
+            <Text style={styles.heading}>Din profil</Text>
             <ProfileHeader width={200} height={200} />
           </View>
         </View>
@@ -309,7 +302,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 10,
     padding: 20,
-      alignSelf: "flex-start"
+    alignSelf: "flex-start",
   },
   historyContainer: { width: 300 },
   historyTitle: { fontWeight: "bold", marginBottom: 5 },
