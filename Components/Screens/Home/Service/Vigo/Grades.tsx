@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
 },
     averageContainer: {
         flexDirection: "row",
-        marginRight: '2.6%',
+        marginRight: '1.4%',
         position: "absolute",
         bottom: 0,
         right: 0
