@@ -10,7 +10,7 @@ Det er et informasjonsbehov blant de spurte. Det er få som har fullstendig over
 
 Dessuten rappoterer unge at de ofte trenger hjelp av en foresatt dersom de foreksempel skal søke skattekort.
 
-Ung Borger skal ha som oppgave å synliggjøre offentlige tjenester for målgruppen og gjøre det lettere for dem å søke/bli informert om tjenester på egenhånd.
+Ung Borger har som oppgave å synliggjøre offentlige tjenester for målgruppen og gjøre det lettere for dem å søke/bli informert om tjenester på egenhånd.
 
 ## Bibliotek
 
@@ -27,15 +27,42 @@ part 2:
 2.
 3.
 
-##Beskrivelse
+##Components
+
+####Login: 
+
+####Services: 
+Ung Borger tilbyr følgende offentlige tjenester: 
+
+* Digipost
+* Helsenorge
+* Lånekassen
+* Politi
+* Skatteetaten
+* Vegvesenet
+* Vigo
+
+####Hourglass:
+Timeglass skal gi brukeren oversikt over personlige frister
+
+####Notification:
+Varsel skal gi brukeren oversikt over generelle frister fra de ulike tjenestene
+
+####Profile:
+
+
+####Service Communications:
+
+####Other components:
+* Button
+* Storage
+* Theme
+
+
+
 
 
 
 ##Hvordan kjøre programmet
 
-
-Fra webstorm kjør programmet ved å skrive inn i terminalen: npm install
-Da vil en webpack-dev-server starte. 
-
-her kan du scane QR-koden fra expo appen eller velge en av simulatorene.
  
