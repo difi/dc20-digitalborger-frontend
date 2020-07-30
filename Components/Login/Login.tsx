@@ -135,10 +135,10 @@ export default function Login({navigation}) {
            </Animated.View>
 
            <View style={{flex: 0.5, justifyContent: "center", alignItems: "center", marginTop: 40}}>
-               <Text style={{fontWeight: "bold", fontSize: 25, letterSpacing: 0.6}}>
+               <Text style={{fontWeight: "bold", fontSize: 25, letterSpacing: 0.1}}>
                    Velkommen til ID-porten
                </Text>
-               <Text style={{fontStyle: "italic", fontSize: 20, marginTop: 10, color: "#666666", letterSpacing: 0.6}}>
+               <Text style={{fontStyle: "italic", fontSize: 20, marginTop: 10, color: "#666666", letterSpacing: 0.1}}>
                    - Vi er til for din sikkerhet
                </Text>
            </View>
@@ -147,32 +147,23 @@ export default function Login({navigation}) {
            </Animated.View>
 
            <View style={{flex: 0.5, justifyContent: "center", alignItems: "center", marginRight: 40, marginLeft: 40}}>
-               <Text style={{letterSpacing: 0.6}}>
+               <Text style={{letterSpacing: 0.1, fontSize: 16}}>
                    Gjennom oss har du mulighet til å logge inn på hvilken som helst offentlige tjeneste. Hvor kult er ikke det!
                </Text>
            </View>
 
            <View style={{flex: 0.7}}>
-                <View style={{flex: 2, backgroundColor: "#5CB6B0", justifyContent: "center", alignItems: "center", borderTopLeftRadius: 65, borderTopRightRadius: 65, paddingTop: 20}}>
+                <View style={{flex: 2, backgroundColor: "#E18E76", justifyContent: "center", alignItems: "center", borderTopLeftRadius: 55, borderTopRightRadius: 55, paddingTop: 20}}>
                     <Button onPress={() => promptAsync({ useProxy })}  variant={"default"} label={"Login"}/>
                     <TouchableOpacity onPress={() =>
                         setShow(true)
                     }>
-                        <Text style={{color: "white", textDecorationLine: "underline", letterSpacing: 0.6, marginTop: 20}}>
+                        <Text style={{color: "white", textDecorationLine: "underline", letterSpacing: 0.1, marginTop: 20}}>
                             Opprett minID
                         </Text>
                     </TouchableOpacity>
                 </View>
-               <View style={{flex: 1, backgroundColor: "#5CB6B0"}}>
-                   <TouchableOpacity onPress={() => navigation.goBack()} style={{flex: 1, alignSelf: "flex-start", marginLeft: 20, flexDirection: "row", justifyContent: "center", alignItems: "center"}}>
-                       <FontAwesome name={"arrow-circle-left"} color={"white"} size={25} />
-                       <Text style={{color: "white", fontWeight: "bold", marginLeft: 10}}>
-                           Tilbake
-                       </Text>
-                   </TouchableOpacity>
-               </View>
            </View>
-
        </View>
     );
 }

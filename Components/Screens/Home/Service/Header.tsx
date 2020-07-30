@@ -4,7 +4,7 @@ import * as React from "react";
 const SPACE = 20;
 
 interface HeaderProps {
-  nameOfService: string;
+  nameOfService?: string;
   logo: string;
 }
 

@@ -10,7 +10,7 @@ import { ListItem } from "../Collapsible/ListItem";
 import Utbetaling from "./Utbetaling";
 import Header from "./HeaderLan";
 import Support from "./Support";
-import StipendLån from "../../../Vigo/StipendLån";
+import StipendLån from "./StipendLån";
 
 const LAANEKASSE = [
   {
@@ -63,7 +63,8 @@ export function Lanekassen({ route }) {
           break;
       }
     }
-  });
+  }, [open]);
+
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

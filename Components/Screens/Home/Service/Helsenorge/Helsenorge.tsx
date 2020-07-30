@@ -11,7 +11,7 @@ import {SafeAreaView, ScrollView, Text, View} from "react-native";
 //import Header from "../Header";
 import Header from "./HeaderHelsenorge";
 import {ListItem} from "../Collapsible/ListItem";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Footer from "../Footer";
 import Resepter from "./Resepter";
 import TimeAvtaler from "./TimeAvtaler";
@@ -54,9 +54,28 @@ const HELSE  = [
 
 ];
 
-export function Helsenorge(){
+export function Helsenorge({route}){
 
     const [selectedIndex, setSelectedIndex] = useState(null);
+    const { open } = route.params;
+    useEffect(() => {
+        if (open !== null) {
+            switch (open) {
+                case "Fastlege":
+                    setSelectedIndex(0);
+                    break;
+                case "Bestill time":
+                    setSelectedIndex(1);
+                    break;
+                case "Vaksine":
+                    setSelectedIndex(2);
+                    break;
+                case "Resepter":
+                    setSelectedIndex(3);
+                    break;
+            }
+        }
+    }, [open]);
 
     return(
         <SafeAreaView style={{flex: 1}}>
@@ -80,7 +99,7 @@ export function Helsenorge(){
                             <Vaksine/>
                         </View>
                     </ListItem>
-                    <ListItem key={3} iconName = {HELSE[3].icon.name} iconType={HELSE[3].icon.type} containerHeight={350} title={HELSE[3].title} parentCallback={(item) => {setSelectedIndex(3); console.log("toggled", item)}} pressed={(selectedIndex === 3) ? true : false}>
+                    <ListItem key={3} iconName = {HELSE[3].icon.name} iconType={HELSE[3].icon.type} containerHeight={400} title={HELSE[3].title} parentCallback={(item) => {setSelectedIndex(3); console.log("toggled", item)}} pressed={(selectedIndex === 3) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                            <Resepter/>
                         </View>
