@@ -65,7 +65,6 @@ export default function Utbetaling() {
     let day = format[2];
     let year = format[3];
 
-    console.log(time)
 
 
     return day + "." + formatMonth(month) + "." + year ;

@@ -2,6 +2,7 @@ import * as React from "react";
 import {View, ScrollView, Text, StyleSheet} from "react-native";
 import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
+// @ts-ignore
 import Icon from "react-native-vector-icons/FontAwesome";
 import {TouchableOpacity} from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
@@ -75,7 +76,6 @@ export default function Skattegiver() {
         let day = format[2];
         let year = format[3];
 
-        console.log(time)
 
 
         return day + "." + formatMonth(month) + "." + year ;

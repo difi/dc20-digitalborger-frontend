@@ -8,36 +8,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {useEffect, useState} from "react";
 import {retrieveData} from "../../../../Storage";
 import {getPrescriptionInfo} from "../../../../ServerCommunications/Services/HelseNorgeService";
-import * as Location from "expo-location";
-import {getSchools} from "../../../../ServerCommunications/Services/VigoService";
 
-const  PrescriptionsList = [
-
-    {
-        name: "Telfast",
-        category: "Allergimedisn",
-        status: "Kan fremdeles brukes"
-    },
-    {
-        name: "Microgynom",
-        category: "Prevensjonsmiddel",
-        status: "Kan fremdeles brukes",
-    },
-];
-
-const ExpiredPrescriptionsList = [
-    {
-        name: "Tramadal",
-        category: "Smertestillende",
-        status: "Forny",
-    },
-    {
-        name: "Nobilgan",
-        category: "Søvndyssende",
-        status: "Forny",
-    },
-
-];
 
 export default function Resepter() {
     const [prescriptionData, setPrescription ] = useState(
@@ -132,6 +103,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         borderBottomColor: "black",
         borderBottomWidth: 1,
+        marginTop: 6,
     },
     expiredContainer:{
         flexShrink: 1,
