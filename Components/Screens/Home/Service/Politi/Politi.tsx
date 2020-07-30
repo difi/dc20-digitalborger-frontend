@@ -10,7 +10,7 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from "react-native";
-import HeaderPoliti from "./HeaderPoliti";
+import Header from "../Header";
 import { Component, useEffect, useState } from "react";
 // @ts-ignore
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -29,7 +29,6 @@ import {
 } from "react-native-redash";
 import Animated, { interpolate } from "react-native-reanimated";
 import { ListItem } from "../Collapsible/ListItem";
-import Header from "./HeaderPoliti";
 import Footer from "../Footer";
 import PolitiAttest from "./PolitiAttest";
 import Anmelde from "./Anmelde";
@@ -48,7 +47,7 @@ const POLITI = [
     },
   },
   {
-    title: "Forny eller søk om pass",
+    title: "Ditt nærmeste passkontor",
     icon: {
       type: "FontAwesome5",
       name: "passport",
@@ -81,16 +80,37 @@ const POLITI = [
 
 const SPACE = 20;
 
-export function Politi() {
+export function Politi({route}) {
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const { open } = route.params;
+  useEffect(() => {
+    if (open !== null) {
+      switch (open) {
+        case "Søk om politiattest":
+          setSelectedIndex(0);
+          break;
+        case "Ditt nærmeste passkontor":
+          setSelectedIndex(1);
+          break;
+        case "Anmelde":
+          setSelectedIndex(2);
+          break;
+        case "Kontakt politiet":
+          setSelectedIndex(3);
+          break;
+
+      }
+    }
+  }, [open]);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView
         style={{ flex: 1, backgroundColor: "#212a3b" }}
         showsVerticalScrollIndicator={false}
       >
-        <HeaderPoliti
-          logo={"Components/Screens/Home/Service/Politi/Politi.tsx"}
+        <Header
+            logo={require("./assets/politiet.png")}
         />
         <View>
           <ListItem

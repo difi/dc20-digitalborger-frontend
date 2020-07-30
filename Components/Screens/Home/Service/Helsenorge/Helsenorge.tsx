@@ -9,7 +9,7 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 
 import {SafeAreaView, ScrollView, Text, View} from "react-native";
 //import Header from "../Header";
-import Header from "./HeaderHelsenorge";
+import Header from "../Header";
 import {ListItem} from "../Collapsible/ListItem";
 import {useEffect, useState} from "react";
 import Footer from "../Footer";
@@ -79,8 +79,8 @@ export function Helsenorge({route}){
 
     return(
         <SafeAreaView style={{flex: 1}}>
-            <Header logo={"Components/Screens/Home/Service/Helsenorge/Helsenorge.tsx"} nameOfService={"Helsenorge"}/>
             <ScrollView style={{flex: 1, backgroundColor: "#9a1c6f"}} showsVerticalScrollIndicator={false}>
+                <Header logo={require("./assets/helsenorge.png")} nameOfService={"Helsenorge"}/>
                 <View>
                     <ListItem key={0} iconName = {HELSE[0].icon.name} iconType={HELSE[0].icon.type} containerHeight={120} title={HELSE[0].title} parentCallback={(item) => {setSelectedIndex(0); console.log("toggled", item)}} pressed={(selectedIndex === 0) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>

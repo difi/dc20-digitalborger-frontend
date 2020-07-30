@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { SafeAreaView, ScrollView, Text, View } from "react-native";
 //import Header from "../Header";
-import Header from "./HeaderVegvesenet";
+import Header from "../Header";
 import { ListItem } from "../Collapsible/ListItem";
 //import Grades from "../Vigo/Grades";
 import { useEffect, useState } from "react";
@@ -65,14 +65,14 @@ export function Vegvesenet({ route }) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Header
-        logo={"Components/Screens/Home/Service/Vegvesenet/Vegvesenet.tsx"}
-        nameOfService={"Statens vegvesen"}
-      />
       <ScrollView
         style={{ flex: 1, backgroundColor: "#DA3737" }}
         showsVerticalScrollIndicator={false}
       >
+        <Header
+            logo={require("./assets/vegvesenet.png")}
+            nameOfService={"Statens vegvesen"}
+        />
         <View>
           <ListItem
             key={0}

@@ -5,32 +5,33 @@ const SPACE = 20;
 
 interface HeaderProps {
   nameOfService?: string;
-  logo: string;
+  logo: NodeRequire;
 }
 
 export default function Header({ nameOfService, logo }: HeaderProps) {
   return (
     <View
       style={{
+          flex: 1,
         backgroundColor: "white",
-        justifyContent: "flex-start",
         flexDirection: "row",
-        alignItems: "center",
         padding: SPACE,
       }}
     >
-      <View style={{ height: 100, width: 100 }}>
+      <View style={{ flex: 1, height: 100, width: 100, justifyContent: "center", alignItems: "center"}}>
         <Image
-          source={{
-            uri: "https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg",
-          }}
-          resizeMethod={"resize"}
-          style={{ width: "100%", height: "100%", borderRadius: 100 }}
+          source={logo}
+          resizeMode={"contain"}
+          style={{ flex: 1, width: "80%", height: "80%", borderRadius: 10, alignSelf: "center",
+              justifyContent: "center", }}
         />
+          {console.log(nameOfService)}
       </View>
-      <View style={{ marginLeft: 10 }}>
-        <Text style={{ fontSize: 30 }}>{nameOfService}</Text>
-      </View>
+        {(nameOfService !== undefined) && (
+            <View style={{ flex: 2, justifyContent: "center", alignItems: "center"}}>
+                <Text style={{ fontSize: 25 }}>{nameOfService}</Text>
+            </View>
+        )}
     </View>
   );
 }
