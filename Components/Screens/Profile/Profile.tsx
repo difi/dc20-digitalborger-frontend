@@ -198,6 +198,21 @@ const Card = ({ icon, data, editable }: CardProps) => {
 
 const { height } = Dimensions.get("window");
 
+const history = [
+  { date: "30/07/2020 kl.08.15", page: "https://www.skatteetaten.no/" },
+  { date: "26/07/2020 kl.20.23", page: "https://helsenorge.no/" },
+  { date: "12.04.2020 kl.12.15", page: "https://www.vigo.no/" },
+  { date: "20.04.2020 kl.13.00", page: "https://helsenorge.no/" },
+  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
+];
+
 export default function Profile() {
   const [visibility, setVisibility] = useState(false);
 
@@ -206,7 +221,6 @@ export default function Profile() {
       <KeyboardAwareScrollView
         style={{ height: height, backgroundColor: "white" }}
         showsVerticalScrollIndicator={false}
-        scrollEnabled={false}
       >
         <View style={{ flex: 1, backgroundColor: "white" }}>
           <View
@@ -280,18 +294,27 @@ export default function Profile() {
             }}
           >
             <View>
+              <View></View>
+
               <View style={{ marginBottom: 20, margin: 10 }}>
                 <View style={styles.historyText}>
                   <Text style={styles.historyTitle}>Innlogging:</Text>
-                  <Text>MinID.no</Text>
-                  <Text>Skatteetaten.no</Text>
+                  {history.map((event, index) => (
+                    <Text style={{ paddingBottom: 5 }} key={index}>
+                      {event.page}
+                    </Text>
+                  ))}
                 </View>
-                <View style={styles.historyDate}>
+                <View style={[styles.historyDate]}>
                   <Text style={styles.historyTitle}>Dato:</Text>
-                  <Text>1234</Text>
-                  <Text>blablablablabla</Text>
+                  {history.map((event, index) => (
+                    <Text style={{ paddingBottom: 5 }} key={index}>
+                      {event.date}
+                    </Text>
+                  ))}
                 </View>
               </View>
+
               <Button title="Lukk" onPress={() => setVisibility(false)} />
             </View>
           </Overlay>
@@ -309,8 +332,8 @@ const styles = StyleSheet.create({
     padding: 20,
     alignSelf: "flex-start",
   },
-  historyContainer: { width: 300 },
-  historyTitle: { fontWeight: "bold", marginBottom: 5 },
-  historyText: {},
-  historyDate: { position: "absolute", right: 0 },
+  historyContainer: { width: 300, fontSize: 15 },
+  historyTitle: { fontWeight: "bold", marginBottom: 5, fontSize: 15 },
+  historyText: { fontSize: 15 },
+  historyDate: { position: "absolute", right: 0, fontSize: 15 },
 });
