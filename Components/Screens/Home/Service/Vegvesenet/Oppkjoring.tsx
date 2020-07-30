@@ -31,8 +31,6 @@ export default function Oppkjoring() {
 
 const styles = StyleSheet.create({
   gridContainer: {
-    borderWidth: 5,
-    borderColor: "#e6e6e6",
     height: "auto",
     width: "100%",
   },

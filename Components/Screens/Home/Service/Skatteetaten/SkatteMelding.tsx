@@ -9,12 +9,6 @@ import { getDoctorData } from "../../../../ServerCommunications/Services/HelseNo
 import { getSkattInfo } from "../../../../ServerCommunications/Services/SkatteetatenService";
 
 
-const SkattInfo =
-    {
-        beregnet: 10000,
-        trekk: 0.11,
-    }
-
 export default function SkatteMelding() {
   const [taxData, setTax] = useState({
     Skatt: { inntekt: 0, beregnet: 0, trekk: 0 },

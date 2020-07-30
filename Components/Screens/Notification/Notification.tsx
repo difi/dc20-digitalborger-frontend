@@ -7,21 +7,14 @@ import {
   Platform,
 } from "react-native";
 import NotificationBar from "./NotificationBar";
-import { Header, Text } from "react-native-elements";
-
-import axios from "axios";
-
-import Skattemelding from "../Skattegiver";
-import KontaktPoliti from "../Home/Service/Politi/KontaktPoliti";
+import { Text } from "react-native-elements";
 import { retrieveData } from "../../Storage";
-import {
-  sendToken,
-  updateBagde,
-} from "../../ServerCommunications/Services/PushNotifications";
+import { updateBagde } from "../../ServerCommunications/Services/PushNotifications";
 import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 import { useState, useEffect } from "react";
+import { getNotifications } from "../../ServerCommunications/Services/Notifications";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -95,6 +88,7 @@ async function registerForPushNotificationsAsync() {
 
 export default function Notification() {
   const [expoPushToken, setExpoPushToken] = useState("");
+  const [notifications, setNotifications] = useState(Array);
 
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
@@ -106,27 +100,27 @@ export default function Notification() {
       );
       const data = await updateBagde(expoPushToken);
     };
-    {
-    }
+    const getData = async () => {
+      const notification = await getNotifications();
+      setNotifications(notification);
+    };
     Notifications.setBadgeCountAsync(0);
     updateBagdeCount();
+    getData();
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>Varslinger</Text>
       <ScrollView>
-        {events.map((event, index) => (
+        {notifications.map((event, index) => (
           <NotificationBar
             key={index}
-            logo={{
-              uri: event.logo,
-            }}
-            description={event.description}
-            service={event.service}
-            received={event.received}
-            icon={event.icon}
-            icon_color={event.icon_color}
+            description={event.varselnavn}
+            service={event.tjeneste}
+            received={event.opprettelsesdato}
+            icon={event.symbol}
+            icon_color={"#64D2FF"}
           />
         ))}
       </ScrollView>
@@ -136,7 +130,6 @@ export default function Notification() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
     height: "100%",
     width: "100%",
   },
