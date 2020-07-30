@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         margin: "10%",
-        marginLeft: 10,
-        marginRight: 10,
-        marginTop: 20,
+        marginLeft: "2%",
+        marginRight: "2%",
+        marginTop: "6%",
     },
 })
