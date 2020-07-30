@@ -39,6 +39,7 @@ import Animated, {
 } from "react-native-reanimated";
 import Digipost from "../Home/Service/Digipost/Digipost";
 import Mail from "../Home/Service/Digipost/Mail";
+import * as Notifications from "expo-notifications";
 
 const PopularServices = [
   {
@@ -113,6 +114,24 @@ const checkLocalStorage = async () => {
 };
 
 function AllServices({ navigation }) {
+  const [notifications, setNotifications] = useState("");
+
+  let handleNotifications = (notification) => {
+    setNotifications(notification);
+  };
+
+  let handleNotificationResponse = (response) => {
+    console.log(response);
+    navigation.navigate("Notification");
+  };
+
+  useEffect(() => {
+    Notifications.addNotificationReceivedListener(handleNotifications);
+    Notifications.addNotificationResponseReceivedListener(
+      handleNotificationResponse
+    );
+  }, [notifications]);
+
   useEffect(() => {
     checkLocalStorage().catch((err) => console.log(err));
   });
@@ -228,64 +247,61 @@ function AllServices({ navigation }) {
         >
           <View style={stylesBottom.gridContainer}>
             {services.map((service, index) => (
-                <Animated.View
+              <Animated.View
+                key={index}
+                style={{
+                  transform: [
+                    {
+                      scale: executeTransition(
+                        index,
+                        index * delta,
+                        index * delta + delta
+                      ),
+                    },
+                  ],
+                }}
+              >
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate(service.name, { open: null })
+                  }
                   key={index}
-                  style={{
-                    transform: [
-                      {
-                        scale: executeTransition(
-                          index,
-                          index * delta,
-                          index * delta + delta
-                        ),
+                  style={[
+                    stylesBottom.item,
+                    {
+                      backgroundColor: "white",
+                      borderRadius: 25,
+                      justifyContent: "center",
+                      shadowColor: "#000",
+                      shadowOffset: {
+                        width: 0,
+                        height: 1,
                       },
-                    ],
-                  }}
-                >
-                  <TouchableOpacity
-                    onPress={() =>
-                      navigation.navigate(service.name, { open: null })
-                    }
-                    key={index}
-                    style={[
-                      stylesBottom.item,
-                      {
-                        backgroundColor: "white",
-                        borderRadius: 25,
-                        justifyContent: "center",
-                        shadowColor: "#000",
-                        shadowOffset: {
-                          width: 0,
-                          height: 1,
-                        },
-                        shadowOpacity: 0.1,
-                        shadowRadius: 1.8,
+                      shadowOpacity: 0.1,
+                      shadowRadius: 1.8,
 
-                        elevation: 4,
+                      elevation: 4,
+                    },
+                  ]}
+                >
+                  <Image
+                    source={service.uri}
+                    style={[
+                      {
+                        width: "55%",
+                        height: "55%",
+                        alignSelf: "center",
+                        borderRadius: 20,
                       },
                     ]}
-                  >
-                    <Image
-                      source={service.uri}
-                      style={[
-                        {
-                          width: "55%",
-                          height: "55%",
-                          alignSelf: "center",
-                          borderRadius: 20,
-                        },
-                      ]}
-                      resizeMode={"contain"}
-                    />
-                    <View style={stylesBottom.textContainer}>
-                      <Text style={stylesBottom.buttonText}>
-                        {service.name}
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                </Animated.View>
-              )
-            )}
+                    resizeMode={"contain"}
+                  />
+                  <View style={stylesBottom.textContainer}>
+                    <Text style={stylesBottom.buttonText}>{service.name}</Text>
+                  </View>
+                </TouchableOpacity>
+              </Animated.View>
+            ))}
           </View>
           <TouchableOpacity
             style={{ flex: 1 }}
