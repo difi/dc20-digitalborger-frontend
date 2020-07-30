@@ -5,13 +5,14 @@ const SPACE = 20;
 
 interface HeaderProps {
   nameOfService?: string;
-  logo: string;
+  logo: NodeRequire;
 }
 
 export default function Header({ nameOfService, logo }: HeaderProps) {
   return (
     <View
       style={{
+          flex: 1,
         backgroundColor: "white",
         justifyContent: "flex-start",
         flexDirection: "row",
@@ -21,11 +22,9 @@ export default function Header({ nameOfService, logo }: HeaderProps) {
     >
       <View style={{ height: 100, width: 100 }}>
         <Image
-          source={{
-            uri: "https://www.kommunaljobb.no/files/pictures/vigo_logo.jpg",
-          }}
-          resizeMethod={"resize"}
-          style={{ width: "100%", height: "100%", borderRadius: 100 }}
+          source={logo}
+          resizeMode={"contain"}
+          style={{ width: "100%", height: "100%", borderRadius: 10, }}
         />
       </View>
       <View style={{ marginLeft: 10 }}>
