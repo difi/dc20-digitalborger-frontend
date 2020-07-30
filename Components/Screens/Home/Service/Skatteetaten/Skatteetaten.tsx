@@ -90,7 +90,7 @@ export function Skatteetaten({ route }) {
             key={0}
             iconName={SKATT[0].icon.name}
             iconType={SKATT[0].icon.type}
-            containerHeight={150}
+            containerHeight={195}
             title={SKATT[0].title}
             parentCallback={(item) => {
               setSelectedIndex(0);
@@ -107,7 +107,7 @@ export function Skatteetaten({ route }) {
             key={1}
             iconName={SKATT[1].icon.name}
             iconType={SKATT[1].icon.type}
-            containerHeight={130}
+            containerHeight={160}
             title={SKATT[1].title}
             parentCallback={(item) => {
               setSelectedIndex(1);
@@ -123,7 +123,7 @@ export function Skatteetaten({ route }) {
             key={2}
             iconName={SKATT[2].icon.name}
             iconType={SKATT[2].icon.type}
-            containerHeight={150}
+            containerHeight={175}
             title={SKATT[2].title}
             parentCallback={(item) => {
               setSelectedIndex(2);

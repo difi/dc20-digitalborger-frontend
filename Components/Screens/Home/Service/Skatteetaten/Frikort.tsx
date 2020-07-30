@@ -9,6 +9,8 @@ import {
 // @ts-ignore
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import * as WebBrowser from "expo-web-browser";
+import Button from "../assets/Button";
+
 
 export default function Frikort() {
   return (
@@ -18,18 +20,13 @@ export default function Frikort() {
         skatt dersom du tjener 55 000 kroner eller mindre i løpet av året.{" "}
         {"\n"}{" "}
       </Text>
+      <View style={styles.buttonContainer}>
+        <Button label={"Bestill frikort her "} color={"#6f2c3f"} onPress={() =>
+            WebBrowser.openBrowserAsync(
+                "\"https://www.skatteetaten.no/person/skatt/skattekort/frikort/bestille-frikort/"
+            )} textColor={"white"}/>
+      </View>
 
-      <TouchableOpacity
-        style={styles.LinkContainer}
-        onPress={() =>
-          WebBrowser.openBrowserAsync(
-            "https://www.skatteetaten.no/person/skatt/skattekort/frikort/bestille-frikort/"
-          )
-        }
-      >
-        <Text style={styles.buttonText}>Bestill frikort her</Text>
-        <FontAwesome key={0} name={"arrow-circle-right"} size={20} />
-      </TouchableOpacity>
     </View>
   );
 }
@@ -37,26 +34,17 @@ export default function Frikort() {
 const styles = StyleSheet.create({
   gridContainer: {
     flex: 1,
-    height: 180,
-    width: "100%",
-    borderWidth: 5,
-    borderColor: "#e6e6e6",
   },
-
   infoText: {
     fontSize: 15,
     marginHorizontal: "2%",
     marginTop: "2%",
   },
-
-  LinkContainer: {
-    flexDirection: "row",
-    alignSelf: "flex-end",
-  },
-  buttonText: {
-    fontSize: 15,
-    fontWeight: "bold",
+  buttonContainer: {
+    margin: "10%",
+    marginLeft: 10,
     marginRight: 10,
-    marginTop: 2,
+    marginTop: 5,
   },
+
 });

@@ -148,21 +148,17 @@ const styles = StyleSheet.create({
         fontSize: 17,
         marginLeft: "2%",
         marginTop: "1%"
-
     },
     text: {
         fontSize: 16,
         marginLeft: "2%",
         marginBottom: "1%"
-
     },
     boldText: {
         fontSize: 17,
         fontWeight: "bold",
         width: "100%",
         marginLeft: 10,
-
-
     },
     buttonContainer: {
         flexShrink: 1,
@@ -178,6 +174,5 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontWeight: "bold",
         marginRight: 10,
-
     }
 });

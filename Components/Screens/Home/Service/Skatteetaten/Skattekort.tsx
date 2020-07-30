@@ -5,28 +5,24 @@ import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
+import Button from "../assets/Button";
+
 
 export default function Skattekort() {
   return (
     <View style={styles.container}>
       <Text style={styles.boldText}>
-        Tjener du mer en 55 000 kroner må du ha et skattekort. {'\n'}
-        {'\n'} Om du tjener 55 000 kroner eller mindre anbefaler vi deg å søke frikort
+        {'\u30FB'}Tjener du mer en 55 000 kroner burde du søke om skattekort.
       </Text>
-
-      <TouchableOpacity
-        containerStyle={styles.linkContainer}
-        onPress={() =>
-          WebBrowser.openBrowserAsync(
-            "https://www.skatteetaten.no/person/skatt/skattekort/bestille-endre/"
-          )
-        }
-      >
-        <View style={styles.linkContainer}>
-          <Text style={styles.linkText}> Bestill skattekort her </Text>
-          <Icon name="arrow-circle-right" size={20}></Icon>
-        </View>
-      </TouchableOpacity>
+      <Text style={styles.boldText}>
+        {'\u30FB'}Arbeidsgiver trekker 50 prosent skatt av inntekten du tjener over frikortgrensen.
+      </Text>
+      <View style={styles.buttonContainer}>
+        <Button label={"Bestill skattekort her "} color={"#6f2c3f"} onPress={() =>
+            WebBrowser.openBrowserAsync(
+                "https://www.skatteetaten.no/person/skatt/skattekort/bestille-endre/"
+            )} textColor={"white"}/>
+      </View>
     </View>
   );
 }
@@ -34,23 +30,17 @@ export default function Skattekort() {
 const styles = StyleSheet.create({
   container: {
     height: "auto",
-    width: "100%",
   },
-
-  linkContainer: {
-    flexDirection: "row",
-    alignSelf: "flex-end",
-  },
-
   boldText: {
     fontSize: 15,
     margin: 10,
-    top: "5%",
+    bottom: "2%",
+  },
+  buttonContainer: {
+    margin: "10%",
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 5,
   },
 
-  linkText: {
-    fontSize: 15,
-    fontWeight: "bold",
-    marginRight: 5,
-  },
 });

@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { retrieveData } from "../../../../Storage";
 import { getDoctorData } from "../../../../ServerCommunications/Services/HelseNorgeService";
 import { getSkattInfo } from "../../../../ServerCommunications/Services/SkatteetatenService";
+import Button from "../assets/Button";
+
 
 
 const SkattInfo =
@@ -44,17 +46,12 @@ export default function SkatteMelding() {
         <Text style={styles.skattTitle}>Skattetrekk på hovedinntekt:</Text>
         <Text style={styles.skattInput}>{taxData.Skatt.trekk * 100 + "%"}</Text>
       </View>
-      <TouchableOpacity
-        style={styles.LinkContainer}
-        onPress={() =>
-          WebBrowser.openBrowserAsync(
-            "https://www.skatteetaten.no/person/skatt/skatteoppgjor/"
-          )
-        }
-      >
-        <Text style={styles.buttonText}>Se hele skattemeldingen din</Text>
-        <FontAwesome key={0} name={"arrow-circle-right"} size={20} />
-      </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <Button label={"Se hele skattemeldingen din"} color={"#6f2c3f"} onPress={() =>
+              WebBrowser.openBrowserAsync(
+                  "https://www.skatteetaten.no/person/skatt/skatteoppgjor/"
+              )} textColor={"white"}/>
+        </View>
     </View>
   );
 }
@@ -76,7 +73,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginTop: 10,
     marginBottom: 10,
-
   },
   skattTitle: {
     fontSize: 15,
@@ -87,14 +83,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "bold",
   },
-  LinkContainer: {
-    flexDirection: "row",
-    alignSelf: "flex-end",
-  },
-  buttonText: {
-    fontSize: 15,
-    fontWeight: "bold",
+  buttonContainer: {
+    margin: "10%",
+    marginLeft: 10,
     marginRight: 10,
-    marginTop: 2,
+    marginTop: 20,
   },
 });
