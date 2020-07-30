@@ -112,7 +112,7 @@ export default function Notification() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.heading}>Varslinger</Text>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {notifications.map((event, index) => (
           <NotificationBar
             key={index}

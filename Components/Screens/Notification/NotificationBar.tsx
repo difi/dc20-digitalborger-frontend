@@ -9,7 +9,7 @@ function getTimeFormat(dateString: string) {
   const difference = (today.getTime() - date.getTime()) / 1000;
 
   if (difference < 3600) {
-    return Math.floor(difference / 60) + "minutter siden";
+    return Math.floor(difference / 60) + " minutter siden";
   } else if (difference < 86400) {
     return Math.floor(difference / 60 / 60) + " timer siden";
   } else {
