@@ -8,36 +8,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {useEffect, useState} from "react";
 import {retrieveData} from "../../../../Storage";
 import {getPrescriptionInfo} from "../../../../ServerCommunications/Services/HelseNorgeService";
-import * as Location from "expo-location";
-import {getSchools} from "../../../../ServerCommunications/Services/VigoService";
 
-const  PrescriptionsList = [
-
-    {
-        name: "Telfast",
-        category: "Allergimedisn",
-        status: "Kan fremdeles brukes"
-    },
-    {
-        name: "Microgynom",
-        category: "Prevensjonsmiddel",
-        status: "Kan fremdeles brukes",
-    },
-];
-
-const ExpiredPrescriptionsList = [
-    {
-        name: "Tramadal",
-        category: "Smertestillende",
-        status: "Forny",
-    },
-    {
-        name: "Nobilgan",
-        category: "Søvndyssende",
-        status: "Forny",
-    },
-
-];
 
 export default function Resepter() {
     const [prescriptionData, setPrescription ] = useState(
@@ -69,13 +40,14 @@ export default function Resepter() {
                 <View key={index} style={{
                     flexShrink: 1,
                     borderBottomColor: "lightgrey",
+                    marginTop: 5,
                     borderBottomWidth: (index == prescriptionData.Prescriptions.length-1) ? 0: 1}}>
 
                     <Text style={styles.nameText} allowFontScaling={true}>{prescription.name}</Text>
 
                     <View style={styles.InfoContainer}>
-                        <Text style={styles.text} allowFontScaling={true}>{prescription.category}</Text>
-                        <Text style={styles.text} allowFontScaling={true}>{prescription.status}</Text>
+                        <Text style={{fontSize: 15}} allowFontScaling={true}>{prescription.category}</Text>
+                        <Text style={{fontSize: 15}} allowFontScaling={true}>{prescription.status}</Text>
                     </View>
 
                 </View>
@@ -96,12 +68,12 @@ export default function Resepter() {
                     <Text style={styles.nameText} allowFontScaling={true}>{prescription1.name}</Text>
 
                     <View style={styles.InfoContainer}>
-                        <Text style={styles.text} allowFontScaling={true} >{prescription1.category}</Text>
+                        <Text style={{fontSize: 15}} allowFontScaling={true} >{prescription1.category}</Text>
 
                         <TouchableOpacity
                             style={{flexDirection: "row", flexShrink: 1}}
                             onPress={() => WebBrowser.openBrowserAsync("https://helsenorge.no/om-min-helse/meldinger")}>
-                            <Text style={styles.text} allowFontScaling={true}>{prescription1.status}</Text>
+                            <Text style={{fontSize: 15}} allowFontScaling={true}>{prescription1.status}</Text>
                             <Entypo name={"cycle"}size={20}  allowFontScaling={true}/>
                         </TouchableOpacity>
 
@@ -112,7 +84,7 @@ export default function Resepter() {
 
             <TouchableOpacity
                 style={styles.buttonContainer} onPress={() =>  WebBrowser.openBrowserAsync("https://helsenorge.no/e-resept-og-mine-resepter/dine-resepter-pa-helsenorge-no")}>
-                <Text style={styles.buttonText} allowFontScaling={true}>Se alle resepter</Text>
+                <Text style={styles.boldText} allowFontScaling={true}>Se alle resepter</Text>
                 <FontAwesome key ={0} name={"long-arrow-right"} size={20}  allowFontScaling={true}/>
             </TouchableOpacity>
 
@@ -132,47 +104,37 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         borderBottomColor: "black",
         borderBottomWidth: 1,
+        marginTop: 10,
     },
     expiredContainer:{
         flexShrink: 1,
+        marginTop: 5,
         borderBottomWidth: 1,
         borderBottomColor: "lightgrey",
     },
     InfoContainer: {
         flexShrink: 1,
-        flexWrap: "wrap",
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        marginBottom: 10,
+        marginLeft: 8,
     },
     nameText: {
         fontSize: 17,
-        marginLeft: "2%",
-        marginTop: "1%"
-    },
-    text: {
-        fontSize: 16,
-        marginLeft: "2%",
-        marginBottom: "1%"
+        marginLeft: 8,
+        marginTop: 5,
     },
     boldText: {
         fontSize: 17,
         fontWeight: "bold",
-        width: "100%",
-        marginLeft: 10,
     },
     buttonContainer: {
         flexShrink: 1,
-        marginTop: "2%",
+        marginTop: 10,
         flexDirection: "row",
-        width: 170,
-        marginLeft: 10,
         position: "absolute",
-        bottom: 0
+        bottom: 0,
+        right: 0,
 
     },
-    buttonText:{
-        fontSize: 17,
-        fontWeight: "bold",
-        marginRight: 10,
-    }
-});
+})
