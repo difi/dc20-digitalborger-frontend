@@ -118,7 +118,7 @@ export function Politi({route}) {
             key={0}
             iconName={POLITI[0].icon.name}
             iconType={POLITI[0].icon.type}
-            containerHeight={280}
+            containerHeight={250}
             title={POLITI[0].title}
             parentCallback={(item) => {
               setSelectedIndex(0);
@@ -153,7 +153,7 @@ export function Politi({route}) {
             key={2}
             iconName={POLITI[2].icon.name}
             iconType={POLITI[2].icon.type}
-            containerHeight={250}
+            containerHeight={215}
             title={POLITI[2].title}
             parentCallback={(item) => {
               setSelectedIndex(2);
@@ -171,7 +171,7 @@ export function Politi({route}) {
             key={3}
             iconName={POLITI[3].icon.name}
             iconType={POLITI[3].icon.type}
-            containerHeight={220}
+            containerHeight={170}
             title={POLITI[3].title}
             parentCallback={(item) => {
               setSelectedIndex(3);

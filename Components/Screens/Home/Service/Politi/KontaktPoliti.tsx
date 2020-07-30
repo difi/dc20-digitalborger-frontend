@@ -1,10 +1,9 @@
 import * as React from "react";
 import {View, ScrollView, Text, StyleSheet} from "react-native";
-import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
-import Icon from "react-native-vector-icons/Entypo";
-import {TouchableOpacity} from "react-native-gesture-handler";
+import NotificationBar from "./NotificationBar";
 import * as WebBrowser from "expo-web-browser";
+import Button from "../assets/Button";
 import { Linking } from "react-native";
 
 
@@ -23,59 +22,35 @@ export default function KontaktPoliti() {
                 <Text style={{fontSize: 17}}>Nødnummer</Text>
                 <Text onPress={()=>{Linking.openURL("tel: 112");}} style={{fontSize: 17, fontWeight:"bold"}}>   112</Text>
             </View>
-
-            <TouchableOpacity
-                containerStyle={styles.linkContainer}
-                onPress={()=>
+            <View style={styles.buttonContainer}>
+                <Button label={"Kontakt politiet på e-post"} color={"#222A3A"} onPress={() =>
                     WebBrowser.openBrowserAsync(
                         "https://www.politiet.no/kontakt-oss/send-e-post-til-politiet/"
-                    )
-                }
-            >
-                <View style={styles.linkStyleContainer}>
-                    <Text style={{fontWeight: "bold", fontSize: 15, color: "white",}}> Kontakt politiet på e-post </Text>
-                    <View style={styles.iconContainer}>
-                        <Icon name ="arrow-long-right" size={15} color="white"></Icon>
-                    </View>
-                </View>
-            </TouchableOpacity>
+                    )} textColor={"white"}/>
+            </View>
         </View>
 
     );
 }
 
-
-
 const styles = StyleSheet.create({
 
     mainContainer:{
-        left: 5,
-        marginTop: 30,
-        height: "100%",
+        marginTop:8,
     },
     topContainerText:{
         flexDirection: "row",
-        left: 10,
+        marginLeft: 15,
     },
     bottomContainer:{
         marginTop: 20,
-        left: 10,
+        marginLeft: 15,
         flexDirection: "row",
     },
-    linkContainer:{
-        width: "90%",
-        height: "20%",
-        marginTop: 30,
-        left: 10,
-        backgroundColor:"#212a3b",
+    buttonContainer:{
+        margin: "10%",
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 20,
     },
-    linkStyleContainer:{
-        flexDirection: "row",
-        marginTop: 15,
-        left: 5,
-    },
-    iconContainer:{
-        left: 95,
-    },
-
 });
