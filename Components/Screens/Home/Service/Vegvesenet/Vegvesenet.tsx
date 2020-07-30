@@ -95,7 +95,7 @@ export function Vegvesenet({ route }) {
             key={1}
             iconName={SKATT[1].icon.name}
             iconType={SKATT[1].icon.type}
-            containerHeight={130}
+            containerHeight={140}
             title={SKATT[1].title}
             parentCallback={(item) => {
               setSelectedIndex(1);
@@ -111,7 +111,7 @@ export function Vegvesenet({ route }) {
             key={2}
             iconName={SKATT[2].icon.name}
             iconType={SKATT[2].icon.type}
-            containerHeight={140}
+            containerHeight={155}
             title={SKATT[2].title}
             parentCallback={(item) => {
               setSelectedIndex(2);

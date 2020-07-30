@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     left: 10,
   },
   topContainer: {
-    marginTop: 50,
+    marginTop: 25,
     borderBottomWidth: 1,
     borderBottomColor: "#E1E1E1",
     borderRadius: 20,

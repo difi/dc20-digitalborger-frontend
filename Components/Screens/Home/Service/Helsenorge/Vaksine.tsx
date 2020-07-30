@@ -49,7 +49,7 @@ export default function Vaksine() {
             )
           }
         >
-          <Text style={{ fontSize: 15 }}> Full vaksine oversikt </Text>
+          <Text style={{ fontWeight: "bold",  fontSize: 16 }}> Full vaksine oversikt </Text>
           <FontAwesome
             key={0}
             name={"arrow-circle-right"}
