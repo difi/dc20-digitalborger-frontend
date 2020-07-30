@@ -106,7 +106,7 @@ export function Vigo({ route }) {
             key={0}
             iconName={VIGO[0].icon.name}
             iconType={VIGO[0].icon.type}
-            containerHeight={240}
+            containerHeight={250}
             title={VIGO[0].title}
             parentCallback={() => {
               setSelectedIndex(0);

@@ -168,13 +168,15 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         backgroundColor: "transparent",
         marginBottom: 5,
+        marginTop: '3%',
+        marginLeft: '2%'
     },
     GradesDisplay:{
         flexDirection: "row",
         justifyContent: "space-between",
         flexShrink: 1,
-        flexWrap: "wrap",
         alignItems: "center",
+        marginBottom: '2%',
 
     },
     boldText: {
@@ -184,12 +186,12 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 15,
         marginTop: '3%',
-        marginLeft: '3%',
+        marginLeft: '2%',
         marginRight: '8%',
 },
     averageContainer: {
         flexDirection: "row",
-        marginRight: '2.6%',
+        marginRight: '1.4%',
         position: "absolute",
         bottom: 0,
         right: 0
