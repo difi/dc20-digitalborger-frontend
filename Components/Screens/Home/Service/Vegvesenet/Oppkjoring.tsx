@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
+import Button from "../assets/Button";
 
 export default function Oppkjoring() {
   return (
@@ -11,20 +12,12 @@ export default function Oppkjoring() {
         Bestilling av oppkjøring må gjøres av din trafikkskole. Til dette
         trenger trafikkskolen en fullmakt fra deg.
       </Text>
-
-      <TouchableOpacity
-        containerStyle={styles.linkContainer}
-        onPress={() =>
-          WebBrowser.openBrowserAsync(
-            "https://www.vegvesen.no/dinside/dittforerkort/timebestilling/timer"
-          )
-        }
-      >
-        <View style={styles.linkContainer}>
-          <Text style={styles.linkText}> Gi fullmakt </Text>
-          <Icon name="arrow-right-circle-outline" size={20}></Icon>
-        </View>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <Button label={" Gi fullmakt"} color={"#DA3737"} onPress={() =>
+            WebBrowser.openBrowserAsync(
+                "https://www.vegvesen.no/dinside/dittforerkort/timebestilling/timer"
+            )} textColor={"white"}/>
+      </View>
     </View>
   );
 }
@@ -38,17 +31,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     margin: 10,
   },
-  linkContainer: {
-    display: "flex",
-    flexDirection: "row",
-    marginBottom: 10,
-    alignSelf: "flex-end",
-    marginEnd: 5,
+  buttonContainer: {
+    margin: "10%",
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 5,
   },
 
-  linkText: {
-    fontSize: 15,
-    paddingLeft: 10,
-    marginRight: 5,
-  },
 });

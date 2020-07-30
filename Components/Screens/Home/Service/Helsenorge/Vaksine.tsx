@@ -14,6 +14,8 @@ import * as WebBrowser from "expo-web-browser";
 import { getVaccineData } from "../../../../ServerCommunications/Services/HelseNorgeService";
 import { retrieveData } from "../../../../Storage";
 import { useEffect, useState } from "react";
+import Button from "../assets/Button";
+
 
 export default function Vaksine() {
   const [vaccineData, setVaccine] = useState([{ name: "", date: "" }]);
@@ -32,31 +34,19 @@ export default function Vaksine() {
         <Text style={styles.titleTextLeft}>Vaksinasjon</Text>
         <Text style={styles.titleTextRight}>Vaksinasjonsdato</Text>
       </View>
-      <ScrollView>
         {vaccineData.map((item, index) => (
           <View key={index} style={styles.listItems}>
             <Text style={styles.ItemLeftText}>{item.name}</Text>
             <Text style={styles.ItemRightText}>{item.date}</Text>
           </View>
         ))}
-      </ScrollView>
       <View>
-        <TouchableOpacity
-          style={styles.LinkContainer}
-          onPress={() =>
-            WebBrowser.openBrowserAsync(
-              "https://tjenester.helsenorge.no/vaksiner"
-            )
-          }
-        >
-          <Text style={{ fontSize: 15 }}> Full vaksine oversikt </Text>
-          <FontAwesome
-            key={0}
-            name={"arrow-circle-right"}
-            size={20}
-            color="#4d264f"
-          />
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <Button label={"Gå til vaksine oversikt"} color={"#9a1c6f"} onPress={() =>
+              WebBrowser.openBrowserAsync(
+                  "https://tjenester.helsenorge.no/vaksiner"
+              )} textColor={"white"}/>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -76,13 +66,13 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 15,
-    right: 25,
+    marginRight: 55,
   },
   titleTextRight: {
     color: "white",
     fontWeight: "bold",
     fontSize: 15,
-    left: 24,
+    marginLeft: 40,
   },
   listItems: {
     flexDirection: "row",
@@ -92,18 +82,18 @@ const styles = StyleSheet.create({
   ItemLeftText: {
     fontSize: 15,
     marginBottom: 10,
-    flex: 1 / 2,
+    flex: 1/2,
     left: 10,
   },
   ItemRightText: {
     fontSize: 15,
-    flex: 1 / 2,
+    flex: 1/2,
     left: 40,
   },
-  LinkContainer: {
-    flexDirection: "row",
-    alignSelf: "flex-end",
-    right: 15,
-    top: 10,
+  buttonContainer: {
+    margin: "10%",
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 12,
   },
 });

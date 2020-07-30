@@ -7,7 +7,7 @@ import Footer from "../Footer";
 import Frikort from "./Frikort";
 import SkatteMelding from "./SkatteMelding";
 import Skattekort from "./Skattekort";
-import Skattegiver from "../../../Skattegiver";
+import Skattegiver from "./Skattegiver";
 
 const SKATT = [
   {
@@ -90,10 +90,11 @@ export function Skatteetaten({ route }) {
             key={0}
             iconName={SKATT[0].icon.name}
             iconType={SKATT[0].icon.type}
-            containerHeight={200}
+            containerHeight={195}
             title={SKATT[0].title}
             parentCallback={(item) => {
               setSelectedIndex(0);
+              console.log("toggled", item);
             }}
             pressed={selectedIndex === 0 ? true : false}
           >
@@ -122,7 +123,7 @@ export function Skatteetaten({ route }) {
             key={2}
             iconName={SKATT[2].icon.name}
             iconType={SKATT[2].icon.type}
-            containerHeight={150}
+            containerHeight={175}
             title={SKATT[2].title}
             parentCallback={(item) => {
               setSelectedIndex(2);

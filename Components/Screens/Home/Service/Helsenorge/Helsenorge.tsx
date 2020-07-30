@@ -88,13 +88,13 @@ export function Helsenorge({route}){
                         </View>
                     </ListItem>
 
-                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={230} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
+                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={140} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <TimeAvtaler/>
                         </View>
                     </ListItem>
 
-                    <ListItem key={2} iconName = {HELSE[2].icon.name} iconType={HELSE[2].icon.type} containerHeight={290} title={HELSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
+                    <ListItem key={2} iconName = {HELSE[2].icon.name} iconType={HELSE[2].icon.type} containerHeight={340} title={HELSE[2].title} parentCallback={(item) => {setSelectedIndex(2); console.log("toggled", item)}} pressed={(selectedIndex === 2) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <Vaksine/>
                         </View>
