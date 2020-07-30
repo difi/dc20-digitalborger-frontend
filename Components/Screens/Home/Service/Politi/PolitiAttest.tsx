@@ -42,12 +42,13 @@ const styles = StyleSheet.create({
     container:{
     },
     textContainer:{
-        marginTop: 20,
+        marginTop: 15,
         marginLeft: 5,
     },
     buttonContainer:{
         margin: "10%",
         marginLeft: 10,
         marginRight: 10,
+        marginTop: 30,
     },
 });

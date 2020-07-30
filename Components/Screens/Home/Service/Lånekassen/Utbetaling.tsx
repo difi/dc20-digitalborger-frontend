@@ -14,6 +14,7 @@ import * as WebBrowser from "expo-web-browser";
 import {useEffect, useState} from "react";
 import {retrieveData} from "../../../../Storage";
 import {getPayoutData} from "../../../../ServerCommunications/Services/LaanekassenService";
+import Button from "../assets/Button";
 
 const Betalinger = {
     occurrence: "Utbetaling",
@@ -88,23 +89,12 @@ export default function Utbetaling() {
         ))}
       </ScrollView>
       <View>
-        <TouchableOpacity
-          style={styles.LinkContainer}
-          onPress={() =>
-            WebBrowser.openBrowserAsync(
-              "https://lanekassen.no/nb-NO/verktoy-og-frister/Frister-i-Lanekassen/utbetaling-av-utdanningsstotte/"
-            )
-          }
-        >
-
-          <Text style={styles.linkText}>Til dine sider</Text>
-          <FontAwesome
-              key={0}
-              name={"arrow-circle-right"}
-              size={20}
-              color="#4d264f"
-          />
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <Button label={"Til dine sider"} color={"#97469d"} onPress={() =>
+              WebBrowser.openBrowserAsync(
+                  "https://lanekassen.no/nb-NO/verktoy-og-frister/Frister-i-Lanekassen/utbetaling-av-utdanningsstotte/"
+              )} textColor={"white"}/>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -117,14 +107,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 40,
     width: "100%",
-    backgroundColor: "#4d264f",
+    backgroundColor: "#97469d",
     bottom: 10,
     flexShrink: 1,
   },
   titleText: {
     color: "white",
     fontSize: 16,
-    flex: 1 / 3,
+    flex: 1/3,
     textAlign: "center",
   },
   listItems: {
@@ -138,18 +128,13 @@ const styles = StyleSheet.create({
   ItemText: {
     fontSize: 15,
     marginBottom: 10,
-    flex: 1 / 3,
+    flex: 1/3,
     textAlign: "center",
   },
-  LinkContainer: {
-    flexDirection: "row",
-    position: "absolute",
-    right: 0,
-    top: 5,
-  },
-  linkText: {
-    fontWeight: "bold",
-    fontSize: 16,
+  buttonContainer:{
+    margin: "10%",
+    marginLeft: 10,
     marginRight: 10,
+    marginTop: 5,
   },
 });

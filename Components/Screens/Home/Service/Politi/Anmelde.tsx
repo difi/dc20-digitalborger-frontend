@@ -35,18 +35,16 @@ export default function Anmelde() {
 const styles = StyleSheet.create({
 
     container:{
-        marginBottom: 10,
     },
-
     textContainer:{
-        marginTop: 20,
+        marginTop: 10,
         marginLeft: 5,
     },
     buttonContainer:{
         margin: "10%",
         marginLeft: 10,
         marginRight: 10,
-        marginTop: 30,
+        marginTop: 20,
     },
 
 });

@@ -69,7 +69,7 @@ export function Helsenorge(){
                         </View>
                     </ListItem>
 
-                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={120} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
+                    <ListItem key={1} iconName = {HELSE[1].icon.name} iconType={HELSE[1].icon.type} containerHeight={140} title={HELSE[1].title} parentCallback={(item) => {setSelectedIndex(1); console.log("toggled", item)}} pressed={(selectedIndex === 1) ? true : false}>
                         <View style={{padding: 10, flex: 1}}>
                             <TimeAvtaler/>
                         </View>

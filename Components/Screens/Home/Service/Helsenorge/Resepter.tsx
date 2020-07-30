@@ -8,6 +8,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {useEffect, useState} from "react";
 import {retrieveData} from "../../../../Storage";
 import {getPrescriptionInfo} from "../../../../ServerCommunications/Services/HelseNorgeService";
+import Button from "../assets/Button";
 
 
 export default function Resepter() {
@@ -38,7 +39,6 @@ export default function Resepter() {
 
             {prescriptionData.Prescriptions.map((prescription, index) => (
                 <View key={index} style={{
-                    flexShrink: 1,
                     borderBottomColor: "lightgrey",
                     marginTop: 5,
                     borderBottomWidth: (index == prescriptionData.Prescriptions.length-1) ? 0: 1}}>
@@ -71,7 +71,7 @@ export default function Resepter() {
                         <Text style={{fontSize: 15}} allowFontScaling={true} >{prescription1.category}</Text>
 
                         <TouchableOpacity
-                            style={{flexDirection: "row", flexShrink: 1}}
+                            style={{flexDirection: "row"}}
                             onPress={() => WebBrowser.openBrowserAsync("https://helsenorge.no/om-min-helse/meldinger")}>
                             <Text style={{fontSize: 15}} allowFontScaling={true}>{prescription1.status}</Text>
                             <Entypo name={"cycle"}size={20}  allowFontScaling={true}/>
@@ -82,11 +82,12 @@ export default function Resepter() {
 
             ))}
 
-            <TouchableOpacity
-                style={styles.buttonContainer} onPress={() =>  WebBrowser.openBrowserAsync("https://helsenorge.no/e-resept-og-mine-resepter/dine-resepter-pa-helsenorge-no")}>
-                <Text style={styles.boldText} allowFontScaling={true}>Se alle resepter</Text>
-                <FontAwesome key ={0} name={"long-arrow-right"} size={20}  allowFontScaling={true}/>
-            </TouchableOpacity>
+            <View style={styles.buttonContainer}>
+                <Button label={"Se alle resepter"} color={"#9a1c6f"} onPress={() =>
+                    WebBrowser.openBrowserAsync(
+                        "https://helsenorge.no/e-resept-og-mine-resepter/dine-resepter-pa-helsenorge-no"
+                    )} textColor={"white"}/>
+            </View>
 
         </View>
     )
@@ -100,20 +101,17 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     status: {
-        flexShrink: 1,
         flexDirection: "row",
         borderBottomColor: "black",
         borderBottomWidth: 1,
         marginTop: 10,
     },
     expiredContainer:{
-        flexShrink: 1,
         marginTop: 5,
         borderBottomWidth: 1,
         borderBottomColor: "lightgrey",
     },
     InfoContainer: {
-        flexShrink: 1,
         flexDirection: "row",
         justifyContent: "space-between",
         marginBottom: 10,
@@ -129,12 +127,9 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     buttonContainer: {
-        flexShrink: 1,
-        marginTop: 10,
-        flexDirection: "row",
-        position: "absolute",
-        bottom: 0,
-        right: 0,
-
+        margin: "10%",
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 20,
     },
 })

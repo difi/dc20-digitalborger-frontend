@@ -33,12 +33,10 @@ export default function KontaktPoliti() {
     );
 }
 
-
-
 const styles = StyleSheet.create({
 
     mainContainer:{
-        marginTop: 25,
+        marginTop:8,
     },
     topContainerText:{
         flexDirection: "row",
@@ -53,5 +51,6 @@ const styles = StyleSheet.create({
         margin: "10%",
         marginLeft: 10,
         marginRight: 10,
+        marginTop: 20,
     },
 });

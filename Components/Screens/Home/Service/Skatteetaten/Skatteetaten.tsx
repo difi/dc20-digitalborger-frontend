@@ -7,7 +7,7 @@ import Footer from "../Footer";
 import Frikort from "./Frikort";
 import SkatteMelding from "./SkatteMelding";
 import Skattekort from "./Skattekort";
-import Skattegiver from "../../../Skattegiver";
+import Skattegiver from "./Skattegiver";
 
 const SKATT = [
   {
