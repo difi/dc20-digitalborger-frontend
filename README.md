@@ -13,6 +13,9 @@ Dessuten rappoterer unge at de ofte trenger hjelp av en foresatt dersom de forek
 Ung Borger har som oppgave å synliggjøre offentlige tjenester for målgruppen og gjøre det lettere for dem å søke/bli informert om tjenester på egenhånd.
 
 ## Bibliotek
+I koden vår har vi noen ferdiglagde komponenter
+
+Vigo -> Karakterer : Her brukes Tab View hentet fra: https://github.com/satya164/react-native-tab-view
 
 ## Installasjonsguide
 
@@ -33,6 +36,7 @@ part 2:
 
 ####Services: 
 Ung Borger tilbyr følgende offentlige tjenester: 
+Komponentene finner du via startsiden (home)
 
 * Digipost
 * Helsenorge
@@ -54,12 +58,11 @@ Varsel skal gi brukeren oversikt over generelle frister fra de ulike tjenestene
 ####Service Communications:
 
 ####Other components:
+
+* ListItem
 * Button
 * Storage
 * Theme
-
-
-
 
 
 
