@@ -199,18 +199,18 @@ const Card = ({ icon, data, editable }: CardProps) => {
 const { height } = Dimensions.get("window");
 
 const history = [
-  { date: "30/07/2020 kl.08.15", page: "https://www.skatteetaten.no/" },
-  { date: "26/07/2020 kl.20.23", page: "https://helsenorge.no/" },
-  { date: "12.04.2020 kl.12.15", page: "https://www.vigo.no/" },
-  { date: "20.04.2020 kl.13.00", page: "https://helsenorge.no/" },
-  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
-  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
-  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
-  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
-  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
-  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
-  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
-  { date: "25.03.2020 kl.16.30", page: "https://www.vegvesen.no/" },
+  { date: "30.07.2020 kl.08.15", page: "www.skatteetaten.no/" },
+  { date: "26.07.2020 kl.20.23", page: "www.helsenorge.no/" },
+  { date: "12.04.2020 kl.12.15", page: "www.vigo.no/" },
+  { date: "20.04.2020 kl.13.00", page: "www.helsenorge.no/" },
+  { date: "25.03.2020 kl.16.30", page: "www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "www.vegvesen.no/" },
+  { date: "25.03.2020 kl.16.30", page: "www.vegvesen.no/" },
 ];
 
 export default function Profile() {

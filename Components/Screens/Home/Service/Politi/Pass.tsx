@@ -5,7 +5,9 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { getTrafficStations } from "../../../../ServerCommunications/Services/Politi";
 
 export default function School() {
-  const [stations, setStation] = useState(Array);
+  const [stations, setStation] = useState([
+    { Politistasjon: "Laster...", Distanse: 0 },
+  ]);
   const [location, setLocation] = useState();
   const [errorMsg, setErrorMsg] = useState("");
   const [status, setStatus] = useState("");

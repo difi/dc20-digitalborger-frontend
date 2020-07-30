@@ -24,6 +24,11 @@ function getTimeString(deadline: Date) {
   return date.toLocaleDateString("en-GB");
 }
 
+function getColor(index: number) {
+  const colors = ["#AED5F1", "#F7D590", "#EE8970"];
+  return colors[index % 3];
+}
+
 export default function Hourglass() {
   const [events, setData] = useState(Array);
 
@@ -43,7 +48,7 @@ export default function Hourglass() {
           <View key={index}>
             <Card
               containerStyle={{
-                backgroundColor: "#EE8970",
+                backgroundColor: getColor(index),
                 borderWidth: 0,
                 borderTopLeftRadius: 15,
                 borderTopRightRadius: 15,
@@ -67,7 +72,7 @@ export default function Hourglass() {
                     fontSize: 15,
                   }}
                   digitStyle={{
-                    backgroundColor: "#EE8970",
+                    backgroundColor: getColor(index),
                   }}
                   digitTxtStyle={{
                     color: "white",

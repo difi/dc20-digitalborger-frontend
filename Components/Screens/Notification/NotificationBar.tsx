@@ -8,14 +8,18 @@ function getTimeFormat(dateString: string) {
   const today = new Date();
   const difference = (today.getTime() - date.getTime()) / 1000;
 
-  if (difference < 3600) {
+  if (difference < 3600 && difference > 120) {
     return Math.floor(difference / 60) + " minutter siden";
   } else if (difference > 7200 && difference < 86400) {
     return Math.floor(difference / 60 / 60) + " timer siden";
   } else if (difference > 3600 && difference < 7200) {
     return "1 time siden";
+  } else if (difference < 60) {
+    return "Nå";
+  } else if (difference > 60 && difference < 120) {
+    return "1 minutt siden";
   } else {
-    return date.toLocaleDateString();
+    return date.toLocaleDateString("en-GB");
   }
 }
 
@@ -26,14 +30,20 @@ export default function Notification(props: {
   received: string;
   icon_color: string;
   service: string;
+  index: number;
 }) {
+  function getColor(index: number) {
+    const colors = ["#AED5F1", "#F7D590", "#EE8970"];
+    return colors[index % 3];
+  }
+
   return (
     <View style={styles.gridContainer}>
       <Icon
         style={styles.logo}
-        name={props.icon}
+        name={"info-with-circle"}
         size={55}
-        color={props.icon_color}
+        color={getColor(props.index)}
       />
       <View style={{ marginVertical: 10 }}>
         <Text style={styles.title}>{props.service}</Text>

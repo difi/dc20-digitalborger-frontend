@@ -119,8 +119,7 @@ export default function Notification() {
             description={event.varselnavn}
             service={event.tjeneste}
             received={event.opprettelsesdato}
-            icon={event.symbol}
-            icon_color={"#64D2FF"}
+            index={index}
           />
         ))}
       </ScrollView>
