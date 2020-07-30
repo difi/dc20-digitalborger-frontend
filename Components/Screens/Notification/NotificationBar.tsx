@@ -10,8 +10,10 @@ function getTimeFormat(dateString: string) {
 
   if (difference < 3600) {
     return Math.floor(difference / 60) + " minutter siden";
-  } else if (difference < 86400) {
+  } else if (difference > 7200 && difference < 86400) {
     return Math.floor(difference / 60 / 60) + " timer siden";
+  } else if (difference > 3600 && difference < 7200) {
+    return "1 time siden";
   } else {
     return date.toLocaleDateString();
   }
