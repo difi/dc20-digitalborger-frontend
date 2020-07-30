@@ -63,7 +63,8 @@ export function Lanekassen({ route }) {
           break;
       }
     }
-  });
+  }, [open]);
+
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

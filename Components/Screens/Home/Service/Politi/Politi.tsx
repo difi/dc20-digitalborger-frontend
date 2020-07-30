@@ -81,8 +81,29 @@ const POLITI = [
 
 const SPACE = 20;
 
-export function Politi() {
+export function Politi({route}) {
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const { open } = route.params;
+  useEffect(() => {
+    if (open !== null) {
+      switch (open) {
+        case "Søk om politiattest":
+          setSelectedIndex(0);
+          break;
+        case "Forny eller søk om pass":
+          setSelectedIndex(1);
+          break;
+        case "Anmelde":
+          setSelectedIndex(2);
+          break;
+        case "Kontakt politiet":
+          setSelectedIndex(3);
+          break;
+
+      }
+    }
+  }, [open]);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView
