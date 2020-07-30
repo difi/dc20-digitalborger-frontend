@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     },
     rightText:{
         alignSelf: "flex-end",
-        left: 95,
+        left: 90,
         marginBottom: "2%",
         flex: 1/2,
     },
