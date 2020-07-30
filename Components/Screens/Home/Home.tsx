@@ -61,16 +61,16 @@ const PopularServices = [
     name: "Oppkjøring",
     uri: require("../assets/vegvesenet.png"),
   },
-  {
-    service: "Lånekassen",
-    name: "Søknad om lån og stipend",
-    uri: require("../assets/lånekassenlogo.png"),
-  },
     {
         service: "Politi",
         name: "Søk om politiattest",
         uri: require("../assets/politiet.png"),
     },
+  {
+    service: "Lånekassen",
+    name: "Søknad om lån og stipend",
+    uri: require("../assets/lånekassenlogo.png"),
+  },
 ];
 
 const services = [
