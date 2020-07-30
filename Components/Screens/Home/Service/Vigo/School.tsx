@@ -7,7 +7,7 @@ import { getSchools } from "../../../../ServerCommunications/Services/VigoServic
 
 export default function School() {
   const [schools, setSchools] = useState([
-    { Skolenavn: "Loading...", Distanse: 0 },
+    { Skolenavn: "Laster...", Distanse: 0 },
   ]);
   const [location, setLocation] = useState();
   const [errorMsg, setErrorMsg] = useState("");
