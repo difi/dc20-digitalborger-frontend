@@ -139,7 +139,7 @@ export function Skatteetaten({ route }) {
             key={3}
             iconName={SKATT[3].icon.name}
             iconType={SKATT[3].icon.type}
-            containerHeight={300}
+            containerHeight={280}
             title={SKATT[3].title}
             parentCallback={(item) => {
               setSelectedIndex(3);
