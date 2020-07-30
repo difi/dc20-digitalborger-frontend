@@ -5,8 +5,8 @@ import Icon from "react-native-vector-icons/AntDesign";
 import { ScrollView } from "react-native-gesture-handler";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useState, useEffect } from "react";
-import {getMail} from "../../../../ServerCommunications/Services/Digipost";
-import {retrieveData} from "../../../../Storage";
+import { getMail } from "../../../../ServerCommunications/Services/Digipost";
+import { retrieveData } from "../../../../Storage";
 
 export default function Digipost({ navigation }) {
   const [data, setData] = useState(Array);
@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     padding: 18,
   },
   container: {
@@ -73,16 +72,13 @@ const styles = StyleSheet.create({
   },
   sender: {
     fontWeight: "bold",
-    fontFamily: "Helvetica",
     fontSize: 14,
     paddingTop: 10,
   },
   subject: {
-    fontFamily: "Helvetica",
     fontSize: 14,
   },
   date: {
-    fontFamily: "Helvetica",
     fontSize: 14,
     color: "grey",
     paddingTop: 10,
@@ -99,7 +95,6 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   content: {
-    fontFamily: "Helvetica",
     fontSize: 14,
     color: "grey",
   },
