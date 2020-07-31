@@ -123,11 +123,9 @@ function AllServices({ navigation }) {
 
   let handleNotifications = (notification) => {
     setNotifications(notification);
-    console.log("Ny varsel");
   };
 
   let handleNotificationResponse = (response) => {
-    console.log("Ny varsel2");
     setNotifications(response);
     navigation.navigate("Notification");
   };

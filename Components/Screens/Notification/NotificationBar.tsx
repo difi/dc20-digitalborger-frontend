@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 15,
-    maxWidth: "90%",
+    maxWidth: "89%",
   },
   received: {
     color: "grey",
