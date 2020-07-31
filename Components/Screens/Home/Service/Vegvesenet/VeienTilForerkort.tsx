@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import {Text, View, StyleSheet, Dimensions} from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
@@ -59,12 +59,55 @@ export default function VeienTilForerkortet() {
   }
 
   async function OpenWebPage(url: string) {
-    let result = await WebBrowser.openBrowserAsync(url);
+    let result = await WebBrowser.openBrowserAsync(url).catch(err => console.log(err));
   }
 
+  const {width, height} = Dimensions.get("window");
+
   return (
-    <View style={styles.gridContainer}>
-      {vehicles.map((vehicle, index) => (
+      <View style={{height: 400,}}>
+        <View style={{flex: 1, flexWrap: "wrap", flexDirection: "row", justifyContent: "center"}}>
+          {vehicles.map((vehicle, index) => (
+
+              <View key={index} style={styles.square}>
+                <TouchableOpacity
+                    key={index}
+                    onPress={() => OpenWebPage(vehicle.link)}
+                    containerStyle={{flex: 1,}}
+                >
+                  <Text style={styles.title}>{vehicle.name}</Text>
+                  <View style={styles.iconContainer}>
+                    <Icon name={vehicle.icon} size={90} color="#444f55" />
+                  </View>
+                  <View
+                    style={{
+                      width: getBarLength(vehicle.code),
+                      height: 2,
+                      backgroundColor: "#444f55",
+                      marginBottom: "1%",
+                      alignSelf: "center",
+                    }}
+                    />
+                  <Text style={styles.code}>{vehicle.code}</Text>
+                  <View
+                    style={{
+                      width: getBarLength(vehicle.code),
+                      height: 2,
+                      backgroundColor: "#444f55",
+                      marginTop: "1%",
+                      alignSelf: "center",
+                    }}
+                    />
+                </TouchableOpacity>
+              </View>
+          ))}
+        </View>
+      </View>
+  );
+}
+
+/*
+ {vehicles.map((vehicle, index) => (
         <TouchableOpacity
           key={index}
           onPress={() => OpenWebPage(vehicle.link)}
@@ -95,9 +138,7 @@ export default function VeienTilForerkortet() {
           ></View>
         </TouchableOpacity>
       ))}
-    </View>
-  );
-}
+ */
 
 const styles = StyleSheet.create({
   gridContainer: {

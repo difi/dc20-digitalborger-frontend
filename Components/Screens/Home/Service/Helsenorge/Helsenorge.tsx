@@ -134,7 +134,7 @@ export function Helsenorge({ route }) {
             key={3}
             iconName={HELSE[3].icon.name}
             iconType={HELSE[3].icon.type}
-            containerHeight={410}
+            containerHeight={415}
             title={HELSE[3].title}
             parentCallback={(item) => {
               setSelectedIndex(3);

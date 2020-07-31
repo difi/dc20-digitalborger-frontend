@@ -113,6 +113,6 @@ const styles = StyleSheet.create({
     margin: "10%",
     marginLeft: "2%",
     marginRight: "2%",
-    marginTop: "6%",
+    marginTop: "6.5%",
   },
 });

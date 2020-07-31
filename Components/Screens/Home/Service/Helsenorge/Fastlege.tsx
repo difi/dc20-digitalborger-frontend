@@ -43,7 +43,7 @@ export default function Fastlege() {
                             )
                         }
                     >
-                        <Icon name="pencil-square-o" size={20} ></Icon>
+                        <Icon name="pencil-square-o" size={25} ></Icon>
                     </TouchableOpacity>
                 </View>
                 </View>
@@ -61,7 +61,7 @@ export default function Fastlege() {
                                 )
                             }
                         >
-                            <Icon name="pencil-square-o" size={20} ></Icon>
+                            <Icon name="pencil-square-o" size={25} ></Icon>
                         </TouchableOpacity>
                 </View>
              </View>
@@ -82,5 +82,4 @@ const styles = StyleSheet.create({
         width: "100%",
         right: 15,
     },
-
 });
