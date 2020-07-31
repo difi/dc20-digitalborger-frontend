@@ -86,9 +86,11 @@ async function registerForPushNotificationsAsync() {
 
 //TODO: Add Init component for checking whether user has valid token or not
 
-export default function Notification() {
+export default function Notification({ route }) {
   const [expoPushToken, setExpoPushToken] = useState("");
   const [notifications, setNotifications] = useState(Array);
+  const [rerender, setRerender] = useState("");
+  const { response } = route.params;
 
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
@@ -107,7 +109,8 @@ export default function Notification() {
     Notifications.setBadgeCountAsync(0);
     updateBagdeCount();
     getData();
-  }, []);
+    //setRerender(response);
+  }, [response]);
 
   return (
     <SafeAreaView style={styles.container}>

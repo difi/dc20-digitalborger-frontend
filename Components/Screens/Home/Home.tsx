@@ -126,8 +126,7 @@ function AllServices({ navigation }) {
   };
 
   let handleNotificationResponse = (response) => {
-    setNotifications(response);
-    navigation.navigate("Notification");
+    navigation.navigate("Notification", { response: notifications });
   };
 
   useEffect(() => {
