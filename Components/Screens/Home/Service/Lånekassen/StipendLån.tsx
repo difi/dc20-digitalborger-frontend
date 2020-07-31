@@ -51,21 +51,11 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     width: "90%",
-    left: 17,
+    alignSelf: "center",
   },
   linkContainer: {
-    width: "49%",
+    width: "48%",
     height: "25%",
     marginTop: 20,
-  },
-  iconContainer: {
-    flexDirection: "row",
-    marginTop: 16,
-    alignSelf: "flex-end",
-    right: 8,
-  },
-  textContainer: {
-    left: 10,
-    bottom: 20,
   },
 });
