@@ -12,7 +12,7 @@ const snittRegnet = {
   description: "Snitt:",
 };
 
-const snittAAr = {
+const s = {
   firstYear : "2.3",
   secondYear: "3.0",
   thirdYear: "2.6",
@@ -24,10 +24,10 @@ const initialLayout = { width: Dimensions.get("window").width };
 export default function Grades() {
   const [index, setIndex] = React.useState(0);
   const [grades, setGrades] = useState({
+    snittAAr: { firstYear: 0, secondYear: 0, thirYear: 0 },
     first: [{ absence: 0, grade: 0, subject: "" }],
     second: [{ absence: 0, grade: 0, subject: "" }],
     third: [{ absence: 0, grade: 0, subject: "" }],
-    average: {firstYear: "", secondYear: "", thirdYear: ""},
   });
 
   const data = async () => {
@@ -69,7 +69,7 @@ export default function Grades() {
 
       <View style={styles.averageContainer}>
           <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
-          <Text style={styles.boldText}>{snittAAr.firstYear}</Text>
+          <Text style={styles.boldText}>{grades.snittAAr.firstYear.toFixed(1)}</Text>
       </View>
 
     </View>
@@ -91,7 +91,7 @@ export default function Grades() {
 
       <View style={styles.averageContainer}>
           <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
-          <Text style={styles.boldText}>{snittAAr.secondYear}</Text>
+          <Text style={styles.boldText}>{grades.snittAAr.secondYear.toFixed(1)}</Text>
       </View>
     </View>
   );
@@ -112,7 +112,7 @@ export default function Grades() {
 
       <View style={styles.averageContainer}>
           <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
-          <Text style={styles.boldText}>{snittAAr.thirdYear}</Text>
+          <Text style={styles.boldText}>{grades.snittAAr.thirYear.toFixed(1)}</Text>
       </View>
     </View>
   );
