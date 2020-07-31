@@ -61,7 +61,7 @@ const VIGO = [
     },
   },
   {
-    title: "Søk skole",
+    title: "Skoler i nærheten",
     icon: {
       type: "MaterialIcons",
       name: "school",
@@ -97,9 +97,7 @@ export function Vigo({ route }) {
         style={{ flex: 1, backgroundColor: "#5da423" }}
         showsVerticalScrollIndicator={false}
       >
-        <Header
-          logo={require("./assets/vigo.png")}
-        />
+        <Header logo={require("./assets/vigo.png")} />
         <View>
           <ListItem
             key={0}
