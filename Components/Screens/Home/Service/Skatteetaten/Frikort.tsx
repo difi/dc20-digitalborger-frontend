@@ -23,10 +23,9 @@ export default function Frikort() {
       <View style={styles.buttonContainer}>
         <Button label={"Bestill frikort her "} color={"#6f2c3f"} onPress={() =>
             WebBrowser.openBrowserAsync(
-                "\"https://www.skatteetaten.no/person/skatt/skattekort/frikort/bestille-frikort/"
+                "https://www.skatteetaten.no/person/skatt/skattekort/frikort/bestille-frikort/"
             )} textColor={"white"}/>
       </View>
-
     </View>
   );
 }
