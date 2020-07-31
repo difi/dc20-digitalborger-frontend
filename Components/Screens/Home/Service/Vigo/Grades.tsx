@@ -12,12 +12,6 @@ const snittRegnet = {
   description: "Snitt:",
 };
 
-const s = {
-  firstYear : "2.3",
-  secondYear: "3.0",
-  thirdYear: "2.6",
-}
-
 
 const initialLayout = { width: Dimensions.get("window").width };
 
