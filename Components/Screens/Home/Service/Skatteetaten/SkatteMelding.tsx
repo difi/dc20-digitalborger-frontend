@@ -80,8 +80,6 @@ const styles = StyleSheet.create({
   },
   skattTitle: {
     fontSize: 15,
-    borderBottomColor: "gray",
-    borderBottomWidth: 1,
   },
   skattInput: {
     fontSize: 15,
