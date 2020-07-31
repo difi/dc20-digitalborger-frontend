@@ -18,7 +18,10 @@ export default function School() {
       let { status } = await Location.requestPermissionsAsync();
       setStatus(status);
       if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
+        setErrorMsg(
+          "Tillatelse for tilgang til stedsposisjon er avvist. For å se skoler i ditt nærområde, skru på stedsposisjon" +
+            " i innstillinger."
+        );
       }
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location); //trenger egentlig ikke lagre location
@@ -57,12 +60,8 @@ export default function School() {
     );
   } else {
     return (
-      <View>
-        <Text>{errorMsg}</Text>
-        <Text>
-          For å se skoler i ditt nærområde, skru på stedsposisjon i
-          instillinger.
-        </Text>
+      <View style={{ marginVertical: 10, paddingLeft: 5 }}>
+        <Text style={{ fontWeight: "bold", color: "red" }}>{errorMsg}</Text>
       </View>
     );
   }
