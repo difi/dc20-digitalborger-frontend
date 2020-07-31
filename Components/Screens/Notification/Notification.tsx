@@ -11,10 +11,10 @@ import { Text } from "react-native-elements";
 import { retrieveData } from "../../Storage";
 import { updateBagde } from "../../ServerCommunications/Services/PushNotifications";
 import Constants from "expo-constants";
-import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 import { useState, useEffect } from "react";
 import { getNotifications } from "../../ServerCommunications/Services/Notifications";
+import * as Notifications from "expo-notifications";
 
 // data -> Skal byttes ut med data fra database
 var deadline = new Date();
@@ -85,10 +85,15 @@ async function registerForPushNotificationsAsync() {
 }
 
 //TODO: Add Init component for checking whether user has valid token or not
+interface CardProps {
+  route?: any;
+}
 
-export default function Notification() {
+export default function Notification({ navigation, route }) {
   const [expoPushToken, setExpoPushToken] = useState("");
   const [notifications, setNotifications] = useState(Array);
+  const [pushNotifications, newPush] = useState("");
+  const update = route.params;
 
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
@@ -107,7 +112,8 @@ export default function Notification() {
     Notifications.setBadgeCountAsync(0);
     updateBagdeCount();
     getData();
-  }, []);
+    setNotifications(notifications);
+  }, [update]);
 
   return (
     <SafeAreaView style={styles.container}>

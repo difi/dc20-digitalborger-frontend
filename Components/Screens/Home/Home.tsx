@@ -118,18 +118,15 @@ const checkLocalStorage = async () => {
   }
 };
 
-function AllServices({ navigation }) {
+function AllServices({ navigation: { navigate } }) {
   const [notifications, setNotifications] = useState("");
 
   let handleNotifications = (notification) => {
     setNotifications(notification);
-    console.log("Ny varsel");
   };
 
   let handleNotificationResponse = (response) => {
-    console.log("Ny varsel2");
-    setNotifications(response);
-    navigation.navigate("Notification");
+    navigate("Notification", { update: "yes" });
   };
 
   useEffect(() => {
