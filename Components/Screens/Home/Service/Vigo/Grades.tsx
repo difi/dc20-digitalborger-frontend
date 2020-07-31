@@ -7,12 +7,18 @@ import { getSubjectInfo } from "../../../../ServerCommunications/Services/VigoSe
 const gradeTitle = {
   leftTitle: "Fag",
   rightTitle: "Karakterer",
-  snitt: "5.2",
 };
 const snittRegnet = {
-  description: "Karakterpoeng:",
-  snitt: "5.2",
+  description: "Snitt:",
 };
+
+const snittAAr = {
+  firstYear : "2.3",
+  secondYear: "3.0",
+  thirdYear: "2.6",
+}
+
+
 const initialLayout = { width: Dimensions.get("window").width };
 
 export default function Grades() {
@@ -21,7 +27,7 @@ export default function Grades() {
     first: [{ absence: 0, grade: 0, subject: "" }],
     second: [{ absence: 0, grade: 0, subject: "" }],
     third: [{ absence: 0, grade: 0, subject: "" }],
-    average: 0,
+    average: {firstYear: "", secondYear: "", thirdYear: ""},
   });
 
   const data = async () => {
@@ -47,18 +53,6 @@ export default function Grades() {
     );
   };
 
-  //Snittet for brukeren
-  const averageEstimate = () => {
-    return (
-      <View>
-        <View style={{ flexDirection: "row" }}>
-          <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
-          <Text style={styles.boldText}>{grades.average.toFixed(1)}</Text>
-        </View>
-      </View>
-    );
-  };
-
   const firstYear = () => (
     <View style={[styles.gridContainer, { backgroundColor: "transparent" }]}>
       <View>{titleDescription()}</View>
@@ -73,7 +67,11 @@ export default function Grades() {
         </View>
       ))}
 
-      <View style={styles.averageContainer}>{averageEstimate()}</View>
+      <View style={styles.averageContainer}>
+          <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
+          <Text style={styles.boldText}>{snittAAr.firstYear}</Text>
+      </View>
+
     </View>
   );
 
@@ -91,7 +89,10 @@ export default function Grades() {
         </View>
       ))}
 
-      <View style={styles.averageContainer}>{averageEstimate()}</View>
+      <View style={styles.averageContainer}>
+          <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
+          <Text style={styles.boldText}>{snittAAr.secondYear}</Text>
+      </View>
     </View>
   );
 
@@ -109,7 +110,10 @@ export default function Grades() {
         </View>
       ))}
 
-      <View style={styles.averageContainer}>{averageEstimate()}</View>
+      <View style={styles.averageContainer}>
+          <Text style={styles.boldText}>{snittRegnet.description + " "}</Text>
+          <Text style={styles.boldText}>{snittAAr.thirdYear}</Text>
+      </View>
     </View>
   );
 
