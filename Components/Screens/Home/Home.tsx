@@ -203,9 +203,7 @@ function AllServices({ navigation: { navigate } }) {
             renderItem={({ item, index }) => (
               <TouchableOpacity
                 key={index}
-                onPress={() =>
-                  navigation.navigate(item.service, { open: item.name })
-                }
+                onPress={() => navigate(item.service, { open: item.name })}
                 style={stylesTop.item}
               >
                 <View style={stylesTop.imageContainer}>
@@ -267,9 +265,7 @@ function AllServices({ navigation: { navigate } }) {
                 }}
               >
                 <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate(service.name, { open: null })
-                  }
+                  onPress={() => navigate(service.name, { open: null })}
                   key={index}
                   style={[
                     stylesBottom.item,
@@ -310,7 +306,7 @@ function AllServices({ navigation: { navigate } }) {
           </View>
           <TouchableOpacity
             style={{ flex: 1 }}
-            onPress={() => navigation.navigate("Digipost")}
+            onPress={() => navigate("Digipost")}
           >
             <Animated.View
               style={{
