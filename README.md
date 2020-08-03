@@ -13,7 +13,7 @@ Ung Borger har som oppgave å synliggjøre offentlige tjenester for målgruppen 
 
 ### Før man kan kjøre prosjektet må man:
 
-- Være på DigDir sitt nett
+- Være på DigDir sitt lokale nett
 - Installere Node package manager (npm), https://www.npmjs.com/get-npm
 - Installere Expo, `npm install -g expo-cli`
 - Være innlogget på expo med brukeren ---- `expo login`
@@ -37,43 +37,8 @@ For å se appen kan man enten bruke en simulator, eller en fysisk mobil.
 4. `expo start`
 5. Start simulator eller scan QR-kode med mobil
 
-## Bibliotek
+### Login
 
-I koden vår har vi noen ferdiglagde komponenter
+For å logge inn må man bruke en testbruker. For innloggingsinformasjon, kontakt DigDir.
 
-Vigo -> Karakterer : Her brukes Tab View hentet fra: https://github.com/satya164/react-native-tab-view
-
-##Components
-
-####Login:
-
-####Services:
-Ung Borger tilbyr følgende offentlige tjenester:
-Komponentene finner du via startsiden (home)
-
-- Digipost
-- Helsenorge
-- Lånekassen
-- Politi
-- Skatteetaten
-- Vegvesenet
-- Vigo
-
-#### Hourglass:
-
-Timeglass skal gi brukeren oversikt over personlige frister
-
-#### Notification:
-
-Varsel skal gi brukeren oversikt over generelle frister fra de ulike tjenestene
-
-#### Profile:
-
-#### Service Communications:
-
-#### Other components:
-
-- ListItem
-- Button
-- Storage
-- Theme
+For mer uttdypene informasjon om prosjektet, se rapport.
