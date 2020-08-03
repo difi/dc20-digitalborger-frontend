@@ -39,6 +39,6 @@ For å se appen kan man enten bruke en simulator, eller en fysisk mobil.
 
 ### Login
 
-For å logge inn må man bruke en testbruker. For innloggingsinformasjon, kontakt DigDir.
+For å logge inn må man bruke en testbruker. For innloggingsinformasjon, kontakt digitaliseringsdirektoriatet.
 
 For mer uttdypene informasjon om prosjektet, se rapport.
