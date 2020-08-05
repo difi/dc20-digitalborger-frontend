@@ -24,11 +24,13 @@ export default function Grades() {
     third: [{ absence: 0, grade: 0, subject: "" }],
   });
 
+  //Gets retrieves data from JSON API
   const data = async () => {
     const pid = await retrieveData("pid");
     return await getSubjectInfo(pid);
   };
 
+  //Sets grades from API as grades
   useEffect(() => {
     data()
       .then((item) => {
@@ -37,7 +39,7 @@ export default function Grades() {
       .catch((err) => console.log(err));
   }, []);
 
-  //setter opp beskrivelses titler Fag og Karakterer
+  //Displays title Subject and Grades in top container
   const titleDescription = () => {
     return (
       <View style={styles.TitleArea}>
@@ -47,6 +49,7 @@ export default function Grades() {
     );
   };
 
+  //Const for displaying first year
   const firstYear = () => (
     <View style={[styles.gridContainer, { backgroundColor: "transparent" }]}>
       <View>{titleDescription()}</View>
@@ -69,6 +72,7 @@ export default function Grades() {
     </View>
   );
 
+  //Const for displaying second year
   const secondYear = () => (
     <View style={[styles.gridContainer, { backgroundColor: "transparent" }]}>
       <View>{titleDescription()}</View>
@@ -90,6 +94,7 @@ export default function Grades() {
     </View>
   );
 
+  //Const for displaying third year
   const thirdYear = () => (
     <View style={[styles.gridContainer, { backgroundColor: "transparent" }]}>
       <View>{titleDescription()}</View>
@@ -111,6 +116,7 @@ export default function Grades() {
     </View>
   );
 
+  //Const for header routes
   const [routes] = React.useState([
     { key: "first", title: "1.året" },
     { key: "second", title: "2.året" },
