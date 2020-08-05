@@ -30,7 +30,7 @@ export default function Utbetaling() {
     })();
   }, []);
 
-  const formatDate = (date) => {
+  const formatDate = (date: string) => {
     let time = String(date).split("-");
     let year = time[0];
     let month = time[1];

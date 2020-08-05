@@ -1,8 +1,6 @@
 import * as React from "react";
 import { View, ScrollView, Text, StyleSheet } from "react-native";
-import NotificationBar from "./NotificationBar";
 import { Header } from "react-native-elements";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as WebBrowser from "expo-web-browser";
 import Button from "../assets/Button";

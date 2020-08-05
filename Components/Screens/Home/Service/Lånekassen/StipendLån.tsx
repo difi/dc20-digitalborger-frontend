@@ -1,7 +1,6 @@
 import * as React from "react";
 import { View, ScrollView, Text, StyleSheet } from "react-native";
-import NotificationBar from "./NotificationBar";
-import { Header } from "react-native-elements";
+
 import * as WebBrowser from "expo-web-browser";
 import LånekasseButton from "../assets/LånekasseButton";
 
