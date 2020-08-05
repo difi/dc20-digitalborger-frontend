@@ -26,6 +26,7 @@ For å se appen kan man enten bruke en simulator, eller en fysisk mobil.
 - Windows/Linux: Android Studios
 
 #### Mobil:
+OBS! Mobilen må også være på DigDir sitt lokale nett.
 
 - Last ned appen Expo (Expo client for Android).
 
