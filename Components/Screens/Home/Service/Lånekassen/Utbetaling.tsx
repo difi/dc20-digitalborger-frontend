@@ -16,13 +16,10 @@ import { retrieveData } from "../../../../Storage";
 import { getPayoutData } from "../../../../ServerCommunications/Services/LaanekassenService";
 import Button from "../assets/Button";
 
-const Betalinger = {
-  occurrence: "Utbetaling",
-};
 
 export default function Utbetaling() {
   const [payout, setPayout] = useState([
-    { date: "", occurrence: "null", sum: 0 },
+    { date: "",  occurence: "", sum: 0 },
   ]);
 
   useEffect(() => {
@@ -53,7 +50,7 @@ export default function Utbetaling() {
         {payout.slice(0, 6).map((item, index) => (
           <View key={index} style={styles.listItems}>
             <Text style={styles.ItemText}>{formatDate(item.date)}</Text>
-            <Text style={styles.ItemText}>{Betalinger.occurrence}</Text>
+            <Text style={styles.ItemText}>{item.occurence}</Text>
             <Text style={styles.ItemText}>{item.sum + " kr"}</Text>
           </View>
         ))}

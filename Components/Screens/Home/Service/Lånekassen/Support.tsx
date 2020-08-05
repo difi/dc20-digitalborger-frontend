@@ -7,28 +7,6 @@ import { fetchUserInfoAsync } from "expo-auth-session";
 import { getSupport } from "../../../../ServerCommunications/Services/LaanekassenService";
 import { retrieveData } from "../../../../Storage";
 
-const SupportForStudent = [
-  {
-    title: "Utstyrsstipend",
-    sum: "1 660.00",
-  },
-  {
-    title: "Borteboerstipend",
-    sum: "43 753.00",
-  },
-  {
-    title: "Stipend",
-    sum: "13 626.00",
-  },
-  {
-    title: "Lån",
-    sum: 0,
-  },
-  {
-    title: "Neste Utbetaling",
-    sum: "346 862.21",
-  },
-];
 
 const getScholarship = async () => {
   const pid: any = await retrieveData("pid").catch((err) => console.log(err));
@@ -57,7 +35,7 @@ export default function Support() {
         <View
           key={index}
           style={
-            index == SupportForStudent.length - 1
+            index == scholarship.length - 1
               ? styles.LastElement
               : styles.listElements
           }
