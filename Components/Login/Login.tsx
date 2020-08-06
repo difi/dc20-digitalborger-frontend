@@ -40,7 +40,6 @@ const discovery = {
 
 const assets = [
   require("../../assets/Illustrations/idporten.png"),
-  require("../../assets/Illustrations/petter.png"),
 ];
 
 const useProxy = true;
@@ -129,12 +128,6 @@ export default function Login({ navigation }) {
     outputRange: [0, 1],
   });
 
-  const val = timing({
-    duration: 4000,
-    from: -300,
-    to: Dimensions.get("window").width,
-    easing: Easing.linear,
-  });
 
   const [show, setShow] = useState(false);
   return (
@@ -145,19 +138,6 @@ export default function Login({ navigation }) {
           setShow(item);
         }}
       />
-      <Animated.View
-        style={{
-          position: "absolute",
-          overflow: "hidden",
-          transform: [{ translateX: multiply(val, 1) }],
-        }}
-      >
-        <Image
-          source={assets[1]}
-          style={{ width: 300, height: 300, alignSelf: "center" }}
-          resizeMode={"contain"}
-        />
-      </Animated.View>
 
       <View
         style={{
